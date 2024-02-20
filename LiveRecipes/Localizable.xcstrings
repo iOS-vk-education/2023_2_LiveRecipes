@@ -1,0 +1,25 @@
+{
+  "sourceLanguage" : "ru",
+  "strings" : {
+    "Add Task" : {
+
+    },
+    "Item at %@" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Предмет во время %@"
+          }
+        }
+      }
+    },
+    "Key" : {
+      "extractionState" : "manual"
+    },
+    "Select an item" : {
+
+    }
+  },
+  "version" : "1.0"
+}

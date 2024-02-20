@@ -16,6 +16,7 @@
 		C0072F122B852DFC008CE3F8 /* LiveRecipesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0072F112B852DFC008CE3F8 /* LiveRecipesTests.swift */; };
 		C0072F1C2B852DFC008CE3F8 /* LiveRecipesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0072F1B2B852DFC008CE3F8 /* LiveRecipesUITests.swift */; };
 		C0072F1E2B852DFC008CE3F8 /* LiveRecipesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0072F1D2B852DFC008CE3F8 /* LiveRecipesUITestsLaunchTests.swift */; };
+		C0072F2B2B85311E008CE3F8 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C0072F2A2B85311E008CE3F8 /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		C0072F172B852DFC008CE3F8 /* LiveRecipesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiveRecipesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0072F1B2B852DFC008CE3F8 /* LiveRecipesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveRecipesUITests.swift; sourceTree = "<group>"; };
 		C0072F1D2B852DFC008CE3F8 /* LiveRecipesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveRecipesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C0072F2A2B85311E008CE3F8 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		C0072F2C2B853E48008CE3F8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +81,7 @@
 		C0072EEF2B852DFA008CE3F8 = {
 			isa = PBXGroup;
 			children = (
+				C0072F2C2B853E48008CE3F8 /* README.md */,
 				C0072EFA2B852DFA008CE3F8 /* LiveRecipes */,
 				C0072F102B852DFC008CE3F8 /* LiveRecipesTests */,
 				C0072F1A2B852DFC008CE3F8 /* LiveRecipesUITests */,
@@ -99,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				C0072EFB2B852DFA008CE3F8 /* LiveRecipesApp.swift */,
+				C0072F2A2B85311E008CE3F8 /* Localizable.xcstrings */,
 				C0072EFD2B852DFA008CE3F8 /* ContentView.swift */,
 				C0072EFF2B852DFC008CE3F8 /* Assets.xcassets */,
 				C0072F042B852DFC008CE3F8 /* Persistence.swift */,
@@ -214,11 +219,12 @@
 			};
 			buildConfigurationList = C0072EF32B852DFA008CE3F8 /* Build configuration list for PBXProject "LiveRecipes" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ru;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = C0072EEF2B852DFA008CE3F8;
 			productRefGroup = C0072EF92B852DFA008CE3F8 /* Products */;
@@ -239,6 +245,7 @@
 			files = (
 				C0072F032B852DFC008CE3F8 /* Preview Assets.xcassets in Resources */,
 				C0072F002B852DFC008CE3F8 /* Assets.xcassets in Resources */,
+				C0072F2B2B85311E008CE3F8 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
