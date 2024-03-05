@@ -8,13 +8,34 @@
 import SwiftUI
 
 @main
-struct LiveRecipesApp: App {
-    let persistenceController = PersistenceController.shared
+class RootApp: App {
+
+    @ObservedObject var appViewBuilder: ApplicationViewBuilder
+    @ObservedObject var navigationService: NavigationService
+
+    let container: DependencyContainer = {
+        let factory = AssemblyFactory()
+        let container = DependencyContainer(assemblyFactory: factory)
+
+        // Services
+        container.apply(NavigationAssembly.self)
+
+        // Modules
+        container.apply(RecipesAssembly.self)
+
+        return container
+    }()
+
+    required init() {
+        navigationService = container.resolve(NavigationAssembly.self).build() as! NavigationService
+
+        appViewBuilder = ApplicationViewBuilder(container: container)
+    }
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            RootView(navigationService: navigationService,
+                     appViewBuilder: appViewBuilder)
         }
     }
 }

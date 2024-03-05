@@ -4,6 +4,9 @@
     "Add Task" : {
 
     },
+    "Hello iOS" : {
+
+    },
     "Item at %@" : {
       "localizations" : {
         "ru" : {
@@ -17,7 +20,16 @@
     "Key" : {
       "extractionState" : "manual"
     },
+    "No" : {
+
+    },
     "Select an item" : {
+
+    },
+    "Title" : {
+
+    },
+    "Yes" : {
 
     }
   },
