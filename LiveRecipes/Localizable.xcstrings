@@ -1,31 +1,69 @@
 {
   "sourceLanguage" : "ru",
   "strings" : {
-    "Hello iOS" : {
-
-    },
-    "Item at %@" : {
-      "extractionState" : "stale",
+    "alert.no" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Предмет во время %@"
+            "value" : "Нет"
           }
         }
       }
     },
-    "Key" : {
-      "extractionState" : "manual"
+    "alert.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Title"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Заголовок"
+          }
+        }
+      }
     },
-    "No" : {
-
+    "alert.yes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Да"
+          }
+        }
+      }
     },
-    "Title" : {
-
-    },
-    "Yes" : {
-
+    "recipes.greeting" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hello iOS"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Привет, iOS"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

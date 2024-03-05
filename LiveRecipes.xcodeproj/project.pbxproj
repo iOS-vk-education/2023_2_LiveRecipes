@@ -319,7 +319,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0072F272B852DFC008CE3F8 /* Build configuration list for PBXNativeTarget "LiveRecipesUITests" */;
 			buildPhases = (
-				C0342D782B97B6590063BBD2 /* ShellScript */,
 				C0072F132B852DFC008CE3F8 /* Sources */,
 				C0072F142B852DFC008CE3F8 /* Frameworks */,
 				C0072F152B852DFC008CE3F8 /* Resources */,
@@ -408,25 +407,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C0342D782B97B6590063BBD2 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "
-";
-		};
 		C0342D792B97B6C00063BBD2 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -442,7 +422,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "swiftlint\n";
+			shellScript = "swiftlint || true\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

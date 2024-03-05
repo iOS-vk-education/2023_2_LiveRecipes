@@ -36,9 +36,9 @@ struct RootView: View {
         .alert(isPresented: .constant($navigationService.alert.wrappedValue != nil)) {
             switch navigationService.alert {
             case .defaultAlert(let yesAction, let noAction):
-                return Alert(title: Text("Title"),
-                             primaryButton: .default(Text("Yes"), action: yesAction),
-                             secondaryButton: .destructive(Text("No"), action: noAction))
+                return Alert(title: Text("alert.title"),
+                             primaryButton: .default(Text("alert.yes"), action: yesAction),
+                             secondaryButton: .destructive(Text("alert.no"), action: noAction))
             case .none:
                 // swiftlint:disable fatal_error
                 fatalError()

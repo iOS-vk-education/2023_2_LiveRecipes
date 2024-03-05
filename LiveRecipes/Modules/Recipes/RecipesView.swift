@@ -12,7 +12,7 @@ struct RecipesView: View {
     @StateObject var viewState: RecipesViewState
 
     var body: some View {
-        Text("Hello iOS")
+        Text("recipes.greeting")
     }
 }
 
