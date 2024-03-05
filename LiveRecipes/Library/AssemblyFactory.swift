@@ -23,9 +23,13 @@ extension AssemblyFactory: AssemblyFactoryProtocol {
         self.assemblyCollection[key] = assembly
     }
 
+    // swiftlint:disable force_cast
+    // swiftlint:disable fatal_error
     func resolve<T: AssemblyType>(_ type: T.Type, name: String? = nil) -> T.Type {
         let key = ObjectKey(type, name: name).key
         guard let assembly = assemblyCollection[key] else { fatalError("Assemblay '\(String(describing: type))' has't been registered, use 'apply( _:)' method") }
         return assembly as! T.Type
     }
+    // swiftlint:enable force_cast
+    // swiftlint:enable fatal_error
 }

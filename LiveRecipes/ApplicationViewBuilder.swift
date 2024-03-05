@@ -10,7 +10,6 @@ import SwiftUI
 
 @MainActor
 final class ApplicationViewBuilder: Assembly, ObservableObject {
-
     required init(container: Container) {
         super.init(container: container)
     }
@@ -27,11 +26,9 @@ final class ApplicationViewBuilder: Assembly, ObservableObject {
     fileprivate func buildMain() -> some View {
         container.resolve(RecipesAssembly.self).build()
     }
-
 }
 
 extension ApplicationViewBuilder {
-
     static var stub: ApplicationViewBuilder {
         return ApplicationViewBuilder(
             container: RootApp().container

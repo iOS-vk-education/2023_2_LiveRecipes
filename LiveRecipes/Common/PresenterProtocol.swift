@@ -7,6 +7,4 @@
 
 import Foundation
 
-protocol PresenterProtocol: AnyObject {
-
-}
+protocol PresenterProtocol: AnyObject {}

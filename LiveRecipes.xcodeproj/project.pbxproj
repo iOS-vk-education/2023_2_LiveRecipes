@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C0072EFC2B852DFA008CE3F8 /* LiveRecipesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0072EFB2B852DFA008CE3F8 /* LiveRecipesApp.swift */; };
-		C0072EFE2B852DFA008CE3F8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0072EFD2B852DFA008CE3F8 /* ContentView.swift */; };
 		C0072F002B852DFC008CE3F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0072EFF2B852DFC008CE3F8 /* Assets.xcassets */; };
 		C0072F032B852DFC008CE3F8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0072F022B852DFC008CE3F8 /* Preview Assets.xcassets */; };
 		C0072F052B852DFC008CE3F8 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0072F042B852DFC008CE3F8 /* Persistence.swift */; };
@@ -64,7 +63,6 @@
 /* Begin PBXFileReference section */
 		C0072EF82B852DFA008CE3F8 /* LiveRecipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveRecipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0072EFB2B852DFA008CE3F8 /* LiveRecipesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveRecipesApp.swift; sourceTree = "<group>"; };
-		C0072EFD2B852DFA008CE3F8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C0072EFF2B852DFC008CE3F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0072F022B852DFC008CE3F8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C0072F042B852DFC008CE3F8 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -162,7 +160,6 @@
 				C0072EFB2B852DFA008CE3F8 /* LiveRecipesApp.swift */,
 				C0342D202B979E030063BBD2 /* LiveRecipesView.swift */,
 				C0072F2A2B85311E008CE3F8 /* Localizable.xcstrings */,
-				C0072EFD2B852DFA008CE3F8 /* ContentView.swift */,
 				C0072EFF2B852DFC008CE3F8 /* Assets.xcassets */,
 				C0072F042B852DFC008CE3F8 /* Persistence.swift */,
 				C0072F062B852DFC008CE3F8 /* LiveRecipes.xcdatamodeld */,
@@ -286,6 +283,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0072F212B852DFC008CE3F8 /* Build configuration list for PBXNativeTarget "LiveRecipes" */;
 			buildPhases = (
+				C0342D792B97B6C00063BBD2 /* ShellScript */,
 				C0072EF42B852DFA008CE3F8 /* Sources */,
 				C0072EF52B852DFA008CE3F8 /* Frameworks */,
 				C0072EF62B852DFA008CE3F8 /* Resources */,
@@ -321,6 +319,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0072F272B852DFC008CE3F8 /* Build configuration list for PBXNativeTarget "LiveRecipesUITests" */;
 			buildPhases = (
+				C0342D782B97B6590063BBD2 /* ShellScript */,
 				C0072F132B852DFC008CE3F8 /* Sources */,
 				C0072F142B852DFC008CE3F8 /* Frameworks */,
 				C0072F152B852DFC008CE3F8 /* Resources */,
@@ -408,6 +407,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C0342D782B97B6590063BBD2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "
+";
+		};
+		C0342D792B97B6C00063BBD2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "swiftlint\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C0072EF42B852DFA008CE3F8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -420,7 +458,6 @@
 				C0342D2E2B979EE40063BBD2 /* RecipesView.swift in Sources */,
 				C0342D482B97A1020063BBD2 /* WeakContainer.swift in Sources */,
 				C0342D212B979E030063BBD2 /* LiveRecipesView.swift in Sources */,
-				C0072EFE2B852DFA008CE3F8 /* ContentView.swift in Sources */,
 				C0342D372B979F9F0063BBD2 /* PresenterProtocol.swift in Sources */,
 				C0072EFC2B852DFA008CE3F8 /* LiveRecipesApp.swift in Sources */,
 				C0342D2A2B979EC00063BBD2 /* RecipesPresenter.swift in Sources */,
@@ -513,7 +550,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -576,7 +613,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

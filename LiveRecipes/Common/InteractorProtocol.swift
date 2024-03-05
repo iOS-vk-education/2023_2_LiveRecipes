@@ -7,6 +7,4 @@
 
 import Foundation
 
-protocol InteractorProtocol: AnyObject {
-
-}
+protocol InteractorProtocol: AnyObject {}

@@ -8,7 +8,6 @@
 import Foundation
 
 public class NavigationService: NavigationServiceType {
-
     public let id = UUID()
 
     public static func == (lhs: NavigationService, rhs: NavigationService) -> Bool {
@@ -21,7 +20,6 @@ public class NavigationService: NavigationServiceType {
 }
 
 enum Views: Equatable, Hashable {
-
     static func == (lhs: Views, rhs: Views) -> Bool {
         lhs.stringKey == rhs.stringKey
     }

@@ -14,7 +14,6 @@ protocol AssemblyType: AnyObject {
 }
 
 class Assembly: AssemblyType {
-
     var container: Container
 
     required init(container: Container) {
@@ -22,7 +21,7 @@ class Assembly: AssemblyType {
     }
 }
 
-// Box
+// MARK: - Box
 extension Assembly {
     func weakBox<T>(_ configure: () -> T) -> T {
         return self.container.weakBox(configure)

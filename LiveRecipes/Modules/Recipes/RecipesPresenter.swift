@@ -8,7 +8,6 @@
 import Foundation
 
 final class RecipesPresenter: RecipesPresenterProtocol {
-
     private let router: RecipesRouterProtocol
     private let viewState: RecipesViewStateProtocol
     private let interactor: RecipesInteractorProtocol
@@ -20,5 +19,4 @@ final class RecipesPresenter: RecipesPresenterProtocol {
         self.interactor = interactor
         self.viewState = viewState
     }
-
 }

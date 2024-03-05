@@ -15,7 +15,9 @@ extension StrongBox {
     func strongBox<T>(_ configure: () -> T) -> T {
         let key = ObjectKey(T.self).key
         if let object = self.strongBoxHolder[key] {
+            // swiftlint:disable force_cast
             return object as! T
+            // swiftlint:enable force_cast
         }
         let object = configure()
         strongBoxHolder[key] = object as AnyObject

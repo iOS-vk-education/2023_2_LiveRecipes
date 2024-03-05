@@ -7,11 +7,7 @@
 
 import Foundation
 
-final class RecipesInteractor: RecipesInteractorProtocol {
+final class RecipesInteractor: RecipesInteractorProtocol {}
 
-}
-
-// MARK: Private
-extension RecipesInteractor {
-
-}
+// MARK: - Private
+extension RecipesInteractor {}

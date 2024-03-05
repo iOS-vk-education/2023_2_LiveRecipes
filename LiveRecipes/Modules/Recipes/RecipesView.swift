@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 struct RecipesView: View {
-
     @StateObject var viewState: RecipesViewState
 
     var body: some View {

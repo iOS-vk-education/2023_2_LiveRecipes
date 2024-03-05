@@ -7,6 +7,4 @@
 
 import Foundation
 
-protocol RouterProtocol: AnyObject {
-
-}
+protocol RouterProtocol: AnyObject {}

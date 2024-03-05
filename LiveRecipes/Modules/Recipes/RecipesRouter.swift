@@ -13,5 +13,4 @@ final class RecipesRouter: RecipesRouterProtocol {
     init(navigation: any NavigationServiceType) {
         self.navigation = navigation
     }
-
 }

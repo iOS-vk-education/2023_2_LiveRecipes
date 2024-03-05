@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 class RootApp: App {
-
     @ObservedObject var appViewBuilder: ApplicationViewBuilder
     @ObservedObject var navigationService: NavigationService
 
@@ -17,17 +16,19 @@ class RootApp: App {
         let factory = AssemblyFactory()
         let container = DependencyContainer(assemblyFactory: factory)
 
-        // Services
+        // MARK: - Services
         container.apply(NavigationAssembly.self)
 
-        // Modules
+        // MARK: - Modules
         container.apply(RecipesAssembly.self)
 
         return container
     }()
 
     required init() {
+        // swiftlint:disable force_cast
         navigationService = container.resolve(NavigationAssembly.self).build() as! NavigationService
+        // swiftlint:enable force_cast
 
         appViewBuilder = ApplicationViewBuilder(container: container)
     }

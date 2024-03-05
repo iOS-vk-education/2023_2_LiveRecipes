@@ -10,7 +10,7 @@ import Foundation
 typealias Container = Resolver
 typealias LightContainer = Applyer & Resolver
 
-// Container
+// MARK: - Container
 protocol Applyer {
     func apply<T: Assembly>(_ type: T.Type, name: String?)
     func apply<T: Assembly>(_ type: T.Type)
@@ -22,7 +22,7 @@ extension Applyer {
     }
 }
 
-// Resolver
+// MARK: - Resolver
 protocol Resolver: WeakBox, StrongBox {
     func resolve<T: Assembly>(_ type: T.Type, name: String?) -> T
     func resolve<T: Assembly>(_ type: T.Type) -> T
@@ -34,7 +34,7 @@ extension Resolver {
     }
 }
 
-// DI Container
+// MARK: - DI Container
 class DependencyContainer {
     internal var weakBoxHolder = [String: WeakContainer<AnyObject>]()
     internal var strongBoxHolder = [String: AnyObject]()

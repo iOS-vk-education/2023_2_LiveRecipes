@@ -8,7 +8,6 @@
 import Foundation
 
 final class NavigationAssembly: Assembly {
-
     // Only one navigation should use in app
     static let navigation: any NavigationServiceType = NavigationService()
 

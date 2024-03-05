@@ -9,19 +9,13 @@ import Foundation
 import SwiftUI
 
 // MARK: - Router
-protocol RecipesRouterProtocol: RouterProtocol {
-
-}
+protocol RecipesRouterProtocol: RouterProtocol {}
 
 // MARK: - Presenter
-protocol RecipesPresenterProtocol: PresenterProtocol {
-
-}
+protocol RecipesPresenterProtocol: PresenterProtocol {}
 
 // MARK: - Interactor
-protocol RecipesInteractorProtocol: InteractorProtocol {
-
-}
+protocol RecipesInteractorProtocol: InteractorProtocol {}
 
 // MARK: - ViewState
 protocol RecipesViewStateProtocol: ViewStateProtocol {

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct RootView: View {
-
     @ObservedObject var navigationService: NavigationService
     @ObservedObject var appViewBuilder: ApplicationViewBuilder
 
@@ -18,7 +17,9 @@ struct RootView: View {
                 .navigationDestination(for: Views.self) { path in
                     switch path {
                     default:
+                        // swiftlint:disable fatal_error
                         fatalError()
+                        // swiftlint:enable fatal_error
                     }
                 }
         }
@@ -26,7 +27,9 @@ struct RootView: View {
             if let modal = navigationService.modalView {
                 switch modal {
                 default:
+                    // swiftlint:disable fatal_error
                     fatalError()
+                    // swiftlint:enable fatal_error
                 }
             }
         }
@@ -37,9 +40,10 @@ struct RootView: View {
                              primaryButton: .default(Text("Yes"), action: yesAction),
                              secondaryButton: .destructive(Text("No"), action: noAction))
             case .none:
+                // swiftlint:disable fatal_error
                 fatalError()
+                // swiftlint:enable fatal_error
             }
         }
-
     }
 }

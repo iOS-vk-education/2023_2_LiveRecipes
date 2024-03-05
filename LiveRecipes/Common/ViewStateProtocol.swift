@@ -7,6 +7,4 @@
 
 import Foundation
 
-protocol ViewStateProtocol: AnyObject {
-
-}
+protocol ViewStateProtocol: AnyObject {}

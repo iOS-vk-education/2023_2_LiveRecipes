@@ -1,13 +1,11 @@
 {
   "sourceLanguage" : "ru",
   "strings" : {
-    "Add Task" : {
-
-    },
     "Hello iOS" : {
 
     },
     "Item at %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -21,9 +19,6 @@
       "extractionState" : "manual"
     },
     "No" : {
-
-    },
-    "Select an item" : {
 
     },
     "Title" : {
