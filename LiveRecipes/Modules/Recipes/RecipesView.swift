@@ -9,15 +9,13 @@ import Foundation
 import SwiftUI
 
 struct RecipesView: View {
-    @StateObject var viewState: RecipesViewState
+    @StateObject var viewState: RecipesViewModel
 
     var body: some View {
-        Text("recipes.greeting")
+        Text(Tabs.recipes.tabName)
     }
 }
 
-struct MainPreviews: PreviewProvider {
-    static var previews: some View {
-        ApplicationViewBuilder.stub.build(view: .main)
-    }
+#Preview {
+    ApplicationViewBuilder.stub.build(view: .cooking)
 }

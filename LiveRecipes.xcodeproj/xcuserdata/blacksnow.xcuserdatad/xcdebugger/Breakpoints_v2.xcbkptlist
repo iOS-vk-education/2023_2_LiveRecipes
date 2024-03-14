@@ -7,62 +7,410 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1B60BD62-325D-404A-B0A6-98E797FDD08F"
+            uuid = "E681D0F0-2E79-45C3-8B67-A1EE1727E00B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveRecipes/Modules/Recipes/RecipesAssembly.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "assemble(container:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E681D0F0-2E79-45C3-8B67-A1EE1727E00B - f9a0501356df2da1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LiveRecipes.RecipesAssembly.assemble(container: Swinject.Container) -&gt; ()"
+                  moduleName = "LiveRecipes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/blacksnow/Code/Github/2023_2_LiveRecipes/LiveRecipes/Modules/Recipes/RecipesAssembly.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "E681D0F0-2E79-45C3-8B67-A1EE1727E00B - f9a0501356df2d80"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LiveRecipes.RecipesAssembly.assemble(container: Swinject.Container) -&gt; ()"
+                  moduleName = "LiveRecipes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/blacksnow/Code/Github/2023_2_LiveRecipes/LiveRecipes/Modules/Recipes/RecipesAssembly.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "68">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F1B6E5D8-B703-48C0-BB8D-986E3BA5CE9C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveRecipes/Modules/Recipes/RecipesAssembly.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "assemble(container:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F1B6E5D8-B703-48C0-BB8D-986E3BA5CE9C - f9a0501356df2d7c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LiveRecipes.RecipesAssembly.assemble(container: Swinject.Container) -&gt; ()"
+                  moduleName = "LiveRecipes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/blacksnow/Code/Github/2023_2_LiveRecipes/LiveRecipes/Modules/Recipes/RecipesAssembly.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "264">
+               </Location>
+               <Location
+                  uuid = "F1B6E5D8-B703-48C0-BB8D-986E3BA5CE9C - 81a7ac9536ce1d42"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swinject.Resolver) -&gt; LiveRecipes.RecipesView in LiveRecipes.RecipesAssembly.assemble(container: Swinject.Container) -&gt; ()"
+                  moduleName = "LiveRecipes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/blacksnow/Code/Github/2023_2_LiveRecipes/LiveRecipes/Modules/Recipes/RecipesAssembly.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "F1B6E5D8-B703-48C0-BB8D-986E3BA5CE9C - 81a7ac9536ce1d42"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swinject.Resolver) -&gt; LiveRecipes.RecipesView in LiveRecipes.RecipesAssembly.assemble(container: Swinject.Container) -&gt; ()"
+                  moduleName = "LiveRecipes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/blacksnow/Code/Github/2023_2_LiveRecipes/LiveRecipes/Modules/Recipes/RecipesAssembly.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "46A91DFC-2EEE-433E-AEE6-7044A775E515"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveRecipes/Modules/Recipes/RecipesAssembly.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "assemble(container:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "46A91DFC-2EEE-433E-AEE6-7044A775E515 - f9a0501356df2d7c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LiveRecipes.RecipesAssembly.assemble(container: Swinject.Container) -&gt; ()"
+                  moduleName = "LiveRecipes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/blacksnow/Code/Github/2023_2_LiveRecipes/LiveRecipes/Modules/Recipes/RecipesAssembly.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "264">
+               </Location>
+               <Location
+                  uuid = "46A91DFC-2EEE-433E-AEE6-7044A775E515 - 81a7ac9536ce1d42"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swinject.Resolver) -&gt; LiveRecipes.RecipesView in LiveRecipes.RecipesAssembly.assemble(container: Swinject.Container) -&gt; ()"
+                  moduleName = "LiveRecipes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/blacksnow/Code/Github/2023_2_LiveRecipes/LiveRecipes/Modules/Recipes/RecipesAssembly.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "46A91DFC-2EEE-433E-AEE6-7044A775E515 - f9a0501356df2d1d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LiveRecipes.RecipesAssembly.assemble(container: Swinject.Container) -&gt; ()"
+                  moduleName = "LiveRecipes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/blacksnow/Code/Github/2023_2_LiveRecipes/LiveRecipes/Modules/Recipes/RecipesAssembly.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "136">
+               </Location>
+               <Location
+                  uuid = "46A91DFC-2EEE-433E-AEE6-7044A775E515 - 81a7ac9536ce1d23"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swinject.Resolver) -&gt; LiveRecipes.RecipesView in LiveRecipes.RecipesAssembly.assemble(container: Swinject.Container) -&gt; ()"
+                  moduleName = "LiveRecipes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/blacksnow/Code/Github/2023_2_LiveRecipes/LiveRecipes/Modules/Recipes/RecipesAssembly.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DA83F216-56F0-4028-A9CD-8547AD9985D2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveRecipes/Modules/Recipes/RecipesAssembly.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "assemble(container:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DA83F216-56F0-4028-A9CD-8547AD9985D2 - f9a0501356df2ddf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LiveRecipes.RecipesAssembly.assemble(container: Swinject.Container) -&gt; ()"
+                  moduleName = "LiveRecipes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/blacksnow/Code/Github/2023_2_LiveRecipes/LiveRecipes/Modules/Recipes/RecipesAssembly.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "196">
+               </Location>
+               <Location
+                  uuid = "DA83F216-56F0-4028-A9CD-8547AD9985D2 - f9a0501356df2ddf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LiveRecipes.RecipesAssembly.assemble(container: Swinject.Container) -&gt; ()"
+                  moduleName = "LiveRecipes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/blacksnow/Code/Github/2023_2_LiveRecipes/LiveRecipes/Modules/Recipes/RecipesAssembly.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "96">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0C556FC9-B5D4-4EFB-B78A-03D4BA057D41"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveRecipes/LiveRecipesView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "1B60BD62-325D-404A-B0A6-98E797FDD08F - 11be3624e78aea9e"
+                  uuid = "0C556FC9-B5D4-4EFB-B78A-03D4BA057D41 - 96330a5489c23a1a"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #3 () -&gt; SwiftUI.Alert in LiveRecipes.RootView.body.getter : some"
+                  symbolName = "closure #1 (LiveRecipes.Views) -&gt; &lt;&lt;opaque return type of SwiftUI.View.tabItem&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(() -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;LiveRecipes.Views&gt;, LiveRecipes.Views, &lt;&lt;opaque return type of SwiftUI.View.tabItem&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(() -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.TabView&lt;Swift.Int, SwiftUI.ForEach&lt;Swift.Array&lt;LiveRecipes.Views&gt;, LiveRecipes.Views, &lt;&lt;opaque return type of SwiftUI.View.tabItem&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(() -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt;&gt; in LiveRecipes.RootView.body.getter : some"
                   moduleName = "LiveRecipes"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/blacksnow/Code/Github/LiveRecipes/LiveRecipes/LiveRecipesView.swift"
+                  urlString = "file:///Users/blacksnow/Code/Github/2023_2_LiveRecipes/LiveRecipes/LiveRecipesView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "264">
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "308">
                </Location>
                <Location
-                  uuid = "1B60BD62-325D-404A-B0A6-98E797FDD08F - 11be3624e78aea9e"
+                  uuid = "0C556FC9-B5D4-4EFB-B78A-03D4BA057D41 - bb16d9bb03727a92"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #3 () -&gt; SwiftUI.Alert in LiveRecipes.RootView.body.getter : some"
+                  symbolName = "closure #1 (LiveRecipes.Screens) -&gt; &lt;&lt;opaque return type of SwiftUI.View.tabItem&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(() -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;LiveRecipes.Screens&gt;, LiveRecipes.Screens, &lt;&lt;opaque return type of SwiftUI.View.tabItem&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(() -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.TabView&lt;Swift.Int, SwiftUI.ForEach&lt;Swift.Array&lt;LiveRecipes.Screens&gt;, LiveRecipes.Screens, &lt;&lt;opaque return type of SwiftUI.View.tabItem&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(() -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt;&gt; in LiveRecipes.RootView.body.getter : some"
                   moduleName = "LiveRecipes"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/blacksnow/Code/Github/LiveRecipes/LiveRecipes/LiveRecipesView.swift"
+                  urlString = "file:///Users/blacksnow/Code/Github/2023_2_LiveRecipes/LiveRecipes/LiveRecipesView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "312">
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "308">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B1065779-EACD-48E4-96DA-8AE4DC8A1E2B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveRecipes/LiveRecipesView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "B1065779-EACD-48E4-96DA-8AE4DC8A1E2B - f30007d5f76f8828"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;LiveRecipes.Views&gt;, LiveRecipes.Views, &lt;&lt;opaque return type of SwiftUI.View.tabItem&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(() -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.TabView&lt;Swift.Int, SwiftUI.ForEach&lt;Swift.Array&lt;LiveRecipes.Views&gt;, LiveRecipes.Views, &lt;&lt;opaque return type of SwiftUI.View.tabItem&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(() -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt;&gt; in LiveRecipes.RootView.body.getter : some"
+                  moduleName = "LiveRecipes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/blacksnow/Code/Github/2023_2_LiveRecipes/LiveRecipes/LiveRecipesView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "228">
                </Location>
                <Location
-                  uuid = "1B60BD62-325D-404A-B0A6-98E797FDD08F - 11be3624e78aea9e"
+                  uuid = "B1065779-EACD-48E4-96DA-8AE4DC8A1E2B - 96330a5489c23a7b"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #3 () -&gt; SwiftUI.Alert in LiveRecipes.RootView.body.getter : some"
+                  symbolName = "closure #1 (LiveRecipes.Views) -&gt; &lt;&lt;opaque return type of SwiftUI.View.tabItem&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(() -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;LiveRecipes.Views&gt;, LiveRecipes.Views, &lt;&lt;opaque return type of SwiftUI.View.tabItem&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(() -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.TabView&lt;Swift.Int, SwiftUI.ForEach&lt;Swift.Array&lt;LiveRecipes.Views&gt;, LiveRecipes.Views, &lt;&lt;opaque return type of SwiftUI.View.tabItem&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(() -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt;&gt; in LiveRecipes.RootView.body.getter : some"
                   moduleName = "LiveRecipes"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/blacksnow/Code/Github/LiveRecipes/LiveRecipes/LiveRecipesView.swift"
+                  urlString = "file:///Users/blacksnow/Code/Github/2023_2_LiveRecipes/LiveRecipes/LiveRecipesView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "480">
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "284">
+               </Location>
+               <Location
+                  uuid = "B1065779-EACD-48E4-96DA-8AE4DC8A1E2B - d47e2c07d5a5e474"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;LiveRecipes.Screens&gt;, LiveRecipes.Screens, &lt;&lt;opaque return type of SwiftUI.View.tabItem&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(() -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.TabView&lt;Swift.Int, SwiftUI.ForEach&lt;Swift.Array&lt;LiveRecipes.Screens&gt;, LiveRecipes.Screens, &lt;&lt;opaque return type of SwiftUI.View.tabItem&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(() -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt;&gt; in LiveRecipes.RootView.body.getter : some"
+                  moduleName = "LiveRecipes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/blacksnow/Code/Github/2023_2_LiveRecipes/LiveRecipes/LiveRecipesView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "228">
+               </Location>
+               <Location
+                  uuid = "B1065779-EACD-48E4-96DA-8AE4DC8A1E2B - bb16d9bb03727af3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (LiveRecipes.Screens) -&gt; &lt;&lt;opaque return type of SwiftUI.View.tabItem&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(() -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;LiveRecipes.Screens&gt;, LiveRecipes.Screens, &lt;&lt;opaque return type of SwiftUI.View.tabItem&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(() -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.TabView&lt;Swift.Int, SwiftUI.ForEach&lt;Swift.Array&lt;LiveRecipes.Screens&gt;, LiveRecipes.Screens, &lt;&lt;opaque return type of SwiftUI.View.tabItem&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(() -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt;&gt; in LiveRecipes.RootView.body.getter : some"
+                  moduleName = "LiveRecipes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/blacksnow/Code/Github/2023_2_LiveRecipes/LiveRecipes/LiveRecipesView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "284">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C0A63E2F-80CE-4EC5-8D24-8743A14A3387"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveRecipes/LiveRecipesView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "C0A63E2F-80CE-4EC5-8D24-8743A14A3387 - bb16d9bb03727ab1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (LiveRecipes.Screens) -&gt; &lt;&lt;opaque return type of SwiftUI.View.tabItem&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(() -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;LiveRecipes.Screens&gt;, LiveRecipes.Screens, &lt;&lt;opaque return type of SwiftUI.View.tabItem&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(() -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.TabView&lt;Swift.Int, SwiftUI.ForEach&lt;Swift.Array&lt;LiveRecipes.Screens&gt;, LiveRecipes.Screens, &lt;&lt;opaque return type of SwiftUI.View.tabItem&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(() -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt;&gt; in LiveRecipes.RootView.body.getter : some"
+                  moduleName = "LiveRecipes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/blacksnow/Code/Github/2023_2_LiveRecipes/LiveRecipes/LiveRecipesView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "352">
+               </Location>
+               <Location
+                  uuid = "C0A63E2F-80CE-4EC5-8D24-8743A14A3387 - 7c04caa5e3cc02a4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.Label&lt;SwiftUI.Text, SwiftUI.Image&gt; in closure #1 (LiveRecipes.Screens) -&gt; &lt;&lt;opaque return type of SwiftUI.View.tabItem&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(() -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;LiveRecipes.Screens&gt;, LiveRecipes.Screens, &lt;&lt;opaque return type of SwiftUI.View.tabItem&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(() -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.TabView&lt;Swift.Int, SwiftUI.ForEach&lt;Swift.Array&lt;LiveRecipes.Screens&gt;, LiveRecipes.Screens, &lt;&lt;opaque return type of SwiftUI.View.tabItem&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(() -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt;&gt; in LiveRecipes.RootView.body.getter : some"
+                  moduleName = "LiveRecipes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/blacksnow/Code/Github/2023_2_LiveRecipes/LiveRecipes/LiveRecipesView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "112">
                </Location>
             </Locations>
          </BreakpointContent>

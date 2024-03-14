@@ -7,31 +7,27 @@
 
 import Foundation
 import SwiftUI
+import Swinject
 
 @MainActor
-final class ApplicationViewBuilder: Assembly, ObservableObject {
-    required init(container: Container) {
-        super.init(container: container)
-    }
-
+final class ApplicationViewBuilder: ObservableObject {
     @ViewBuilder
-    func build(view: Views) -> some View {
+    func build(view: Tabs) -> some View {
         switch view {
-        case .main:
-            buildMain()
+        case .recipes:
+            Assembler.sharedAssembly.resolver.resolve(RecipesView.self)
+        case .favorites:
+            Assembler.sharedAssembly.resolver.resolve(FavoritesView.self)
+        case .list:
+            Assembler.sharedAssembly.resolver.resolve(ListView.self)
+        case .cooking:
+            Assembler.sharedAssembly.resolver.resolve(CookingView.self)
         }
-    }
-
-    @ViewBuilder
-    fileprivate func buildMain() -> some View {
-        container.resolve(RecipesAssembly.self).build()
     }
 }
 
 extension ApplicationViewBuilder {
     static var stub: ApplicationViewBuilder {
-        return ApplicationViewBuilder(
-            container: RootApp().container
-        )
+        return ApplicationViewBuilder()
     }
 }

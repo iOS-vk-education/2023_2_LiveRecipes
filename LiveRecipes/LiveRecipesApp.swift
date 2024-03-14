@@ -6,37 +6,38 @@
 //
 
 import SwiftUI
+import Swinject
+
+extension Container {
+    static let sharedContainer: Container = {
+        return Container()
+    }()
+}
+
+extension Assembler {
+    static let sharedAssembly: Assembler = {
+        return Assembler(
+            [
+                RecipesAssembly(),
+                CookingAssembly(),
+                FavoritesAssembly(),
+                ListAssembly()
+            ], container: Container.sharedContainer
+        )
+    }()
+}
 
 @main
 class RootApp: App {
     @ObservedObject var appViewBuilder: ApplicationViewBuilder
-    @ObservedObject var navigationService: NavigationService
-
-    let container: DependencyContainer = {
-        let factory = AssemblyFactory()
-        let container = DependencyContainer(assemblyFactory: factory)
-
-        // MARK: - Services
-        container.apply(NavigationAssembly.self)
-
-        // MARK: - Modules
-        container.apply(RecipesAssembly.self)
-
-        return container
-    }()
 
     required init() {
-        // swiftlint:disable force_cast
-        navigationService = container.resolve(NavigationAssembly.self).build() as! NavigationService
-        // swiftlint:enable force_cast
-
-        appViewBuilder = ApplicationViewBuilder(container: container)
+        self.appViewBuilder = ApplicationViewBuilder()
     }
 
     var body: some Scene {
         WindowGroup {
-            RootView(navigationService: navigationService,
-                     appViewBuilder: appViewBuilder)
+            RootView(appViewBuilder: appViewBuilder)
         }
     }
 }

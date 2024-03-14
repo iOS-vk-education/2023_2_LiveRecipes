@@ -12,6 +12,7 @@ opt_in_rules:
 disabled_rules:
   - anonymous_argument_in_multiline_closure
   - private_swiftui_state
+  - file_name
   - attributes
   - anyobject_protocol
   - closure_body_length
@@ -58,6 +59,7 @@ disabled_rules:
   - line_length
   - identifier_name
   - let_var_whitespace
+  - nslocalizedstring_key
 
 identifier_name:
   excluded:
@@ -65,13 +67,6 @@ identifier_name:
 large_tuple: 3
 number_separator:
   minimum_length: 5
-file_name:
-  excluded:
-    - Exports.swift
-    - GeneratedTests.swift
-    - RuleConfigurationMacros.swift
-    - SwiftSyntax+SwiftLint.swift
-    - TestHelpers.swift
 
 balanced_xctest_lifecycle: &unit_test_configuration
   test_parent_classes:

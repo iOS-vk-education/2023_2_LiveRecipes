@@ -8,16 +8,8 @@
 import Foundation
 import SwiftUI
 
-// MARK: - Router
-protocol RecipesRouterProtocol: RouterProtocol {}
+protocol RecipesViewModelProtocol {}
 
-// MARK: - Presenter
-protocol RecipesPresenterProtocol: PresenterProtocol {}
+protocol RecipesModelProtocol {}
 
-// MARK: - Interactor
-protocol RecipesInteractorProtocol: InteractorProtocol {}
-
-// MARK: - ViewState
-protocol RecipesViewStateProtocol: ViewStateProtocol {
-    func set(with presenter: RecipesPresenterProtocol)
-}
+protocol RecipesViewProtocol {}

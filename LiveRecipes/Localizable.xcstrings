@@ -1,66 +1,70 @@
 {
-  "sourceLanguage" : "ru",
+  "sourceLanguage" : "en",
   "strings" : {
-    "alert.no" : {
+    "tab.cooking" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "No"
+            "state" : "needs_review",
+            "value" : "Cooking"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Нет"
+            "value" : "Готовка"
           }
         }
       }
     },
-    "alert.title" : {
+    "tab.favorites" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Title"
+            "state" : "needs_review",
+            "value" : "Favorites"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Заголовок"
+            "value" : "Сохраненные"
           }
         }
       }
     },
-    "alert.yes" : {
+    "tab.list" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yes"
+            "state" : "needs_review",
+            "value" : "List"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Да"
+            "value" : "Список"
           }
         }
       }
     },
-    "recipes.greeting" : {
+    "tab.recipes" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hello iOS"
+            "state" : "needs_review",
+            "value" : "Recipes"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Привет, iOS"
+            "value" : "Рецепты"
           }
         }
       }

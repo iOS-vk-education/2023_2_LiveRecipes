@@ -7,18 +7,15 @@
 
 import Foundation
 import SwiftUI
+import Swinject
 
 final class RecipesAssembly: Assembly {
-    func build() -> some View {
-        let navigation = container.resolve(NavigationAssembly.self).build()
+    func assemble(container: Swinject.Container) {
+        let model = RecipesModel()
+        let viewModel = RecipesViewModel(recipesModel: model)
 
-        let router = RecipesRouter(navigation: navigation)
-        let interactor = RecipesInteractor()
-        let viewState = RecipesViewState()
-        let presenter = RecipesPresenter(router: router, interactor: interactor, viewState: viewState)
-
-        viewState.set(with: presenter)
-
-        return RecipesView(viewState: viewState)
+        container.register(RecipesView.self) { _ in
+            return RecipesView(viewState: viewModel)
+        }
     }
 }
