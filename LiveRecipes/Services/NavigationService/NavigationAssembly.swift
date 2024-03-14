@@ -6,9 +6,15 @@
 //
 
 import Foundation
+import Swinject
 
 final class NavigationAssembly: Assembly {
-    // Only one navigation should use in app
+    func assemble(container: Swinject.Container) {
+        container.register(NavigationService.self) { r in
+            return NavigationService()
+        }
+    }
+    
     static let navigation: any NavigationServiceType = NavigationService()
 
     func build() -> any NavigationServiceType {

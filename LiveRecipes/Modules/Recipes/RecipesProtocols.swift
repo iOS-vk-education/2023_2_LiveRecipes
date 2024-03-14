@@ -9,15 +9,21 @@ import Foundation
 import SwiftUI
 
 // MARK: - Router
-protocol RecipesRouterProtocol: RouterProtocol {}
+protocol RecipesRouterProtocol: RouterProtocol {
+    func openCooking()
+}
 
 // MARK: - Presenter
-protocol RecipesPresenterProtocol: PresenterProtocol {}
+protocol RecipesPresenterProtocol: PresenterProtocol {
+    func setupInitialState()
+    func buttonPressed()
+    var backgroundC: UIColor { get }
+}
 
 // MARK: - Interactor
 protocol RecipesInteractorProtocol: InteractorProtocol {}
 
-// MARK: - ViewState
-protocol RecipesViewStateProtocol: ViewStateProtocol {
-    func set(with presenter: RecipesPresenterProtocol)
+// MARK: - ViewController
+protocol RecipesViewProtocol: ViewStateProtocol {
+    func update()
 }

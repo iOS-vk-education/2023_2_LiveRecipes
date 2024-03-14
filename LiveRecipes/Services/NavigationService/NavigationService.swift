@@ -29,9 +29,12 @@ enum Views: Equatable, Hashable {
     }
 
     case main
+    case cooking
 
     var stringKey: String {
         switch self {
+        case .cooking:
+            return "cooking"
         case .main:
             return "main"
         }

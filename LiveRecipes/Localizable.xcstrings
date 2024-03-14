@@ -49,7 +49,11 @@
         }
       }
     },
+    "Buttton" : {
+
+    },
     "recipes.greeting" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

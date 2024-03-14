@@ -22,18 +22,10 @@
 		C0342D2A2B979EC00063BBD2 /* RecipesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0342D292B979EC00063BBD2 /* RecipesPresenter.swift */; };
 		C0342D2C2B979ED00063BBD2 /* RecipesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0342D2B2B979ED00063BBD2 /* RecipesRouter.swift */; };
 		C0342D2E2B979EE40063BBD2 /* RecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0342D2D2B979EE40063BBD2 /* RecipesView.swift */; };
-		C0342D302B979EF30063BBD2 /* RecipesViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0342D2F2B979EF30063BBD2 /* RecipesViewState.swift */; };
 		C0342D332B979F8A0063BBD2 /* ViewStateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0342D322B979F8A0063BBD2 /* ViewStateProtocol.swift */; };
 		C0342D352B979F940063BBD2 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0342D342B979F940063BBD2 /* RouterProtocol.swift */; };
 		C0342D372B979F9F0063BBD2 /* PresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0342D362B979F9F0063BBD2 /* PresenterProtocol.swift */; };
 		C0342D392B979FB10063BBD2 /* InteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0342D382B979FB10063BBD2 /* InteractorProtocol.swift */; };
-		C0342D3C2B97A0620063BBD2 /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0342D3B2B97A0620063BBD2 /* WeakBox.swift */; };
-		C0342D3E2B97A07E0063BBD2 /* StrongBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0342D3D2B97A07E0063BBD2 /* StrongBox.swift */; };
-		C0342D402B97A0900063BBD2 /* ObjectKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0342D3F2B97A0900063BBD2 /* ObjectKey.swift */; };
-		C0342D422B97A0B80063BBD2 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0342D412B97A0B80063BBD2 /* DependencyContainer.swift */; };
-		C0342D442B97A0CE0063BBD2 /* AssemblyFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0342D432B97A0CE0063BBD2 /* AssemblyFactory.swift */; };
-		C0342D462B97A0DB0063BBD2 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0342D452B97A0DB0063BBD2 /* Assembly.swift */; };
-		C0342D482B97A1020063BBD2 /* WeakContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0342D472B97A1020063BBD2 /* WeakContainer.swift */; };
 		C0342D4A2B97A1C60063BBD2 /* RecipesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0342D492B97A1C60063BBD2 /* RecipesInteractor.swift */; };
 		C0342D4D2B97A2080063BBD2 /* NavigationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0342D4C2B97A2080063BBD2 /* NavigationAssembly.swift */; };
 		C0342D4F2B97A2130063BBD2 /* NavigationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0342D4E2B97A2130063BBD2 /* NavigationService.swift */; };
@@ -41,6 +33,13 @@
 		C0342D532B97A25E0063BBD2 /* ApplicationViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0342D522B97A25E0063BBD2 /* ApplicationViewBuilder.swift */; };
 		C0342D582B97A41D0063BBD2 /* test.yml in Resources */ = {isa = PBXBuildFile; fileRef = C0342D562B97A41D0063BBD2 /* test.yml */; };
 		C0342D592B97A41D0063BBD2 /* swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = C0342D572B97A41D0063BBD2 /* swiftlint.yml */; };
+		C0528DF52BA205F600F00FA0 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = C0528DF42BA205F600F00FA0 /* Swinject */; };
+		C0528DF72BA205F600F00FA0 /* Swinject-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = C0528DF62BA205F600F00FA0 /* Swinject-Dynamic */; };
+		C074ECFE2BA2247C00882294 /* CookingAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C074ECFD2BA2247C00882294 /* CookingAssembly.swift */; };
+		C074ED042BA224A500882294 /* CookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C074ED032BA224A500882294 /* CookingView.swift */; };
+		C074ED062BA224D900882294 /* CookingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C074ED052BA224D900882294 /* CookingViewModel.swift */; };
+		C074ED082BA224E900882294 /* CookingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C074ED072BA224E900882294 /* CookingModel.swift */; };
+		C074ED0A2BA2264800882294 /* CookingProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = C074ED092BA2264800882294 /* CookingProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,18 +80,10 @@
 		C0342D292B979EC00063BBD2 /* RecipesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesPresenter.swift; sourceTree = "<group>"; };
 		C0342D2B2B979ED00063BBD2 /* RecipesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesRouter.swift; sourceTree = "<group>"; };
 		C0342D2D2B979EE40063BBD2 /* RecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesView.swift; sourceTree = "<group>"; };
-		C0342D2F2B979EF30063BBD2 /* RecipesViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesViewState.swift; sourceTree = "<group>"; };
 		C0342D322B979F8A0063BBD2 /* ViewStateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStateProtocol.swift; sourceTree = "<group>"; };
 		C0342D342B979F940063BBD2 /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
 		C0342D362B979F9F0063BBD2 /* PresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterProtocol.swift; sourceTree = "<group>"; };
 		C0342D382B979FB10063BBD2 /* InteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorProtocol.swift; sourceTree = "<group>"; };
-		C0342D3B2B97A0620063BBD2 /* WeakBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakBox.swift; sourceTree = "<group>"; };
-		C0342D3D2B97A07E0063BBD2 /* StrongBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrongBox.swift; sourceTree = "<group>"; };
-		C0342D3F2B97A0900063BBD2 /* ObjectKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectKey.swift; sourceTree = "<group>"; };
-		C0342D412B97A0B80063BBD2 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
-		C0342D432B97A0CE0063BBD2 /* AssemblyFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyFactory.swift; sourceTree = "<group>"; };
-		C0342D452B97A0DB0063BBD2 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
-		C0342D472B97A1020063BBD2 /* WeakContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakContainer.swift; sourceTree = "<group>"; };
 		C0342D492B97A1C60063BBD2 /* RecipesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesInteractor.swift; sourceTree = "<group>"; };
 		C0342D4C2B97A2080063BBD2 /* NavigationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationAssembly.swift; sourceTree = "<group>"; };
 		C0342D4E2B97A2130063BBD2 /* NavigationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationService.swift; sourceTree = "<group>"; };
@@ -100,6 +91,11 @@
 		C0342D522B97A25E0063BBD2 /* ApplicationViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationViewBuilder.swift; sourceTree = "<group>"; };
 		C0342D562B97A41D0063BBD2 /* test.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = test.yml; sourceTree = "<group>"; };
 		C0342D572B97A41D0063BBD2 /* swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; };
+		C074ECFD2BA2247C00882294 /* CookingAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingAssembly.swift; sourceTree = "<group>"; };
+		C074ED032BA224A500882294 /* CookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingView.swift; sourceTree = "<group>"; };
+		C074ED052BA224D900882294 /* CookingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingViewModel.swift; sourceTree = "<group>"; };
+		C074ED072BA224E900882294 /* CookingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingModel.swift; sourceTree = "<group>"; };
+		C074ED092BA2264800882294 /* CookingProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +103,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0528DF52BA205F600F00FA0 /* Swinject in Frameworks */,
+				C0528DF72BA205F600F00FA0 /* Swinject-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +195,7 @@
 		C0342D222B979E480063BBD2 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C074ECFC2BA2244B00882294 /* Cooking */,
 				C0342D242B979E730063BBD2 /* Recipes */,
 			);
 			path = Modules;
@@ -218,7 +217,6 @@
 				C0342D292B979EC00063BBD2 /* RecipesPresenter.swift */,
 				C0342D2B2B979ED00063BBD2 /* RecipesRouter.swift */,
 				C0342D2D2B979EE40063BBD2 /* RecipesView.swift */,
-				C0342D2F2B979EF30063BBD2 /* RecipesViewState.swift */,
 				C0342D492B97A1C60063BBD2 /* RecipesInteractor.swift */,
 			);
 			path = Recipes;
@@ -238,13 +236,6 @@
 		C0342D3A2B97A04C0063BBD2 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				C0342D3B2B97A0620063BBD2 /* WeakBox.swift */,
-				C0342D3D2B97A07E0063BBD2 /* StrongBox.swift */,
-				C0342D3F2B97A0900063BBD2 /* ObjectKey.swift */,
-				C0342D412B97A0B80063BBD2 /* DependencyContainer.swift */,
-				C0342D472B97A1020063BBD2 /* WeakContainer.swift */,
-				C0342D432B97A0CE0063BBD2 /* AssemblyFactory.swift */,
-				C0342D452B97A0DB0063BBD2 /* Assembly.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -276,6 +267,18 @@
 			path = workflows;
 			sourceTree = "<group>";
 		};
+		C074ECFC2BA2244B00882294 /* Cooking */ = {
+			isa = PBXGroup;
+			children = (
+				C074ECFD2BA2247C00882294 /* CookingAssembly.swift */,
+				C074ED032BA224A500882294 /* CookingView.swift */,
+				C074ED052BA224D900882294 /* CookingViewModel.swift */,
+				C074ED072BA224E900882294 /* CookingModel.swift */,
+				C074ED092BA2264800882294 /* CookingProtocols.swift */,
+			);
+			path = Cooking;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -293,6 +296,10 @@
 			dependencies = (
 			);
 			name = LiveRecipes;
+			packageProductDependencies = (
+				C0528DF42BA205F600F00FA0 /* Swinject */,
+				C0528DF62BA205F600F00FA0 /* Swinject-Dynamic */,
+			);
 			productName = LiveRecipes;
 			productReference = C0072EF82B852DFA008CE3F8 /* LiveRecipes.app */;
 			productType = "com.apple.product-type.application";
@@ -366,6 +373,9 @@
 				ru,
 			);
 			mainGroup = C0072EEF2B852DFA008CE3F8;
+			packageReferences = (
+				C0528DF32BA205F600F00FA0 /* XCRemoteSwiftPackageReference "Swinject" */,
+			);
 			productRefGroup = C0072EF92B852DFA008CE3F8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -432,29 +442,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0342D332B979F8A0063BBD2 /* ViewStateProtocol.swift in Sources */,
+				C074ED042BA224A500882294 /* CookingView.swift in Sources */,
 				C0072F052B852DFC008CE3F8 /* Persistence.swift in Sources */,
-				C0342D422B97A0B80063BBD2 /* DependencyContainer.swift in Sources */,
 				C0342D2C2B979ED00063BBD2 /* RecipesRouter.swift in Sources */,
 				C0342D2E2B979EE40063BBD2 /* RecipesView.swift in Sources */,
-				C0342D482B97A1020063BBD2 /* WeakContainer.swift in Sources */,
+				C074ED062BA224D900882294 /* CookingViewModel.swift in Sources */,
+				C074ED082BA224E900882294 /* CookingModel.swift in Sources */,
 				C0342D212B979E030063BBD2 /* LiveRecipesView.swift in Sources */,
 				C0342D372B979F9F0063BBD2 /* PresenterProtocol.swift in Sources */,
 				C0072EFC2B852DFA008CE3F8 /* LiveRecipesApp.swift in Sources */,
+				C074ED0A2BA2264800882294 /* CookingProtocols.swift in Sources */,
 				C0342D2A2B979EC00063BBD2 /* RecipesPresenter.swift in Sources */,
-				C0342D462B97A0DB0063BBD2 /* Assembly.swift in Sources */,
-				C0342D3C2B97A0620063BBD2 /* WeakBox.swift in Sources */,
-				C0342D402B97A0900063BBD2 /* ObjectKey.swift in Sources */,
 				C0342D352B979F940063BBD2 /* RouterProtocol.swift in Sources */,
-				C0342D3E2B97A07E0063BBD2 /* StrongBox.swift in Sources */,
 				C0072F082B852DFC008CE3F8 /* LiveRecipes.xcdatamodeld in Sources */,
 				C0342D392B979FB10063BBD2 /* InteractorProtocol.swift in Sources */,
 				C0342D4A2B97A1C60063BBD2 /* RecipesInteractor.swift in Sources */,
 				C0342D4D2B97A2080063BBD2 /* NavigationAssembly.swift in Sources */,
 				C0342D532B97A25E0063BBD2 /* ApplicationViewBuilder.swift in Sources */,
+				C074ECFE2BA2247C00882294 /* CookingAssembly.swift in Sources */,
 				C0342D4F2B97A2130063BBD2 /* NavigationService.swift in Sources */,
 				C0342D512B97A21F0063BBD2 /* NavigationServiceType.swift in Sources */,
-				C0342D442B97A0CE0063BBD2 /* AssemblyFactory.swift in Sources */,
-				C0342D302B979EF30063BBD2 /* RecipesViewState.swift in Sources */,
 				C0342D282B979EAD0063BBD2 /* RecipesProtocols.swift in Sources */,
 				C0342D262B979E8F0063BBD2 /* RecipesAssembly.swift in Sources */,
 			);
@@ -786,6 +793,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C0528DF32BA205F600F00FA0 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C0528DF42BA205F600F00FA0 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0528DF32BA205F600F00FA0 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
+		C0528DF62BA205F600F00FA0 /* Swinject-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0528DF32BA205F600F00FA0 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = "Swinject-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		C0072F062B852DFC008CE3F8 /* LiveRecipes.xcdatamodeld */ = {

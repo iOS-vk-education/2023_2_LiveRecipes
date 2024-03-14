@@ -7,31 +7,36 @@
 
 import Foundation
 import SwiftUI
+import Swinject
 
 @MainActor
-final class ApplicationViewBuilder: Assembly, ObservableObject {
-    required init(container: Container) {
-        super.init(container: container)
-    }
+final class ApplicationViewBuilder: ObservableObject {
+//    nonisolated func assemble(container: Swinject.Container) {
+//    }
 
     @ViewBuilder
     func build(view: Views) -> some View {
         switch view {
         case .main:
             buildMain()
+        case .cooking:
+            buildCooking()
         }
     }
 
     @ViewBuilder
     fileprivate func buildMain() -> some View {
-        container.resolve(RecipesAssembly.self).build()
+        Assembler.sharedAssembler.resolver.resolve(RecipesViewControllerBridge.self)
+    }
+
+    @ViewBuilder
+    fileprivate func buildCooking() -> some View {
+        Assembler.sharedAssembler.resolver.resolve(CookingView.self)
     }
 }
 
 extension ApplicationViewBuilder {
     static var stub: ApplicationViewBuilder {
-        return ApplicationViewBuilder(
-            container: RootApp().container
-        )
+        return ApplicationViewBuilder()
     }
 }
