@@ -49,6 +49,11 @@
 		C0761D642BA36F1200F5A63A /* FavoritesProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0761D632BA36F1200F5A63A /* FavoritesProtocols.swift */; };
 		C0761D672BA3754600F5A63A /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0761D662BA3754600F5A63A /* String+Localized.swift */; };
 		C0761D692BA3773A00F5A63A /* NavigationTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0761D682BA3773A00F5A63A /* NavigationTabs.swift */; };
+		D0EDE1672BB3365000C2B16D /* CreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EDE1662BB3365000C2B16D /* CreationView.swift */; };
+		D0EDE1692BB3369400C2B16D /* CreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EDE1682BB3369400C2B16D /* CreationViewModel.swift */; };
+		D0EDE16B2BB336D400C2B16D /* CreationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EDE16A2BB336D400C2B16D /* CreationModel.swift */; };
+		D0EDE16D2BB3373300C2B16D /* CreationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EDE16C2BB3373300C2B16D /* CreationAssembly.swift */; };
+		D0EDE16F2BB3377200C2B16D /* CreationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EDE16E2BB3377200C2B16D /* CreationProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +132,11 @@
 		C0761D632BA36F1200F5A63A /* FavoritesProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesProtocols.swift; sourceTree = "<group>"; };
 		C0761D662BA3754600F5A63A /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
 		C0761D682BA3773A00F5A63A /* NavigationTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTabs.swift; sourceTree = "<group>"; };
+		D0EDE1662BB3365000C2B16D /* CreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationView.swift; sourceTree = "<group>"; };
+		D0EDE1682BB3369400C2B16D /* CreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationViewModel.swift; sourceTree = "<group>"; };
+		D0EDE16A2BB336D400C2B16D /* CreationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationModel.swift; sourceTree = "<group>"; };
+		D0EDE16C2BB3373300C2B16D /* CreationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationAssembly.swift; sourceTree = "<group>"; };
+		D0EDE16E2BB3377200C2B16D /* CreationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +237,7 @@
 		C0342D222B979E480063BBD2 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				D0EDE1652BB3362200C2B16D /* Creation */,
 				C0761D462BA369C700F5A63A /* List */,
 				C0761D452BA369C000F5A63A /* Favorites */,
 				C0761D442BA369B200F5A63A /* Cooking */,
@@ -340,6 +351,18 @@
 				C0761D662BA3754600F5A63A /* String+Localized.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		D0EDE1652BB3362200C2B16D /* Creation */ = {
+			isa = PBXGroup;
+			children = (
+				D0EDE1662BB3365000C2B16D /* CreationView.swift */,
+				D0EDE1682BB3369400C2B16D /* CreationViewModel.swift */,
+				D0EDE16A2BB336D400C2B16D /* CreationModel.swift */,
+				D0EDE16C2BB3373300C2B16D /* CreationAssembly.swift */,
+				D0EDE16E2BB3377200C2B16D /* CreationProtocols.swift */,
+			);
+			path = Creation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -510,10 +533,12 @@
 				C0072F052B852DFC008CE3F8 /* Persistence.swift in Sources */,
 				C0342D2E2B979EE40063BBD2 /* RecipesView.swift in Sources */,
 				C0342D212B979E030063BBD2 /* LiveRecipesView.swift in Sources */,
+				D0EDE1692BB3369400C2B16D /* CreationViewModel.swift in Sources */,
 				C0761D4E2BA36E6D00F5A63A /* CookingViewModel.swift in Sources */,
 				C0761D5A2BA36EC800F5A63A /* CookingAssembly.swift in Sources */,
 				C0761D502BA36E7600F5A63A /* CookingModel.swift in Sources */,
 				C0342D372B979F9F0063BBD2 /* PresenterProtocol.swift in Sources */,
+				D0EDE16B2BB336D400C2B16D /* CreationModel.swift in Sources */,
 				C0761D672BA3754600F5A63A /* String+Localized.swift in Sources */,
 				C0072EFC2B852DFA008CE3F8 /* LiveRecipesApp.swift in Sources */,
 				C0761D622BA36EFF00F5A63A /* ListProtocols.swift in Sources */,
@@ -531,9 +556,12 @@
 				C0342D532B97A25E0063BBD2 /* ApplicationViewBuilder.swift in Sources */,
 				C0761D3B2BA3596100F5A63A /* RecipesModel.swift in Sources */,
 				C0342D282B979EAD0063BBD2 /* RecipesProtocols.swift in Sources */,
+				D0EDE16F2BB3377200C2B16D /* CreationProtocols.swift in Sources */,
 				C0761D522BA36E8400F5A63A /* FavoritesViewModel.swift in Sources */,
 				C0761D692BA3773A00F5A63A /* NavigationTabs.swift in Sources */,
 				C0761D582BA36EB400F5A63A /* ListModel.swift in Sources */,
+				D0EDE1672BB3365000C2B16D /* CreationView.swift in Sources */,
+				D0EDE16D2BB3373300C2B16D /* CreationAssembly.swift in Sources */,
 				C0342D262B979E8F0063BBD2 /* RecipesAssembly.swift in Sources */,
 				C0761D4A2BA369E300F5A63A /* FavoritesView.swift in Sources */,
 			);
