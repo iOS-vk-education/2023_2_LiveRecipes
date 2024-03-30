@@ -14,9 +14,11 @@ struct RootView: View {
         TabView {
             ForEach(Tabs.allCases) { tab in
                 appViewBuilder.build(view: tab)
-                    .tabItem { Label(tab.tabName, systemImage: tab.tabIcon) }
+                    .tabItem { Label(tab.tabName, systemImage: tab.tabIcon)
+                    }
             }
         }
+        .tint(.orange)
     }
 }
 
