@@ -11,11 +11,12 @@ import Swinject
 
 final class RecipesAssembly: Assembly {
     func assemble(container: Swinject.Container) {
-        let model = RecipesModel()
+        guard let networkAPI = Container.sharedContainer.resolve(RecipeAPI.self) else { return }
+        let model = RecipesModel(recipeAPI: networkAPI)
         let viewModel = RecipesViewModel(recipesModel: model)
 
         container.register(RecipesView.self) { _ in
-            return RecipesView(viewState: viewModel)
+            return RecipesView(viewModel: viewModel)
         }
     }
 }

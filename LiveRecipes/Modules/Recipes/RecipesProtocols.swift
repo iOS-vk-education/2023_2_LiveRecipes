@@ -10,6 +10,9 @@ import SwiftUI
 
 protocol RecipesViewModelProtocol {}
 
-protocol RecipesModelProtocol {}
+protocol RecipesModelProtocol {
+    func findRecipe(name: String, completion: @escaping ([RecipeDTO])->Void)
+    func getDesserts(completion: @escaping ([RecipeDTO])->Void)
+}
 
 protocol RecipesViewProtocol {}
