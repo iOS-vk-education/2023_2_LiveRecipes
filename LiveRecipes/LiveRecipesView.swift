@@ -16,10 +16,10 @@ struct RootView: View {
                 appViewBuilder.build(view: tab)
                     .tabItem { Label(tab.tabName, systemImage: tab.tabIcon) }
             }.toolbarBackground(.visible, for: .tabBar)
-        }
+        }.tint(.orange)
     }
 }
 
-#Preview {
-    RootView(appViewBuilder: ApplicationViewBuilder())
-}
+//#Preview {
+//    RootView(appViewBuilder: ApplicationViewBuilder())
+//}

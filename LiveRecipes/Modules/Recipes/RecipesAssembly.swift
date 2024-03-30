@@ -18,5 +18,14 @@ final class RecipesAssembly: Assembly {
         container.register(RecipesView.self) { _ in
             return RecipesView(viewModel: viewModel)
         }
+        container.register(RecentRecipesView.self) { _ in
+            return RecentRecipesView(viewModel: viewModel)
+        }
+        container.register(AllRecipesView.self) { _ in
+            return AllRecipesView(viewModel: viewModel)
+        }
+        container.register(MyRecipesView.self) { _ in
+            return MyRecipesView(viewModel: viewModel)
+        }
     }
 }

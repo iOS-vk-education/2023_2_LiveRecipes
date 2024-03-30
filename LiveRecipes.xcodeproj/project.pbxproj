@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		66B585ED2BB86C6000FEF708 /* RecentRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B585EC2BB86C6000FEF708 /* RecentRecipesView.swift */; };
+		66B585EF2BB87C9500FEF708 /* AllRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B585EE2BB87C9500FEF708 /* AllRecipesView.swift */; };
+		66B585F12BB87E4200FEF708 /* MyRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B585F02BB87E4200FEF708 /* MyRecipesView.swift */; };
 		C0EA6C3E2BB85A9200995C49 /* LiveRecipesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA6C3D2BB85A9200995C49 /* LiveRecipesTests.swift */; };
 		C0EA6C482BB85A9200995C49 /* LiveRecipesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA6C472BB85A9200995C49 /* LiveRecipesUITests.swift */; };
 		C0EA6C4A2BB85A9200995C49 /* LiveRecipesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA6C492BB85A9200995C49 /* LiveRecipesUITestsLaunchTests.swift */; };
@@ -76,6 +79,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		66B585EC2BB86C6000FEF708 /* RecentRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentRecipesView.swift; sourceTree = SOURCE_ROOT; };
+		66B585EE2BB87C9500FEF708 /* AllRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRecipesView.swift; sourceTree = SOURCE_ROOT; };
+		66B585F02BB87E4200FEF708 /* MyRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecipesView.swift; sourceTree = SOURCE_ROOT; };
 		C0EA6C242BB85A9100995C49 /* LiveRecipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveRecipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0EA6C392BB85A9200995C49 /* LiveRecipesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiveRecipesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0EA6C3D2BB85A9200995C49 /* LiveRecipesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveRecipesTests.swift; sourceTree = "<group>"; };
@@ -322,6 +328,9 @@
 				C0EA6C842BB85AEC00995C49 /* RecipesAssembly.swift */,
 				C0EA6C852BB85AEC00995C49 /* RecipesModel.swift */,
 				C0EA6C862BB85AEC00995C49 /* RecipesViewModel.swift */,
+				66B585EE2BB87C9500FEF708 /* AllRecipesView.swift */,
+				66B585F02BB87E4200FEF708 /* MyRecipesView.swift */,
+				66B585EC2BB86C6000FEF708 /* RecentRecipesView.swift */,
 				C0EA6C872BB85AEC00995C49 /* RecipesView.swift */,
 				C0EA6C882BB85AEC00995C49 /* Components */,
 				C0EA6C8A2BB85AEC00995C49 /* RecipesProtocols.swift */,
@@ -501,6 +510,7 @@
 				C0EA6CBB2BB85AED00995C49 /* ListModel.swift in Sources */,
 				C0EA6CB62BB85AED00995C49 /* RecipesModel.swift in Sources */,
 				C0EA6C982BB85AED00995C49 /* NetworkService.swift in Sources */,
+				66B585EF2BB87C9500FEF708 /* AllRecipesView.swift in Sources */,
 				C0EA6C962BB85AED00995C49 /* RecipeDTO.swift in Sources */,
 				C0EA6CA62BB85AED00995C49 /* CookingView.swift in Sources */,
 				C0EA6C9C2BB85AED00995C49 /* ApplicationViewBuilder.swift in Sources */,
@@ -522,6 +532,7 @@
 				C0EA6CBD2BB85AED00995C49 /* ListProtocols.swift in Sources */,
 				C0EA6CA42BB85AED00995C49 /* LiveRecipesApp.swift in Sources */,
 				C0EA6CB02BB85AED00995C49 /* CreationAssembly.swift in Sources */,
+				66B585ED2BB86C6000FEF708 /* RecentRecipesView.swift in Sources */,
 				C0EA6C9E2BB85AED00995C49 /* ViewStateProtocol.swift in Sources */,
 				C0EA6CBA2BB85AED00995C49 /* RecipesProtocols.swift in Sources */,
 				C0EA6CB12BB85AED00995C49 /* CreationProtocols.swift in Sources */,
@@ -529,6 +540,7 @@
 				C0EA6CC02BB85AED00995C49 /* LiveRecipesView.swift in Sources */,
 				C0EA6C942BB85AED00995C49 /* TargetType.swift in Sources */,
 				C0EA6CB72BB85AED00995C49 /* RecipesViewModel.swift in Sources */,
+				66B585F12BB87E4200FEF708 /* MyRecipesView.swift in Sources */,
 				C0EA6CB82BB85AED00995C49 /* RecipesView.swift in Sources */,
 				C0EA6C9A2BB85AED00995C49 /* NavigationTabs.swift in Sources */,
 				C0EA6CA92BB85AED00995C49 /* CookingAssembly.swift in Sources */,

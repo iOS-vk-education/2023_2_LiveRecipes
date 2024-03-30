@@ -13,6 +13,10 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     @Published var foundRecipes: [RecipeDTO] = []
     @Published var searchQuery = "Egg"
     @Published var searchIsActive = false
+    @Published var keyWords: [KeyWord] = []
+    @Published var allRecipes: [Recipe] = []
+    @Published var recentRecipes: [Recipe] = []
+    @Published var myRecipes: [Recipe] = []
 
     private var cancellables: Set<AnyCancellable> = []
 
@@ -30,6 +34,7 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
         model.findRecipe(name: searchQuery, completion: { [weak self] result in
             self?.foundRecipes = result
         })
+        loadAllData()
     }
 
     func findRecipes() {
@@ -37,4 +42,12 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
             self?.foundRecipes = result
         }
     }
+    
+    func loadAllData() {
+        keyWords = model.loadKeyWords()
+        allRecipes = model.loadAllRecipes()
+        recentRecipes = model.loadRecentRecipes()
+        myRecipes = model.loadMyRecipes()
+    }
+    
 }

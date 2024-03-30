@@ -62,3 +62,4 @@ class RecipeAPI: BaseAPI<RecipeTarget>, RecipeAPIProtocol {
         fetchData(target: .getRecipe(name: name), responseClass: [RecipeDTO].self) { result in completionHandler(result) }
     }
 }
+
