@@ -250,8 +250,10 @@ struct RecipesView: View {
     
     @ViewBuilder
     func recentRecipesView() -> some View {
-        titleButtonOfBlock(blockName: "Недавние")
-            .padding(.top, 8)
+        NavigationLink(destination: RecentRecipesView(viewState: RecipesViewModel(recipesModel: RecipesModel())), label: {
+            titleButtonOfBlock(blockName: "Недавние")
+        })
+        .padding(.top, 8)
         ScrollView(.horizontal) {
             HStack(spacing: 12) {
                 ForEach (recentRecipes) { recipe in
