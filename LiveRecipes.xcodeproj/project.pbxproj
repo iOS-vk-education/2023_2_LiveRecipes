@@ -24,8 +24,6 @@
 		C0EA6C9F2BB85AED00995C49 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA6C682BB85AEC00995C49 /* RouterProtocol.swift */; };
 		C0EA6CA02BB85AED00995C49 /* InteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA6C692BB85AEC00995C49 /* InteractorProtocol.swift */; };
 		C0EA6CA12BB85AED00995C49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0EA6C6A2BB85AEC00995C49 /* Assets.xcassets */; };
-		C0EA6CA22BB85AED00995C49 /* LiveRecipes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0EA6C6B2BB85AEC00995C49 /* LiveRecipes.xcdatamodeld */; };
-		C0EA6CA32BB85AED00995C49 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA6C6D2BB85AEC00995C49 /* Persistence.swift */; };
 		C0EA6CA42BB85AED00995C49 /* LiveRecipesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA6C6E2BB85AEC00995C49 /* LiveRecipesApp.swift */; };
 		C0EA6CA52BB85AED00995C49 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C0EA6C6F2BB85AEC00995C49 /* Localizable.xcstrings */; };
 		C0EA6CA62BB85AED00995C49 /* CookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA6C722BB85AEC00995C49 /* CookingView.swift */; };
@@ -99,8 +97,6 @@
 		C0EA6C682BB85AEC00995C49 /* RouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
 		C0EA6C692BB85AEC00995C49 /* InteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractorProtocol.swift; sourceTree = "<group>"; };
 		C0EA6C6A2BB85AEC00995C49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C0EA6C6C2BB85AEC00995C49 /* LiveRecipes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LiveRecipes.xcdatamodel; sourceTree = "<group>"; };
-		C0EA6C6D2BB85AEC00995C49 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		C0EA6C6E2BB85AEC00995C49 /* LiveRecipesApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveRecipesApp.swift; sourceTree = "<group>"; };
 		C0EA6C6F2BB85AEC00995C49 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		C0EA6C722BB85AEC00995C49 /* CookingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookingView.swift; sourceTree = "<group>"; };
@@ -186,12 +182,10 @@
 				C0EA6C642BB85AEC00995C49 /* ApplicationViewBuilder.swift */,
 				C0EA6C6A2BB85AEC00995C49 /* Assets.xcassets */,
 				C0EA6C652BB85AEC00995C49 /* Common */,
-				C0EA6C6B2BB85AEC00995C49 /* LiveRecipes.xcdatamodeld */,
 				C0EA6C6E2BB85AEC00995C49 /* LiveRecipesApp.swift */,
 				C0EA6C912BB85AED00995C49 /* LiveRecipesView.swift */,
 				C0EA6C6F2BB85AEC00995C49 /* Localizable.xcstrings */,
 				C0EA6C702BB85AEC00995C49 /* Modules */,
-				C0EA6C6D2BB85AEC00995C49 /* Persistence.swift */,
 				C0EA6C922BB85AED00995C49 /* Preview Content */,
 				C0EA6C572BB85AEC00995C49 /* Services */,
 				C0EA6C622BB85AEC00995C49 /* Utilities */,
@@ -510,7 +504,6 @@
 				C0EA6C962BB85AED00995C49 /* RecipeDTO.swift in Sources */,
 				C0EA6CA62BB85AED00995C49 /* CookingView.swift in Sources */,
 				C0EA6C9C2BB85AED00995C49 /* ApplicationViewBuilder.swift in Sources */,
-				C0EA6CA22BB85AED00995C49 /* LiveRecipes.xcdatamodeld in Sources */,
 				C0EA6CAD2BB85AED00995C49 /* FavoritesAssembly.swift in Sources */,
 				C0EA6CA72BB85AED00995C49 /* CookingViewModel.swift in Sources */,
 				C0EA6C9B2BB85AED00995C49 /* String+Localized.swift in Sources */,
@@ -522,7 +515,6 @@
 				C0EA6C9F2BB85AED00995C49 /* RouterProtocol.swift in Sources */,
 				C0EA6CBF2BB85AED00995C49 /* ListAssembly.swift in Sources */,
 				C0EA6CAC2BB85AED00995C49 /* FavoritesView.swift in Sources */,
-				C0EA6CA32BB85AED00995C49 /* Persistence.swift in Sources */,
 				C0EA6CB42BB85AED00995C49 /* CreationModel.swift in Sources */,
 				C0EA6CAB2BB85AED00995C49 /* FavoritesViewModel.swift in Sources */,
 				C0EA6C972BB85AED00995C49 /* BaseAPI.swift in Sources */,
@@ -912,20 +904,6 @@
 			productName = Swinject;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		C0EA6C6B2BB85AEC00995C49 /* LiveRecipes.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				C0EA6C6C2BB85AEC00995C49 /* LiveRecipes.xcdatamodel */,
-			);
-			currentVersion = C0EA6C6C2BB85AEC00995C49 /* LiveRecipes.xcdatamodel */;
-			name = LiveRecipes.xcdatamodeld;
-			path = ../../checkkk/2023_2_LiveRecipes/LiveRecipes/LiveRecipes.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = C0EA6C1C2BB85A9100995C49 /* Project object */;
 }
