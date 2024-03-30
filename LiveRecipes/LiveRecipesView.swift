@@ -15,7 +15,7 @@ struct RootView: View {
             ForEach(Tabs.allCases) { tab in
                 appViewBuilder.build(view: tab)
                     .tabItem { Label(tab.tabName, systemImage: tab.tabIcon) }
-            }
+            }.toolbarBackground(.visible, for: .tabBar)
         }
     }
 }

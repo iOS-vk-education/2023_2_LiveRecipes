@@ -18,6 +18,7 @@ extension Assembler {
     static let sharedAssembly: Assembler = {
         return Assembler(
             [
+                NetworkServiceAssembly(),
                 RecipesAssembly(),
                 CookingAssembly(),
                 FavoritesAssembly(),

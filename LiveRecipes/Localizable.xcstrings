@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "recipes.havent.load" : {
+
+    },
     "tab.cooking" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -68,6 +71,9 @@
           }
         }
       }
+    },
+    "Подробнее" : {
+
     }
   },
   "version" : "1.0"
