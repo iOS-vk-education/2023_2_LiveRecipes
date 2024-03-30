@@ -101,6 +101,7 @@ struct RecentRecipesView: View {
                         }
                     }
                 }
+                
                 .scrollIndicators(.hidden)
                 .contentMargins(.horizontal, 12)
             }
