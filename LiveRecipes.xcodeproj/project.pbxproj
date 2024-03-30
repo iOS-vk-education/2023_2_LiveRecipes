@@ -49,6 +49,7 @@
 		C0761D642BA36F1200F5A63A /* FavoritesProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0761D632BA36F1200F5A63A /* FavoritesProtocols.swift */; };
 		C0761D672BA3754600F5A63A /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0761D662BA3754600F5A63A /* String+Localized.swift */; };
 		C0761D692BA3773A00F5A63A /* NavigationTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0761D682BA3773A00F5A63A /* NavigationTabs.swift */; };
+		C088BF132BB84CEA007E4385 /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C088BF122BB84CEA007E4385 /* info.plist */; };
 		C0B474DD2BA9FCFC00C789F9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C0B474DC2BA9FCFC00C789F9 /* Alamofire */; };
 		C0B474DF2BA9FCFC00C789F9 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = C0B474DE2BA9FCFC00C789F9 /* AlamofireDynamic */; };
 		C0B474E12BA9FDAC00C789F9 /* NetworkAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B474E02BA9FDAC00C789F9 /* NetworkAssembly.swift */; };
@@ -136,6 +137,7 @@
 		C0761D632BA36F1200F5A63A /* FavoritesProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesProtocols.swift; sourceTree = "<group>"; };
 		C0761D662BA3754600F5A63A /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
 		C0761D682BA3773A00F5A63A /* NavigationTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTabs.swift; sourceTree = "<group>"; };
+		C088BF122BB84CEA007E4385 /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 		C0B474E02BA9FDAC00C789F9 /* NetworkAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAssembly.swift; sourceTree = "<group>"; };
 		C0B474E22BA9FDB700C789F9 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		C0B474E52BA9FED300C789F9 /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
@@ -143,7 +145,6 @@
 		C0B474E92BAA025600C789F9 /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
 		C0B474EC2BAA052000C789F9 /* RecipeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCardView.swift; sourceTree = "<group>"; };
 		C0B474EE2BAA0FB300C789F9 /* RecipeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDTO.swift; sourceTree = "<group>"; };
-		C0B474F02BAA264D00C789F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,7 +203,7 @@
 		C0072EFA2B852DFA008CE3F8 /* LiveRecipes */ = {
 			isa = PBXGroup;
 			children = (
-				C0B474F02BAA264D00C789F9 /* Info.plist */,
+				C088BF122BB84CEA007E4385 /* info.plist */,
 				C0761D652BA3750900F5A63A /* Utilities */,
 				C0342D312B979F6F0063BBD2 /* Common */,
 				C0342D232B979E500063BBD2 /* Services */,
@@ -512,6 +513,7 @@
 			files = (
 				C0342D582B97A41D0063BBD2 /* test.yml in Resources */,
 				C0342D592B97A41D0063BBD2 /* swiftlint.yml in Resources */,
+				C088BF132BB84CEA007E4385 /* info.plist in Resources */,
 				C0072F032B852DFC008CE3F8 /* Preview Assets.xcassets in Resources */,
 				C0072F002B852DFC008CE3F8 /* Assets.xcassets in Resources */,
 				C0072F2B2B85311E008CE3F8 /* Localizable.xcstrings in Resources */,
