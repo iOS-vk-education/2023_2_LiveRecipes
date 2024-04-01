@@ -57,7 +57,7 @@ struct RecentRecipesView: View {
         } else {
             GeometryReader {proxy in
                 ScrollView() {
-                    VStack(spacing: 12) {
+                    LazyVStack(spacing: 12) {
                         ForEach(viewModel.recentRecipes) { recipe in
                             VStack (spacing: 0) {
                                 Image(recipe.image)

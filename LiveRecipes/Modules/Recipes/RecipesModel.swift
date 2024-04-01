@@ -42,10 +42,15 @@ final class RecipesModel: ObservableObject, RecipesModelProtocol {
     func loadKeyWords() -> [KeyWord] {
         return [
             KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты"),
+            KeyWord(keyWord: "Супы"), KeyWord(keyWord: "ЗавтракиЗавтраки"), KeyWord(keyWord: "Салаты"),
             KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты"),
+            KeyWord(keyWord: "СупЗавтракиы"), KeyWord(keyWord: "ЗаЗавтракивтраки"), KeyWord(keyWord: "СаЗавтракилаты"),
             KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты"),
+            KeyWord(keyWord: "СупыЗавтраки"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты"),
             KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты"),
-            KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты")
+            KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "СалатыЗавтраки"),
+            KeyWord(keyWord: "СупЗавтракиы"), KeyWord(keyWord: "ЗавЗавтракитраки"), KeyWord(keyWord: "Салаты"),
+            KeyWord(keyWord: "СупЗавтракиы"), KeyWord(keyWord: "ЗавтраЗавтракики"), KeyWord(keyWord: "Салаты")
         ]
     }
 
@@ -65,8 +70,8 @@ final class RecipesModel: ObservableObject, RecipesModelProtocol {
 
     func loadRecentRecipes() -> [Recipe] {
         return [
-//            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "cesar"),
-//            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "cesar"),
+            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "cesar"),
+            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "cesar"),
         ]
     }
 

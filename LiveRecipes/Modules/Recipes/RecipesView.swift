@@ -54,6 +54,7 @@ import Swinject
 struct RecipesView: View {
     @StateObject var viewModel: RecipesViewModel
     @State private var searchText = ""
+    @State var modalKeyWordsIsOpen: Bool = false
     
     var body: some View {
         NavigationView {
@@ -78,6 +79,9 @@ struct RecipesView: View {
             }
         }
         .searchable(text: $searchText)
+        .refreshable(action: {
+                        print("refresh")
+                    })
     }
     
     @ViewBuilder
@@ -85,9 +89,17 @@ struct RecipesView: View {
         if (viewModel.keyWords.isEmpty) {
             Text("Ошибка загрузки данных")
         } else {
-            titleButtonOfBlock(blockName: "Найти по ключевым словам")
+            Button  {
+                modalKeyWordsIsOpen = true
+            } label: {
+                titleButtonOfBlock(blockName: "Найти по ключевым словам")
+            }.sheet(isPresented: $modalKeyWordsIsOpen) {
+                Assembler.sharedAssembly
+                    .resolver
+                    .resolve(KeyWordsView.self)
+               }
             ScrollView (.horizontal) {
-                HStack {
+                LazyHStack {
                     ForEach (viewModel.keyWords.indices, id: \.self) { index in
                         Button(action: {
                             viewModel.keyWords[index].choose()
@@ -152,7 +164,7 @@ struct RecipesView: View {
                 Text("Ошибка загрузки данных")
             } else {
                 ScrollView(.horizontal) {
-                    HStack(spacing: 12) {
+                    LazyHStack(spacing: 12) {
                         ForEach (viewModel.allRecipes) { recipie in
                             VStack (spacing: 0) {
                                 Image(recipie.image)
@@ -287,7 +299,7 @@ struct RecipesView: View {
             .clipShape(.rect(cornerRadius: 8))
         } else {
             ScrollView(.horizontal) {
-                HStack(spacing: 12) {
+                LazyHStack(spacing: 12) {
                     ForEach (viewModel.recentRecipes) { recipe in
                         VStack (spacing: 0) {
                             Image(recipe.image)
@@ -359,7 +371,7 @@ struct RecipesView: View {
             .padding(.bottom, 12)
         } else {
             ScrollView(.horizontal) {
-                HStack(spacing: 12) {
+                LazyHStack(spacing: 12) {
                     ForEach (viewModel.myRecipes) { recipe in
                         VStack (spacing: 0) {
                             Image(recipe.image)

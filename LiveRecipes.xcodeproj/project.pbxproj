@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		669EE86D2BBAB76A009B1AB5 /* KeyWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669EE86C2BBAB76A009B1AB5 /* KeyWordsView.swift */; };
 		66B585ED2BB86C6000FEF708 /* RecentRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B585EC2BB86C6000FEF708 /* RecentRecipesView.swift */; };
 		66B585EF2BB87C9500FEF708 /* AllRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B585EE2BB87C9500FEF708 /* AllRecipesView.swift */; };
 		66B585F12BB87E4200FEF708 /* MyRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B585F02BB87E4200FEF708 /* MyRecipesView.swift */; };
@@ -79,6 +80,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		669EE86C2BBAB76A009B1AB5 /* KeyWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWordsView.swift; sourceTree = "<group>"; };
 		66B585EC2BB86C6000FEF708 /* RecentRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentRecipesView.swift; sourceTree = SOURCE_ROOT; };
 		66B585EE2BB87C9500FEF708 /* AllRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRecipesView.swift; sourceTree = SOURCE_ROOT; };
 		66B585F02BB87E4200FEF708 /* MyRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecipesView.swift; sourceTree = SOURCE_ROOT; };
@@ -330,6 +332,7 @@
 				C0EA6C862BB85AEC00995C49 /* RecipesViewModel.swift */,
 				66B585EE2BB87C9500FEF708 /* AllRecipesView.swift */,
 				66B585F02BB87E4200FEF708 /* MyRecipesView.swift */,
+				669EE86C2BBAB76A009B1AB5 /* KeyWordsView.swift */,
 				66B585EC2BB86C6000FEF708 /* RecentRecipesView.swift */,
 				C0EA6C872BB85AEC00995C49 /* RecipesView.swift */,
 				C0EA6C882BB85AEC00995C49 /* Components */,
@@ -506,6 +509,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				669EE86D2BBAB76A009B1AB5 /* KeyWordsView.swift in Sources */,
 				C0EA6CAE2BB85AED00995C49 /* FavoritesProtocols.swift in Sources */,
 				C0EA6CBB2BB85AED00995C49 /* ListModel.swift in Sources */,
 				C0EA6CB62BB85AED00995C49 /* RecipesModel.swift in Sources */,

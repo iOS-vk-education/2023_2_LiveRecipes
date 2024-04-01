@@ -31,7 +31,7 @@ struct AllRecipesView: View {
         if (!viewModel.allRecipes.isEmpty) {
             GeometryReader {proxy in
                 ScrollView() {
-                    VStack(spacing: 12) {
+                    LazyVStack(spacing: 12) {
                         ForEach(viewModel.allRecipes) { recipe in
                             VStack (spacing: 0) {
                                 Image(recipe.image)
