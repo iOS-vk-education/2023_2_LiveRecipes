@@ -15,6 +15,14 @@ struct Recipe {
 struct RecipeItem {
     var id: Int
     var title: String
+    init(id: Int, title: String) {
+        self.id = id
+        self.title = title
+    }
+    init(entity: ListRecipeItemEntity) {
+        self.id = Int(entity.id)
+        self.title = entity.title
+    }
 }
 
 final class ListViewModel: ObservableObject, ListViewModelProtocol {
@@ -22,6 +30,9 @@ final class ListViewModel: ObservableObject, ListViewModelProtocol {
     var counter: Int = 7
     var timer: Timer?
     @Published var recipesList: [Recipe] = [
+        
+    ]
+    /*@Published var recipesList: [Recipe] = [
         Recipe(id: 0, title: "Хреновины-0", item: [
             RecipeItem(id: 0, title: "Хрень-0"),
             RecipeItem(id: 1, title: "Хрень-1"),
@@ -59,16 +70,26 @@ final class ListViewModel: ObservableObject, ListViewModelProtocol {
             RecipeItem(id: 0, title: "Хрень-0"),
             RecipeItem(id: 1, title: "Хрень-1")
         ])
-    ]
+    ]*/
     init(recipesModel: ListModelProtocol) {
         self.model = recipesModel
-        //self.timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(addItemToMenu), userInfo: nil, repeats: true)
+        let recipes = CoreDataManager.shared.fetch(request: ListRecipeEntity.fetchRequest())
+        let countRecipes = CoreDataManager.shared.count(request: ListRecipeEntity.fetchRequest())
+        print("\n\nCount objects: \(countRecipes)\n")
+        let recipeItems = CoreDataManager.shared.fetch(request: ListRecipeItemEntity.fetchRequest())
+        let countRecipeItems = CoreDataManager.shared.count(request: ListRecipeItemEntity.fetchRequest())
+        print("\n\nCount objects: \(countRecipeItems)\n")
+        recipeItems.forEach { item in
+            let resultStr = "\(item.parentId) \(item.id) \(item.title)\n"
+            print(resultStr)
+        }
+        recipes.forEach { recipe in
+            let resultStr = "\(recipe.id) \(recipe.title)\n"
+            print(resultStr)
+            let recipeItemsArray = recipeItems.filter({ $0.parentId == recipe.id }).map({ RecipeItem(entity: $0) })
+            recipesList.append(Recipe(id: Int(recipe.id), title: recipe.title, item: recipeItemsArray))
+        }
+
     }
-    @objc
-    func addItemToMenu() {
-        recipesList.append(Recipe(id: counter, title: "Хрень-\(String(counter))", item: []))
-        counter += 1
-        print("counter = \(counter)")
-        print("menuItems.count = \(recipesList.count)")
-    }
+    
 }
