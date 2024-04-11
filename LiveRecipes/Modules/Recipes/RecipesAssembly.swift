@@ -14,6 +14,7 @@ final class RecipesAssembly: Assembly {
         guard let networkAPI = Container.sharedContainer.resolve(RecipeAPI.self) else { return }
         let model = RecipesModel(recipeAPI: networkAPI)
         let viewModel = RecipesViewModel(recipesModel: model)
+        let filtersViewModel = FiltersViewModel(model: model)
 
         container.register(RecipesView.self) { _ in
             return RecipesView(viewModel: viewModel)
@@ -28,6 +29,10 @@ final class RecipesAssembly: Assembly {
             return MyRecipesView(viewModel: viewModel)
         }
         container.register(KeyWordsView.self) { _ in
-        return KeyWordsView(viewModel: viewModel)}
+            return KeyWordsView(viewModel: viewModel)
+        }
+        container.register(FiltersView.self) { _ in
+            return FiltersView(viewModel: filtersViewModel)
+        }
     }
 }

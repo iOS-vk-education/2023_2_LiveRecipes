@@ -54,7 +54,9 @@ import Swinject
 struct RecipesView: View {
     @StateObject var viewModel: RecipesViewModel
     @State private var searchText = ""
+    @State private var isSearching = ""
     @State var modalKeyWordsIsOpen: Bool = false
+    @State var modalFiltersIsOpen: Bool = false
     
     var body: some View {
         NavigationView {
@@ -72,8 +74,18 @@ struct RecipesView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("", systemImage: "gear") {
-                        print("hello")
+                    HStack (spacing: 4) {
+                        Button("", systemImage: "gear") {
+                            print("hello")
+                        }
+                        Button("", systemImage: "slider.horizontal.2.square") {
+                            modalFiltersIsOpen = true
+                        }
+                        .sheet(isPresented: $modalFiltersIsOpen) {
+                            Assembler.sharedAssembly
+                                .resolver
+                                .resolve(FiltersView.self)
+                           }
                     }
                 }
             }
@@ -103,11 +115,11 @@ struct RecipesView: View {
                     ForEach (viewModel.keyWords.indices, id: \.self) { index in
                         Button(action: {
                             viewModel.keyWords[index].choose()
+                            viewModel.sortKeyWordsByChoose()
                         }, label: {
                             Text(viewModel.keyWords[index].keyWord)
                                 .tint(viewModel.keyWords[index].isChoosed ? .white : .black)
                                 .font(.caption)
-                                .fontWeight(viewModel.keyWords[index].isChoosed ? .bold : .regular)
                         })
                         .padding(8)
                         .background(Color(viewModel.keyWords[index].isChoosed ? UIColor.orange : UIColor.secondarySystemBackground))

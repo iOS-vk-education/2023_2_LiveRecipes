@@ -14,7 +14,7 @@ struct KeyWordsView: View {
     
     var body: some View {
         NavigationView {
-            keyWordsView()
+            keyWordsViewContent()
                 .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
                 .navigationTitle("Ключевые слова")
                 .navigationBarTitleDisplayMode(.inline)
@@ -22,6 +22,7 @@ struct KeyWordsView: View {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button {
                             self.presentationMode.wrappedValue.dismiss()
+                            viewModel.sortKeyWordsByChoose()
                         } label: {
                             VStack {
                                 Image(systemName: "xmark")
@@ -38,48 +39,114 @@ struct KeyWordsView: View {
         }
     }
     
-//    func createGrid(keyWords: [KeyWord]) -> [GridItem] {
-//        var items: [GridItem] = []
-//        let sizeOfScreen = UIScreen.main.bounds.size.width
-//        ForEach(viewModel.keyWords.indices, id: \.self) {i in
-//            GeometryReader {proxy in
-//                Button(action: {
-//                    viewModel.keyWords[i].choose()
-//                }, label: {
-//                    Text(viewModel.keyWords[i].keyWord)
-//                        .tint(viewModel.keyWords[i].isChoosed ? .white : .black)
-//                        .font(.caption)
-//                        .fontWeight(viewModel.keyWords[i].isChoosed ? .bold : .regular)
-//                })
-//                .padding(8)
-//            }
-//        }
-//        return items
-//    }
-    
     @ViewBuilder
-    func keyWordsView() -> some View {
-        if (viewModel.keyWords.isEmpty) {
-            Text("Ошибка загрузки данных")
-        } else {
-            ScrollView {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 150, maximum: 360))], alignment: .center) {
-                    ForEach (viewModel.keyWords.indices, id: \.self) { index in
-                        Button(action: {
-                            viewModel.keyWords[index].choose()
-                        }, label: {
-                            Text(viewModel.keyWords[index].keyWord)
-                                .tint(viewModel.keyWords[index].isChoosed ? .white : .black)
-                                .font(.caption)
-                                .fontWeight(viewModel.keyWords[index].isChoosed ? .bold : .regular)
-                        })
-                        .padding(8)
-                        .background(Color(viewModel.keyWords[index].isChoosed ? UIColor.orange : UIColor.secondarySystemBackground))
-                        .clipShape(.capsule)
-                    }
+    func keyWordsViewContent() -> some View {
+            if (viewModel.keyWords.isEmpty) {
+                Text("Ошибка загрузки данных")
+            } else {
+                ScrollView {
+                    LazyVGrid(columns: [GridItem(), GridItem(), GridItem()],
+                              content: {
+                        ForEach (viewModel.keyWords.indices, id: \.self) { index in
+                            VStack {
+                                Button(action: {
+                                    viewModel.keyWords[index].choose()
+                                }, label: {
+                                    Text(viewModel.keyWords[index].keyWord)
+                                        .tint(viewModel.keyWords[index].isChoosed ? .white : .black)
+                                        .font(.caption)
+                                        .padding(8)
+                                        .background(Color(viewModel.keyWords[index].isChoosed ? UIColor.orange : UIColor.secondarySystemBackground))
+                                        .clipShape(.capsule)
+                                })
+                            }
+                        }
+                    })
                 }
+                .overlay(
+                    Button  {
+                        self.presentationMode.wrappedValue.dismiss()
+                        viewModel.sortKeyWordsByChoose()
+                    } label: {
+                        HStack {
+                            Image(systemName: "magnifyingglass")
+                                .imageScale(.medium)
+                            Text("Найти рецепты")
+                        }
+                        .tint(.white)
+                        .fontWeight(.semibold)
+                    }
+                        .frame(width: 200, height: 50)
+                        .background(.orange, in: .rect(cornerRadius: 14)),
+                    alignment: .bottom
+                )
             }
-            .scrollIndicators(.hidden)
         }
-    }
 }
+
+
+
+
+
+
+//пытался сделать нормально, не через LazyVGrid
+
+//                LazyVStack {
+//                    GeometryReader { proxy in
+//                        var width = UIScreen.main.bounds.size.width
+//                        var height = UIScreen.main.bounds.size.height
+//                        ZStack(alignment: .topLeading) {
+//                            ForEach (viewModel.keyWords.indices, id: \.self) { index in
+//                                VStack {
+//                                    Button(action: {
+//                                        viewModel.keyWords[index].choose()
+//                                    }, label: {
+//                                        Text(viewModel.keyWords[index].keyWord)
+//                                            .tint(viewModel.keyWords[index].isChoosed ? .white : .black)
+//                                            .font(.caption)
+//                                            .padding(8)
+//                                            .background(Color(viewModel.keyWords[index].isChoosed ? UIColor.orange : UIColor.secondarySystemBackground))
+//                                            .clipShape(.capsule)
+//                                    })
+//                                    .padding(4)
+//                                }
+//                                .alignmentGuide(.top, computeValue: {d in
+//                                    let result = height
+//                                    if index == viewModel.keyWords.endIndex {
+//                                        height = 0
+//                                    }
+//                                    return result
+//                                })
+//                                .alignmentGuide(.leading, computeValue: { d in
+//                                    if (abs(width - d.width) > proxy.size.width - 24)
+//                                    {
+//                                        width = 0
+//                                        height -= d.height
+//                                    }
+//                                    let result = width
+//                                    if index == viewModel.keyWords.endIndex {
+//                                        width = 0
+//                                    } else {
+//                                        width -= d.width
+//                                    }
+//                                    return result
+//                                })
+//
+//                                .padding(.horizontal, 8)
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//            .scrollIndicators(.hidden)
+//        }
+//    }
+//
+//    private func viewHeightReader(_ binding: Binding<CGFloat>) -> some View {
+//        return GeometryReader { geometry -> Color in
+//            let rect = geometry.frame(in: .local)
+//            DispatchQueue.main.async {
+//                binding.wrappedValue = rect.size.height
+//            }
+//            return .clear
+//                        }

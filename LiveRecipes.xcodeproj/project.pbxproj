@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		660E205A2BC6D1FB00BB23AA /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660E20592BC6D1FB00BB23AA /* FiltersView.swift */; };
+		660E205C2BC6D21B00BB23AA /* FiltersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660E205B2BC6D21B00BB23AA /* FiltersViewModel.swift */; };
 		669EE86D2BBAB76A009B1AB5 /* KeyWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669EE86C2BBAB76A009B1AB5 /* KeyWordsView.swift */; };
 		66B585ED2BB86C6000FEF708 /* RecentRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B585EC2BB86C6000FEF708 /* RecentRecipesView.swift */; };
 		66B585EF2BB87C9500FEF708 /* AllRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B585EE2BB87C9500FEF708 /* AllRecipesView.swift */; };
@@ -80,6 +82,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		660E20592BC6D1FB00BB23AA /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
+		660E205B2BC6D21B00BB23AA /* FiltersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewModel.swift; sourceTree = "<group>"; };
 		669EE86C2BBAB76A009B1AB5 /* KeyWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWordsView.swift; sourceTree = "<group>"; };
 		66B585EC2BB86C6000FEF708 /* RecentRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentRecipesView.swift; sourceTree = SOURCE_ROOT; };
 		66B585EE2BB87C9500FEF708 /* AllRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRecipesView.swift; sourceTree = SOURCE_ROOT; };
@@ -334,6 +338,8 @@
 				66B585F02BB87E4200FEF708 /* MyRecipesView.swift */,
 				669EE86C2BBAB76A009B1AB5 /* KeyWordsView.swift */,
 				66B585EC2BB86C6000FEF708 /* RecentRecipesView.swift */,
+				660E20592BC6D1FB00BB23AA /* FiltersView.swift */,
+				660E205B2BC6D21B00BB23AA /* FiltersViewModel.swift */,
 				C0EA6C872BB85AEC00995C49 /* RecipesView.swift */,
 				C0EA6C882BB85AEC00995C49 /* Components */,
 				C0EA6C8A2BB85AEC00995C49 /* RecipesProtocols.swift */,
@@ -517,6 +523,7 @@
 				66B585EF2BB87C9500FEF708 /* AllRecipesView.swift in Sources */,
 				C0EA6C962BB85AED00995C49 /* RecipeDTO.swift in Sources */,
 				C0EA6CA62BB85AED00995C49 /* CookingView.swift in Sources */,
+				660E205A2BC6D1FB00BB23AA /* FiltersView.swift in Sources */,
 				C0EA6C9C2BB85AED00995C49 /* ApplicationViewBuilder.swift in Sources */,
 				C0EA6CAD2BB85AED00995C49 /* FavoritesAssembly.swift in Sources */,
 				C0EA6CA72BB85AED00995C49 /* CookingViewModel.swift in Sources */,
@@ -528,6 +535,7 @@
 				C0EA6C992BB85AED00995C49 /* NetworkAssembly.swift in Sources */,
 				C0EA6C9F2BB85AED00995C49 /* RouterProtocol.swift in Sources */,
 				C0EA6CBF2BB85AED00995C49 /* ListAssembly.swift in Sources */,
+				660E205C2BC6D21B00BB23AA /* FiltersViewModel.swift in Sources */,
 				C0EA6CAC2BB85AED00995C49 /* FavoritesView.swift in Sources */,
 				C0EA6CB42BB85AED00995C49 /* CreationModel.swift in Sources */,
 				C0EA6CAB2BB85AED00995C49 /* FavoritesViewModel.swift in Sources */,

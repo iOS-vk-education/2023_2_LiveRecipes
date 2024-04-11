@@ -50,4 +50,9 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
         myRecipes = model.loadMyRecipes()
     }
     
+    func sortKeyWordsByChoose() {
+        keyWords.sort {
+            $0.isChoosed && !$1.isChoosed
+        }
+    }
 }
