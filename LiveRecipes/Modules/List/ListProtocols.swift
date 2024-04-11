@@ -7,8 +7,14 @@
 
 import Foundation
 
-protocol ListViewModelProtocol {}
+protocol ListViewModelProtocol {
+    //variables
+}
 
-protocol ListModelProtocol {}
+protocol ListModelProtocol {
+    //обращения к сетевому менеджеру и внутреннего хранилища
+}
 
-protocol ListViewProtocol {}
+protocol ListViewProtocol {
+    //луче убрать оно не mvvm
+}

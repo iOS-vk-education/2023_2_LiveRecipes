@@ -56,6 +56,8 @@
 		C0EA6CC12BB85AED00995C49 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0EA6C932BB85AED00995C49 /* Preview Assets.xcassets */; };
 		C0EA6CC42BB85B1500995C49 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C0EA6CC32BB85B1500995C49 /* Alamofire */; };
 		C0EA6CC92BB85B3C00995C49 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = C0EA6CC82BB85B3C00995C49 /* Swinject */; };
+		D0596F942BC7FC3B00A1BF50 /* LiveRecipesDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0596F922BC7FC3B00A1BF50 /* LiveRecipesDB.xcdatamodeld */; };
+		D0596F962BC7FCA200A1BF50 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0596F952BC7FCA200A1BF50 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +129,8 @@
 		C0EA6C902BB85AEC00995C49 /* ListAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListAssembly.swift; sourceTree = "<group>"; };
 		C0EA6C912BB85AED00995C49 /* LiveRecipesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveRecipesView.swift; sourceTree = "<group>"; };
 		C0EA6C932BB85AED00995C49 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D0596F932BC7FC3B00A1BF50 /* LiveRecipesDB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LiveRecipesDB.xcdatamodel; sourceTree = "<group>"; };
+		D0596F952BC7FCA200A1BF50 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +183,7 @@
 		C0EA6C262BB85A9100995C49 /* LiveRecipes */ = {
 			isa = PBXGroup;
 			children = (
+				D0596F912BC7FBB800A1BF50 /* DB */,
 				C0EA6C642BB85AEC00995C49 /* ApplicationViewBuilder.swift */,
 				C0EA6C6A2BB85AEC00995C49 /* Assets.xcassets */,
 				C0EA6C652BB85AEC00995C49 /* Common */,
@@ -357,6 +362,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		D0596F912BC7FBB800A1BF50 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				D0596F922BC7FC3B00A1BF50 /* LiveRecipesDB.xcdatamodeld */,
+				D0596F952BC7FCA200A1BF50 /* CoreDataManager.swift */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -519,6 +533,7 @@
 				C0EA6CAB2BB85AED00995C49 /* FavoritesViewModel.swift in Sources */,
 				C0EA6C972BB85AED00995C49 /* BaseAPI.swift in Sources */,
 				C0EA6CB92BB85AED00995C49 /* RecipeCardView.swift in Sources */,
+				D0596F962BC7FCA200A1BF50 /* CoreDataManager.swift in Sources */,
 				C0EA6CBD2BB85AED00995C49 /* ListProtocols.swift in Sources */,
 				C0EA6CA42BB85AED00995C49 /* LiveRecipesApp.swift in Sources */,
 				C0EA6CB02BB85AED00995C49 /* CreationAssembly.swift in Sources */,
@@ -532,6 +547,7 @@
 				C0EA6CB82BB85AED00995C49 /* RecipesView.swift in Sources */,
 				C0EA6C9A2BB85AED00995C49 /* NavigationTabs.swift in Sources */,
 				C0EA6CA92BB85AED00995C49 /* CookingAssembly.swift in Sources */,
+				D0596F942BC7FC3B00A1BF50 /* LiveRecipesDB.xcdatamodeld in Sources */,
 				C0EA6CB52BB85AED00995C49 /* RecipesAssembly.swift in Sources */,
 				C0EA6CB22BB85AED00995C49 /* CreationViewModel.swift in Sources */,
 				C0EA6CAF2BB85AED00995C49 /* FavoritesModel.swift in Sources */,
@@ -904,6 +920,19 @@
 			productName = Swinject;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		D0596F922BC7FC3B00A1BF50 /* LiveRecipesDB.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D0596F932BC7FC3B00A1BF50 /* LiveRecipesDB.xcdatamodel */,
+			);
+			currentVersion = D0596F932BC7FC3B00A1BF50 /* LiveRecipesDB.xcdatamodel */;
+			path = LiveRecipesDB.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C0EA6C1C2BB85A9100995C49 /* Project object */;
 }
