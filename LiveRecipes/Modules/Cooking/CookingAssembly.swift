@@ -14,7 +14,7 @@ final class CookingAssembly: Assembly {
         let viewModel = CookingViewModel(cookingModel: model)
 
         container.register(CookingView.self) { _ in
-            return CookingView(viewState: viewModel)
+            return CookingView(viewModel: viewModel)
         }
     }
 }

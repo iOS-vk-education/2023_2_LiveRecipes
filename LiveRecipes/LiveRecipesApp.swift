@@ -22,7 +22,8 @@ extension Assembler {
                 RecipesAssembly(),
                 CookingAssembly(),
                 FavoritesAssembly(),
-                ListAssembly()
+                ListAssembly(),
+                OneDishAssembly()
             ], container: Container.sharedContainer
         )
     }()
