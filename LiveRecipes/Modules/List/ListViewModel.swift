@@ -26,13 +26,13 @@ final class ListViewModel: ObservableObject, ListViewModelProtocol {
         self.model = recipesModel
         let recipes = CoreDataManager.shared.fetch(request: ListRecipeEntity.fetchRequest())
         let countRecipes = CoreDataManager.shared.count(request: ListRecipeEntity.fetchRequest())
-        print("\n\nCount objects: \(countRecipes)\n")
+        //print("\n\nCount objects: \(countRecipes)\n")
         let recipeItems = CoreDataManager.shared.fetch(request: ListRecipeItemEntity.fetchRequest())
         let countRecipeItems = CoreDataManager.shared.count(request: ListRecipeItemEntity.fetchRequest())
         print("\n\nCount objects: \(countRecipeItems)\n")
         recipeItems.forEach { item in
-            let resultStr = "\(item.parentId) \(item.id) \(item.title)\n"
-            print(resultStr)
+            //let resultStr = "\(item.parentId) \(item.id) \(item.title)\n"
+            //print(resultStr)
         }
         recipes.forEach { recipe in
             let resultStr = "\(recipe.id) \(recipe.title)\n"
@@ -43,7 +43,7 @@ final class ListViewModel: ObservableObject, ListViewModelProtocol {
               recipeItemsForRecipe.append(ListRecipeItem(id: Int(item.id), title: item.title))
           }
           recipesList.append(ListRecipe(id: Int(recipe.id), title: recipe.title, items: recipeItemsForRecipe))
-          print(resultStr)
+          //print(resultStr)
             
         }
 

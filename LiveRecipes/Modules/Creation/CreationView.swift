@@ -169,6 +169,15 @@ struct CreationView: View {
                     HStack {
                         Button(action: {
                             print("creation.button.save".localized)
+                            viewState.createDish(
+                                textTitle: textTitle,
+                                textDescription: textDescription,
+                                timeToPrepare: 0,
+                                textButritionalValueCalories: textButritionalValueCalories,
+                                textButritionalValueProteins: textButritionalValueProteins,
+                                textButritionalValueFats: textButritionalValueFats,
+                                textButritionalValueCarbohydrates: textButritionalValueCarbohydrates,
+                                image: image)
                         }) {
                             Text("creation.button.save".localized)
                             //.foregroundColor(.white)

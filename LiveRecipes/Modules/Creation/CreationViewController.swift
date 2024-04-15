@@ -28,11 +28,7 @@ class CreationViewController: UIViewController {
         label.text = "!"
         return label
     }()*/
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        view.backgroundColor = .red
-    }
+    
     
 
 }
