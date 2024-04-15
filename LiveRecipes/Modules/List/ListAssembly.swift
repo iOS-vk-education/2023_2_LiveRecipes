@@ -16,5 +16,6 @@ final class ListAssembly: Assembly {
         container.register(ListView.self) { _ in
             return ListView(viewState: viewModel)
         }
+        
     }
 }
