@@ -16,6 +16,6 @@ final class CookingViewModel: ObservableObject, CookingViewModelProtocol {
     }
     
     func findSteps() {
-        //self.steps = [["image": "step1", "description": "Описание шага 1"], ["image": "step2", "description": "Описание шага 2"]]
+        self.steps = [["image": "step1", "description": "Описание шага 1"], ["image": "step2", "description": "Описание шага 2"]]
     }
 }

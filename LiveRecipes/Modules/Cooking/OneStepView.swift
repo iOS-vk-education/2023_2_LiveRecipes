@@ -59,7 +59,7 @@ struct OneStepView: View {
 struct TimerView: View {
     @State var isTimerRunning = false
     @State private var progress: Int = 0
-    let totalTime: Int = 5
+    let totalTime: Int = 30
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     
@@ -103,6 +103,7 @@ struct TimerView: View {
                             if progress < totalTime {
                                 progress += 1
                             } else {
+                                
                                 isTimerRunning = false
                             }
                         }
