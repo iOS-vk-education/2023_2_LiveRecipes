@@ -240,7 +240,7 @@ struct RecipesView: View {
             GeometryReader {proxy in
                 HStack(spacing: (proxy.size.width - 320 - 12)/5) {
                     VStack {
-                        Image("cesar")
+                        Image("caesar")
                             .resizable()
                             .scaledToFill()
                             .frame(width: 80, height: 80)
@@ -251,7 +251,7 @@ struct RecipesView: View {
                             .font(.caption)
                     }
                     VStack {
-                        Image("cesar")
+                        Image("caesar")
                             .resizable()
                             .scaledToFill()
                             .frame(width: 80, height: 80)
@@ -262,7 +262,7 @@ struct RecipesView: View {
                             .font(.caption)
                     }
                     VStack {
-                        Image("cesar")
+                        Image("caesar")
                             .resizable()
                             .scaledToFill()
                             .frame(width: 80, height: 80)
@@ -273,7 +273,7 @@ struct RecipesView: View {
                             .font(.caption)
                     }
                     VStack {
-                        Image("cesar")
+                        Image("caesar")
                             .resizable()
                             .scaledToFill()
                             .frame(width: 80, height: 80)

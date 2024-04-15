@@ -96,28 +96,28 @@ final class RecipesModel: ObservableObject, RecipesModelProtocol {
 
     func loadAllRecipes() -> [Recipe] {
         return [
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "cesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "cesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "cesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "cesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "cesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "cesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "cesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "cesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "cesar")
+            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
+            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
+            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
+            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
+            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
+            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
+            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
+            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
+            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar")
         ]
     }
 
     func loadRecentRecipes() -> [Recipe] {
         return [
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "cesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "cesar"),
+            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
+            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
         ]
     }
 
     func loadMyRecipes() -> [Recipe] {
         return [
-//            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "cesar")
+//            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar")
         ]
     }
 }
