@@ -6,5 +6,8 @@
 //
 
 import Foundation
+import CoreData
 
-final class ListModel: ObservableObject, ListModelProtocol {}
+final class ListModel: ObservableObject, ListModelProtocol {
+    
+}

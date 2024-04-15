@@ -34,6 +34,7 @@ class RootApp: App {
     @ObservedObject var appViewBuilder: ApplicationViewBuilder
 
     required init() {
+        CoreDataManager.shared.prepareCoreDataIfNeeded {}
         self.appViewBuilder = ApplicationViewBuilder()
     }
 
