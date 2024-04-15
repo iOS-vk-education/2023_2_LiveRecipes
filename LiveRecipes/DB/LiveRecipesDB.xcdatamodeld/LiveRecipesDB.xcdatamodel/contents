@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23E224" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="CreationRecipeCompositionEntity" representedClassName=".CreationRecipeCompositionEntity" syncable="YES">
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="product" attributeType="String"/>
+        <attribute name="quantity" attributeType="String"/>
+    </entity>
+    <entity name="CreationRecipeEntity" representedClassName=".CreationRecipeEntity" syncable="YES">
+        <attribute name="dishDescription" optional="YES" attributeType="String"/>
+        <attribute name="dishTitle" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nutritionValueCal" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nutritionValueCarb" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nutritionValueFats" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nutritionValueProt" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="photoRef" optional="YES" attributeType="String"/>
+        <attribute name="timeToPrepare" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="CreationRecipeStepEntity" representedClassName=".CreationRecipeStepEntity" syncable="YES">
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="photoRef" optional="YES" attributeType="String"/>
+        <attribute name="stepDescription" attributeType="String"/>
+        <attribute name="stepTittle" attributeType="String"/>
+    </entity>
     <entity name="ListRecipeEntity" representedClassName=".ListRecipeEntity" syncable="YES">
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title" attributeType="String" defaultValueString=""/>

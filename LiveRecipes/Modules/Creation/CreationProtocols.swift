@@ -12,6 +12,9 @@ protocol CreationViewModelProtocol {
     func deleteDishComposition(index: Int)
 }
 
-protocol CreationModelProtocol {}
+protocol CreationModelProtocol {
+    func showRecipesInDB()
+    func createRecipy(dish: Dish, completion: @escaping() -> Void)
+}
 
 protocol CreationViewProtocol {}

@@ -8,28 +8,6 @@
 //import Foundation
 import SwiftUI
 
-struct Dish: Identifiable {
-    var id: Int
-    var title: String
-    var description: String
-    var photo: UIImage?
-    var timeToPrepare: Int
-    var nutritionValue: (Int, Int, Int, Int)
-    var dishComposition: [DishComposition]
-    var dishSteps: [DishStep]
-}
-struct DishComposition: Identifiable {
-    var id: Int
-    var product: String
-    var quantity: String
-}
-struct DishStep: Identifiable {
-    var id: Int
-    var title: String
-    var description: String
-    var photo: UIImage?
-}
-
 final class CreationViewModel: ObservableObject, CreationViewModelProtocol {
     
     var model: CreationModelProtocol
@@ -48,6 +26,7 @@ final class CreationViewModel: ObservableObject, CreationViewModelProtocol {
 
     init(creationModel: CreationModelProtocol) {
         self.model = creationModel
+        model.showRecipesInDB()
     }
     func addDishComposition(product: String, quantity: String) {
         if let maxIdComposition = dishComposition.max(by: { $0.id < $1.id }) {
@@ -87,6 +66,24 @@ final class CreationViewModel: ObservableObject, CreationViewModelProtocol {
     func deleteStepComposition(index: Int) {
         if index >= 0 && index < dishSteps.count {
             dishSteps.remove(at: index)
+        }
+    }
+    func createDish(textTitle: String,
+                    textDescription: String,
+                    timeToPrepare: Int,
+                    textButritionalValueCalories: String,
+                    textButritionalValueProteins: String,
+                    textButritionalValueFats: String,
+                    textButritionalValueCarbohydrates: String,
+                    image: UIImage?) {
+        let nutritionValue = (Int(textButritionalValueCalories) ?? 0,
+                              Int(textButritionalValueProteins) ?? 0,
+                              Int(textButritionalValueFats) ?? 0,
+                              Int(textButritionalValueCarbohydrates) ?? 0)
+        let dish = Dish(id: nil, title: textTitle, description: textDescription, photo: image, timeToPrepare: timeToPrepare, nutritionValue: nutritionValue, dishComposition: [], dishSteps: [])
+        model.createRecipy(dish: dish) {
+            print("dish created")
+            self.model.showRecipesInDB()
         }
     }
 }
