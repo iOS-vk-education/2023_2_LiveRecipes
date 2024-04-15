@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		745DA4D12BB862B300BE4C5D /* OneDishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745DA4D02BB862B300BE4C5D /* OneDishView.swift */; };
+		745DA4D32BB862BF00BE4C5D /* OneDishModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745DA4D22BB862BF00BE4C5D /* OneDishModel.swift */; };
+		745DA4D52BB862C800BE4C5D /* OneDishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745DA4D42BB862C800BE4C5D /* OneDishViewModel.swift */; };
+		745DA4D72BB862D500BE4C5D /* OneDishAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745DA4D62BB862D500BE4C5D /* OneDishAssembly.swift */; };
+		745DA4D92BB862EC00BE4C5D /* OneDishProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745DA4D82BB862EC00BE4C5D /* OneDishProtocols.swift */; };
+		745DA4DB2BC889DD00BE4C5D /* OneStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745DA4DA2BC889DD00BE4C5D /* OneStepView.swift */; };
 		C0EA6C3E2BB85A9200995C49 /* LiveRecipesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA6C3D2BB85A9200995C49 /* LiveRecipesTests.swift */; };
 		C0EA6C482BB85A9200995C49 /* LiveRecipesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA6C472BB85A9200995C49 /* LiveRecipesUITests.swift */; };
 		C0EA6C4A2BB85A9200995C49 /* LiveRecipesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA6C492BB85A9200995C49 /* LiveRecipesUITestsLaunchTests.swift */; };
@@ -76,6 +82,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		745DA4D02BB862B300BE4C5D /* OneDishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDishView.swift; sourceTree = "<group>"; };
+		745DA4D22BB862BF00BE4C5D /* OneDishModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDishModel.swift; sourceTree = "<group>"; };
+		745DA4D42BB862C800BE4C5D /* OneDishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDishViewModel.swift; sourceTree = "<group>"; };
+		745DA4D62BB862D500BE4C5D /* OneDishAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDishAssembly.swift; sourceTree = "<group>"; };
+		745DA4D82BB862EC00BE4C5D /* OneDishProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDishProtocols.swift; sourceTree = "<group>"; };
+		745DA4DA2BC889DD00BE4C5D /* OneStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneStepView.swift; sourceTree = "<group>"; };
 		C0EA6C242BB85A9100995C49 /* LiveRecipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveRecipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0EA6C392BB85A9200995C49 /* LiveRecipesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiveRecipesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0EA6C3D2BB85A9200995C49 /* LiveRecipesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveRecipesTests.swift; sourceTree = "<group>"; };
@@ -156,6 +168,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		745DA4CF2BB862A400BE4C5D /* OneDish */ = {
+			isa = PBXGroup;
+			children = (
+				745DA4D02BB862B300BE4C5D /* OneDishView.swift */,
+				745DA4D22BB862BF00BE4C5D /* OneDishModel.swift */,
+				745DA4D42BB862C800BE4C5D /* OneDishViewModel.swift */,
+				745DA4D62BB862D500BE4C5D /* OneDishAssembly.swift */,
+				745DA4D82BB862EC00BE4C5D /* OneDishProtocols.swift */,
+			);
+			path = OneDish;
+			sourceTree = "<group>";
+		};
 		C0EA6C1B2BB85A9100995C49 = {
 			isa = PBXGroup;
 			children = (
@@ -271,6 +295,7 @@
 		C0EA6C702BB85AEC00995C49 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				745DA4CF2BB862A400BE4C5D /* OneDish */,
 				C0EA6C712BB85AEC00995C49 /* Cooking */,
 				C0EA6C772BB85AEC00995C49 /* Favorites */,
 				C0EA6C7D2BB85AEC00995C49 /* Creation */,
@@ -288,6 +313,7 @@
 				C0EA6C742BB85AEC00995C49 /* CookingProtocols.swift */,
 				C0EA6C752BB85AEC00995C49 /* CookingAssembly.swift */,
 				C0EA6C762BB85AEC00995C49 /* CookingModel.swift */,
+				745DA4DA2BC889DD00BE4C5D /* OneStepView.swift */,
 			);
 			path = Cooking;
 			sourceTree = "<group>";
@@ -501,8 +527,10 @@
 				C0EA6CBB2BB85AED00995C49 /* ListModel.swift in Sources */,
 				C0EA6CB62BB85AED00995C49 /* RecipesModel.swift in Sources */,
 				C0EA6C982BB85AED00995C49 /* NetworkService.swift in Sources */,
+				745DA4DB2BC889DD00BE4C5D /* OneStepView.swift in Sources */,
 				C0EA6C962BB85AED00995C49 /* RecipeDTO.swift in Sources */,
 				C0EA6CA62BB85AED00995C49 /* CookingView.swift in Sources */,
+				745DA4D32BB862BF00BE4C5D /* OneDishModel.swift in Sources */,
 				C0EA6C9C2BB85AED00995C49 /* ApplicationViewBuilder.swift in Sources */,
 				C0EA6CAD2BB85AED00995C49 /* FavoritesAssembly.swift in Sources */,
 				C0EA6CA72BB85AED00995C49 /* CookingViewModel.swift in Sources */,
@@ -514,14 +542,18 @@
 				C0EA6C992BB85AED00995C49 /* NetworkAssembly.swift in Sources */,
 				C0EA6C9F2BB85AED00995C49 /* RouterProtocol.swift in Sources */,
 				C0EA6CBF2BB85AED00995C49 /* ListAssembly.swift in Sources */,
+				745DA4D72BB862D500BE4C5D /* OneDishAssembly.swift in Sources */,
 				C0EA6CAC2BB85AED00995C49 /* FavoritesView.swift in Sources */,
 				C0EA6CB42BB85AED00995C49 /* CreationModel.swift in Sources */,
 				C0EA6CAB2BB85AED00995C49 /* FavoritesViewModel.swift in Sources */,
 				C0EA6C972BB85AED00995C49 /* BaseAPI.swift in Sources */,
 				C0EA6CB92BB85AED00995C49 /* RecipeCardView.swift in Sources */,
+				745DA4D52BB862C800BE4C5D /* OneDishViewModel.swift in Sources */,
 				C0EA6CBD2BB85AED00995C49 /* ListProtocols.swift in Sources */,
 				C0EA6CA42BB85AED00995C49 /* LiveRecipesApp.swift in Sources */,
 				C0EA6CB02BB85AED00995C49 /* CreationAssembly.swift in Sources */,
+				745DA4D92BB862EC00BE4C5D /* OneDishProtocols.swift in Sources */,
+				745DA4D12BB862B300BE4C5D /* OneDishView.swift in Sources */,
 				C0EA6C9E2BB85AED00995C49 /* ViewStateProtocol.swift in Sources */,
 				C0EA6CBA2BB85AED00995C49 /* RecipesProtocols.swift in Sources */,
 				C0EA6CB12BB85AED00995C49 /* CreationProtocols.swift in Sources */,
