@@ -118,10 +118,7 @@ struct OneDishView: View {
                         Text("Соус для салата «Цезарь» был придуман почти 100 лет назад в Америке. Когда посетители ресторана съели все приготовленные блюда и требовали еще, хозяину ничего другого не оставалось, как собрать все оставшиеся продукты в один салат и добавить к нему тот самый соус. Классический соус для салата «Цезарь» довольно-таки непрост в приготовлении. Вариаций приготовления много. Например, в нашем рецепте салата «Цезарь» с курицей в основе заправки — вустерширский соус, яичные желтки и горчица.")
                         //Text("oneDish.caesar.description")
                         
-                        
                     }
-                    
-                    
                 }
                 .padding()
                 
@@ -140,42 +137,11 @@ struct OneDishView: View {
                             Image(systemName: "arrow.right")
                                 .foregroundStyle(.white)
                         }
-                    
-                    
-                    
                 }.buttonStyle(.borderedProminent)
                     .tint(.orange)
                     .opacity(1)
                     .padding()
-                
-                    
-                        
-                    
-                    
-                
 
-                
-//                Button(action: {
-//                    print("jsnjs")
-//                }) {
-//                    
-//                    Image(systemName: "oven.fill")
-//                        .foregroundColor(.white)
-//                    Text("К приготовлению")
-//                        .frame(width: 150, height: 35)
-//                    Image(systemName: "arrow.right")
-//                    
-//                }.buttonStyle(.borderedProminent)
-//                    .tint(.orange)
-//                    .opacity(1)
-//                Spacer()
-                
-                
-            
         }.navigationTitle("Цезарь")
-            
-            
-            
-            
     }
 }

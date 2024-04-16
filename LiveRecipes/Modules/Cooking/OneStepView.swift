@@ -14,7 +14,6 @@ struct OneStepView: View {
     var stepNumber: Int
     
     var body: some View {
-        let _ = print(viewModel.steps)
             ScrollView {
                 HStack() {
                     Text("Цезарь с креветками")
@@ -62,16 +61,14 @@ struct TimerView: View {
     let totalTime: Int = 30
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
-    
     var minutesAndSeconds: (Int,Int, Int) {
         let hours = progress / 3600
         let minutes = progress / 60
         let seconds = progress % 60
-        return (hours, minutes, seconds)
         
+        return (hours, minutes, seconds)
     }
 
-    
     var body: some View {
         let (hours, minutes, seconds) = minutesAndSeconds
         VStack {
@@ -92,12 +89,10 @@ struct TimerView: View {
                     .progressViewStyle(CustomProgressViewStyle(progress: $progress))
                 
                 Text(hours == 0 ? "\(minutes)m:\(seconds)s" : "\(hours)h:\(minutes)m:\(seconds)s")
-               
                     .foregroundColor(.black)
                     .font(.system(size: 19, weight: .semibold))
                     .padding(.top, 2)
-                
-                
+            
                     .onReceive(timer) { _ in
                         if isTimerRunning {
                             if progress < totalTime {
@@ -107,7 +102,6 @@ struct TimerView: View {
                                 isTimerRunning = false
                             }
                         }
-                        
                     }
             }
             .padding(.init(top: 0, leading: 8, bottom: 16, trailing: 8))
@@ -117,29 +111,21 @@ struct TimerView: View {
     }
 }
 
-
 struct CustomProgressViewStyle: ProgressViewStyle {
     @Binding var progress: Int
     func makeBody(configuration: Configuration) -> some View {
         GeometryReader { geometry in
-            
             ZStack(alignment: .leading) {
-                
                 RoundedRectangle(cornerRadius: 15)
-                    
                     .foregroundColor(Color(UIColor.white).opacity(1))
                     .frame(width: geometry.size.width, height: 30)
                     .overlay(alignment: .leading){
-                        
                         
                         RoundedRectangle(cornerRadius: 15)
                             .foregroundColor(.orange)
                             .frame(width: configuration.fractionCompleted.map { $0 * geometry.size.width }, height: 30)
                             .animation(.linear, value: progress)
                     }
-                
-                
-
             }
         }
     }
