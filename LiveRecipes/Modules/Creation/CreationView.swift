@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct CreationView: View {
     @StateObject var viewState: CreationViewModel
@@ -17,6 +18,10 @@ struct CreationView: View {
     @State private var textButritionalValueCarbohydrates = ""
     @State private var textNewProduct = ""
     @State private var textNewQuantity = ""
+    @State private var selectedTime: Date = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date()) ?? Date()
+    @State private var hours: Int = 0
+    @State private var minutes: Int = 0
+    @State private var isTimeOpen = false
     @State private var dishStep: DishStep? = nil {
         didSet {
             print("is changed")
@@ -59,38 +64,35 @@ struct CreationView: View {
                         ImagePicker(image: $image, isImagePickerOn: $isImagePickerOn)
                     }
                 }
-                Section(header: Text("creation.label.timeToPrepare".localized)) {
-                    HStack {
-                    }
-                }
+                timeView()
                 Section(header: Text("creation.label.nutritionalValue".localized)) {
                     HStack {
                         Text("creation.nutritionalValue.calories".localized)
                             .foregroundColor(Color(.black))
                             .frame(width: 170, alignment: .leading)
                         TextField("", text: $textButritionalValueCalories)
-                            .foregroundColor(Color(.gray))
+                            .foregroundColor(Color.secondary)
                     }
                     HStack {
                         Text("creation.nutritionalValue.proteins".localized)
                             .foregroundColor(Color(.black))
                             .frame(width: 170, alignment: .leading)
                         TextField("", text: $textButritionalValueProteins)
-                            .foregroundColor(Color(.gray))
+                            .foregroundColor(Color.secondary)
                     }
                     HStack {
                         Text("creation.nutritionalValue.fats".localized)
                             .foregroundColor(Color(.black))
                             .frame(width: 170, alignment: .leading)
                         TextField("", text: $textButritionalValueFats)
-                            .foregroundColor(Color(.gray))
+                            .foregroundColor(Color.secondary)
                     }
                     HStack {
                         Text("creation.nutritionalValue.carbohydrates".localized)
                             .foregroundColor(Color(.black))
                             .frame(width: 170, alignment: .leading)
                         TextField("", text: $textButritionalValueCarbohydrates)
-                            .foregroundColor(Color(.gray))
+                            .foregroundColor(Color.secondary)
                     }
                 }
                 Section(header: 
@@ -109,7 +111,7 @@ struct CreationView: View {
                             TextField("creation.placeholder.product".localized, text: $viewState.dishComposition[index].product)
                                 .foregroundColor(Color(.black))
                             TextField("creation.placeholder.quantity".localized, text: $viewState.dishComposition[index].quantity)
-                                .foregroundColor(Color(.gray))
+                                .foregroundColor(Color.secondary)
                         }
                     }
                     .onDelete(perform: { indexSet in
@@ -165,36 +167,7 @@ struct CreationView: View {
                         })
                     }
                 }
-                Section {
-                    HStack {
-                        Button(action: {
-                            print("creation.button.save".localized)
-                            viewState.createDish(
-                                textTitle: textTitle,
-                                textDescription: textDescription,
-                                timeToPrepare: 0,
-                                textButritionalValueCalories: textButritionalValueCalories,
-                                textButritionalValueProteins: textButritionalValueProteins,
-                                textButritionalValueFats: textButritionalValueFats,
-                                textButritionalValueCarbohydrates: textButritionalValueCarbohydrates,
-                                image: image)
-                        }) {
-                            Text("creation.button.save".localized)
-                            //.foregroundColor(.white)
-                            .foregroundColor(Color.orange)
-                            //.background(Color.orange)
-                            .cornerRadius(12)
-                            .frame(maxWidth: .infinity)
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                        .frame(maxWidth: .infinity)
-                        .listRowInsets(EdgeInsets())
-                        //.listRowBackground(Color.clear)
-                        .animation(.easeInOut, value: 0.2)
-                        //.background(Color.orange)
-                    }
-                }
-                
+                buttonView()
             }
             
         }
@@ -202,6 +175,95 @@ struct CreationView: View {
         .toolbarBackground(.visible, for: .navigationBar)
         .navigationBarTitleDisplayMode(.inline)
         
+    }
+    @ViewBuilder
+    func buttonView() -> some View {
+        Section {
+            HStack {
+                Button(action: {
+                    print("creation.button.save".localized)
+                    viewState.createDish(
+                        textTitle: textTitle,
+                        textDescription: textDescription,
+                        timeToPrepare: 0,
+                        textButritionalValueCalories: textButritionalValueCalories,
+                        textButritionalValueProteins: textButritionalValueProteins,
+                        textButritionalValueFats: textButritionalValueFats,
+                        textButritionalValueCarbohydrates: textButritionalValueCarbohydrates,
+                        image: image)
+                }) {
+                    Text("creation.button.save".localized)
+                    .foregroundColor(.white)
+                    .background(Color.orange)
+                    .cornerRadius(12)
+                    .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(PlainButtonStyle())
+                .frame(maxWidth: .infinity)
+                .animation(.easeInOut, value: 0.2)
+            }
+        }
+        .listRowInsets(EdgeInsets())
+        .listRowBackground(Color.orange)
+    }
+    @ViewBuilder
+    func timeView() -> some View {
+        Section(header: Text("creation.label.timeToPrepare".localized)) {
+            if isTimeOpen {
+                HStack {
+                    DatePicker("", selection: $selectedTime, displayedComponents: .hourAndMinute)
+                        .datePickerStyle(WheelDatePickerStyle())
+                }
+                .onReceive(Just(selectedTime)) { _ in
+                    let calendar = Calendar.current
+                    let components = calendar.dateComponents([.hour, .minute], from: selectedTime)
+                    hours = components.hour ?? 0
+                    minutes = components.minute ?? 0
+                }
+            } else {
+                HStack {
+                    Button(action: {
+                        isTimeOpen = true
+                    }) {
+                        let initialTime = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date()) ?? Date()
+                        let isTimeSet = (selectedTime == initialTime)
+                        let hoursString = String(format: "%02d", hours)
+                        let minutesString = String(format: "%02d", minutes)
+                        Text(isTimeSet ? "creation.button.setTime".localized : "\(hoursString) \("creation.button.hours".localized) \(minutesString) \("creation.button.minutes".localized)")
+                            .foregroundColor(isTimeSet ? Color.orange : Color.secondary)
+                            .font(isTimeSet ? .system(.body) : .system(size: 18))
+                            .cornerRadius(12)
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    .frame(maxWidth: .infinity)
+                    .animation(.easeInOut, value: 0.2)
+                        
+                }
+            }
+        }
+        if isTimeOpen {
+            Section {
+                HStack {
+                    Button(action: {
+                        print("creation.button.saveTime".localized)
+                        isTimeOpen = false
+                    }) {
+                        Text("creation.button.saveTime".localized)
+                            .foregroundColor(.white)
+                            .background(Color.orange)
+                            .cornerRadius(12)
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    .frame(maxWidth: .infinity)
+                    .animation(.easeInOut, value: 0.2)
+                }
+                .background(Color.orange)
+            }
+            .listRowInsets(EdgeInsets())
+            .listRowBackground(Color.orange)
+        }
     }
 }
 

@@ -398,6 +398,7 @@
 		C0EA6C7D2BB85AEC00995C49 /* Creation */ = {
 			isa = PBXGroup;
 			children = (
+				D070FB622BCEFF4C009EE042 /* Components */,
 				D02D7F0E2BCDB5FB0056DC33 /* Dish.swift */,
 				D02D7F112BCDB6200056DC33 /* DishComposition.swift */,
 				D02D7F132BCDB6390056DC33 /* DishStep.swift */,
@@ -538,6 +539,13 @@
 				D0596FAB2BC8633F00A1BF50 /* SettingsModel.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		D070FB622BCEFF4C009EE042 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

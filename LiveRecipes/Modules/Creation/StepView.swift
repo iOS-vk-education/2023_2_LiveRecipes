@@ -24,16 +24,13 @@ struct StepView: View {
                     .onTapGesture {
                         closeModal()
                     }
-                    //.background(Color.red)
                 Text(dishStep.title)
                     .frame(maxWidth: .infinity)
-                    //.background(Color.green)
                 Image(systemName: "xmark.circle.fill")
                     .onTapGesture {
                         closeModal()
                     }
                     .padding(EdgeInsets(top: 0, leading: 60, bottom: 0, trailing: 0))
-                    //.background(Color.yellow)
             }
             .padding()
             List {
@@ -69,28 +66,32 @@ struct StepView: View {
                 }
                 Section {
                     HStack {
-                        Button(action: {
-                            print("creation.button.save".localized)
-                            creationViewModel.editStepComposition(id: dishStep.id, title: textTitle, description: textDescription, photo: nil)
-                            closeModal()
-                        }) {
-                            Text("creation.button.save".localized)
-                                //.foregroundColor(.white)
-                                .foregroundColor(Color.orange)
-                                //.background(Color.orange)
-                                .cornerRadius(12)
-                                .frame(maxWidth: .infinity)
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                        .frame(maxWidth: .infinity)
-                        .listRowInsets(EdgeInsets())
-                        //.listRowBackground(Color.clear)
-                        .animation(.easeInOut, value: 0.2)
-                        //.background(Color.orange)
+                        buttonView()
                     }
                 }
+                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                .listRowBackground(Color.orange)
             }
         }
+    }
+    @ViewBuilder
+    func buttonView() -> some View {
+        Button(action: {
+            print("creation.button.save".localized)
+            
+        }) {
+            Text("creation.button.save".localized)
+            .foregroundColor(.white)
+            .background(Color.orange)
+            .cornerRadius(12)
+            .frame(maxWidth: .infinity)
+        }
+        .buttonStyle(PlainButtonStyle())
+        .frame(maxWidth: .infinity)
+        .animation(.easeInOut, value: 0.2)
+    }
+    private func saveStep() -> Bool {
+        return true
     }
     private func closeModal() {
         self.presentation.wrappedValue.dismiss()
