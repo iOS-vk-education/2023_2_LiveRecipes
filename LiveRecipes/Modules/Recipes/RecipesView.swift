@@ -56,7 +56,7 @@ struct RecipesView: View {
     @State private var searchText = ""
     @State private var isSearching = ""
     @State var modalKeyWordsIsOpen: Bool = false
-    @State var modalFiltersIsOpen: Bool = false
+    
     
     var body: some View {
         NavigationView {
@@ -75,13 +75,18 @@ struct RecipesView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     HStack (spacing: 4) {
-                        Button("", systemImage: "gear") {
-                            print("hello")
-                        }
+//                        Button("", systemImage: "gear") {
+                            NavigationLink (destination: {
+                                Assembler.sharedAssembly
+                                    .resolver
+                                    .resolve(SettingsView.self)
+                            }, label: {Image(systemName: "gear")})
+
+//                        }
                         Button("", systemImage: "slider.horizontal.2.square") {
-                            modalFiltersIsOpen = true
+                            viewModel.modalFiltersIsOpen = true
                         }
-                        .sheet(isPresented: $modalFiltersIsOpen) {
+                        .sheet(isPresented: $viewModel.modalFiltersIsOpen) {
                             Assembler.sharedAssembly
                                 .resolver
                                 .resolve(FiltersView.self)
@@ -178,45 +183,7 @@ struct RecipesView: View {
                 ScrollView(.horizontal) {
                     LazyHStack(spacing: 12) {
                         ForEach (viewModel.allRecipes) { recipie in
-                            VStack (spacing: 0) {
-                                Image(recipie.image)
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 220, height: 100)
-                                    .clipped()
-                                VStack (spacing: 2) {
-                                    HStack (spacing: 3) {
-                                        Text(recipie.name)
-                                            .fontWeight(.medium)
-                                            .font(.system(size: 9))
-                                        Spacer()
-                                        Image(systemName: "clock")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 7, height: 7)
-                                            .tint(.secondary)
-                                        Text(recipie.time + " мин")
-                                            .font(.system(size: 8))
-                                    }
-                                    .padding(.horizontal, 8)
-                                    HStack {
-                                        Text(recipie.cathegory)
-                                            .fontWeight(.light)
-                                            .foregroundStyle(Color(uiColor: .darkGray))
-                                            .font(.system(size: 8))
-                                        Spacer()
-                                        Text(recipie.isInFavorites ? "В избранном" : "Добавить в избранное")
-                                            .foregroundStyle(recipie.isInFavorites ? Color.yellow : Color.blue)
-                                            .font(.system(size: 8))
-                                            .fontWeight(.light)
-                                    }
-                                    .padding(.horizontal, 8)
-                                }
-                                .frame(width: 220, height: 35)
-                            }
-                            .frame(width: 220, height: 135)
-                            .background(Color(UIColor.secondarySystemBackground))
-                            .clipShape(.rect(cornerRadius: 8))
+                            RecipeCardView(recipe: recipie)
                         }
                     }
                 }
@@ -313,45 +280,7 @@ struct RecipesView: View {
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 12) {
                     ForEach (viewModel.recentRecipes) { recipe in
-                        VStack (spacing: 0) {
-                            Image(recipe.image)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 220, height: 100)
-                                .clipped()
-                            VStack (spacing: 2) {
-                                HStack (spacing: 3) {
-                                    Text(recipe.name)
-                                        .fontWeight(.medium)
-                                        .font(.system(size: 9))
-                                    Spacer()
-                                    Image(systemName: "clock")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 7, height: 7)
-                                        .tint(.secondary)
-                                    Text(recipe.time + " мин")
-                                        .font(.system(size: 8))
-                                }
-                                .padding(.horizontal, 8)
-                                HStack {
-                                    Text(recipe.cathegory)
-                                        .fontWeight(.light)
-                                        .foregroundStyle(Color(uiColor: .darkGray))
-                                        .font(.system(size: 8))
-                                    Spacer()
-                                    Text(recipe.isInFavorites ? "В избранном" : "Добавить в избранное")
-                                        .foregroundStyle(recipe.isInFavorites ? Color.yellow : Color.blue)
-                                        .font(.system(size: 8))
-                                        .fontWeight(.light)
-                                }
-                                .padding(.horizontal, 8)
-                            }
-                            .frame(width: 220, height: 35)
-                        }
-                        .frame(width: 220, height: 135)
-                        .background(Color(UIColor.secondarySystemBackground))
-                        .clipShape(.rect(cornerRadius: 8))
+                        RecipeCardView(recipe: recipe)
                     }
                 }
             }
@@ -385,45 +314,7 @@ struct RecipesView: View {
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 12) {
                     ForEach (viewModel.myRecipes) { recipe in
-                        VStack (spacing: 0) {
-                            Image(recipe.image)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 220, height: 100)
-                                .clipped()
-                            VStack (spacing: 2) {
-                                HStack (spacing: 3) {
-                                    Text(recipe.name)
-                                        .fontWeight(.medium)
-                                        .font(.system(size: 9))
-                                    Spacer()
-                                    Image(systemName: "clock")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 7, height: 7)
-                                        .tint(.secondary)
-                                    Text(recipe.time + " мин")
-                                        .font(.system(size: 8))
-                                }
-                                .padding(.horizontal, 8)
-                                HStack {
-                                    Text(recipe.cathegory)
-                                        .fontWeight(.light)
-                                        .foregroundStyle(Color(uiColor: .darkGray))
-                                        .font(.system(size: 8))
-                                    Spacer()
-                                    Text(recipe.isInFavorites ? "В избранном" : "Добавить в избранное")
-                                        .foregroundStyle(recipe.isInFavorites ? Color.yellow : Color.blue)
-                                        .font(.system(size: 8))
-                                        .fontWeight(.light)
-                                }
-                                .padding(.horizontal, 8)
-                            }
-                            .frame(width: 220, height: 35)
-                        }
-                        .frame(width: 220, height: 135)
-                        .background(Color(UIColor.secondarySystemBackground))
-                        .clipShape(.rect(cornerRadius: 8))
+                        RecipeCardView(recipe: recipe)
                     }
                 }
             }

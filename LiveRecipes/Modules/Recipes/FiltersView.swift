@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FiltersView: View {
     @Environment(\.presentationMode) var presentationMode
-    @StateObject var viewModel: FiltersViewModel
+    @StateObject var viewModel: RecipesViewModel
     @State private var ccal: Float = 900
     @State private var time: Float = 120
     @State private var contains = ""
@@ -22,6 +22,10 @@ struct FiltersView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
+                        print(viewModel.modalFiltersIsOpen)
+                        viewModel.modalFiltersIsOpen = false
+                        print(viewModel.modalFiltersIsOpen)
+                        print("__________________________________________")
                         self.presentationMode.wrappedValue.dismiss()
                     } label: {
                         VStack {
@@ -37,6 +41,7 @@ struct FiltersView: View {
                 }
                 ToolbarItem(placement: .topBarLeading) {
                     Button("Применить") {
+                        viewModel.modalFiltersIsOpen = false
                         self.presentationMode.wrappedValue.dismiss()
                     }
                 }

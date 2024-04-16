@@ -18,6 +18,8 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     @Published var recentRecipes: [Recipe] = []
     @Published var myRecipes: [Recipe] = []
 
+    @Published var modalFiltersIsOpen: Bool = false
+    
     private var cancellables: Set<AnyCancellable> = []
 
     init(recipesModel: RecipesModel) {
