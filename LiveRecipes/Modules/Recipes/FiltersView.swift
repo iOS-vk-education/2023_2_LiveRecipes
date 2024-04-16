@@ -22,10 +22,7 @@ struct FiltersView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        print(viewModel.modalFiltersIsOpen)
                         viewModel.modalFiltersIsOpen = false
-                        print(viewModel.modalFiltersIsOpen)
-                        print("__________________________________________")
                         self.presentationMode.wrappedValue.dismiss()
                     } label: {
                         VStack {
