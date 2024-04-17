@@ -44,26 +44,7 @@ struct CreationView: View {
                         TextField("creation.placeholder.dishDescription".localized, text: $textDescription)
                     }
                 }
-                Section(header: Text("creation.label.addPhoto".localized)) {
-                    HStack {
-                        if let image = image {
-                            Image(uiImage: image)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                        } else {
-                            Image(systemName: "photo.badge.plus")
-                                .resizable()
-                                .scaledToFit()
-                        }
-                    }
-                    .onTapGesture {
-                        print("ImagePicker")
-                        self.isImagePickerOn = true
-                    }
-                    .sheet(isPresented: $isImagePickerOn) {
-                        ImagePicker(image: $image, isImagePickerOn: $isImagePickerOn)
-                    }
-                }
+                imageView()
                 timeView()
                 Section(header: Text("creation.label.nutritionalValue".localized)) {
                     HStack {
@@ -177,6 +158,33 @@ struct CreationView: View {
         
     }
     @ViewBuilder
+    func imageView() -> some View {
+        Section(header: Text("creation.label.addPhoto".localized)) {
+            HStack {
+                if let image = image {
+                    Image(uiImage: image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: .infinity)
+                        .scaledToFill()
+                        .clipShape(.rect(cornerRadius: 12))
+                        .clipped()
+                } else {
+                    Image(systemName: "photo.badge.plus")
+                        .resizable()
+                        .scaledToFit()
+                }
+            }
+            .onTapGesture {
+                print("ImagePicker")
+                self.isImagePickerOn = true
+            }
+            .sheet(isPresented: $isImagePickerOn) {
+                ImagePicker(image: $image, isImagePickerOn: $isImagePickerOn)
+            }
+        }
+    }
+    @ViewBuilder
     func buttonView() -> some View {
         Section {
             HStack {
@@ -185,7 +193,7 @@ struct CreationView: View {
                     viewState.createDish(
                         textTitle: textTitle,
                         textDescription: textDescription,
-                        timeToPrepare: 0,
+                        timeToPrepare: (hours * 60) + minutes,
                         textButritionalValueCalories: textButritionalValueCalories,
                         textButritionalValueProteins: textButritionalValueProteins,
                         textButritionalValueFats: textButritionalValueFats,

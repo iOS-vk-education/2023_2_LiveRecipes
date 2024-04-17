@@ -158,6 +158,74 @@
         }
       }
     },
+    "creation.error.withoutComposition" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It is necessary to enter the composition"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Необходимо ввести состав"
+          }
+        }
+      }
+    },
+    "creation.error.withoutDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You must enter a description"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Необходимо ввести описание"
+          }
+        }
+      }
+    },
+    "creation.error.withoutTime" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It is necessary to enter the time"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Необходимо ввести время"
+          }
+        }
+      }
+    },
+    "creation.error.withoutTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You must enter the name"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Необходимо ввести название"
+          }
+        }
+      }
+    },
     "creation.firstStep" : {
       "extractionState" : "manual",
       "localizations" : {

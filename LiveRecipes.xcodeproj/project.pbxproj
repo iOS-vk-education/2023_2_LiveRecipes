@@ -92,6 +92,7 @@
 		D0596FA82BC8630300A1BF50 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0596FA72BC8630300A1BF50 /* SettingsViewModel.swift */; };
 		D0596FAA2BC8632100A1BF50 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0596FA92BC8632100A1BF50 /* SettingsView.swift */; };
 		D0596FAC2BC8633F00A1BF50 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0596FAB2BC8633F00A1BF50 /* SettingsModel.swift */; };
+		D070FB642BCF4D2D009EE042 /* CreationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D070FB632BCF4D2D009EE042 /* CreationError.swift */; };
 		D0B36AD52BCA9B1A00D8826D /* CreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B36AD42BCA9B1A00D8826D /* CreationViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -200,6 +201,7 @@
 		D0596FA72BC8630300A1BF50 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		D0596FA92BC8632100A1BF50 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D0596FAB2BC8633F00A1BF50 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		D070FB632BCF4D2D009EE042 /* CreationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationError.swift; sourceTree = "<group>"; };
 		D0B36AD42BCA9B1A00D8826D /* CreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -398,7 +400,6 @@
 		C0EA6C7D2BB85AEC00995C49 /* Creation */ = {
 			isa = PBXGroup;
 			children = (
-				D070FB622BCEFF4C009EE042 /* Components */,
 				D02D7F0E2BCDB5FB0056DC33 /* Dish.swift */,
 				D02D7F112BCDB6200056DC33 /* DishComposition.swift */,
 				D02D7F132BCDB6390056DC33 /* DishStep.swift */,
@@ -410,6 +411,7 @@
 				D0B36AD42BCA9B1A00D8826D /* CreationViewController.swift */,
 				D003AFF82BCBCA1A00873500 /* StepView.swift */,
 				D02D7EED2BCD7E5E0056DC33 /* ImagePicker.swift */,
+				D070FB632BCF4D2D009EE042 /* CreationError.swift */,
 			);
 			path = Creation;
 			sourceTree = "<group>";
@@ -539,13 +541,6 @@
 				D0596FAB2BC8633F00A1BF50 /* SettingsModel.swift */,
 			);
 			path = Settings;
-			sourceTree = "<group>";
-		};
-		D070FB622BCEFF4C009EE042 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -742,6 +737,7 @@
 				C0EA6CB12BB85AED00995C49 /* CreationProtocols.swift in Sources */,
 				D02D7F0B2BCDB3D30056DC33 /* CreationRecipeCompositionEntity+CoreDataClass.swift in Sources */,
 				D02D7F0C2BCDB3D30056DC33 /* CreationRecipeCompositionEntity+CoreDataProperties.swift in Sources */,
+				D070FB642BCF4D2D009EE042 /* CreationError.swift in Sources */,
 				D02D7F062BCDB14A0056DC33 /* CreationRecipeEntity+CoreDataClass.swift in Sources */,
 				D02D7F072BCDB14A0056DC33 /* CreationRecipeEntity+CoreDataProperties.swift in Sources */,
 				C0EA6CA82BB85AED00995C49 /* CookingProtocols.swift in Sources */,

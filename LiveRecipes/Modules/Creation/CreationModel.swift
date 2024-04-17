@@ -58,6 +58,20 @@ final class CreationModel: ObservableObject, CreationModelProtocol {
 
         }
     }
-    
-    
+    func isCreationPossible(dish: Dish) -> CreationError? {
+        if dish.title == "" {
+            return .withoutTitle
+        }
+        if dish.description == "" {
+            return .withoutDescription
+        }
+        if dish.timeToPrepare == 0 {
+            return .withoutTime
+        }
+        if dish.dishComposition.count == 0 {
+            return .withoutComposition
+        }
+        return nil
+    }
+
 }
