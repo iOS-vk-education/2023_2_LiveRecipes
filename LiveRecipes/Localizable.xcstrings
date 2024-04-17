@@ -226,23 +226,6 @@
         }
       }
     },
-    "creation.firstStep" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Step 1"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Шаг 1"
-          }
-        }
-      }
-    },
     "creation.label.addPhoto" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -375,6 +358,23 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "ВРЕМЯ ПРИГОТОВЛЕНИЯ"
+          }
+        }
+      }
+    },
+    "creation.newStep" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New step"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Новый шаг"
           }
         }
       }

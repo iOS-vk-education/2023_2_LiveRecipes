@@ -9,7 +9,11 @@ import SwiftUI
 
 struct StepView: View {
     @Environment(\.presentationMode) var presentation
-    var dishStep: DishStep
+    var dishStep: DishStep? {
+        didSet {
+            print("dishStep did set")
+        }
+    }
     var creationViewModel: CreationViewModel
     @State private var textTitle = ""
     @State private var textDescription = ""
@@ -22,9 +26,9 @@ struct StepView: View {
             HStack(alignment: .center) {
                 Text("creation.button.save".localized)
                     .onTapGesture {
-                        closeModal()
+                        saveStep()
                     }
-                Text(dishStep.title)
+                Text(dishStep?.title ?? "creation.newStep".localized)
                     .frame(maxWidth: .infinity)
                 Image(systemName: "xmark.circle.fill")
                     .onTapGesture {
@@ -36,41 +40,64 @@ struct StepView: View {
             List {
                 Section(header: Text("creation.label.stepName".localized)) {
                     HStack {
-                        TextField("creation.placeholder.name", text: $textTitle)
+                        TextField("creation.placeholder.name", text:  $textTitle)
+                    }
+                    .onAppear {
+                        if let dishStep = dishStep {
+                            textTitle = dishStep.title
+                        }
                     }
                 }
                 Section(header: Text("creation.label.description".localized)) {
                     HStack {
                         TextField("creation.placeholder.stepDescription".localized, text: $textDescription)
                     }
-                }
-                Section(header: Text("creation.label.addPhoto".localized)) {
-                    HStack {
-                        if let image = image {
-                            Image(uiImage: image)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                        } else {
-                            Image(systemName: "photo.badge.plus")
-                                .resizable()
-                                .scaledToFit()
+                    .onAppear {
+                        if let dishStep = dishStep {
+                            textDescription = dishStep.description
                         }
                     }
-                    .onTapGesture {
-                        print("ImagePicker")
-                        self.isImagePickerOn = true
-                    }
-                    .sheet(isPresented: $isImagePickerOn) {
-                        ImagePicker(image: $image, isImagePickerOn: $isImagePickerOn)
-                    }
                 }
+                imageView()
                 Section {
                     HStack {
                         buttonView()
                     }
                 }
-                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                .listRowInsets(EdgeInsets())
                 .listRowBackground(Color.orange)
+            }
+        }
+    }
+    @ViewBuilder
+    func imageView() -> some View {
+        Section(header: Text("creation.label.addPhoto".localized)) {
+            HStack {
+                if let image = image {
+                    Image(uiImage: image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: .infinity)
+                        .scaledToFill()
+                        .clipShape(.rect(cornerRadius: 12))
+                        .clipped()
+                } else {
+                    Image(systemName: "photo.badge.plus")
+                        .resizable()
+                        .scaledToFit()
+                }
+            }
+            .onTapGesture {
+                print("ImagePicker")
+                self.isImagePickerOn = true
+            }
+            .onAppear {
+                if let dishStep = dishStep, let photo = dishStep.photo {
+                    image = photo
+                }
+            }
+            .sheet(isPresented: $isImagePickerOn) {
+                ImagePicker(image: $image, isImagePickerOn: $isImagePickerOn)
             }
         }
     }
@@ -78,7 +105,7 @@ struct StepView: View {
     func buttonView() -> some View {
         Button(action: {
             print("creation.button.save".localized)
-            
+            saveStep()
         }) {
             Text("creation.button.save".localized)
             .foregroundColor(.white)
@@ -90,8 +117,13 @@ struct StepView: View {
         .frame(maxWidth: .infinity)
         .animation(.easeInOut, value: 0.2)
     }
-    private func saveStep() -> Bool {
-        return true
+    private func saveStep() {
+        if let dishStep = dishStep {
+            creationViewModel.editStep(id: dishStep.id, title: textTitle, description: textDescription, photo: image)
+        } else {
+            creationViewModel.addStep(title: textTitle, description: textDescription, photo: image)
+        }
+        closeModal()
     }
     private func closeModal() {
         self.presentation.wrappedValue.dismiss()
