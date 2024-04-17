@@ -24,14 +24,23 @@ final class CreationModel: ObservableObject, CreationModelProtocol {
             print("nutritionValueFats: \(recipe.nutritionValueFats)")
             print("nutritionValueCarb: \(recipe.nutritionValueCarb)")
             print("---")
-            
+            if let steps = recipe.step {
+                if let stepsArray = Array(steps) as? [CreationRecipeStepEntity] {
+                    for step in stepsArray {
+                        print("---")
+                        print("step.id: \(step.id)")
+                        print("step.stepTittle: \(step.stepTittle)")
+                        print("step.stepDescription: \(step.stepDescription)")
+                    }
+                }
+            }
         }
         print("[DEBUG] end")
         print("----------------------------")
     }
     func createRecipy(dish: Dish, completion: @escaping() -> Void) {
-        CoreDataManager.shared.create(entityName: "CreationRecipeEntity") { entities in
-            guard let entity = entities  as? CreationRecipeEntity else {
+        CoreDataManager.shared.create(entityName: "CreationRecipeEntity") { entity in
+            guard let entity = entity  as? CreationRecipeEntity else {
                 return
             }
             let countDishes = CoreDataManager.shared.count(request:CreationRecipeEntity.fetchRequest())
@@ -52,10 +61,26 @@ final class CreationModel: ObservableObject, CreationModelProtocol {
             } else {
                 entity.photoRef = nil
             }
-            entity.timeToPrepare = Int64(dish.timeToPrepare)
-            //потом создаем компоненты блюда и шаги
+            entity.timeToPrepare = Int64(dish.timeToPrepare)//непонятная хрень
+            /*for step in dish.dishSteps {
+                CoreDataManager.shared.create(entityName: "CreationRecipeStepEntity") { stepEntity in
+                    guard let stepEntity = stepEntity  as? CreationRecipeStepEntity else {
+                        return
+                    }
+                    stepEntity.recipe = entity
+                    stepEntity.id = Int64(step.id)
+                    stepEntity.stepTittle = step.title
+                    stepEntity.stepDescription = step.description
+                    stepEntity.photoRef = ""
+                }
+            }*/
+            /*for composition in dish.dishComposition {
+                let compositionEntity = CreationRecipeCompositionEntity(context: CoreDataManager.shared.viewContext)
+                compositionEntity.product = composition.product
+                compositionEntity.quantity = composition.quantity
+                entity.addToComposition(compositionEntity)
+            }*/
             completion()
-
         }
     }
     func isCreationPossible(dish: Dish) -> CreationError? {
