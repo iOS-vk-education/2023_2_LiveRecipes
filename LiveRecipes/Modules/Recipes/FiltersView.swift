@@ -105,6 +105,12 @@ struct FiltersView: View {
             }
             Section {
                 Text("Первая диета")
+                    .gesture(
+                        TapGesture()
+                            .onEnded({ _ in
+                                print("хуй")
+                            })
+                    )
                 Text("Вторая диета")
                 Text("Третья диета")
                 Text("Четвертая диета")

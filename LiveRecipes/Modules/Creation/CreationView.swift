@@ -27,7 +27,7 @@ struct CreationView: View {
     @State private var isImagePickerOn: Bool = false
     
     var body: some View {
-        NavigationView {
+       // NavigationView {
             List {
                 Section(header: Text("creation.label.dishName".localized)) {
                     HStack {
@@ -196,8 +196,7 @@ struct CreationView: View {
                 }
                 
             }
-            
-        }
+        //}
         .navigationTitle("creation.title".localized)
         .toolbarBackground(.visible, for: .navigationBar)
         .navigationBarTitleDisplayMode(.inline)
