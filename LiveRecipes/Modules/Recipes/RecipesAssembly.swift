@@ -16,6 +16,7 @@ final class RecipesAssembly: Assembly {
         let settingsModel = SettingsModel()
         let viewModel = RecipesViewModel(recipesModel: model)       
         let settingsViewModel = SettingsViewModel(settingsModel: settingsModel)
+        let cookToTimeViewModel = RecipesViewModel(recipesModel: model)
 
         container.register(RecipesView.self) { _ in
             return RecipesView(viewModel: viewModel)
@@ -37,6 +38,9 @@ final class RecipesAssembly: Assembly {
         }
         container.register(SettingsView.self) { _ in
             return SettingsView(viewState: settingsViewModel)
+        }
+        container.register(CookToTimeView.self) { _ in
+            return CookToTimeView(viewModel: cookToTimeViewModel)
         }
     }
 }
