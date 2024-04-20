@@ -22,7 +22,6 @@ struct FiltersView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        viewModel.modalFiltersIsOpen = false
                         self.presentationMode.wrappedValue.dismiss()
                     } label: {
                         VStack {
@@ -38,7 +37,6 @@ struct FiltersView: View {
                 }
                 ToolbarItem(placement: .topBarLeading) {
                     Button("Применить") {
-                        viewModel.modalFiltersIsOpen = false
                         self.presentationMode.wrappedValue.dismiss()
                     }
                 }
@@ -104,17 +102,11 @@ struct FiltersView: View {
                 Text("Не содержит")
             }
             Section {
-                Text("Первая диета")
-                    .gesture(
-                        TapGesture()
-                            .onEnded({ _ in
-                                print("хуй")
-                            })
-                    )
-                Text("Вторая диета")
-                Text("Третья диета")
-                Text("Четвертая диета")
-                Text("Пятая диета")
+                DietCellView()
+                DietCellView()
+                DietCellView()
+                DietCellView()
+                DietCellView()
             } header: {
                 Text("Подобрать диету")
             }

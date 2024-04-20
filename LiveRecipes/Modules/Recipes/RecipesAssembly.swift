@@ -13,10 +13,7 @@ final class RecipesAssembly: Assembly {
     func assemble(container: Swinject.Container) {
         guard let networkAPI = Container.sharedContainer.resolve(RecipeAPI.self) else { return }
         let model = RecipesModel(recipeAPI: networkAPI)
-        let settingsModel = SettingsModel()
-        let viewModel = RecipesViewModel(recipesModel: model)       
-        let settingsViewModel = SettingsViewModel(settingsModel: settingsModel)
-        let cookToTimeViewModel = RecipesViewModel(recipesModel: model)
+        let viewModel = RecipesViewModel(recipesModel: model)
 
         container.register(RecipesView.self) { _ in
             return RecipesView(viewModel: viewModel)
@@ -36,11 +33,8 @@ final class RecipesAssembly: Assembly {
         container.register(FiltersView.self) { _ in
             return FiltersView(viewModel: viewModel)
         }
-        container.register(SettingsView.self) { _ in
-            return SettingsView(viewState: settingsViewModel)
-        }
         container.register(CookToTimeView.self) { _ in
-            return CookToTimeView(viewModel: cookToTimeViewModel)
+            return CookToTimeView(viewModel: viewModel)
         }
     }
 }

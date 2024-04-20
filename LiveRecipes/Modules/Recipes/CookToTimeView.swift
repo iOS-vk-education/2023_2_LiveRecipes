@@ -14,14 +14,14 @@ struct CookToTimeView: View {
     
     var body: some View {
             recipesView()
-                .navigationTitle("Все рецепты")
+                .navigationTitle("time")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button("", systemImage: "slider.horizontal.2.square") {
-                            viewModel.modalFiltersIsOpen = true
+                            viewModel.modalFiltersIsOpenFromTime = true
                         }
-                        .sheet(isPresented: $viewModel.modalFiltersIsOpen) {
+                        .sheet(isPresented: $viewModel.modalFiltersIsOpenFromTime) {
                             Assembler.sharedAssembly
                                 .resolver
                                 .resolve(FiltersView.self)
