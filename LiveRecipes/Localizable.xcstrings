@@ -413,6 +413,9 @@
         }
       }
     },
+    "Select a segment" : {
+
+    },
     "settings" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -710,6 +713,9 @@
 
     },
     "Содержит" : {
+
+    },
+    "Создать" : {
 
     },
     "Соль по вкусу" : {

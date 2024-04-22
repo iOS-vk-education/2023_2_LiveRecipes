@@ -7,8 +7,13 @@
 
 import Foundation
 
-protocol FavoritesViewModelProtocol {}
+protocol FavoritesViewModelProtocol {
+    
+}
 
-protocol FavoritesModelProtocol {}
+protocol FavoritesModelProtocol {
+    func loadAllRecipes() -> [Recipe]
+    func loadMyRecipes() -> [Recipe]
+}
 
 protocol FavoritesViewProtocol {}
