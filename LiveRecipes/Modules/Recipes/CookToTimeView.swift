@@ -1,27 +1,27 @@
 //
-//  AllRecipesView.swift
+//  CookToTimeView.swift
 //  LiveRecipes
 //
-//  Created by Александр Денисов on 30.03.2024.
+//  Created by Александр Денисов on 19.04.2024.
 //
 
 import SwiftUI
 import Swinject
 
-struct AllRecipesView: View {
+struct CookToTimeView: View {
     @StateObject var viewModel: RecipesViewModel
     @State private var searchText = ""
     
     var body: some View {
             recipesView()
-                .navigationTitle("Все рецепты")
+                .navigationTitle("time")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button("", systemImage: "slider.horizontal.2.square") {
-                            viewModel.modalFiltersIsOpenFromAll = true
+                            viewModel.modalFiltersIsOpenFromTime = true
                         }
-                        .sheet(isPresented: $viewModel.modalFiltersIsOpenFromAll) {
+                        .sheet(isPresented: $viewModel.modalFiltersIsOpenFromTime) {
                             Assembler.sharedAssembly
                                 .resolver
                                 .resolve(FiltersView.self)

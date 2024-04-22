@@ -10,6 +10,7 @@ import Swinject
 
 struct RecentRecipesView: View {
     @StateObject var viewModel: RecipesViewModel
+    @Environment(\.presentationMode) var presentation
     @State var recentRecipes: [Recipe] = []
     @State var searchText = ""
     
@@ -20,9 +21,9 @@ struct RecentRecipesView: View {
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button("", systemImage: "slider.horizontal.2.square") {
-                            viewModel.modalFiltersIsOpen = true
+                            viewModel.modalFiltersIsOpenFromRecents = true
                         }
-                        .sheet(isPresented: $viewModel.modalFiltersIsOpen) {
+                        .sheet(isPresented: $viewModel.modalFiltersIsOpenFromRecents) {
                             Assembler.sharedAssembly
                                 .resolver
                                 .resolve(FiltersView.self)
@@ -53,7 +54,7 @@ struct RecentRecipesView: View {
                     .font(.title2)
                     .padding(.bottom, 4)
                 Button {
-                    print("К рецептам")
+                    self.presentation.wrappedValue.dismiss()
                 } label: {
                     Text("К рецептам")
                         .fontWeight(.semibold)

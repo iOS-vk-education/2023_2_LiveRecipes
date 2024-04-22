@@ -206,51 +206,76 @@ struct RecipesView: View {
             }
             GeometryReader {proxy in
                 HStack(spacing: (proxy.size.width - 320 - 12)/5) {
-                    VStack {
-                        Image("caesar")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 80, height: 80)
-                            .clipShape(.rect(cornerRadius: 8))
-                            .clipped()
-                        Text("Завтрак")
-                            .fontWeight(.bold)
-                            .font(.caption)
+                    NavigationLink  {
+                        Assembler.sharedAssembly
+                            .resolver
+                            .resolve(CookToTimeView.self)
+                    } label: {
+                        VStack {
+                            Image("breakfastMain")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80, height: 80)
+                                .clipShape(.rect(cornerRadius: 8))
+                                .clipped()
+                            Text("Завтрак")
+                                .fontWeight(.bold)
+                                .font(.caption)
+                        }
                     }
-                    VStack {
-                        Image("caesar")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 80, height: 80)
-                            .clipShape(.rect(cornerRadius: 8))
-                            .clipped()
-                        Text("Обед")
-                            .fontWeight(.bold)
-                            .font(.caption)
+                    NavigationLink  {
+                        Assembler.sharedAssembly
+                            .resolver
+                            .resolve(CookToTimeView.self)//поменять в будущем
+                    } label: {
+                        VStack {
+                            Image("lunchMain")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80, height: 80)
+                                .clipShape(.rect(cornerRadius: 8))
+                                .clipped()
+                            Text("Обед")
+                                .fontWeight(.bold)
+                                .font(.caption)
+                        }
                     }
-                    VStack {
-                        Image("caesar")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 80, height: 80)
-                            .clipShape(.rect(cornerRadius: 8))
-                            .clipped()
-                        Text("Ужин")
-                            .fontWeight(.bold)
-                            .font(.caption)
+                    NavigationLink  {
+                        Assembler.sharedAssembly
+                            .resolver
+                            .resolve(CookToTimeView.self)
+                    } label: {
+                        VStack {
+                            Image("dinnerMain")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80, height: 80)
+                                .clipShape(.rect(cornerRadius: 8))
+                                .clipped()
+                            Text("Ужин")
+                                .fontWeight(.bold)
+                                .font(.caption)
+                        }
                     }
-                    VStack {
-                        Image("caesar")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 80, height: 80)
-                            .clipShape(.rect(cornerRadius: 8))
-                            .clipped()
-                        Text("Перекус")
-                            .fontWeight(.bold)
-                            .font(.caption)
+                    NavigationLink  {
+                        Assembler.sharedAssembly
+                            .resolver
+                            .resolve(CookToTimeView.self)
+                    } label: {
+                        VStack {
+                            Image("snackMain")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80, height: 80)
+                                .clipShape(.rect(cornerRadius: 8))
+                                .clipped()
+                            Text("Перекус")
+                                .fontWeight(.bold)
+                                .font(.caption)
+                        }
                     }
                 }
+                .tint(.black)
                 .padding(.horizontal, (proxy.size.width - 320 + 12)/5)
             }
             .frame(height: 96)

@@ -21,9 +21,9 @@ struct MyRecipesView: View {
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button("", systemImage: "slider.horizontal.2.square") {
-                            viewModel.modalFiltersIsOpen = true
+                            viewModel.modalFiltersIsOpenFromMy = true
                         }
-                        .sheet(isPresented: $viewModel.modalFiltersIsOpen) {
+                        .sheet(isPresented: $viewModel.modalFiltersIsOpenFromMy) {
                             Assembler.sharedAssembly
                                 .resolver
                                 .resolve(FiltersView.self)
@@ -48,12 +48,14 @@ struct MyRecipesView: View {
                     .foregroundStyle(Color(UIColor.systemGray3))
                     .font(.title2)
                     .padding(.bottom, 4)
-                Button {
-                    print("К созданию")
+                NavigationLink {
+                    Assembler.sharedAssembly
+                        .resolver
+                        .resolve(CreationView.self)
                 } label: {
                     Text("К созданию")
-                        .fontWeight(.semibold)
                 }
+
             }
             .padding(.bottom, 30)
         } else {
