@@ -37,7 +37,7 @@ struct PrepareForCookingView: View {
                 }.frame(minWidth: geometry.size.width, minHeight: geometry.size.height * 0.7)
                     .scrollIndicators(.hidden)
                 
-                AnimatedTextWithBlur(text: "1 час 5 минут")
+                AnimatedTextWithBlur(text: "20-30 минут")
                 AnimatedButton()
                 
             }.background(RadialGradient(gradient: Gradient(colors: [.orange, .white]), center: .center, startRadius: 50, endRadius: 400)
