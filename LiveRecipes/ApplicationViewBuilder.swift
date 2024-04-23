@@ -13,7 +13,7 @@ import Swinject
 @MainActor
 final class ApplicationViewBuilder: ObservableObject {
     @ViewBuilder
-    func build(view: Tabs) -> some View {
+    func build(view: Tabs, tabBinding: Binding<Tabs>) -> some View {
         switch view {
         case .recipes:
             Assembler.sharedAssembly.resolver.resolve(RecipesView.self)
@@ -22,7 +22,7 @@ final class ApplicationViewBuilder: ObservableObject {
         case .list:
             Assembler.sharedAssembly.resolver.resolve(ListView.self)
         case .cooking:
-            Assembler.sharedAssembly.resolver.resolve(CookingView.self)
+            Assembler.sharedAssembly.resolver.resolve(CookingView.self, argument: tabBinding)
         }
     }
 }

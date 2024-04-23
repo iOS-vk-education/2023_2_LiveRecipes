@@ -9,6 +9,7 @@ import SwiftUI
 import Swinject
 
 struct CookingView: View {
+    var tabSelected: Binding<Tabs>
     @StateObject var viewModel: CookingViewModel
     @State var timeRemaining = 2
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -16,8 +17,8 @@ struct CookingView: View {
     var body: some View {
         if viewModel.steps.count == 0 {
             let _ = viewModel.findSteps()
-            NoSteps()
-            
+            NoSteps(tabSelected: tabSelected)
+
         }
         else {
             let _ = print(viewModel.steps.count)
@@ -59,6 +60,8 @@ struct GaugeProgressStyle: ProgressViewStyle {
 
 
 struct NoSteps: View {
+    @Binding var tabSelected: Tabs
+
     var body: some View {
         NavigationView {
             VStack {
@@ -71,16 +74,16 @@ struct NoSteps: View {
                     .foregroundColor(Color(UIColor.systemGray3))
                     .fontWeight(.medium)
                 
-                NavigationLink(destination:{
-                    Assembler.sharedAssembly
-                        .resolver
-                        .resolve(OneDishView.self)},
-                               label: {
                     Text("К рецептам")
                         .font(.headline)
-                        .foregroundStyle(Color(UIColor.orange))
-                })
-                
+//                        .foregroundStyle(Color(UIColor.orange))
+//                })
+                Text("К рецептам")
+                    .font(.headline)
+                    .gesture(TapGesture().onEnded({
+                    tabSelected = Tabs.recipes
+                }))
+
             }.navigationTitle("Готовка")
                 .navigationBarTitleDisplayMode(.inline)
         }.tint(.orange)
@@ -89,5 +92,5 @@ struct NoSteps: View {
 
 
 #Preview {
-    ApplicationViewBuilder.stub.build(view: .cooking)
+    ApplicationViewBuilder.stub.build(view: .cooking, tabBinding: Binding.constant(Tabs.recipes))
 }
