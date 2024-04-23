@@ -52,6 +52,7 @@ struct OneStepView: View {
             }
         .navigationTitle("Шаг \(stepNumber)")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar(.visible, for: .tabBar)
     }
 }
 

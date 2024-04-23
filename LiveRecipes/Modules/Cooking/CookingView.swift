@@ -12,9 +12,8 @@ struct CookingView: View {
     @StateObject var viewModel: CookingViewModel
     @State var timeRemaining = 2
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-
+    //@Binding var selectedTab: Tabs
     var body: some View {
-        
         if viewModel.steps.count == 0 {
             let _ = viewModel.findSteps()
             NoSteps()

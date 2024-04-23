@@ -123,10 +123,13 @@ struct FavoritesView: View {
                 ScrollView() {
                     LazyVStack(spacing: 12) {
                         ForEach(viewState.myRecipes) { recipe in
-                           RecipeBigCardView(recipe: recipe, proxy: proxy)
+                            withAnimation(.easeInOut) {
+                                RecipeBigCardView(recipe: recipe, proxy: proxy)
+                            }
                         }
                     }
                     Button(action: {
+                        viewState.findMore()
                         print("+")
                     }) {
                         Image(systemName: "plus")

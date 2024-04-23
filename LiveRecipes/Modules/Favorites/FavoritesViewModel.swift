@@ -24,4 +24,7 @@ final class FavoritesViewModel: ObservableObject, FavoritesViewModelProtocol {
 //        recentRecipes = model.loadRecentRecipes()
         myRecipes = model.loadMyRecipes()
     }
+    func findMore() {
+        myRecipes.append(Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"))
+    }
 }
