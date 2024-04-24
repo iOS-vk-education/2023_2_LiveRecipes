@@ -12,8 +12,10 @@ import Swinject
 
 struct FavoritesView: View {
     @StateObject var viewState: FavoritesViewModel
+    
     @State private var searchText = ""
     @State private var selectedSegment = 0
+    
     let segments = ["Мои рецепты", "Избранные"]
     var body: some View {
         NavigationView {
@@ -128,19 +130,22 @@ struct FavoritesView: View {
                             }
                         }
                     }
+                    
                     Button(action: {
-                        viewState.findMore()
-                        print("+")
+                        
                     }) {
-                        Image(systemName: "plus")
-                            .foregroundStyle(.white)
-                            .padding(10)
-                            .background(.orange)
-                            .clipShape(.circle)
+                        NavigationLink(destination:{
+                            Assembler.sharedAssembly
+                                .resolver
+                            .resolve(CreationView.self)}) {
+                                Image(systemName: "plus")
+                                    .foregroundStyle(.white)
+                                    .padding(10)
+                                    .background(.orange)
+                                    .clipShape(.circle)
+                            }
                     }
-                           
                 }
-                
                 .scrollIndicators(.hidden)
                 .contentMargins(.horizontal, 12)
             }

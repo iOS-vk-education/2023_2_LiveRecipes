@@ -24,6 +24,8 @@ final class ApplicationViewBuilder: ObservableObject {
         case .cooking:
             Assembler.sharedAssembly.resolver.resolve(CookingView.self, argument: tabBinding)
         }
+    
+        
     }
 }
 

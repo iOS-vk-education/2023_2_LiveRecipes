@@ -22,6 +22,12 @@
 		745DA4D92BB862EC00BE4C5D /* OneDishProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745DA4D82BB862EC00BE4C5D /* OneDishProtocols.swift */; };
 		745DA4DB2BC889DD00BE4C5D /* OneStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745DA4DA2BC889DD00BE4C5D /* OneStepView.swift */; };
 		74D1B8542BD7BED300F317A9 /* PrepareForCookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D1B8532BD7BED300F317A9 /* PrepareForCookingView.swift */; };
+		74D1B8582BD8688600F317A9 /* TransperentBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D1B8572BD8688600F317A9 /* TransperentBlur.swift */; };
+		74D1B85B2BD9443400F317A9 /* StartCookingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D1B85A2BD9443400F317A9 /* StartCookingButton.swift */; };
+		74D1B85D2BD9446400F317A9 /* DurationTextWithBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D1B85C2BD9446400F317A9 /* DurationTextWithBlur.swift */; };
+		74D1B85F2BD9447F00F317A9 /* IngredientRunningTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D1B85E2BD9447F00F317A9 /* IngredientRunningTextView.swift */; };
+		74D1B8612BD944BA00F317A9 /* BlinkingText + TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D1B8602BD944BA00F317A9 /* BlinkingText + TimerView.swift */; };
+		74D1B8632BD9453700F317A9 /* NoStepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D1B8622BD9453700F317A9 /* NoStepsView.swift */; };
 		C0EA6C3E2BB85A9200995C49 /* LiveRecipesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA6C3D2BB85A9200995C49 /* LiveRecipesTests.swift */; };
 		C0EA6C482BB85A9200995C49 /* LiveRecipesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA6C472BB85A9200995C49 /* LiveRecipesUITests.swift */; };
 		C0EA6C4A2BB85A9200995C49 /* LiveRecipesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA6C492BB85A9200995C49 /* LiveRecipesUITestsLaunchTests.swift */; };
@@ -131,6 +137,12 @@
 		745DA4D82BB862EC00BE4C5D /* OneDishProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDishProtocols.swift; sourceTree = "<group>"; };
 		745DA4DA2BC889DD00BE4C5D /* OneStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneStepView.swift; sourceTree = "<group>"; };
 		74D1B8532BD7BED300F317A9 /* PrepareForCookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareForCookingView.swift; sourceTree = "<group>"; };
+		74D1B8572BD8688600F317A9 /* TransperentBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransperentBlur.swift; sourceTree = "<group>"; };
+		74D1B85A2BD9443400F317A9 /* StartCookingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCookingButton.swift; sourceTree = "<group>"; };
+		74D1B85C2BD9446400F317A9 /* DurationTextWithBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationTextWithBlur.swift; sourceTree = "<group>"; };
+		74D1B85E2BD9447F00F317A9 /* IngredientRunningTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientRunningTextView.swift; sourceTree = "<group>"; };
+		74D1B8602BD944BA00F317A9 /* BlinkingText + TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BlinkingText + TimerView.swift"; sourceTree = "<group>"; };
+		74D1B8622BD9453700F317A9 /* NoStepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoStepsView.swift; sourceTree = "<group>"; };
 		C0EA6C242BB85A9100995C49 /* LiveRecipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveRecipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0EA6C392BB85A9200995C49 /* LiveRecipesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiveRecipesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0EA6C3D2BB85A9200995C49 /* LiveRecipesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveRecipesTests.swift; sourceTree = "<group>"; };
@@ -246,6 +258,18 @@
 				745DA4D82BB862EC00BE4C5D /* OneDishProtocols.swift */,
 			);
 			path = OneDish;
+			sourceTree = "<group>";
+		};
+		74D1B8592BD943B100F317A9 /* AnimatedElements */ = {
+			isa = PBXGroup;
+			children = (
+				74D1B8572BD8688600F317A9 /* TransperentBlur.swift */,
+				74D1B85A2BD9443400F317A9 /* StartCookingButton.swift */,
+				74D1B85C2BD9446400F317A9 /* DurationTextWithBlur.swift */,
+				74D1B85E2BD9447F00F317A9 /* IngredientRunningTextView.swift */,
+				74D1B8602BD944BA00F317A9 /* BlinkingText + TimerView.swift */,
+			);
+			path = AnimatedElements;
 			sourceTree = "<group>";
 		};
 		C0EA6C1B2BB85A9100995C49 = {
@@ -379,6 +403,7 @@
 		C0EA6C712BB85AEC00995C49 /* Cooking */ = {
 			isa = PBXGroup;
 			children = (
+				74D1B8592BD943B100F317A9 /* AnimatedElements */,
 				C0EA6C722BB85AEC00995C49 /* CookingView.swift */,
 				C0EA6C732BB85AEC00995C49 /* CookingViewModel.swift */,
 				C0EA6C742BB85AEC00995C49 /* CookingProtocols.swift */,
@@ -386,6 +411,7 @@
 				C0EA6C762BB85AEC00995C49 /* CookingModel.swift */,
 				745DA4DA2BC889DD00BE4C5D /* OneStepView.swift */,
 				74D1B8532BD7BED300F317A9 /* PrepareForCookingView.swift */,
+				74D1B8622BD9453700F317A9 /* NoStepsView.swift */,
 			);
 			path = Cooking;
 			sourceTree = "<group>";
@@ -694,6 +720,7 @@
 				C0EA6CBB2BB85AED00995C49 /* ListModel.swift in Sources */,
 				D0596F9B2BC806A500A1BF50 /* ListRecipeEntity+CoreDataClass.swift in Sources */,
 				D0596F9C2BC806A500A1BF50 /* ListRecipeEntity+CoreDataProperties.swift in Sources */,
+				74D1B85D2BD9446400F317A9 /* DurationTextWithBlur.swift in Sources */,
 				D0596F9D2BC806A500A1BF50 /* ListRecipeItemEntity+CoreDataClass.swift in Sources */,
 				D0596F9E2BC806A500A1BF50 /* ListRecipeItemEntity+CoreDataProperties.swift in Sources */,
 				C0EA6CB62BB85AED00995C49 /* RecipesModel.swift in Sources */,
@@ -712,6 +739,7 @@
 				D0596FAC2BC8633F00A1BF50 /* SettingsModel.swift in Sources */,
 				C0EA6CA72BB85AED00995C49 /* CookingViewModel.swift in Sources */,
 				D02D7F172BCDB8340056DC33 /* CreationRecipeStepEntity+CoreDataClass.swift in Sources */,
+				74D1B8582BD8688600F317A9 /* TransperentBlur.swift in Sources */,
 				D02D7F182BCDB8340056DC33 /* CreationRecipeStepEntity+CoreDataProperties.swift in Sources */,
 				C0EA6C9B2BB85AED00995C49 /* String+Localized.swift in Sources */,
 				D02D7F122BCDB6200056DC33 /* DishComposition.swift in Sources */,
@@ -720,6 +748,7 @@
 				C0EA6CB32BB85AED00995C49 /* CreationView.swift in Sources */,
 				C0EA6CBC2BB85AED00995C49 /* ListView.swift in Sources */,
 				C0EA6C992BB85AED00995C49 /* NetworkAssembly.swift in Sources */,
+				74D1B85F2BD9447F00F317A9 /* IngredientRunningTextView.swift in Sources */,
 				C0EA6C9F2BB85AED00995C49 /* RouterProtocol.swift in Sources */,
 				C0EA6CBF2BB85AED00995C49 /* ListAssembly.swift in Sources */,
 				745DA4D72BB862D500BE4C5D /* OneDishAssembly.swift in Sources */,
@@ -730,6 +759,7 @@
 				C0EA6C972BB85AED00995C49 /* BaseAPI.swift in Sources */,
 				C0EA6CB92BB85AED00995C49 /* RecipeCardView.swift in Sources */,
 				745DA4D52BB862C800BE4C5D /* OneDishViewModel.swift in Sources */,
+				74D1B85B2BD9443400F317A9 /* StartCookingButton.swift in Sources */,
 				D0596F962BC7FCA200A1BF50 /* CoreDataManager.swift in Sources */,
 				C0EA6CBD2BB85AED00995C49 /* ListProtocols.swift in Sources */,
 				C0EA6CA42BB85AED00995C49 /* LiveRecipesApp.swift in Sources */,
@@ -744,6 +774,7 @@
 				C0EA6CBA2BB85AED00995C49 /* RecipesProtocols.swift in Sources */,
 				C0EA6CB12BB85AED00995C49 /* CreationProtocols.swift in Sources */,
 				D02D7F0B2BCDB3D30056DC33 /* CreationRecipeCompositionEntity+CoreDataClass.swift in Sources */,
+				74D1B8632BD9453700F317A9 /* NoStepsView.swift in Sources */,
 				D02D7F0C2BCDB3D30056DC33 /* CreationRecipeCompositionEntity+CoreDataProperties.swift in Sources */,
 				D02D7F062BCDB14A0056DC33 /* CreationRecipeEntity+CoreDataClass.swift in Sources */,
 				D02D7F072BCDB14A0056DC33 /* CreationRecipeEntity+CoreDataProperties.swift in Sources */,
@@ -752,6 +783,7 @@
 				D0596FA42BC862B200A1BF50 /* SettingsAssembly.swift in Sources */,
 				D02D7F0F2BCDB5FB0056DC33 /* Dish.swift in Sources */,
 				C0EA6CC02BB85AED00995C49 /* LiveRecipesView.swift in Sources */,
+				74D1B8612BD944BA00F317A9 /* BlinkingText + TimerView.swift in Sources */,
 				C0EA6C942BB85AED00995C49 /* TargetType.swift in Sources */,
 				D02D7EEA2BCD79630056DC33 /* CreationPhotoFileManager.swift in Sources */,
 				D0596FAA2BC8632100A1BF50 /* SettingsView.swift in Sources */,
@@ -936,7 +968,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LiveRecipes/Preview Content\"";
-				DEVELOPMENT_TEAM = KD82SC4QSX;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -944,6 +976,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -968,7 +1001,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LiveRecipes/Preview Content\"";
-				DEVELOPMENT_TEAM = KD82SC4QSX;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -976,6 +1009,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

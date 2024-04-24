@@ -94,7 +94,7 @@ struct RecipesView: View {
                     }
                 }
             }
-        }
+        }.navigationBarBackButtonHidden(true)
         .searchable(text: $searchText)
         .refreshable(action: {
                         print("refresh")
