@@ -14,7 +14,7 @@ struct CookToTimeView: View {
     
     var body: some View {
             recipesView()
-                .navigationTitle("time")
+            .navigationTitle("cooktotime.title.name".localized)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
@@ -48,7 +48,7 @@ struct CookToTimeView: View {
             }
         }
         else {
-            Text("Ошибка загрузки данных")
+            Text("cooktotime.error.message".localized)
         }
     }
 }

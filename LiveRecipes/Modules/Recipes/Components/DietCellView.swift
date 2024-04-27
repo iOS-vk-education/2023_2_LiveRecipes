@@ -13,7 +13,7 @@ struct DietCellView: View {
     
     var body: some View {
         HStack {
-            Text("Первая диета")
+            Text("filters.diet.name".localized)
             Spacer()
             Image(systemName: "checkmark")
                 .imageScale(.medium)

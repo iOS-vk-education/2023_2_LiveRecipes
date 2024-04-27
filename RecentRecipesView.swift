@@ -16,7 +16,7 @@ struct RecentRecipesView: View {
     
     var body: some View {
             recipesView()
-                .navigationTitle("Недавние")
+            .navigationTitle("recents.title".localized)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
@@ -48,7 +48,7 @@ struct RecentRecipesView: View {
                     .foregroundStyle(Color(UIColor.systemGray3))
                     .padding(.bottom, 0)
                     .padding(.leading, 25)
-                Text("Тут пока ничего нет")
+                Text("recents.zero.message".localized)
                     .fontWeight(.semibold)
                     .foregroundStyle(Color(UIColor.systemGray3))
                     .font(.title2)
@@ -56,7 +56,7 @@ struct RecentRecipesView: View {
                 Button {
                     self.presentation.wrappedValue.dismiss()
                 } label: {
-                    Text("К рецептам")
+                    Text("recents.torecipes.button".localized)
                         .fontWeight(.semibold)
                 }
             }

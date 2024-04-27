@@ -35,13 +35,8 @@ struct FiltersView: View {
                         .clipShape(.circle)
                     }
                 }
-                ToolbarItem(placement: .topBarLeading) {
-                    Button("Применить") {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }
-                }
             }
-            .navigationTitle("Фильтры")
+            .navigationTitle("filters".localized)
             .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(.visible, for: .navigationBar)
             .background(Color(uiColor: .secondarySystemBackground))
@@ -54,25 +49,25 @@ struct FiltersView: View {
             Section {
                 HStack {
                     Slider(value: $ccal, in: 0...3000, step: 1)
-                    Text("\(ccal, specifier: "%g")кКал")
+                    Text("\(Int(ccal))" + "filters.caloricity.enter".localized)
                         .frame(width: 90)
                 }
                 .listRowBackground(Color.clear)
             } header: {
-                Text("Каллорийность")
+                Text("filters.caloricity".localized)
             }
             Section {
                 HStack {
                     Slider(value: $time, in: 0...240, step: 5)
-                    Text("\(time, specifier: "%g") мин")
+                    Text(String("\(Int(time))") + "filters.time.enter".localized)
                         .frame(width: 90)
                 }
                 .listRowBackground(Color.clear)
             } header: {
-                Text("Время приготовления")
+                Text("filters.time.cook".localized)
             }
             Section {
-                TextField("Введите ингридиент", text: $contains)
+                TextField("filters.enter.ingridient".localized, text: $contains)
                     .overlay(
                         Button(action: {
                             contains = ""
@@ -84,10 +79,10 @@ struct FiltersView: View {
                         alignment: .trailing
                     )
             } header: {
-                Text("Содержит")
+                Text("filters.contains".localized)
             }
             Section {
-                TextField("Введите ингридиент", text: $notContains)
+                TextField("filters.enter.ingridient".localized, text: $notContains)
                     .overlay(
                         Button(action: {
                             notContains = ""
@@ -99,7 +94,7 @@ struct FiltersView: View {
                         alignment: .trailing
                     )
             } header: {
-                Text("Не содержит")
+                Text("filters.not.contains".localized)
             }
             Section {
                 DietCellView()
@@ -108,9 +103,24 @@ struct FiltersView: View {
                 DietCellView()
                 DietCellView()
             } header: {
-                Text("Подобрать диету")
+                Text("filters.find.diet".localized)
             }
         }
         .listSectionSpacing(8)
+        .overlay(
+            Button  {
+                self.presentationMode.wrappedValue.dismiss()
+                viewModel.sortKeyWordsByChoose()
+            } label: {
+                HStack {
+                    Text("filters.accept.button".localized)
+                }
+                .tint(.white)
+                .fontWeight(.semibold)
+            }
+                .frame(width: 200, height: 50)
+                .background(.orange, in: .rect(cornerRadius: 14)),
+            alignment: .bottom
+        )
     }
 }

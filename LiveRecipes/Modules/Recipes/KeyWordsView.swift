@@ -16,7 +16,7 @@ struct KeyWordsView: View {
         NavigationView {
             keyWordsViewContent()
                 .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
-                .navigationTitle("Ключевые слова")
+                .navigationTitle("keywords.title".localized)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
@@ -42,7 +42,7 @@ struct KeyWordsView: View {
     @ViewBuilder
     func keyWordsViewContent() -> some View {
             if (viewModel.keyWords.isEmpty) {
-                Text("Ошибка загрузки данных")
+                Text("keywords.error.message".localized)
             } else {
                 ScrollView {
                     LazyVGrid(columns: [GridItem(), GridItem(), GridItem()],
@@ -71,7 +71,7 @@ struct KeyWordsView: View {
                         HStack {
                             Image(systemName: "magnifyingglass")
                                 .imageScale(.medium)
-                            Text("Найти рецепты")
+                            Text("keywords.search.button".localized)
                         }
                         .tint(.white)
                         .fontWeight(.semibold)

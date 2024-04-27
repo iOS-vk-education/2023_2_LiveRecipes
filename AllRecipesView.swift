@@ -14,7 +14,7 @@ struct AllRecipesView: View {
     
     var body: some View {
             recipesView()
-                .navigationTitle("Все рецепты")
+            .navigationTitle("allrecipes.title".localized)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
@@ -48,7 +48,7 @@ struct AllRecipesView: View {
             }
         }
         else {
-            Text("Ошибка загрузки данных")
+            Text("allrecipes.error.message".localized)
         }
     }
 }

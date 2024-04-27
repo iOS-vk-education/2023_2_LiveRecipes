@@ -16,7 +16,7 @@ struct MyRecipesView: View {
     var body: some View {
             myRecipesView()
                 .scrollIndicators(.hidden)
-                .navigationTitle("Мои рецепты")
+                .navigationTitle("myrecipes.title".localized)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
@@ -43,7 +43,7 @@ struct MyRecipesView: View {
                     .fontWeight(.semibold)
                     .foregroundStyle(Color(UIColor.systemGray3))
                     .padding(.bottom, 0)
-                Text("Тут пока ничего нет")
+                Text("myrecipes.zero.message".localized)
                     .fontWeight(.semibold)
                     .foregroundStyle(Color(UIColor.systemGray3))
                     .font(.title2)
@@ -53,7 +53,7 @@ struct MyRecipesView: View {
                         .resolver
                         .resolve(CreationView.self)
                 } label: {
-                    Text("К созданию")
+                    Text("myrecipes.tocreation".localized)
                 }
 
             }
