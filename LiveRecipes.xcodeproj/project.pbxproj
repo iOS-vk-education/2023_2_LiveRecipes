@@ -69,6 +69,7 @@
 		C0EA6CC42BB85B1500995C49 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C0EA6CC32BB85B1500995C49 /* Alamofire */; };
 		C0EA6CC92BB85B3C00995C49 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = C0EA6CC82BB85B3C00995C49 /* Swinject */; };
 		D003AFF92BCBCA1A00873500 /* StepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D003AFF82BCBCA1A00873500 /* StepView.swift */; };
+		D01FA38B2BE3AE2600890D71 /* RecipeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01FA38A2BE3AE2600890D71 /* RecipeDataManager.swift */; };
 		D02D7EEA2BCD79630056DC33 /* CreationPhotoFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02D7EE92BCD79620056DC33 /* CreationPhotoFileManager.swift */; };
 		D02D7EEC2BCD79760056DC33 /* CreationPhotoFileProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02D7EEB2BCD79760056DC33 /* CreationPhotoFileProtocol.swift */; };
 		D02D7EEE2BCD7E5E0056DC33 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02D7EED2BCD7E5E0056DC33 /* ImagePicker.swift */; };
@@ -178,6 +179,7 @@
 		C0EA6C912BB85AED00995C49 /* LiveRecipesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveRecipesView.swift; sourceTree = "<group>"; };
 		C0EA6C932BB85AED00995C49 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D003AFF82BCBCA1A00873500 /* StepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepView.swift; sourceTree = "<group>"; };
+		D01FA38A2BE3AE2600890D71 /* RecipeDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDataManager.swift; sourceTree = "<group>"; };
 		D02D7EE92BCD79620056DC33 /* CreationPhotoFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationPhotoFileManager.swift; sourceTree = "<group>"; };
 		D02D7EEB2BCD79760056DC33 /* CreationPhotoFileProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationPhotoFileProtocol.swift; sourceTree = "<group>"; };
 		D02D7EED2BCD7E5E0056DC33 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 				D0FA9E082BCFF20A0010F42B /* Enities */,
 				D0596F922BC7FC3B00A1BF50 /* LiveRecipesDB.xcdatamodeld */,
 				D0596F952BC7FCA200A1BF50 /* CoreDataManager.swift */,
+				D01FA38A2BE3AE2600890D71 /* RecipeDataManager.swift */,
 			);
 			path = DB;
 			sourceTree = "<group>";
@@ -721,6 +724,7 @@
 				D0B36AD52BCA9B1A00D8826D /* CreationViewController.swift in Sources */,
 				D02D7EEE2BCD7E5E0056DC33 /* ImagePicker.swift in Sources */,
 				C0EA6CB82BB85AED00995C49 /* RecipesView.swift in Sources */,
+				D01FA38B2BE3AE2600890D71 /* RecipeDataManager.swift in Sources */,
 				C0EA6C9A2BB85AED00995C49 /* NavigationTabs.swift in Sources */,
 				C0EA6CA92BB85AED00995C49 /* CookingAssembly.swift in Sources */,
 				D0596F942BC7FC3B00A1BF50 /* LiveRecipesDB.xcdatamodeld in Sources */,
