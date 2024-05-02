@@ -69,6 +69,10 @@ struct RecipesView: View {
                     myRecipesView()
                 }
             }
+            .searchable(text: $searchText)
+            .refreshable(action: {
+                            print("refresh")
+                        })
             .scrollIndicators(.hidden)
             .navigationTitle(Tabs.recipes.tabName)
             .navigationBarTitleDisplayMode(.inline)
@@ -95,10 +99,6 @@ struct RecipesView: View {
                 }
             }
         }.navigationBarBackButtonHidden(true)
-        .searchable(text: $searchText)
-        .refreshable(action: {
-                        print("refresh")
-                    })
     }
     
     @ViewBuilder
