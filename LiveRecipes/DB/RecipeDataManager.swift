@@ -19,7 +19,7 @@ protocol RecipeDataManagerDescription {
     func prepareCoreDataIfNeeded(completion: (() -> ())?)
     var viewContext: NSManagedObjectContext { get }
 }
-class RecipeDataManager: RecipeDataManagerDescription {
+final class RecipeDataManager: RecipeDataManagerDescription {
     static let shared = RecipeDataManager()
     private let container: NSPersistentContainer
     private var isReady: Bool = false
