@@ -69,6 +69,10 @@ struct RecipesView: View {
                     myRecipesView()
                 }
             }
+            .searchable(text: $searchText)
+            .refreshable(action: {
+                            print("refresh")
+                        })
             .scrollIndicators(.hidden)
             .navigationTitle(Tabs.recipes.tabName)
             .navigationBarTitleDisplayMode(.inline)
@@ -94,22 +98,18 @@ struct RecipesView: View {
                     }
                 }
             }
-        }
-        .searchable(text: $searchText)
-        .refreshable(action: {
-                        print("refresh")
-                    })
+        }.navigationBarBackButtonHidden(true)
     }
     
     @ViewBuilder
     func keyWordsView() -> some View {
         if (viewModel.keyWords.isEmpty) {
-            Text("Ошибка загрузки данных")
+            Text("recipes.keywords.error.message".localized)
         } else {
             Button  {
                 modalKeyWordsIsOpen = true
             } label: {
-                titleButtonOfBlock(blockName: "Найти по ключевым словам")
+                titleButtonOfBlock(blockName: "recipes.keywords.button".localized)
             }.sheet(isPresented: $modalKeyWordsIsOpen) {
                 Assembler.sharedAssembly
                     .resolver
@@ -134,7 +134,7 @@ struct RecipesView: View {
                         print("next view")
                     }, label: {
                         HStack {
-                            Text("Больше слов")
+                            Text("recipes.keywords.more".localized)
                                 .tint(.black)
                                 .font(.caption)
                             Image(systemName: "chevron.right")
@@ -174,11 +174,11 @@ struct RecipesView: View {
                 .resolver
                 .resolve(AllRecipesView.self)
         }, label: {
-            titleButtonOfBlock(blockName: "Рецепты")
+            titleButtonOfBlock(blockName: "recipes.allrecipes.button".localized)
                 .padding(.top, 8)
         })
             if (viewModel.allRecipes.isEmpty) {
-                Text("Ошибка загрузки данных")
+                Text("recipes.allrecipes.error.message".localized)
             } else {
                 ScrollView(.horizontal) {
                     LazyHStack(spacing: 12) {
@@ -196,7 +196,7 @@ struct RecipesView: View {
     func cookToTimeView() -> some View {
         VStack {
             HStack {
-                Text("Приготовьте ко времени")
+                Text("recipes.cooktotime.label".localized)
                     .tint(.black)
                     .font(.title3)
                     .fontWeight(.light)
@@ -206,51 +206,76 @@ struct RecipesView: View {
             }
             GeometryReader {proxy in
                 HStack(spacing: (proxy.size.width - 320 - 12)/5) {
-                    VStack {
-                        Image("caesar")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 80, height: 80)
-                            .clipShape(.rect(cornerRadius: 8))
-                            .clipped()
-                        Text("Завтрак")
-                            .fontWeight(.bold)
-                            .font(.caption)
+                    NavigationLink  {
+                        Assembler.sharedAssembly
+                            .resolver
+                            .resolve(CookToTimeView.self)
+                    } label: {
+                        VStack {
+                            Image("breakfastMain")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80, height: 80)
+                                .clipShape(.rect(cornerRadius: 8))
+                                .clipped()
+                            Text("recipes.cooktotime.breakfast".localized)
+                                .fontWeight(.bold)
+                                .font(.caption)
+                        }
                     }
-                    VStack {
-                        Image("caesar")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 80, height: 80)
-                            .clipShape(.rect(cornerRadius: 8))
-                            .clipped()
-                        Text("Обед")
-                            .fontWeight(.bold)
-                            .font(.caption)
+                    NavigationLink  {
+                        Assembler.sharedAssembly
+                            .resolver
+                            .resolve(CookToTimeView.self)//поменять в будущем
+                    } label: {
+                        VStack {
+                            Image("lunchMain")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80, height: 80)
+                                .clipShape(.rect(cornerRadius: 8))
+                                .clipped()
+                            Text("recipes.cooktotime.lunch".localized)
+                                .fontWeight(.bold)
+                                .font(.caption)
+                        }
                     }
-                    VStack {
-                        Image("caesar")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 80, height: 80)
-                            .clipShape(.rect(cornerRadius: 8))
-                            .clipped()
-                        Text("Ужин")
-                            .fontWeight(.bold)
-                            .font(.caption)
+                    NavigationLink  {
+                        Assembler.sharedAssembly
+                            .resolver
+                            .resolve(CookToTimeView.self)
+                    } label: {
+                        VStack {
+                            Image("dinnerMain")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80, height: 80)
+                                .clipShape(.rect(cornerRadius: 8))
+                                .clipped()
+                            Text("recipes.cooktotime.dinner".localized)
+                                .fontWeight(.bold)
+                                .font(.caption)
+                        }
                     }
-                    VStack {
-                        Image("caesar")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 80, height: 80)
-                            .clipShape(.rect(cornerRadius: 8))
-                            .clipped()
-                        Text("Перекус")
-                            .fontWeight(.bold)
-                            .font(.caption)
+                    NavigationLink  {
+                        Assembler.sharedAssembly
+                            .resolver
+                            .resolve(CookToTimeView.self)
+                    } label: {
+                        VStack {
+                            Image("snackMain")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80, height: 80)
+                                .clipShape(.rect(cornerRadius: 8))
+                                .clipped()
+                            Text("recipes.cooktotime.snack".localized)
+                                .fontWeight(.bold)
+                                .font(.caption)
+                        }
                     }
                 }
+                .tint(.black)
                 .padding(.horizontal, (proxy.size.width - 320 + 12)/5)
             }
             .frame(height: 96)
@@ -264,12 +289,12 @@ struct RecipesView: View {
             Assembler.sharedAssembly
                 .resolver
                 .resolve(RecentRecipesView.self)
-        }, label: {titleButtonOfBlock(blockName: "Недавние")})
+        }, label: {titleButtonOfBlock(blockName: "recipes.recents.button".localized)})
         .padding(.top, 8)
         if (viewModel.recentRecipes.isEmpty) {
             VStack(spacing: 10) {
-                Text("Здесь пока пусто")
-                Text("Тут будут отображаться ранее просмотренные рецепты")
+                Text("recipes.recents.zero.message".localized)
+                Text("recipes.recents.zero.info".localized)
                     .font(.caption2)
                     .multilineTextAlignment(.center)
             }
@@ -296,13 +321,13 @@ struct RecipesView: View {
                 .resolver
                 .resolve(MyRecipesView.self)
         }, label: {
-            titleButtonOfBlock(blockName: "Мои рецепты")
+            titleButtonOfBlock(blockName: "recipes.myrecipes.button".localized)
         })
             .padding(.top, 8)
         if (viewModel.myRecipes.isEmpty) {
             VStack(spacing: 10) {
-                Text("Здесь пока пусто")
-                Text("Тут будут отображаться созданные Вами рецепты")
+                Text("recipes.myrecipes.zero.message".localized)
+                Text("recipes.myrecipes.zero.info".localized)
                     .font(.caption2)
                     .multilineTextAlignment(.center)
             }

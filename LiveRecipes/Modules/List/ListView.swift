@@ -181,5 +181,5 @@ struct ListView: View {
 }
 
 #Preview {
-    ApplicationViewBuilder.stub.build(view: .list)
+    ApplicationViewBuilder.stub.build(view: .list, tabBinding: Binding.constant(Tabs.recipes))
 }

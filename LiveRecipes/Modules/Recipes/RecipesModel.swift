@@ -110,14 +110,14 @@ final class RecipesModel: ObservableObject, RecipesModelProtocol {
 
     func loadRecentRecipes() -> [Recipe] {
         return [
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
+//            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
+//            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
         ]
     }
 
     func loadMyRecipes() -> [Recipe] {
         return [
-//            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar")
+       //     Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar")
         ]
     }
 }

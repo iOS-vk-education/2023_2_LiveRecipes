@@ -10,19 +10,20 @@ import Swinject
 
 struct RecentRecipesView: View {
     @StateObject var viewModel: RecipesViewModel
+    @Environment(\.presentationMode) var presentation
     @State var recentRecipes: [Recipe] = []
     @State var searchText = ""
     
     var body: some View {
             recipesView()
-                .navigationTitle("Недавние")
+            .navigationTitle("recents.title".localized)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button("", systemImage: "slider.horizontal.2.square") {
-                            viewModel.modalFiltersIsOpen = true
+                            viewModel.modalFiltersIsOpenFromRecents = true
                         }
-                        .sheet(isPresented: $viewModel.modalFiltersIsOpen) {
+                        .sheet(isPresented: $viewModel.modalFiltersIsOpenFromRecents) {
                             Assembler.sharedAssembly
                                 .resolver
                                 .resolve(FiltersView.self)
@@ -47,15 +48,15 @@ struct RecentRecipesView: View {
                     .foregroundStyle(Color(UIColor.systemGray3))
                     .padding(.bottom, 0)
                     .padding(.leading, 25)
-                Text("Тут пока ничего нет")
+                Text("recents.zero.message".localized)
                     .fontWeight(.semibold)
                     .foregroundStyle(Color(UIColor.systemGray3))
                     .font(.title2)
                     .padding(.bottom, 4)
                 Button {
-                    print("К рецептам")
+                    self.presentation.wrappedValue.dismiss()
                 } label: {
-                    Text("К рецептам")
+                    Text("recents.torecipes.button".localized)
                         .fontWeight(.semibold)
                 }
             }

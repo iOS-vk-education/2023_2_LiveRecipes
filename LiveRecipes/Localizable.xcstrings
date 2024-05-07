@@ -4,12 +4,6 @@
     "" : {
 
     },
-    "%g мин" : {
-
-    },
-    "%gкКал" : {
-
-    },
     "%lldh:%lldm:%llds" : {
       "localizations" : {
         "en" : {
@@ -549,6 +543,638 @@
         }
       }
     },
+    "filters" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filters"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Фильтры"
+          }
+        }
+      }
+    },
+    "filters.accept.button" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accept"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Применить"
+          }
+        }
+      }
+    },
+    "filters.caloricity" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caloricity"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Каллорийность"
+          }
+        }
+      }
+    },
+    "filters.caloricity.enter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kCal"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "кКал"
+          }
+        }
+      }
+    },
+    "filters.contains" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contains"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Содержит"
+          }
+        }
+      }
+    },
+    "filters.diet.name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "diet (temporary)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Диета (временно)"
+          }
+        }
+      }
+    },
+    "filters.enter.ingridient" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the ingredient"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Введите ингридиент"
+          }
+        }
+      }
+    },
+    "filters.find.diet" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a diet"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Подобрать диету"
+          }
+        }
+      }
+    },
+    "filters.not.contains" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not contains"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Не содержит"
+          }
+        }
+      }
+    },
+    "filters.time.cook" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cooking time"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Время приготовления"
+          }
+        }
+      }
+    },
+    "filters.time.enter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " min"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : " мин"
+          }
+        }
+      }
+    },
+    "keywords.error.message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data upload error"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Ошибка загрузки данных"
+          }
+        }
+      }
+    },
+    "keywords.search.button" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find Recipes"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Найти рецепты"
+          }
+        }
+      }
+    },
+    "keywords.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keywords"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Ключевые слова"
+          }
+        }
+      }
+    },
+    "myrecipes.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My recipes"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Мои рецепты"
+          }
+        }
+      }
+    },
+    "myrecipes.tocreation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To create"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "К созданию"
+          }
+        }
+      }
+    },
+    "myrecipes.zero.message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There's nothing here yet"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Тут пока ничего нет"
+          }
+        }
+      }
+    },
+    "recents.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recents"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Недавние"
+          }
+        }
+      }
+    },
+    "recents.torecipes.button" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To recipes"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "К рецептам"
+          }
+        }
+      }
+    },
+    "recents.zero.message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There's nothing here yet"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Тут пока ничего нет"
+          }
+        }
+      }
+    },
+    "recipes.allrecipes.button" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recipes"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Рецепты"
+          }
+        }
+      }
+    },
+    "recipes.allrecipes.error.message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data upload error"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Ошибка загрузки данных"
+          }
+        }
+      }
+    },
+    "recipes.card.time" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " min"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : " мин"
+          }
+        }
+      }
+    },
+    "recipes.cooktotime.breakfast" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breakfast"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Завтрак"
+          }
+        }
+      }
+    },
+    "recipes.cooktotime.dinner" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dinner"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Ужин"
+          }
+        }
+      }
+    },
+    "recipes.cooktotime.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cook to time"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Приготовьте ко времени"
+          }
+        }
+      }
+    },
+    "recipes.cooktotime.lunch" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lunch"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Обед"
+          }
+        }
+      }
+    },
+    "recipes.cooktotime.snack" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snack"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Перекус"
+          }
+        }
+      }
+    },
+    "recipes.keywords.button" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search by keywords"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Найти по ключевым словам"
+          }
+        }
+      }
+    },
+    "recipes.keywords.error.message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data upload error"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Ошибка загрузки данных"
+          }
+        }
+      }
+    },
+    "recipes.keywords.more" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "More keywords"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Больше слов"
+          }
+        }
+      }
+    },
+    "recipes.myrecipes.button" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My recipes"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Мои рецепты"
+          }
+        }
+      }
+    },
+    "recipes.myrecipes.zero.info" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The recipes you have created will be displayed here"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Тут будут отображаться созданные Вами рецепты"
+          }
+        }
+      }
+    },
+    "recipes.myrecipes.zero.message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It's empty here yet"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Здесь пока пусто"
+          }
+        }
+      }
+    },
+    "recipes.recents.button" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recents"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Недавние"
+          }
+        }
+      }
+    },
+    "recipes.recents.zero.info" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previously viewed recipes will be displayed here"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Тут будут отображаться ранее просмотренные рецепты"
+          }
+        }
+      }
+    },
+    "recipes.recents.zero.message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It's empty here yet"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Здесь пока пусто"
+          }
+        }
+      }
+    },
+    "Select a segment" : {
+
+    },
     "settings" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -722,25 +1348,7 @@
     "Белки" : {
 
     },
-    "Больше слов" : {
-
-    },
-    "В избранном" : {
-
-    },
-    "Введите ингридиент" : {
-
-    },
-    "Время приготовления" : {
-
-    },
     "Время приготовления 20 - 30 мин" : {
-
-    },
-    "Все рецепты" : {
-
-    },
-    "Вторая диета" : {
 
     },
     "Выберете рецепт и начните готовить!" : {
@@ -749,22 +1357,10 @@
     "Готовка" : {
 
     },
-    "Добавить в избранное" : {
-
-    },
     "Добавить продукты\n в список покупок" : {
 
     },
     "Жиры" : {
-
-    },
-    "Завтрак" : {
-
-    },
-    "Запустить" : {
-
-    },
-    "Здесь пока пусто" : {
 
     },
     "К приготовлению" : {
@@ -773,16 +1369,7 @@
     "К рецептам" : {
 
     },
-    "К созданию" : {
-
-    },
-    "Каллорийность" : {
-
-    },
     "Калории" : {
-
-    },
-    "Ключевые слова" : {
 
     },
     "Кол-во порций: 5" : {
@@ -791,31 +1378,16 @@
     "Креветки 4шт" : {
 
     },
-    "Мои рецепты" : {
+    "На главную" : {
 
     },
-    "Найти рецепты" : {
-
-    },
-    "Не содержит" : {
-
-    },
-    "Недавние" : {
-
-    },
-    "Обед" : {
+    "Не забудьте перед готовкой" : {
 
     },
     "Описание:" : {
 
     },
     "Ошибка загрузки данных" : {
-
-    },
-    "Первая диета" : {
-
-    },
-    "Перекус" : {
 
     },
     "Перец по вкусу" : {
@@ -827,16 +1399,13 @@
     "Пищевая ценность:" : {
 
     },
-    "Подобрать диету" : {
+    "Поехали!" : {
 
     },
-    "Приготовьте ко времени" : {
+    "Понадобиться времени" : {
 
     },
-    "Применить" : {
-
-    },
-    "Пятая диета" : {
+    "Последний шаг" : {
 
     },
     "Салат 8 листов" : {
@@ -845,7 +1414,7 @@
     "Следующий шаг" : {
 
     },
-    "Содержит" : {
+    "Создать" : {
 
     },
     "Соль по вкусу" : {
@@ -863,34 +1432,16 @@
     "Таймер" : {
 
     },
-    "Третья диета" : {
-
-    },
-    "Тут будут отображаться ранее просмотренные рецепты" : {
-
-    },
-    "Тут будут отображаться созданные Вами рецепты" : {
-
-    },
     "Тут пока ничего нет" : {
 
     },
     "Углеводы" : {
 
     },
-    "Ужин" : {
-
-    },
-    "Фильтры" : {
-
-    },
     "Цезарь" : {
 
     },
     "Цезарь с креветками" : {
-
-    },
-    "Четвертая диета" : {
 
     },
     "Шаг %lld" : {

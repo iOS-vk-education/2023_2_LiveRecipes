@@ -16,14 +16,14 @@ struct MyRecipesView: View {
     var body: some View {
             myRecipesView()
                 .scrollIndicators(.hidden)
-                .navigationTitle("Мои рецепты")
+                .navigationTitle("myrecipes.title".localized)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button("", systemImage: "slider.horizontal.2.square") {
-                            viewModel.modalFiltersIsOpen = true
+                            viewModel.modalFiltersIsOpenFromMy = true
                         }
-                        .sheet(isPresented: $viewModel.modalFiltersIsOpen) {
+                        .sheet(isPresented: $viewModel.modalFiltersIsOpenFromMy) {
                             Assembler.sharedAssembly
                                 .resolver
                                 .resolve(FiltersView.self)
@@ -43,17 +43,19 @@ struct MyRecipesView: View {
                     .fontWeight(.semibold)
                     .foregroundStyle(Color(UIColor.systemGray3))
                     .padding(.bottom, 0)
-                Text("Тут пока ничего нет")
+                Text("myrecipes.zero.message".localized)
                     .fontWeight(.semibold)
                     .foregroundStyle(Color(UIColor.systemGray3))
                     .font(.title2)
                     .padding(.bottom, 4)
-                Button {
-                    print("К созданию")
+                NavigationLink {
+                    Assembler.sharedAssembly
+                        .resolver
+                        .resolve(CreationView.self)
                 } label: {
-                    Text("К созданию")
-                        .fontWeight(.semibold)
+                    Text("myrecipes.tocreation".localized)
                 }
+
             }
             .padding(.bottom, 30)
         } else {

@@ -13,7 +13,6 @@ struct SettingsView: View {
     @StateObject var creationViewModel = CreationViewModel(creationModel: CreationModel())//это временная дичь
 
     var body: some View {
-        NavigationView {
             List {
                 Section(header: Text("settings.userSettings".localized)) {
                     Text("settings.clearFavourites".localized)
@@ -37,7 +36,6 @@ struct SettingsView: View {
                     })
                 }
             }
-        }
         .navigationTitle("settings".localized)
         //.toolbarBackground(.visible, for: .navigationBar)
         .navigationBarTitleDisplayMode(.inline)

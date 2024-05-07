@@ -17,8 +17,12 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     @Published var allRecipes: [Recipe] = []
     @Published var recentRecipes: [Recipe] = []
     @Published var myRecipes: [Recipe] = []
-
+    
     @Published var modalFiltersIsOpen: Bool = false
+    @Published var modalFiltersIsOpenFromAll: Bool = false
+    @Published var modalFiltersIsOpenFromRecents: Bool = false
+    @Published var modalFiltersIsOpenFromMy: Bool = false
+    @Published var modalFiltersIsOpenFromTime: Bool = false
     
     private var cancellables: Set<AnyCancellable> = []
 

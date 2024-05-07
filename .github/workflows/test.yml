@@ -1,0 +1,35 @@
+on:
+    push:
+      branches: [ "master" ]
+    pull_request:
+      branches: [ "master" ]
+
+jobs:
+    build:
+  
+      runs-on: macos-14
+  
+      steps:
+      - uses: actions/checkout@v3
+  
+      - name: Xcode Setup
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '15.2'
+  
+      - name: Build
+        run: |
+          xcodebuild build -project LiveRecipes.xcodeproj -scheme LiveRecipes clean build -sdk iphoneos CODE_SIGNING_ALLOWED=No
+      - name: Run tests
+        run: |
+          xcrun simctl boot 'iPhone 15 Pro' || sleep 15
+          xcodebuild test -project LiveRecipes.xcodeproj -scheme LiveRecipes -sdk iphoneos -destination "platform=iOS Simulator,OS=17.2,name=iPhone 15 Pro" -allowProvisioningUpdates -resultBundlePath TestResults -enableCodeCoverage YES
+      - uses: kishikawakatsumi/xcresulttool@v1
+        with:
+            path: TestResults.xcresult
+        if: success() || failure()
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4.0.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: iOS-vk-education/2023_2_LiveRecipes
