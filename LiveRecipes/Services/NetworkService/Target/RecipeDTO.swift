@@ -7,20 +7,28 @@
 
 import Foundation
 
-//struct RecipeDTO: Codable, Hashable {
-//    var id: Int
-//    var name: String
-//    var bzy: [String: String]
-//    var photo: String
-//    var duration: String
-//    var ingredients: [String]
-//    var steps: [String: [String]]
-//    var tag: [Int]
-//}
+struct BZY: Codable, Hashable {
+    var calories: String
+    var protein: String
+    var fats: String
+    var carbohydrates: String
+}
 
 struct RecipeDTO: Codable, Hashable {
-    var title: String
-    var ingredients: String
-    var servings: String
-    var instructions: String
+    var id: Int
+    var name: String
+    var bzy: BZY
+    var duration: String
+    var photo: String
+    var description: String
+    var ingredients: [String]
+    var steps: [[String]]
+    var tag: String
 }
+
+//struct RecipeDTO: Codable, Hashable {
+//    var title: String
+//    var ingredients: String
+//    var servings: String
+//    var instructions: String
+//}

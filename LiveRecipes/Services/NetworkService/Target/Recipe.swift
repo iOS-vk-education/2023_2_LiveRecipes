@@ -11,11 +11,13 @@ import Foundation
 enum RecipeTarget {
     case getRecipe(name: String)
     case getDesserts
+    case getById(id: Int)
 }
 
 extension RecipeTarget: TargetType {
     var baseURL: String {
-        return "https://api.api-ninjas.com/v1"
+        //return "https://api.api-ninjas.com/v1"
+        return "http://127.0.0.1:8000"
     }
 
     var path: String {
@@ -24,19 +26,22 @@ extension RecipeTarget: TargetType {
             return "/recipe?query=\(name)"
         case .getDesserts:
             return "/desserts"
+        case .getById(let id):
+            return "/id/\(id)"
         }
+        
     }
 
     var method: HTTPMethod {
         switch self {
-        case .getRecipe, .getDesserts:
+        case .getRecipe, .getDesserts, .getById:
             return .get
         }
     }
 
     var task: NetworkTask {
         switch self {
-        case .getRecipe, .getDesserts:
+        case .getRecipe, .getDesserts, .getById:
             return .requestPlain
         }
     }
@@ -60,6 +65,9 @@ class RecipeAPI: BaseAPI<RecipeTarget>, RecipeAPIProtocol {
     
     func getRecipes(name: String, completionHandler: @escaping (Result<[RecipeDTO], NSError>) -> Void) {
         fetchData(target: .getRecipe(name: name), responseClass: [RecipeDTO].self) { result in completionHandler(result) }
+    }
+    func getRecipeById(id: Int, completionHandler: @escaping (Result<RecipeDTO, NSError>) -> Void){
+        fetchData(target: .getById(id: id), responseClass: RecipeDTO.self) { result in completionHandler(result) }
     }
 }
 
