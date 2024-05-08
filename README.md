@@ -19,5 +19,6 @@
 ## Дизайн
 [![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/file/VphDd8NciEumH7q2rRmLeF/Otzovik?type=design&node-id=806-8055&mode=design)
 ## Backend
-URL here....
+Django
+https://github.com/m1rosh/LiveRecipesBackend
 <hr>
