@@ -9,51 +9,67 @@ import SwiftUI
 import Swinject
 
 struct OneStepView: View {
-    @StateObject var viewModel: CookingViewModel
+    //@StateObject var viewModel: CookingViewModel
     @State var disconnectText = false
     var stepNumber: Int
+    var steps: [[String]]
+    var dishName: String
+    var dishType: String
     
     var body: some View {
             ScrollView {
-                HStack() {
-                    Text("Цезарь с креветками")
-                        .font(.system(size: 20, weight: .medium))
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(dishName)
+                            .font(.system(size: 20, weight: .medium))
+                        Text(dishType)
+                            .font(.system(size: 16, weight: .light))
+                    }
                     Spacer()
                 }
-                .padding()
-                
+                .padding(.init(top: 0, leading: 16, bottom: 0, trailing: 10))
+            
                 VStack {
                     VStack {
-                        Image(viewModel.steps[stepNumber - 1]["image"] ?? "")
-                            .resizable()
-                            .frame(width: 370, height: 260)
-                        Text(viewModel.steps[stepNumber - 1]["description"] ?? "")
-                            .padding(.bottom)
+                        if let data = Data(base64Encoded: steps[stepNumber - 1][1]), let image = UIImage(data: data) {
+                            Image(uiImage: image)
+                                .resizable()
+                                .frame(width: UIScreen.main.bounds.width - 20, height: 260)
+                                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                        }
+                        Text(steps[stepNumber - 1][0])
+                            .lineSpacing(8)
+                            .padding(.init(top: 8, leading: 8, bottom: 8, trailing: 8))
                     }.background(Color(UIColor.secondarySystemBackground))
                         .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                        .padding()
                     
-                    TimerView(totalTime: 10, timeForProgress: 10, disconnectText: $disconnectText)
-                    
-                    if stepNumber + 1 <= viewModel.steps.count {
+                    if steps[stepNumber - 1][2] != "0" {
+                        TimerView(totalTime: Int(steps[stepNumber - 1][2]) ?? 0, timeForProgress: Int(steps[stepNumber - 1][2]) ?? 0, disconnectText: $disconnectText)
+                            .padding(.bottom, 10)
+                    }
+                    if stepNumber + 1 <= steps.count {
                         Button(action: {
-                            print("nextStep")
-                        }) {
                             
-                            NavigationLink(destination: OneStepView(viewModel: viewModel,stepNumber: stepNumber + 1)) {
+                        }) {
+                            NavigationLink(destination: OneStepView(stepNumber: stepNumber + 1, steps: steps, dishName: dishName, dishType: dishType)) {
                                 HStack {
                                     Spacer()
-                                    Text("Следующий шаг")
+                                    Text("oneStep.nextStep")
                                         .foregroundStyle(.white)
                                         .fontWeight(.semibold)
-                                    Spacer()
                                     Image(systemName: "chevron.right")
                                         .foregroundStyle(.white)
-                                }.frame(width: 330, height: 35)
+                                        .frame(height: 35)
+                                    Spacer()
+                                }
                                 
                             }
                             
                         }.buttonStyle(.borderedProminent)
                             .tint(.orange)
+                            .padding(.init(top: 0, leading: 0, bottom: 40, trailing: 0))
+                            .frame(width: UIScreen.main.bounds.width - 20)
                         
                     }
                     else {
@@ -66,7 +82,7 @@ struct OneStepView: View {
                                 .resolve(RecipesView.self)}) {
                                     HStack {
                                         Spacer()
-                                        Text("На главную")
+                                        Text("oneStep.toMainPage")
                                             .foregroundStyle(.white)
                                             .fontWeight(.semibold)
                                         
@@ -79,13 +95,14 @@ struct OneStepView: View {
                         }
                         .buttonStyle(.borderedProminent)
                             .tint(.black)
+                            .padding(.bottom, 20)
                     }
                 }
             }
             .gesture(TapGesture().onEnded({
                 disconnectText = true
         }))
-            .navigationTitle(stepNumber == viewModel.steps.count ? "Последний шаг" :"Шаг \(stepNumber)")
+            .navigationTitle(stepNumber == steps.count ? "oneStep.lastStep".localized :"oneStep.step\(stepNumber)".localized)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(stepNumber == 1 ? true : false)
         .toolbar(.visible, for: .tabBar)

@@ -7,8 +7,12 @@
 
 import Foundation
 
-protocol OneDishModelProtocol {}
+protocol OneDishModelProtocol {
+    func findRecipe(id: Int, completion: @escaping (RecipeDTO)->Void)
+}
 
-protocol OneDishViewModelProtocol {}
+protocol OneDishViewModelProtocol {
+    func findRecipe() -> Void
+}
 
 

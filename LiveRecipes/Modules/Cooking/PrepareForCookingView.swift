@@ -10,29 +10,26 @@ import Swinject
 
 struct PrepareForCookingView: View {
     @State private var animatedTextIndex = 0
-    let texts = ["Креветки 4шт", "Салат 8 листов", "Сухарики 9 грамм", "Креветки 4 шт", "Соль по вкусу", "Перец по вкусу",
-                 "Креветки 4шт", "Салат 8 листов", "Сухарики 9 грамм", "Креветки 4 шт", "Соль по вкусу", "Перец по вкусу"]
-    
+    @Environment(\.presentationMode) var presentationMode
+    //let texts = ["Креветки 4шт", "Салат 8 листов", "Сухарики 9 грамм", "Креветки 4 шт", "Соль по вкусу", "Перец по вкусу",
+      //           "Креветки 4шт", "Салат 8 листов", "Сухарики 9 грамм", "Креветки 4 шт", "Соль по вкусу", "Перец по вкусу"]
+    let recipe: RecipeDTO
+
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Text("Не забудьте перед готовкой")
-                    .font(.system(size: 22, weight: .semibold))
-                    .foregroundStyle(.orange)
                 Spacer()
                 ZStack(alignment: .bottom) {
                     ScrollView {
-                        ForEach(0..<texts.count) {index in
-                            let _ = print(geometry.size)
+                        ForEach(0..<recipe.ingredients.count, id: \.self) {index in
                             if index % 2 == 0 {
-                                IngredientRunningTextView(duration: Double(index + 1), text: texts[index], offsetWidth: -450, finishWidth: 80)
+                                IngredientRunningTextView2(duration: Double(index + 2), text: recipe.ingredients[index], startX: 450)
                                     .frame(width: geometry.size.width)
                             }
                             else {
-                                IngredientRunningTextView(duration: Double(index + 1), text: texts[index], offsetWidth: 450, finishWidth: -80)
+                                IngredientRunningTextView2(duration: Double(index + 2), text: recipe.ingredients[index], startX: -450)
                             }
                         }
-                        
                     }.frame(minWidth: geometry.size.width, minHeight: geometry.size.height * 0.7)
                         .scrollIndicators(.hidden)
                     TransperentBlur()
@@ -42,12 +39,25 @@ struct PrepareForCookingView: View {
                     
                 }
                 
-                DurationTextWithBlur(text: "20-30 минут")
-                StartCookingButton()
+                DurationTextWithBlur(text: recipe.duration)
+                StartCookingButton(transferData: recipe)
                 
             }.background(RadialGradient(gradient: Gradient(colors: [.orange, .white]), center: .center, startRadius: 50, endRadius: 400)
                 .ignoresSafeArea()
                 .toolbar(.hidden, for: .tabBar)
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button("", systemImage: "chevron.left") {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
+                    }
+                    ToolbarItem(placement: .principal) {
+                        Text("cookingPrepare.dontForget".localized)
+                            .foregroundStyle(.orange)
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                    }
+                }
                 .navigationBarBackButtonHidden(true)
             )
         }

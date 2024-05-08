@@ -18,10 +18,10 @@ struct CookingView: View {
             let _ = viewModel.findSteps()
             NoStepsView(tabSelected: tabSelected)
         }
-        else {
-            let _ = print(viewModel.steps.count)
-            OneStepView(viewModel: viewModel, stepNumber: 1)
-        }
+//        else {
+//            let _ = print(viewModel.steps.count)
+//            OneStepView(viewModel: viewModel, stepNumber: 1)
+//        }
     }
 }
 

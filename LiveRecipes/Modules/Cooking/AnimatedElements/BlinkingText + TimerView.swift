@@ -113,7 +113,7 @@ struct TimerView: View {
             .padding(.init(top: 0, leading: 8, bottom: 16, trailing: 8))
         }.background(Color(UIColor.systemGray6))
             .cornerRadius(10)
-        .padding()
+            .frame(width: UIScreen.main.bounds.width - 20)
     }
 }
 
@@ -129,7 +129,7 @@ struct CustomProgressViewStyle: ProgressViewStyle {
                     .overlay(alignment: .leading){
                         RoundedRectangle(cornerRadius: 15)
                             .foregroundColor(.orange)
-                            .frame(width: configuration.fractionCompleted.map { $0 * geometry.size.width }, height: 30)
+                            .frame(width: configuration.fractionCompleted.map { $0 * geometry.size.width }, height: configuration.fractionCompleted! < 0.025 ? 15 : 30)
                             .animation(.linear, value: progress)
                     }
             }
