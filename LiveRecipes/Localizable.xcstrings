@@ -36,10 +36,33 @@
     "allrecipes.error.message" : {
       "extractionState" : "manual",
       "localizations" : {
-        "ru" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Data upload error"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "Ошибка загрузки данных"
+          }
+        }
+      }
+    },
+    "allrecipes.errorFound.message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing found"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Ничего не найдено"
           }
         }
       }

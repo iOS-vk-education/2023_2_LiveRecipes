@@ -11,8 +11,8 @@ final class FavoritesViewModel: ObservableObject, FavoritesViewModelProtocol {
     var model: FavoritesModelProtocol
     
     @Published var modalFiltersIsOpen: Bool = false
-    @Published var allRecipes: [Recipe] = []
-    @Published var myRecipes: [Recipe] = []
+    @Published var allRecipes: [RecipeDTO] = []
+    @Published var myRecipes: [RecipeDTO] = []
     init(favoritesModel: FavoritesModel) {
         self.model = favoritesModel
         loadAllData()
@@ -25,6 +25,6 @@ final class FavoritesViewModel: ObservableObject, FavoritesViewModelProtocol {
         myRecipes = model.loadMyRecipes()
     }
     func findMore() {
-        myRecipes.append(Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"))
+//        myRecipes.append(RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"))
     }
 }

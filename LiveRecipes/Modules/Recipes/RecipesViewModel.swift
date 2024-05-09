@@ -11,24 +11,27 @@ import Foundation
 final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     var model: RecipesModelProtocol
     @Published var foundRecipes: [RecipeDTO] = []
-    @Published var searchQuery = "Egg"
+    @Published var searchQuery = ""
+    @Published var pageAll = 1
+    @Published var scrollID: Int?
+        
     @Published var searchIsActive = false
     @Published var keyWords: [KeyWord] = []
-    @Published var allRecipes: [Recipe] = []
-    @Published var recentRecipes: [Recipe] = []
-    @Published var myRecipes: [Recipe] = []
+    @Published var allRecipes: [RecipeDTO] = []
+    @Published var recentRecipes: [RecipeDTO] = []
+    @Published var myRecipes: [RecipeDTO] = []
     
-    @Published var modalFiltersIsOpen: Bool = false
+    @Published var modalFiltersIsOpenFromMain: Bool = false
     @Published var modalFiltersIsOpenFromAll: Bool = false
     @Published var modalFiltersIsOpenFromRecents: Bool = false
     @Published var modalFiltersIsOpenFromMy: Bool = false
     @Published var modalFiltersIsOpenFromTime: Bool = false
+    @Published var modalKeyWordsIsOpen: Bool = false
     
     private var cancellables: Set<AnyCancellable> = []
 
     init(recipesModel: RecipesModel) {
         self.model = recipesModel
-
         $searchQuery
                     .debounce(for: .seconds(0.5), scheduler: DispatchQueue.global())
                     .removeDuplicates()
@@ -48,10 +51,22 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
             self?.foundRecipes = result
         }
     }
-    
+    func loadAllRecipes() {
+        model.loadAllRecipesList(page: pageAll) { [weak self] result in
+            self?.allRecipes = result
+        }
+    }
+    func loadMoreAllRecipes() {
+        if (scrollID ?? 0 > allRecipes.count - 5) {
+            pageAll += 1
+            model.loadAllRecipesList(page: pageAll) { [weak self] result in
+                self?.allRecipes.append(contentsOf: result)
+            }
+        }
+    }
     func loadAllData() {
+        loadAllRecipes()
         keyWords = model.loadKeyWords()
-        allRecipes = model.loadAllRecipes()
         recentRecipes = model.loadRecentRecipes()
         myRecipes = model.loadMyRecipes()
     }

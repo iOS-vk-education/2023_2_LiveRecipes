@@ -12,8 +12,8 @@ protocol FavoritesViewModelProtocol {
 }
 
 protocol FavoritesModelProtocol {
-    func loadAllRecipes() -> [Recipe]
-    func loadMyRecipes() -> [Recipe]
+    func loadAllRecipes() -> [RecipeDTO]
+    func loadMyRecipes() -> [RecipeDTO]
 }
 
 protocol FavoritesViewProtocol {}

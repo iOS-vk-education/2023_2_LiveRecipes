@@ -6,7 +6,8 @@
 //
 
 import Foundation
-
+import SwiftUI
+import UIKit
 //struct RecipeDTO: Codable, Hashable {
 //    var id: Int
 //    var name: String
@@ -18,9 +19,21 @@ import Foundation
 //    var tag: [Int]
 //}
 
-struct RecipeDTO: Codable, Hashable {
-    var title: String
-    var ingredients: String
-    var servings: String
-    var instructions: String
+struct RecipeDTO: Codable, Hashable, Identifiable {
+    
+    let name: String
+    let duration: String
+    let tag: String
+    let photo: String
+    let id: Int
+    var isInFavorites: Bool?
+    mutating func changeStateOfFavorites() {
+        if (isInFavorites == nil) {isInFavorites = false}
+        if(isInFavorites == false) {
+            isInFavorites = true
+        }
+        else {
+            isInFavorites = false
+        }
+    }
 }

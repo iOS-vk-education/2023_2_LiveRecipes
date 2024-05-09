@@ -8,6 +8,7 @@
 import Foundation
 
 final class RecipesModel: ObservableObject, RecipesModelProtocol {
+    
     let recipeAPI: RecipeAPI
     @Published var foundRecipes: [RecipeDTO] = []
 
@@ -17,11 +18,23 @@ final class RecipesModel: ObservableObject, RecipesModelProtocol {
 
     func findRecipe(name: String, completion: @escaping ([RecipeDTO])->Void) {
         recipeAPI.getRecipes(name: name, completionHandler: { [weak self] result in
-            guard let self else { return }
+            guard self != nil else { return }
             switch result {
             case .success(let result):
                 completion(result)
-            case .failure(let error):
+                case .failure(_):
+                completion([])
+            }
+        })
+    }
+    
+    func loadAllRecipesList(page: Int, completion: @escaping ([RecipeDTO]) -> Void) {
+        recipeAPI.getAllList(page: page, completionHandler: {  [weak self] result in
+            guard self != nil else { return }
+            switch result {
+            case .success(let result):
+                completion(result)
+                case .failure(_):
                 completion([])
             }
         })
@@ -29,10 +42,11 @@ final class RecipesModel: ObservableObject, RecipesModelProtocol {
 
     func getDesserts(completion: @escaping ([RecipeDTO])->Void) {
         recipeAPI.getDesserts{ [weak self] result in
+            guard self != nil else { return }
             switch result {
             case .success(let result):
                 completion(result)
-            case .failure(let error):
+                case .failure(_):
                 completion([])
             }
         }
@@ -94,30 +108,32 @@ final class RecipesModel: ObservableObject, RecipesModelProtocol {
         ]
     }
 
-    func loadAllRecipes() -> [Recipe] {
+    func loadAllRecipes() -> [RecipeDTO] {
+        
         return [
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar")
+//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
+//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
+//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
+//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
+//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
+//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
+//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
+//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
+//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar")
         ]
     }
 
-    func loadRecentRecipes() -> [Recipe] {
+    func loadRecentRecipes() -> [RecipeDTO] {
+        
         return [
-//            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-//            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
+//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
+//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
         ]
     }
 
-    func loadMyRecipes() -> [Recipe] {
+    func loadMyRecipes() -> [RecipeDTO] {
         return [
-       //     Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar")
+//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar")
         ]
     }
 }

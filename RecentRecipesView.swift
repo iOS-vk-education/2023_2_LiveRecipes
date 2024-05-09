@@ -65,7 +65,7 @@ struct RecentRecipesView: View {
             GeometryReader {proxy in
                 ScrollView() {
                     LazyVStack(spacing: 12) {
-                        ForEach(viewModel.recentRecipes) { recipe in
+                        ForEach(viewModel.foundRecipes, id: \.self) { recipe in
                             RecipeBigCardView(recipe: recipe, proxy: proxy)
                         }
                     }

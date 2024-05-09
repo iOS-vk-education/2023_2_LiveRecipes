@@ -55,8 +55,6 @@ struct RecipesView: View {
     @StateObject var viewModel: RecipesViewModel
     @State private var searchText = ""
     @State private var isSearching = ""
-    @State var modalKeyWordsIsOpen: Bool = false
-    
     
     var body: some View {
         NavigationView {
@@ -75,18 +73,15 @@ struct RecipesView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     HStack (spacing: 4) {
-//                        Button("", systemImage: "gear") {
                             NavigationLink (destination: {
                                 Assembler.sharedAssembly
                                     .resolver
                                     .resolve(SettingsView.self)
                             }, label: {Image(systemName: "gear")})
-
-//                        }
                         Button("", systemImage: "slider.horizontal.2.square") {
-                            viewModel.modalFiltersIsOpen = true
+                            viewModel.modalFiltersIsOpenFromMain = true
                         }
-                        .sheet(isPresented: $viewModel.modalFiltersIsOpen) {
+                        .sheet(isPresented: $viewModel.modalFiltersIsOpenFromMain) {
                             Assembler.sharedAssembly
                                 .resolver
                                 .resolve(FiltersView.self)
@@ -107,10 +102,10 @@ struct RecipesView: View {
             Text("recipes.keywords.error.message".localized)
         } else {
             Button  {
-                modalKeyWordsIsOpen = true
+                viewModel.modalKeyWordsIsOpen = true
             } label: {
                 titleButtonOfBlock(blockName: "recipes.keywords.button".localized)
-            }.sheet(isPresented: $modalKeyWordsIsOpen) {
+            }.sheet(isPresented: $viewModel.modalKeyWordsIsOpen) {
                 Assembler.sharedAssembly
                     .resolver
                     .resolve(KeyWordsView.self)
@@ -182,7 +177,7 @@ struct RecipesView: View {
             } else {
                 ScrollView(.horizontal) {
                     LazyHStack(spacing: 12) {
-                        ForEach (viewModel.allRecipes) { recipie in
+                        ForEach (viewModel.allRecipes, id: \.self) { recipie in
                             RecipeCardView(recipe: recipie)
                         }
                     }
@@ -209,7 +204,7 @@ struct RecipesView: View {
                     NavigationLink  {
                         Assembler.sharedAssembly
                             .resolver
-                            .resolve(CookToTimeView.self)
+                            .resolve(CookToTimeView.self, argument: "recipes.cooktotime.breakfast".localized)
                     } label: {
                         VStack {
                             Image("breakfastMain")
@@ -226,7 +221,7 @@ struct RecipesView: View {
                     NavigationLink  {
                         Assembler.sharedAssembly
                             .resolver
-                            .resolve(CookToTimeView.self)//поменять в будущем
+                            .resolve(CookToTimeView.self, argument: "recipes.cooktotime.lunch".localized)
                     } label: {
                         VStack {
                             Image("lunchMain")
@@ -243,7 +238,7 @@ struct RecipesView: View {
                     NavigationLink  {
                         Assembler.sharedAssembly
                             .resolver
-                            .resolve(CookToTimeView.self)
+                            .resolve(CookToTimeView.self, argument: "recipes.cooktotime.dinner".localized)
                     } label: {
                         VStack {
                             Image("dinnerMain")
@@ -260,7 +255,7 @@ struct RecipesView: View {
                     NavigationLink  {
                         Assembler.sharedAssembly
                             .resolver
-                            .resolve(CookToTimeView.self)
+                            .resolve(CookToTimeView.self, argument: "recipes.cooktotime.snack".localized)
                     } label: {
                         VStack {
                             Image("snackMain")
@@ -304,7 +299,7 @@ struct RecipesView: View {
         } else {
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 12) {
-                    ForEach (viewModel.recentRecipes) { recipe in
+                    ForEach (viewModel.recentRecipes, id: \.self) { recipe in
                         RecipeCardView(recipe: recipe)
                     }
                 }
@@ -338,7 +333,7 @@ struct RecipesView: View {
         } else {
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 12) {
-                    ForEach (viewModel.myRecipes) { recipe in
+                    ForEach (viewModel.myRecipes, id: \.self) { recipe in
                         RecipeCardView(recipe: recipe)
                     }
                 }

@@ -10,40 +10,48 @@ import Foundation
 
 enum RecipeTarget {
     case getRecipe(name: String)
+    case getAllList(page: Int)
     case getDesserts
 }
 
 extension RecipeTarget: TargetType {
     var baseURL: String {
-        return "https://api.api-ninjas.com/v1"
+        return "http://127.0.0.1:8000"
     }
 
     var path: String {
         switch self {
         case .getRecipe(let name):
-            return "/recipe?query=\(name)"
+            return "/queryset=\(name)"
         case .getDesserts:
             return "/desserts"
+        case .getAllList(let page):
+            return "/recipes_feed/?page=\(page)"
         }
     }
 
     var method: HTTPMethod {
         switch self {
-        case .getRecipe, .getDesserts:
+            case .getRecipe, .getDesserts, .getAllList:
             return .get
         }
     }
 
     var task: NetworkTask {
         switch self {
-        case .getRecipe, .getDesserts:
+            case .getRecipe, .getDesserts, .getAllList:
             return .requestPlain
         }
     }
 
     var headers: [String:String]? {
         switch self {
-            default: ["X-Api-Key" : "9WYn3TW87sUX36rJ901CpQ==L21Qd6TelIhkHmk6"]
+            default: [
+                "id" : "id",
+                "duration": "duration",
+                "tag": "tag",
+                "name": "name"
+            ]
         }
     }
 }
@@ -60,6 +68,11 @@ class RecipeAPI: BaseAPI<RecipeTarget>, RecipeAPIProtocol {
     
     func getRecipes(name: String, completionHandler: @escaping (Result<[RecipeDTO], NSError>) -> Void) {
         fetchData(target: .getRecipe(name: name), responseClass: [RecipeDTO].self) { result in completionHandler(result) }
+    }
+    func getAllList(page: Int, completionHandler: @escaping (Result<[RecipeDTO], NSError>) -> Void) {
+        fetchData(target: .getAllList(page: page), responseClass: [RecipeDTO].self) { result in
+            completionHandler(result)
+        }
     }
 }
 

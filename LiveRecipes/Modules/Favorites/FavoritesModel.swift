@@ -8,25 +8,25 @@
 import Foundation
 
 final class FavoritesModel: ObservableObject, FavoritesModelProtocol {
-    func loadMyRecipes() -> [Recipe] {
+    func loadMyRecipes() -> [RecipeDTO] {
         return [
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
+//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
+//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
         ]
     }
     
     
-    func loadAllRecipes() -> [Recipe] {
+    func loadAllRecipes() -> [RecipeDTO] {
         return [
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
-            Recipe(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar")
+//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
+//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
+//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
+//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
+//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
+//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
+//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
+//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
+//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar")
         ]
     }
 }

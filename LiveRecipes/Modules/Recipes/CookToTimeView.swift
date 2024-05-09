@@ -11,10 +11,11 @@ import Swinject
 struct CookToTimeView: View {
     @StateObject var viewModel: RecipesViewModel
     @State private var searchText = ""
+    var title: String
     
     var body: some View {
             recipesView()
-            .navigationTitle("cooktotime.title.name".localized)
+            .navigationTitle(title)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
@@ -38,8 +39,8 @@ struct CookToTimeView: View {
             GeometryReader {proxy in
                 ScrollView() {
                     LazyVStack(spacing: 12) {
-                        ForEach(viewModel.allRecipes) { recipe in
-                           RecipeBigCardView(recipe: recipe, proxy: proxy)
+                        ForEach(viewModel.foundRecipes, id: \.self) { recipe in
+                            RecipeBigCardView(recipe: recipe, proxy: proxy)
                         }
                     }
                 }
