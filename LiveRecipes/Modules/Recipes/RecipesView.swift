@@ -217,7 +217,7 @@ struct RecipesView: View {
                     NavigationLink  {
                         Assembler.sharedAssembly
                             .resolver
-                            .resolve(CookToTimeView.self, argument: "recipes.cooktotime.breakfast".localized)
+                            .resolve(CookToTimeView.self, argument: NameToTime.breakfast)
                     } label: {
                         VStack {
                             Image("breakfastMain")
@@ -226,7 +226,7 @@ struct RecipesView: View {
                                 .frame(width: 80, height: 80)
                                 .clipShape(.rect(cornerRadius: 8))
                                 .clipped()
-                            Text("recipes.cooktotime.breakfast".localized)
+                            Text(NameToTime.breakfast.title)
                                 .fontWeight(.bold)
                                 .font(.caption)
                         }
@@ -234,7 +234,7 @@ struct RecipesView: View {
                     NavigationLink  {
                         Assembler.sharedAssembly
                             .resolver
-                            .resolve(CookToTimeView.self, argument: "recipes.cooktotime.lunch".localized)
+                            .resolve(CookToTimeView.self, argument: NameToTime.lunch)
                     } label: {
                         VStack {
                             Image("lunchMain")
@@ -243,7 +243,7 @@ struct RecipesView: View {
                                 .frame(width: 80, height: 80)
                                 .clipShape(.rect(cornerRadius: 8))
                                 .clipped()
-                            Text("recipes.cooktotime.lunch".localized)
+                            Text(NameToTime.lunch.title)
                                 .fontWeight(.bold)
                                 .font(.caption)
                         }
@@ -251,7 +251,7 @@ struct RecipesView: View {
                     NavigationLink  {
                         Assembler.sharedAssembly
                             .resolver
-                            .resolve(CookToTimeView.self, argument: "recipes.cooktotime.dinner".localized)
+                            .resolve(CookToTimeView.self, argument: NameToTime.dinner)
                     } label: {
                         VStack {
                             Image("dinnerMain")
@@ -260,7 +260,7 @@ struct RecipesView: View {
                                 .frame(width: 80, height: 80)
                                 .clipShape(.rect(cornerRadius: 8))
                                 .clipped()
-                            Text("recipes.cooktotime.dinner".localized)
+                            Text(NameToTime.dinner.title)
                                 .fontWeight(.bold)
                                 .font(.caption)
                         }
@@ -268,7 +268,7 @@ struct RecipesView: View {
                     NavigationLink  {
                         Assembler.sharedAssembly
                             .resolver
-                            .resolve(CookToTimeView.self, argument: "recipes.cooktotime.snack".localized)
+                            .resolve(CookToTimeView.self, argument: NameToTime.snacks)
                     } label: {
                         VStack {
                             Image("snackMain")
@@ -277,7 +277,7 @@ struct RecipesView: View {
                                 .frame(width: 80, height: 80)
                                 .clipShape(.rect(cornerRadius: 8))
                                 .clipped()
-                            Text("recipes.cooktotime.snack".localized)
+                            Text(NameToTime.snacks.title)
                                 .fontWeight(.bold)
                                 .font(.caption)
                         }

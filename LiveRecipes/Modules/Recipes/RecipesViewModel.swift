@@ -20,6 +20,7 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     @Published var allRecipes: [RecipeDTO] = []
     @Published var recentRecipes: [RecipeDTO] = []
     @Published var myRecipes: [RecipeDTO] = []
+    @Published var recipesForTime: [RecipeDTO] = []
     
     @Published var modalFiltersIsOpenFromMain: Bool = false
     @Published var modalFiltersIsOpenFromAll: Bool = false
@@ -52,18 +53,24 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
         }
     }
     func loadAllRecipes() {
-        model.loadAllRecipesList(page: pageAll) { [weak self] result in
+        model.getAllRecipes(page: pageAll) { [weak self] result in
             self?.allRecipes = result
         }
     }
     func loadMoreAllRecipes() {
         if (scrollID ?? 0 > allRecipes.count - 5) {
             pageAll += 1
-            model.loadAllRecipesList(page: pageAll) { [weak self] result in
+            model.getAllRecipes(page: pageAll) { [weak self] result in
                 self?.allRecipes.append(contentsOf: result)
             }
         }
     }
+    func loadToTimeRecipes(chosenOption: NameToTime) {
+        model.getToTimeRecipes(name: chosenOption) { [weak self] result in
+            self?.recipesForTime = result
+        }
+    }
+
     func loadAllData() {
         loadAllRecipes()
         keyWords = model.loadKeyWords()

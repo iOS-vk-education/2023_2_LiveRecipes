@@ -10,12 +10,14 @@ import Swinject
 
 struct CookToTimeView: View {
     @StateObject var viewModel: RecipesViewModel
-    @State private var searchText = ""
-    var title: String
+    var type: NameToTime
     
     var body: some View {
             recipesView()
-            .navigationTitle(title)
+            .onAppear() {
+                viewModel.loadToTimeRecipes(chosenOption: type)
+            }
+            .navigationTitle(type.title)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
@@ -30,16 +32,16 @@ struct CookToTimeView: View {
                         .tint(.orange)
                     }
                 }
-        .searchable(text: $searchText)
+                .searchable(text: $viewModel.searchQuery)
     }
     
     @ViewBuilder
     func recipesView() -> some View {
-        if (!viewModel.allRecipes.isEmpty) {
+        if (!viewModel.recipesForTime.isEmpty) {
             GeometryReader {proxy in
                 ScrollView() {
                     LazyVStack(spacing: 12) {
-                        ForEach(viewModel.foundRecipes, id: \.self) { recipe in
+                        ForEach(viewModel.recipesForTime, id: \.self) { recipe in
                             RecipeBigCardView(recipe: recipe, proxy: proxy)
                         }
                     }
