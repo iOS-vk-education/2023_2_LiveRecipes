@@ -53,21 +53,31 @@ import Swinject
 
 struct RecipesView: View {
     @StateObject var viewModel: RecipesViewModel
-    @State private var searchText = ""
-    @State private var isSearching = ""
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack {
-                    keyWordsView()
-                    allRecipesView()
-                    cookToTimeView()
-                    recentRecipesView()
-                    myRecipesView()
+            GeometryReader { proxy in
+                ScrollView {
+                    VStack {
+                        keyWordsView()
+                        if (viewModel.searchQuery == "") {
+                            allRecipesView()
+                            cookToTimeView()
+                            recentRecipesView()
+                            myRecipesView()
+                        }
+                        else {
+                            LazyVStack {
+                                ForEach (viewModel.foundRecipes) { recipe in
+                                    RecipeBigCardView(recipe: recipe, proxy: proxy)
+                                }
+                            }
+                        }
+                    }
                 }
+                .contentMargins(.bottom, 12, for: .scrollContent)
+                .scrollIndicators(.hidden)
             }
-            .scrollIndicators(.hidden)
             .navigationTitle(Tabs.recipes.tabName)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -90,7 +100,10 @@ struct RecipesView: View {
                 }
             }
         }.navigationBarBackButtonHidden(true)
-        .searchable(text: $searchText)
+            .searchable(text: $viewModel.searchQuery, isPresented: $viewModel.searchIsActive)
+            .onSubmit (of: .search) {
+                viewModel.findRecipes()
+            }
         .refreshable(action: {
                         print("refresh")
                     })

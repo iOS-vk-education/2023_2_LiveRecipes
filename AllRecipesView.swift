@@ -53,7 +53,7 @@ struct AllRecipesView: View {
                     }
                     .scrollIndicators(.hidden)
                     .contentMargins(.horizontal, 12, for: .scrollContent)
-                    .padding(.bottom, 12)
+                    .contentMargins(.bottom, 12, for: .scrollContent)
                 }
             }
             else {
