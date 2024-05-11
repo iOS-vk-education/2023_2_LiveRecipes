@@ -11,7 +11,10 @@ import Foundation
 final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     var model: RecipesModelProtocol
     @Published var foundRecipes: [RecipeDTO] = []
+    @Published var foundRecipesToTime: [RecipeDTO] = []
     @Published var searchQuery = ""
+    @Published var searchQueryToTime = ""
+    @Published var type: NameToTime?
     @Published var pageAll = 1
     @Published var scrollID: Int?
         
@@ -40,10 +43,15 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
                         self?.findRecipes()
                     }
                     .store(in: &cancellables)
+        
+        $searchQueryToTime
+                    .debounce(for: .seconds(0.5), scheduler: DispatchQueue.global())
+                    .removeDuplicates()
+                    .sink { [weak self] _ in
+                        self?.findRecipesToTime()
+                    }
+                    .store(in: &cancellables)
 
-        model.findRecipe(name: searchQuery, completion: { [weak self] result in
-            self?.foundRecipes = result
-        })
         loadAllData()
     }
 
@@ -52,11 +60,19 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
             self?.foundRecipes = result
         }
     }
+    
+    func findRecipesToTime() {
+        model.findRecipesToTime(type: type ?? .breakfast, name: searchQueryToTime) { [weak self] result in
+            self?.foundRecipesToTime = result
+        }
+    }
+    
     func loadAllRecipes() {
         model.getAllRecipes(page: pageAll) { [weak self] result in
             self?.allRecipes = result
         }
     }
+    
     func loadMoreAllRecipes() {
         if (scrollID ?? 0 > allRecipes.count - 5) {
             pageAll += 1
@@ -65,6 +81,7 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
             }
         }
     }
+    
     func loadToTimeRecipes(chosenOption: NameToTime) {
         model.getToTimeRecipes(name: chosenOption) { [weak self] result in
             self?.recipesForTime = result

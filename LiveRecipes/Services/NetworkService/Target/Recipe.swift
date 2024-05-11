@@ -10,6 +10,7 @@ import Foundation
 
 enum RecipeTarget {
     case getRecipe(name: String)
+    case getRecipeToTime(type: NameToTime, name: String)
     case getAllList(page: Int)
     case getDesserts
     case getToTime(name: NameToTime)
@@ -33,6 +34,19 @@ enum NameToTime {
                 "recipes.cooktotime.snack".localized
         }
     }
+    
+    var image: String {
+        switch self {
+            case .breakfast:
+                "breakfastMain"
+            case .lunch:
+                "lunchMain"
+            case .dinner:
+                "dinnerMain"
+            case .snacks:
+                "snackMain"
+        }
+    }
 }
 
 
@@ -52,27 +66,38 @@ extension RecipeTarget: TargetType {
         case .getToTime(let name):
                 switch name {
                     case .breakfast:
-                        return "/bakery"
+                        return "/salads"
                     case .lunch:
-                        return "/second_dishes"
+                        return "/first_dishes"
                     case .dinner:
-                        return "/desserts"
+                        return "/second_dishes"
                     case .snacks:
                         return "/snacks"
+                }
+        case .getRecipeToTime(let type, let name):
+                switch type {
+                    case .breakfast:
+                        return "/salads/querysetBreakfast=\(name)/"
+                    case .lunch:
+                        return "/first_dishes/querysetLunch=\(name)"
+                    case .dinner:
+                        return "/second_dishes/querysetDinner=\(name)"
+                    case .snacks:
+                        return "/snacks/querysetSnack=\(name)"
                 }
         }
     }
 
     var method: HTTPMethod {
         switch self {
-            case .getRecipe, .getDesserts, .getAllList, .getToTime:
+            case .getRecipe, .getDesserts, .getAllList, .getToTime, .getRecipeToTime:
             return .get
         }
     }
 
     var task: NetworkTask {
         switch self {
-            case .getRecipe, .getDesserts, .getAllList, .getToTime:
+            case .getRecipe, .getDesserts, .getAllList, .getToTime, .getRecipeToTime:
             return .requestPlain
         }
     }
@@ -94,9 +119,11 @@ protocol RecipeAPIProtocol {
     func getDesserts(completionHandler: @escaping (Result<[RecipeDTO], NSError>) -> Void)
     func getAllList(page: Int, completionHandler: @escaping (Result<[RecipeDTO], NSError>) -> Void)
     func getToTime(name: NameToTime, completionHandler: @escaping (Result<[RecipeDTO], NSError>) -> Void)
+    func getRecipesToTime(type: NameToTime, name: String, completionHandler: @escaping (Result<[RecipeDTO], NSError>) -> Void)
 }
 
 class RecipeAPI: BaseAPI<RecipeTarget>, RecipeAPIProtocol {
+    
     func getToTime(name: NameToTime, completionHandler: @escaping (Result<[RecipeDTO], NSError>) -> Void) {
         fetchData(target: .getToTime(name: name), responseClass: [RecipeDTO].self) { result in
             completionHandler(result)
@@ -110,6 +137,11 @@ class RecipeAPI: BaseAPI<RecipeTarget>, RecipeAPIProtocol {
     func getRecipes(name: String, completionHandler: @escaping (Result<[RecipeDTO], NSError>) -> Void) {
         fetchData(target: .getRecipe(name: name), responseClass: [RecipeDTO].self) { result in completionHandler(result) }
     }
+    
+    func getRecipesToTime(type: NameToTime, name: String, completionHandler: @escaping (Result<[RecipeDTO], NSError>) -> Void) {
+        fetchData(target: .getRecipeToTime(type: type, name: name), responseClass: [RecipeDTO].self) { result in completionHandler(result) }
+    }
+    
     func getAllList(page: Int, completionHandler: @escaping (Result<[RecipeDTO], NSError>) -> Void) {
         fetchData(target: .getAllList(page: page), responseClass: [RecipeDTO].self) { result in
             completionHandler(result)

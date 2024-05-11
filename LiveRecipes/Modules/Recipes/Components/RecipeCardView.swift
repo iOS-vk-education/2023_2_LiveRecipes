@@ -62,9 +62,10 @@ struct RecipeCardView: View {
                             Text(recipe.name)
                                 .fontWeight(.medium)
                                 .font(.system(size: 12))
-                            Spacer()
+                                .multilineTextAlignment(.center)
                         }
                         .padding(.horizontal, 8)
+                        .padding(.vertical, 0)
                         HStack {
                             Text(recipe.tag)
                                 .fontWeight(.light)
@@ -79,10 +80,11 @@ struct RecipeCardView: View {
                                 .font(.system(size: 11))
                         }
                         .padding(.horizontal, 8)
+                        .padding(.vertical, 0)
                     }
-                    .frame(width: 180, height: 50)
+                    .frame(width: 180, height: 60)
                 }
-                .frame(width: 180, height: 160)
+                .frame(width: 180, height: 170)
                 .background(Color(UIColor.secondarySystemBackground))
                 .clipShape(.rect(cornerRadius: 8))
                 .tint(.black)

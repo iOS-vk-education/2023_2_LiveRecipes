@@ -11,7 +11,7 @@ final class RecipesModel: ObservableObject, RecipesModelProtocol {
     
     
     let recipeAPI: RecipeAPI
-    @Published var foundRecipes: [RecipeDTO] = []
+    //@Published var foundRecipes: [RecipeDTO] = []
     
     init(recipeAPI: RecipeAPI) {
         self.recipeAPI = recipeAPI
@@ -63,6 +63,18 @@ final class RecipesModel: ObservableObject, RecipesModelProtocol {
                     completion([])
             }
         }
+    }
+    
+    func findRecipesToTime(type: NameToTime, name: String, completion: @escaping ([RecipeDTO]) -> Void) {
+        recipeAPI.getRecipesToTime(type: type, name: name, completionHandler: { [weak self] result in
+            guard self != nil else { return }
+            switch result {
+                case .success(let result):
+                    completion(result)
+                case .failure(_):
+                    completion([])
+            }
+        })
     }
         
         //мок на главную и переходы

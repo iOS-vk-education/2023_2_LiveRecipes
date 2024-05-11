@@ -12,6 +12,7 @@ protocol RecipesViewModelProtocol {}
 
 protocol RecipesModelProtocol {
     func findRecipe(name: String, completion: @escaping ([RecipeDTO])->Void)
+    func findRecipesToTime(type: NameToTime, name: String, completion: @escaping ([RecipeDTO]) -> Void)
     func getDesserts(completion: @escaping ([RecipeDTO])->Void)
     func loadKeyWords() -> [KeyWord]
     func getAllRecipes(page: Int, completion: @escaping([RecipeDTO]) -> Void)

@@ -33,8 +33,8 @@ final class RecipesAssembly: Assembly {
         container.register(FiltersView.self) { _ in
             return FiltersView(viewModel: viewModel)
         }
-        container.register(CookToTimeView.self) { _, arg in
-            return CookToTimeView(viewModel: viewModel, type: arg)
+        container.register(CookToTimeView.self) { _ in
+            return CookToTimeView(viewModel: viewModel)
         }
     }
 }

@@ -214,74 +214,10 @@ struct RecipesView: View {
             }
             GeometryReader {proxy in
                 HStack(spacing: (proxy.size.width - 320 - 12)/5) {
-                    NavigationLink  {
-                        Assembler.sharedAssembly
-                            .resolver
-                            .resolve(CookToTimeView.self, argument: NameToTime.breakfast)
-                    } label: {
-                        VStack {
-                            Image("breakfastMain")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 80, height: 80)
-                                .clipShape(.rect(cornerRadius: 8))
-                                .clipped()
-                            Text(NameToTime.breakfast.title)
-                                .fontWeight(.bold)
-                                .font(.caption)
-                        }
-                    }
-                    NavigationLink  {
-                        Assembler.sharedAssembly
-                            .resolver
-                            .resolve(CookToTimeView.self, argument: NameToTime.lunch)
-                    } label: {
-                        VStack {
-                            Image("lunchMain")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 80, height: 80)
-                                .clipShape(.rect(cornerRadius: 8))
-                                .clipped()
-                            Text(NameToTime.lunch.title)
-                                .fontWeight(.bold)
-                                .font(.caption)
-                        }
-                    }
-                    NavigationLink  {
-                        Assembler.sharedAssembly
-                            .resolver
-                            .resolve(CookToTimeView.self, argument: NameToTime.dinner)
-                    } label: {
-                        VStack {
-                            Image("dinnerMain")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 80, height: 80)
-                                .clipShape(.rect(cornerRadius: 8))
-                                .clipped()
-                            Text(NameToTime.dinner.title)
-                                .fontWeight(.bold)
-                                .font(.caption)
-                        }
-                    }
-                    NavigationLink  {
-                        Assembler.sharedAssembly
-                            .resolver
-                            .resolve(CookToTimeView.self, argument: NameToTime.snacks)
-                    } label: {
-                        VStack {
-                            Image("snackMain")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 80, height: 80)
-                                .clipShape(.rect(cornerRadius: 8))
-                                .clipped()
-                            Text(NameToTime.snacks.title)
-                                .fontWeight(.bold)
-                                .font(.caption)
-                        }
-                    }
+                    CardToTimeView(viewModel: viewModel, type: .breakfast, proxy: proxy)
+                    CardToTimeView(viewModel: viewModel, type: .lunch, proxy: proxy)
+                    CardToTimeView(viewModel: viewModel, type: .dinner, proxy: proxy)
+                    CardToTimeView(viewModel: viewModel, type: .snacks, proxy: proxy)
                 }
                 .tint(.black)
                 .padding(.horizontal, (proxy.size.width - 320 + 12)/5)
