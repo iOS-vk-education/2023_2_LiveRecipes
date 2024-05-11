@@ -32,6 +32,7 @@ struct CookToTimeView: View {
                 }
             }
             .searchable(text: $viewModel.searchQueryToTime)
+            .searchPresentationToolbarBehavior(.avoidHidingContent)
             .onSubmit(of: .search) {
                 viewModel.findRecipesToTime()
             }

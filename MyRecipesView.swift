@@ -32,6 +32,7 @@ struct MyRecipesView: View {
                     }
                 }
                 .searchable(text: $searchText)
+                .searchPresentationToolbarBehavior(.avoidHidingContent)
     }
     @ViewBuilder
     func myRecipesView() -> some View {

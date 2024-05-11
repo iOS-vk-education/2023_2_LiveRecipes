@@ -53,7 +53,7 @@ import Swinject
 
 struct RecipesView: View {
     @StateObject var viewModel: RecipesViewModel
-    
+
     var body: some View {
         NavigationView {
             GeometryReader { proxy in
@@ -99,8 +99,10 @@ struct RecipesView: View {
                     }
                 }
             }
+                
         }.navigationBarBackButtonHidden(true)
             .searchable(text: $viewModel.searchQuery, isPresented: $viewModel.searchIsActive)
+            .searchPresentationToolbarBehavior(.avoidHidingContent)
             .onSubmit (of: .search) {
                 viewModel.findRecipes()
             }

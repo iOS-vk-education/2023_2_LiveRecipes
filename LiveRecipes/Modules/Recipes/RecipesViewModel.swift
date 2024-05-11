@@ -12,13 +12,19 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     var model: RecipesModelProtocol
     @Published var foundRecipes: [RecipeDTO] = []
     @Published var foundRecipesToTime: [RecipeDTO] = []
+    
     @Published var searchQuery = ""
+    @Published var searchQueryAll = ""
     @Published var searchQueryToTime = ""
     @Published var type: NameToTime?
+    
     @Published var pageAll = 1
     @Published var scrollID: Int?
+    @Published var isLoadingAll: Bool = false
         
     @Published var searchIsActive = false
+    @Published var searchIsActiveAll = false
+    
     @Published var keyWords: [KeyWord] = []
     @Published var allRecipes: [RecipeDTO] = []
     @Published var recentRecipes: [RecipeDTO] = []
@@ -44,6 +50,14 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
                     }
                     .store(in: &cancellables)
         
+        $searchQueryAll
+                    .debounce(for: .seconds(0.5), scheduler: DispatchQueue.global())
+                    .removeDuplicates()
+                    .sink { [weak self] _ in
+                        self?.findRecipesAll()
+                    }
+                    .store(in: &cancellables)
+        
         $searchQueryToTime
                     .debounce(for: .seconds(0.5), scheduler: DispatchQueue.global())
                     .removeDuplicates()
@@ -58,6 +72,16 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     func findRecipes() {
         model.findRecipe(name: searchQuery) { [weak self] result in
             self?.foundRecipes = result
+        }
+    }
+    
+    func findRecipesAll() {
+        model.findRecipe(name: searchQueryAll) { [weak self] result in
+            self?.foundRecipes = result
+        }
+        DispatchQueue.main.sync {
+            self.isLoadingAll = false
+            print(self.isLoadingAll)
         }
     }
     

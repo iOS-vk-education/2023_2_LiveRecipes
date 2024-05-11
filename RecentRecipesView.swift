@@ -32,6 +32,7 @@ struct RecentRecipesView: View {
                     }
                 }
                 .searchable(text: $searchText)
+                .searchPresentationToolbarBehavior(.avoidHidingContent)
         .tint(.orange)
     }
     
