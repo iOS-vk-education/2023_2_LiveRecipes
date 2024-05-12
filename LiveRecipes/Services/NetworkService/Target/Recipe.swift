@@ -17,7 +17,7 @@ enum RecipeTarget {
 extension RecipeTarget: TargetType {
     var baseURL: String {
         //return "https://api.api-ninjas.com/v1"
-        return "http://127.0.0.1:8000"
+        return "https://liverecipes.online"
     }
 
     var path: String {
