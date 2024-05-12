@@ -29,6 +29,7 @@ struct DurationTextWithBlur: View {
                     self.blurRadius = 0
                 }
             }
+        
         Text(text)
             .font(.largeTitle)
             .foregroundColor(.orange)

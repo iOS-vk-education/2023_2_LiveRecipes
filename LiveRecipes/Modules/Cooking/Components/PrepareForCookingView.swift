@@ -10,9 +10,9 @@ import Swinject
 
 struct PrepareForCookingView: View {
     @State private var animatedTextIndex = 0
+    @State private var durationText = ""
     @Environment(\.presentationMode) var presentationMode
-    //let texts = ["Креветки 4шт", "Салат 8 листов", "Сухарики 9 грамм", "Креветки 4 шт", "Соль по вкусу", "Перец по вкусу",
-      //           "Креветки 4шт", "Салат 8 листов", "Сухарики 9 грамм", "Креветки 4 шт", "Соль по вкусу", "Перец по вкусу"]
+    
     let recipe: RecipeDTO
 
     var body: some View {
@@ -32,6 +32,22 @@ struct PrepareForCookingView: View {
                         }
                     }.frame(minWidth: geometry.size.width, minHeight: geometry.size.height * 0.7)
                         .scrollIndicators(.hidden)
+                        .onAppear {
+                            if recipe.decomposeDuration().0 != 0 {
+                                durationText += " \(recipe.decomposeDuration().0)"
+                                durationText += "cookingPrepare.days".localized
+                                durationText += " \(recipe.decomposeDuration().1)"
+                                durationText += "cookingPrepare.hours".localized
+                                durationText += " \(recipe.decomposeDuration().2)"
+                                durationText += "cookingPrepare.minutes".localized
+                            }
+                            else {
+                                durationText += " \(recipe.decomposeDuration().1)"
+                                durationText += "cookingPrepare.hours".localized
+                                durationText += " \(recipe.decomposeDuration().2)"
+                                durationText += "cookingPrepare.minutes".localized
+                            }
+                        }
                     TransperentBlur()
                         .blur(radius: 10)
                         .frame(height: 70)
@@ -39,7 +55,8 @@ struct PrepareForCookingView: View {
                     
                 }
                 
-                DurationTextWithBlur(text: recipe.duration)
+                
+                DurationTextWithBlur(text: durationText)
                 StartCookingButton(transferData: recipe)
                 
             }.background(RadialGradient(gradient: Gradient(colors: [.orange, .white]), center: .center, startRadius: 50, endRadius: 400)

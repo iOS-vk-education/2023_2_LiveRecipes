@@ -10,14 +10,13 @@ import Swinject
 
 struct StartCookingButton: View {
     @State private var buttonOffset = CGSize(width: 0, height: 300)
-    @State private var tabSelected = Tabs.recipes
     var transferData: RecipeDTO
     
     var body: some View {
         VStack {
             Spacer()
             Button(action: {
-                
+        
             }) {
                 NavigationLink(destination:{
                     OneStepView(stepNumber: 1, steps: transferData.steps, dishName: transferData.name, dishType: getTranslation(transferData.tag))

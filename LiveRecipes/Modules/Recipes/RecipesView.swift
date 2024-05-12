@@ -50,6 +50,7 @@
 import Foundation
 import SwiftUI
 import Swinject
+import UserNotifications
 
 struct RecipesView: View {
     @StateObject var viewModel: RecipesViewModel
@@ -67,6 +68,12 @@ struct RecipesView: View {
                     cookToTimeView()
                     recentRecipesView()
                     myRecipesView()
+                }
+            }
+            .onAppear {
+                UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert])
+                { (_, _) in
+                    
                 }
             }
             .searchable(text: $searchText)

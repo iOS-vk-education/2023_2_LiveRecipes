@@ -12,12 +12,12 @@ import Swinject
 struct OneDishView: View {
     @StateObject var viewState: OneDishViewModel
     @State private var isScrollDown = true
+    
     @State var crs: CGFloat = 0
     @State var minYwritten = false
     @State var globalMinY: CGFloat = 0
-    //@State var tappedStatus: [Bool] = [false, false, false, false, false]
-    var openedFromRecipesView: Bool = true
     
+    var openedFromRecipesView: Bool = true
     
     var body: some View {
         if viewState.foundRecipe.ingredients.isEmpty {
@@ -40,15 +40,31 @@ struct OneDishView: View {
                                     .frame(width: 370, height: 260)
                                 
                             }
-                            Text(viewState.foundRecipe.name)
-                                .font(.system(size: 20))
-                                .fontWeight(.semibold)
-                                .padding(.bottom, 5)
+                                Text(viewState.foundRecipe.name)
+                                    .font(.system(size: 20))
+                                    .fontWeight(.semibold)
+                                    .padding(.bottom, 5)
+                            
                             HStack {
                                 Image(systemName: "clock")
                                     .foregroundStyle(.orange)
-                                Text("oneDish.timeToCook".localized)
-                                Text(viewState.foundRecipe.duration)
+                                HStack(spacing: 0){
+                                    Text("oneDish.timeToCook".localized)
+                                    if viewState.foundRecipe.decomposeDuration().0 != 0 {
+                                        Text(" \(viewState.foundRecipe.decomposeDuration().0)")
+                                        Text(" дн ")
+                                        Text("\(viewState.foundRecipe.decomposeDuration().1)")
+                                        Text(" ч ")
+                                        Text("\(viewState.foundRecipe.decomposeDuration().2)")
+                                        Text(" мин ")
+                                    }
+                                    else {
+                                        Text(" \(viewState.foundRecipe.decomposeDuration().1)")
+                                        Text(" ч ")
+                                        Text("\(viewState.foundRecipe.decomposeDuration().2)")
+                                        Text(" мин ")
+                                    }
+                                }
                                 Spacer()
                             }
                             .padding(.leading, 8)

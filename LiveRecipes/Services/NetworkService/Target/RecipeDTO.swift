@@ -18,12 +18,20 @@ struct RecipeDTO: Codable, Hashable {
     var id: Int
     var name: String
     var bzy: BZY
-    var duration: String
+    var duration: Int
     var photo: String
     var description: String
     var ingredients: [String]
     var steps: [[String]]
     var tag: String
+    
+    func decomposeDuration() -> (Int, Int, Int) {
+        let days = duration / 60 / 24
+        let hours = duration / 60
+        let minutes = duration % 60
+        
+        return (days, hours, minutes)
+    }
 }
 
 func getTranslation(_ dishType: String) -> String {
@@ -36,7 +44,7 @@ func getTranslation(_ dishType: String) -> String {
         return "Закуска".localized
     case "garnish":
         return "Гарнир".localized
-    case "first_dishes":
+    case "firstDish":
         return "Первое блюдо".localized
     case "salad":
         return "Салат".localized

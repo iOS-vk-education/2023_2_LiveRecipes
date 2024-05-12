@@ -8,7 +8,7 @@
 import Foundation
 
 protocol OneDishModelProtocol {
-    func findRecipe(id: Int, completion: @escaping (RecipeDTO)->Void)
+    func findRecipe(id: Int, completion: @escaping (RecipeDTO) -> Void)
 }
 
 protocol OneDishViewModelProtocol {
