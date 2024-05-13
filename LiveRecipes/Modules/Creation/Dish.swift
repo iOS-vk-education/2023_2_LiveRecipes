@@ -26,6 +26,13 @@ class Dish: Identifiable {
         self.dishComposition = dishComposition
         self.dishSteps = dishSteps
     }
+
+    var recipeDTO: RecipeDTO {
+        let photoData = photo?.jpegData(compressionQuality: 0.4)
+        let photoDataBase64 = photoData?.base64EncodedString() ?? ""
+        return RecipeDTO(id: id ?? 0, name: title, bzy: BZY(calories: String(nutritionValue.0), protein: String(nutritionValue.1), fats: String(nutritionValue.2), carbohydrates: String(nutritionValue.3)), duration: timeToPrepare, photo: photoDataBase64, description: description, ingredients: dishComposition.map({ return ($0.product + " " + $0.quantity) }), steps: [], tag: "")
+    }
+
     init(
         recipeEntity: CreationRecipeEntity,
         dishCompositionsEntities: [CreationRecipeCompositionEntity],
