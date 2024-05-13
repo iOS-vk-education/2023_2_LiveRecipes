@@ -68,10 +68,11 @@ final class CreationViewModel: ObservableObject, CreationViewModelProtocol {
                     textButritionalValueFats: String,
                     textButritionalValueCarbohydrates: String,
                     image: UIImage?) {
-        let nutritionValue = (Int(textButritionalValueCalories) ?? 0,
-                              Int(textButritionalValueProteins) ?? 0,
-                              Int(textButritionalValueFats) ?? 0,
-                              Int(textButritionalValueCarbohydrates) ?? 0)
+        let nutritionValue = Nutrition(
+            calories: textButritionalValueCalories,
+            protein: textButritionalValueProteins,
+            fats: textButritionalValueFats,
+            carbohydrates: textButritionalValueCarbohydrates)
         let dish = Dish(id: nil, title: textTitle, description: textDescription, photo: image, timeToPrepare: timeToPrepare, nutritionValue: nutritionValue, dishComposition: dishComposition, dishSteps: dishSteps)
         model.createRecipy(dish: dish) {
             print("dish created")

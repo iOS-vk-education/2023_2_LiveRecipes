@@ -28,26 +28,25 @@ struct CreationView: View {
     @State private var isImagePickerOn: Bool = false
     
     var body: some View {
-       // NavigationView {
-            List {
-                Section(header: Text("creation.label.dishName".localized)) {
-                    HStack {
-                        TextField("creation.placeholder.name", text: $textTitle)
-                    }
+        List {
+            Section(header: Text("creation.label.dishName".localized)) {
+                HStack {
+                    TextField("creation.placeholder.name", text: $textTitle)
                 }
-                Section(header: Text("creation.label.description".localized)) {
-                    HStack {
-                        TextField("creation.placeholder.dishDescription".localized, text: $textDescription)
-                    }
-                }
-                imageView()
-                timeView()
-                nutritionView()
-                compositionView()
-                stepView()
-                buttonView()
             }
-        //}
+            Section(header: Text("creation.label.description".localized)) {
+                HStack {
+                    TextEditor(text: $textDescription)
+                        .frame(minHeight: 100)
+                }
+            }
+            imageView()
+            timeView()
+            nutritionView()
+            compositionView()
+            stepView()
+            buttonView()
+        }
         .navigationTitle("creation.title".localized)
         .toolbarBackground(.visible, for: .navigationBar)
         .navigationBarTitleDisplayMode(.inline)

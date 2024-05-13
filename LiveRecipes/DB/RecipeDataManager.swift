@@ -52,10 +52,10 @@ final class RecipeDataManager: RecipeDataManagerDescription {
             objectRecipeEntity.id = newDishId
             objectRecipeEntity.dishDescription = dish.description
             objectRecipeEntity.dishTitle = dish.title
-            objectRecipeEntity.nutritionValueCal = Int64(dish.nutritionValue.0)
-            objectRecipeEntity.nutritionValueProt = Int64(dish.nutritionValue.1)
-            objectRecipeEntity.nutritionValueFats = Int64(dish.nutritionValue.2)
-            objectRecipeEntity.nutritionValueCarb = Int64(dish.nutritionValue.3)
+            objectRecipeEntity.nutritionValueCal = dish.nutritionValue.calories
+            objectRecipeEntity.nutritionValueProt = dish.nutritionValue.protein
+            objectRecipeEntity.nutritionValueFats = dish.nutritionValue.fats
+            objectRecipeEntity.nutritionValueCarb = dish.nutritionValue.carbohydrates
             if let photo = dish.photo {
                 if let imageData = photo.jpegData(compressionQuality: 0.4) {
                     CreationPhotoFileManager.shared.savePhoto(imageData: imageData) { ref in
