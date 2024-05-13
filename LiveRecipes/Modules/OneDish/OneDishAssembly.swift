@@ -13,11 +13,13 @@ final class OneDishAssembly: Assembly {
     func assemble(container: Swinject.Container) {
         //guard let networkAPI = Container.sharedContainer.resolve(RecipeAPI.self) else { return }
         //let model = OneDishModel(recipeAPI: networkAPI)
-        let model = OneDishModel()
-        let viewModel = OneDishViewModel(oneDishModel: model)
+        
 
-        container.register(OneDishView.self) { _ in
+        container.register(OneDishView.self) { _, id in
+            let model = OneDishModel()
+            let viewModel = OneDishViewModel(oneDishModel: model, id: id)
             return OneDishView(viewState: viewModel)
+            
         }
     }
 }
