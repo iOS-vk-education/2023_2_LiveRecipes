@@ -9,19 +9,17 @@ import Foundation
 
 final class OneDishViewModel: ObservableObject, OneDishViewModelProtocol {
     var model: OneDishModel
-    var id = 1
-    @Published var foundRecipe = RecipeDTO(id: 0, name: "", bzy: BZY(calories: "0", protein: "0", fats: "0", carbohydrates: "0"), duration: "", photo: "", description: "", ingredients: [], steps: [[]], tag: "")
+    var id = 121
+    @Published var foundRecipe = RecipeDTO(id: 0, name: "", bzy: BZY(calories: "0", protein: "0", fats: "0", carbohydrates: "0"), duration: 0, photo: "", description: "", ingredients: [], steps: [[]], tag: "")
 
     init(oneDishModel: OneDishModel) {
         self.model = oneDishModel
         
         model.findRecipe(id: id, completion: { [weak self] result in
             self?.foundRecipe = result
-            print("smth")
-            print(self?.foundRecipe.name)
         })
     }
-    func findRecipes() {
+    func findRecipe() {
         model.findRecipe(id: id) { [weak self] result in
             self?.foundRecipe = result
         }

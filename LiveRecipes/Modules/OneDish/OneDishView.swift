@@ -8,25 +8,31 @@
 import SwiftUI
 import Swinject
 
+
 struct OneDishView: View {
     @StateObject var viewState: OneDishViewModel
     @State private var isScrollDown = true
+    
     @State var crs: CGFloat = 0
     @State var minYwritten = false
     @State var globalMinY: CGFloat = 0
+    
     var openedFromRecipesView: Bool = true
     
-    
     var body: some View {
-        ZStack(alignment: .bottom) {
+        if viewState.foundRecipe.ingredients.isEmpty {
+            ProgressView()
+        }
+        else {
+            ZStack(alignment: .bottom) {
                 ScrollView {
                     VStack {
                         VStack {
                             if let data = Data(base64Encoded: viewState.foundRecipe.photo), let image = UIImage(data: data) {
-                                Image(uiImage: image)
-                                    .resizable()
-                                    .frame(width: 370, height: 260)
-                                
+                                    Image(uiImage: image)
+                                        .resizable()
+                                        .frame(width: UIScreen.main.bounds.width - 20, height: 280)
+                                        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
                             }
                             else {
                                 Image("caesar")
@@ -34,22 +40,38 @@ struct OneDishView: View {
                                     .frame(width: 370, height: 260)
                                 
                             }
-                            Text(viewState.foundRecipe.name)
-                                .font(.system(size: 22))
-                                .fontWeight(.medium)
-                                .padding(.bottom, 5)
+                                Text(viewState.foundRecipe.name)
+                                    .font(.system(size: 20))
+                                    .fontWeight(.semibold)
+                                    .padding(.bottom, 5)
+                            
                             HStack {
                                 Image(systemName: "clock")
                                     .foregroundStyle(.orange)
-                                Text("Время приготовления:")
-                                Text(viewState.foundRecipe.duration)
+                                HStack(spacing: 0){
+                                    Text("oneDish.timeToCook".localized)
+                                    if viewState.foundRecipe.decomposeDuration().0 != 0 {
+                                        Text(" \(viewState.foundRecipe.decomposeDuration().0)")
+                                        Text(" дн ")
+                                        Text("\(viewState.foundRecipe.decomposeDuration().1)")
+                                        Text(" ч ")
+                                        Text("\(viewState.foundRecipe.decomposeDuration().2)")
+                                        Text(" мин ")
+                                    }
+                                    else {
+                                        Text(" \(viewState.foundRecipe.decomposeDuration().1)")
+                                        Text(" ч ")
+                                        Text("\(viewState.foundRecipe.decomposeDuration().2)")
+                                        Text(" мин ")
+                                    }
+                                }
                                 Spacer()
                             }
                             .padding(.leading, 8)
                             HStack {
                                 Image(systemName: "fork.knife.circle")
                                     .foregroundStyle(.orange)
-                                Text("Пищевая ценность:")
+                                Text("oneDish.nutritionalValue".localized)
                                 
                                 Spacer()
                             }.padding(.leading, 8)
@@ -57,12 +79,12 @@ struct OneDishView: View {
                             
                             HStack {
                                 VStack {
-                                    Text("Калории")
+                                    Text("oneDish.calories".localized)
                                         .foregroundStyle(Color(.systemGray))
                                         .padding(.top, 5)
                                     HStack(spacing: 0) {
                                         Text("\(viewState.foundRecipe.bzy.calories)")
-                                        Text("Ккал")
+                                        Text("oneDish.kcal".localized)
                                     }
                                     .font(.title)
                                     .fontWeight(.bold)
@@ -71,39 +93,39 @@ struct OneDishView: View {
                                 }.padding(.trailing, 10)
                                 Divider().frame(height: 60)
                                 VStack {
-                                    Text("Белки")
+                                    Text("oneDish.proteins".localized)
                                         .foregroundStyle(Color(.systemGray))
                                         .padding(.top, 5)
                                     HStack(spacing: 0) {
                                         Text("\(viewState.foundRecipe.bzy.protein)")
-                                        Text("г")
-                                            
+                                        Text("г".localized)
+                                        
                                     }
                                     .font(.title)
-                                        .fontWeight(.bold)
-                                        .foregroundStyle(Color(.systemGray))
-                                        .multilineTextAlignment(.center)
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(Color(.systemGray))
+                                    .multilineTextAlignment(.center)
                                 }
                                 Divider().frame(height: 60)
                                 VStack {
-                                    Text("Жиры")
+                                    Text("oneDish.fats".localized)
                                         .foregroundStyle(Color(.systemGray))
                                         .padding(.top, 5)
                                     HStack(spacing: 0) {
                                         Text(viewState.foundRecipe.bzy.fats)
-                                        Text("г")
+                                        Text("г".localized)
                                     }.font(.title)
                                         .fontWeight(.bold)
                                         .foregroundStyle(Color(.systemGray))
                                 }
                                 Divider().frame(height: 60)
                                 VStack {
-                                    Text("Углеводы")
+                                    Text("oneDish.carbohydrates".localized)
                                         .padding(.top, 5)
                                         .foregroundStyle(Color(.systemGray))
                                     HStack(spacing: 0) {
                                         Text(viewState.foundRecipe.bzy.carbohydrates)
-                                        Text("г")
+                                        Text("г".localized)
                                     }.font(.title)
                                         .fontWeight(.bold)
                                         .foregroundStyle(Color(.systemGray))
@@ -113,7 +135,7 @@ struct OneDishView: View {
                             Divider()
                             
                             
-                            Text("Пищевая ценность на 100г")
+                            Text("oneDish.nutritionalValue100gr".localized)
                                 .font(.system(size: 13))
                                 .padding(.bottom, 20)
                                 .foregroundStyle(Color(.systemGray))
@@ -121,70 +143,43 @@ struct OneDishView: View {
                             HStack {
                                 Image(systemName: "carrot")
                                     .foregroundStyle(.orange)
-                                Text("Состав:")
+                                Text("oneDish.compostion".localized)
                                 Spacer()
-                                Text("Кол-во порций: 5")
+                                Text("oneDish.dishNumber".localized)
                                     .fontWeight(.light)
                                     .padding(.trailing, 8)
                                 
                             }.padding(.leading, 8)
                                 .padding(.bottom, 10)
-                            ForEach(viewState.foundRecipe.ingredients, id: \.self) { ingredient in
+                            ForEach(Array(viewState.foundRecipe.ingredients.enumerated()), id: \.offset) { index, ingredient in
                                 HStack {
                                     Image(systemName: "smallcircle.filled.circle")
+                                        .foregroundStyle(.black)
                                     Text(ingredient)
                                     Spacer()
+                                    
                                 }.padding(.leading, 10)
                                     .padding(.bottom, 8)
                             }
-//                            HStack {
-//                                Image(systemName: "smallcircle.filled.circle")
-//                                Text("Креветки 4шт")
-//                                Spacer()
-//                            }.padding(.leading, 10)
-//                            HStack {
-//                                Image(systemName: "smallcircle.filled.circle")
-//                                Text("Салат 8 листов")
-//                                Spacer()
-//                            }.padding(.leading, 10)
-//                            HStack {
-//                                Image(systemName: "smallcircle.filled.circle")
-//                                Text("Сухарики 9 грамм")
-//                                Spacer()
-//                            }.padding(.leading, 10)
-//                            HStack {
-//                                Image(systemName: "smallcircle.filled.circle")
-//                                Text("Соль по вкусу")
-//                                Spacer()
-//                            }.padding(.leading, 10)
-//                            HStack {
-//                                Image(systemName: "smallcircle.filled.circle")
-//                                Text("Перец по вкусу")
-//                                Spacer()
-//                                Text("Добавить продукты\n в список покупок")
-//                                    .font(.system(size: 12))
-//                                    .foregroundStyle(.orange)
-//                                Image(systemName: "cart")
-//                                    .foregroundStyle(.orange)
-//                                
-//                                
-//                            }.padding(.init(top: 0, leading: 10, bottom: 10, trailing: 10))
                         }.background(Color(UIColor.secondarySystemBackground))
                             .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-                            .padding()
+                            .frame(width: UIScreen.main.bounds.width - 20)
                         
                         HStack {
-                            Text("Описание:")
-                                .font(.title3)
+                            Text("oneDish.description".localized)
+                                .font(.system(size: 24, weight: .regular))
                             Spacer()
                         }
-                        .padding(.init(top: 0, leading: 18, bottom: 5, trailing: 0))
+                        .padding(.init(top: 16, leading: 0, bottom: 1, trailing: 0))
+                        .frame(width: UIScreen.main.bounds.width - 20)
+                        //.padding(.init(top: 0, leading: 18, bottom: 5, trailing: 0))
                         HStack {
                             Text(viewState.foundRecipe.description)
-                                .lineSpacing(4)
-                            //Text("oneDish.caesar.description")
+                                .lineSpacing(8)
                             
-                        }.padding(.init(top: 0, leading: 18, bottom: 10, trailing: 10))
+                        }.frame(width: UIScreen.main.bounds.width - 20)
+                            //.padding(.top, 1)
+                        //.padding(.init(top: 0, leading: 18, bottom: 10, trailing: 10))
                     }
                     .padding()
                     
@@ -222,25 +217,30 @@ struct OneDishView: View {
                                 
                             }
                     }
-                }.navigationTitle("Цезарь")
-            
-            Button(action: {
+                }.navigationTitle(viewState.foundRecipe.name)
                 
-            }) {
-                NavigationLink(destination:{
-                    PrepareForCookingView()
+                Button(action: {
+                    
+                }) {
+                    NavigationLink(destination:{
+                        PrepareForCookingView(recipe: viewState.foundRecipe)
                     }) {
-                        Image(systemName: "stove.fill")
-                            .foregroundColor(.white)
-                        Text("oneDish.toCooking".localized)
-                            .frame(width: 150, height: 35)
-                            .foregroundStyle(.white)
-                            .fontWeight(.medium)
+                        HStack {
+                            Spacer()
+                            Image(systemName: "stove.fill")
+                                .imageScale(.large)
+                                .foregroundColor(.white)
+                            Text("oneDish.toCooking".localized)
+                                .font(.system(size: 17, weight: .semibold))
+                                .foregroundStyle(.white)
+                            Spacer()
+                        }.frame(width: 200, height: 35)
                     }
-            }.buttonStyle(.borderedProminent)
-                .tint(.orange)
-                .opacity(isScrollDown ? 1.0 : 0.0)
-                .padding()
+                }.buttonStyle(.borderedProminent)
+                    .tint(.orange)
+                    .opacity(isScrollDown ? 1.0 : 0.0)
+                    .padding()
+            }
 
 //                Button(action: {
 //                    

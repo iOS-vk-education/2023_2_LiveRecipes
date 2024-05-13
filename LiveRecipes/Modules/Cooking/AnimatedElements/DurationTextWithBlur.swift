@@ -13,7 +13,7 @@ struct DurationTextWithBlur: View {
     @State private var opacity: Double = 0
     var body: some View {
         
-        Text("Понадобиться времени")
+        Text("cookingPrepare.timeNeeded".localized)
             .font(.title2)
             .foregroundColor(.black)
             .blur(radius: blurRadius)
@@ -29,6 +29,7 @@ struct DurationTextWithBlur: View {
                     self.blurRadius = 0
                 }
             }
+        
         Text(text)
             .font(.largeTitle)
             .foregroundColor(.orange)

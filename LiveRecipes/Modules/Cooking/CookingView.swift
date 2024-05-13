@@ -15,14 +15,13 @@ struct CookingView: View {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     var body: some View {
         if viewModel.steps.count == 0 {
-            let _ = viewModel.findSteps()
             NoStepsView(tabSelected: tabSelected)
         }
-        else {
-            let _ = print(viewModel.steps.count)
-            OneStepView(viewModel: viewModel, stepNumber: 1)
-        }
     }
+//        else {
+//            let _ = print(viewModel.steps.count)
+//            OneStepView(viewModel: viewModel, stepNumber: 1)
+//        }
 }
 
 

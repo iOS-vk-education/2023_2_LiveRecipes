@@ -7,10 +7,11 @@
 
 import Foundation
 import Swinject
+import SwiftUI
 
 final class OneDishAssembly: Assembly {
     func assemble(container: Swinject.Container) {
-        guard let networkAPI = Container.sharedContainer.resolve(RecipeAPI.self) else { return }
+        //guard let networkAPI = Container.sharedContainer.resolve(RecipeAPI.self) else { return }
         //let model = OneDishModel(recipeAPI: networkAPI)
         let model = OneDishModel()
         let viewModel = OneDishViewModel(oneDishModel: model)
