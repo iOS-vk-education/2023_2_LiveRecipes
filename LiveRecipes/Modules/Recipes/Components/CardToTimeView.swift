@@ -35,6 +35,7 @@ struct CardToTimeView: View {
         }
         .simultaneousGesture(TapGesture().onEnded{
             viewModel.type = type
+            viewModel.isLoading = true
         })
     }
 }

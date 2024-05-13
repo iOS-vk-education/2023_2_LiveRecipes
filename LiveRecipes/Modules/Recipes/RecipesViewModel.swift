@@ -17,10 +17,13 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     @Published var searchQueryAll = ""
     @Published var searchQueryToTime = ""
     @Published var type: NameToTime?
+    @Published var isEmptyFoundToTime = false
+    @Published var isEmptyToTime = false
     
     @Published var pageAll = 1
     @Published var scrollID: Int?
-    @Published var isLoadingAll: Bool = false
+    @Published var isLoading: Bool = true
+    @Published var isLoading1: Bool = true
         
     @Published var searchIsActive = false
     @Published var searchIsActiveAll = false
@@ -72,28 +75,36 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     func findRecipes() {
         model.findRecipe(name: searchQuery) { [weak self] result in
             self?.foundRecipes = result
+            DispatchQueue.main.async {
+                self?.isLoading = false
+            }
         }
     }
     
     func findRecipesAll() {
         model.findRecipe(name: searchQueryAll) { [weak self] result in
             self?.foundRecipes = result
-        }
-        DispatchQueue.main.sync {
-            self.isLoadingAll = false
-            print(self.isLoadingAll)
+            DispatchQueue.main.async {
+                self?.isLoading = false
+            }
         }
     }
     
     func findRecipesToTime() {
         model.findRecipesToTime(type: type ?? .breakfast, name: searchQueryToTime) { [weak self] result in
             self?.foundRecipesToTime = result
+            DispatchQueue.main.async {
+                self?.isLoading = false
+            }
         }
     }
     
     func loadAllRecipes() {
         model.getAllRecipes(page: pageAll) { [weak self] result in
             self?.allRecipes = result
+            DispatchQueue.main.async {
+                self?.isLoading1 = false
+            }
         }
     }
     
@@ -109,6 +120,9 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     func loadToTimeRecipes(chosenOption: NameToTime) {
         model.getToTimeRecipes(name: chosenOption) { [weak self] result in
             self?.recipesForTime = result
+            DispatchQueue.main.async {
+                self?.isLoading = false
+            }
         }
     }
 

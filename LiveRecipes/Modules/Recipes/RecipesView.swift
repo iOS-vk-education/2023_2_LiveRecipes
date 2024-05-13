@@ -68,9 +68,19 @@ struct RecipesView: View {
                             myRecipesView()
                         }
                         else {
-                            LazyVStack {
-                                ForEach (viewModel.foundRecipes) { recipe in
-                                    RecipeBigCardView(recipe: recipe, proxy: proxy)
+                            if viewModel.isLoading {
+                                ProgressView()
+                                    .padding(.top, UIScreen.main.bounds.height/4)
+                            } else {
+                                if !viewModel.foundRecipes.isEmpty {
+                                    LazyVStack {
+                                        ForEach (viewModel.foundRecipes) { recipe in
+                                            RecipeBigCardView(recipe: recipe, proxy: proxy)
+                                        }
+                                    }
+                                } else {
+                                    Text("allrecipes.errorFound.message".localized)
+                                        .padding(.top, UIScreen.main.bounds.height/4)
                                 }
                             }
                         }
@@ -85,6 +95,9 @@ struct RecipesView: View {
                     
                 }
             }
+            .onChange(of: viewModel.searchQuery, { oldValue, newValue in
+                viewModel.isLoading = true
+            })
             .navigationTitle(Tabs.recipes.tabName)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -186,16 +199,23 @@ struct RecipesView: View {
     
     @ViewBuilder
     func allRecipesView() -> some View {
-        NavigationLink (destination: {
-            Assembler.sharedAssembly
-                .resolver
-                .resolve(AllRecipesView.self)
-        }, label: {
-            titleButtonOfBlock(blockName: "recipes.allrecipes.button".localized)
-                .padding(.top, 8)
-        })
+            NavigationLink {
+                Assembler.sharedAssembly
+                    .resolver
+                    .resolve(AllRecipesView.self)
+            } label: {
+                titleButtonOfBlock(blockName: "recipes.allrecipes.button".localized)
+                    .padding(.top, 8)
+            }
+        if viewModel.isLoading1 {
+            ProgressView()
+                .frame(height: 170)
+        } else {
             if (viewModel.allRecipes.isEmpty) {
                 Text("recipes.allrecipes.error.message".localized)
+                    .frame(width: 250, height: 170)
+                    .background(Color(UIColor.secondarySystemBackground))
+                    .clipShape(.rect(cornerRadius: 8))
             } else {
                 ScrollView(.horizontal) {
                     LazyHStack(spacing: 12) {
@@ -207,6 +227,7 @@ struct RecipesView: View {
                 .scrollIndicators(.hidden)
                 .contentMargins(.horizontal, 12)
             }
+        }
     }
     
     @ViewBuilder
