@@ -40,22 +40,14 @@ final class CreationViewModel: ObservableObject, CreationViewModelProtocol {
             dishComposition.remove(at: index)
         }
     }
-
-    func addStepComposition(title: String, description: String, photo: UIImage?) {
+    func addStep(title: String, description: String, photo: UIImage?) {
         if let maxIdStep = dishSteps.max(by: { $0.id < $1.id }) {
             dishSteps.append(DishStep(id: maxIdStep.id + 1, title: title, description: description, photo: photo))
         } else {
             dishSteps.append(DishStep(id: 0, title: title, description: description, photo: photo))
         }
     }
-    func addEmptyStep() {
-        if let maxIdStep = dishSteps.max(by: { $0.id < $1.id }) {
-            dishSteps.append(DishStep(id: maxIdStep.id + 1, title: "", description: "", photo: nil))
-        } else {
-            dishSteps.append(DishStep(id: 0, title: "creation.firstStep".localized, description: "", photo: nil))
-        }
-    }
-    func editStepComposition(id: Int, title: String, description: String, photo: UIImage?) {
+    func editStep(id: Int, title: String, description: String, photo: UIImage?) {
         if let index = dishSteps.firstIndex(where: { $0.id == id }) {
             dishSteps[index].title = title
             dishSteps[index].description = description
@@ -63,7 +55,7 @@ final class CreationViewModel: ObservableObject, CreationViewModelProtocol {
         }
     }
 
-    func deleteStepComposition(index: Int) {
+    func deleteStep(index: Int) {
         if index >= 0 && index < dishSteps.count {
             dishSteps.remove(at: index)
         }
@@ -80,7 +72,7 @@ final class CreationViewModel: ObservableObject, CreationViewModelProtocol {
                               Int(textButritionalValueProteins) ?? 0,
                               Int(textButritionalValueFats) ?? 0,
                               Int(textButritionalValueCarbohydrates) ?? 0)
-        let dish = Dish(id: nil, title: textTitle, description: textDescription, photo: image, timeToPrepare: timeToPrepare, nutritionValue: nutritionValue, dishComposition: [], dishSteps: [])
+        let dish = Dish(id: nil, title: textTitle, description: textDescription, photo: image, timeToPrepare: timeToPrepare, nutritionValue: nutritionValue, dishComposition: dishComposition, dishSteps: dishSteps)
         model.createRecipy(dish: dish) {
             print("dish created")
             self.model.showRecipesInDB()

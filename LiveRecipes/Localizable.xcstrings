@@ -45,27 +45,16 @@
     "allrecipes.error.message" : {
       "extractionState" : "manual",
       "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ошибка загрузки данных"
-          }
-        }
-      }
-    },
-    "allrecipes.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Recipes"
+            "value" : "hr"
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Рецепты"
+            "state" : "translated",
+            "value" : "ч."
           }
         }
       }
@@ -178,40 +167,6 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Data upload error"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Ошибка загрузки данных"
-          }
-        }
-      }
-    },
-    "cooktotime.title.name" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cook to time"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Ко времени"
-          }
-        }
-      }
-    },
-    "creation.button.save" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
             "value" : "Save"
           }
         },
@@ -219,6 +174,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сохранить"
+          }
+        }
+      }
+    },
+    "creation.button.minutes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "min"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "мин."
+          }
+        }
+      }
+    },
+    "creation.button.saveTime" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save time"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Готово"
+          }
+        }
+      }
+    },
+    "creation.button.setTime" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set time"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Установить время"
           }
         }
       }
@@ -257,19 +263,70 @@
         }
       }
     },
-    "creation.firstStep" : {
+    "creation.error.withoutComposition" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Step 1"
+            "value" : "It is necessary to enter the composition"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Шаг 1"
+            "value" : "Необходимо ввести состав"
+          }
+        }
+      }
+    },
+    "creation.error.withoutDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You must enter a description"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Необходимо ввести описание"
+          }
+        }
+      }
+    },
+    "creation.error.withoutTime" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It is necessary to enter the time"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Необходимо ввести время"
+          }
+        }
+      }
+    },
+    "creation.error.withoutTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You must enter the name"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Необходимо ввести название"
           }
         }
       }
@@ -406,6 +463,23 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "ВРЕМЯ ПРИГОТОВЛЕНИЯ"
+          }
+        }
+      }
+    },
+    "creation.newStep" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New step"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Новый шаг"
           }
         }
       }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecipeBigCardView: View {
-    @State var recipe: Recipe
+    @State var recipe: RecipePreviewDTO
     var proxy: GeometryProxy
     
     var body: some View {
@@ -17,7 +17,7 @@ struct RecipeBigCardView: View {
         }, label: {
             ZStack(alignment: .topTrailing) {
                 VStack (spacing: 0) {
-                    Image(recipe.image)
+                    Image(uiImage: UIImage(data: Data(base64Encoded: recipe.photo)!)!)
                         .resizable()
                         .scaledToFill()
                         .frame(width: proxy.size.width - 24, height: 170)
@@ -31,7 +31,7 @@ struct RecipeBigCardView: View {
                         }
                         .padding(.horizontal, 8)
                         HStack {
-                            Text(recipe.cathegory)
+                            Text(recipe.tag)
                                 .fontWeight(.light)
                                 .foregroundStyle(Color(uiColor: .darkGray))
                                 .font(.system(size: 14))
@@ -40,7 +40,7 @@ struct RecipeBigCardView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 13, height: 13)
-                            Text(recipe.time + "recipes.card.time".localized)
+                            Text(String(recipe.duration) + "recipes.card.time".localized)
                                 .font(.system(size: 14))
                         }
                         .padding(.horizontal, 8)
@@ -53,9 +53,9 @@ struct RecipeBigCardView: View {
                 .clipShape(.rect(cornerRadius: 8))
                 .tint(.black)
                 VStack {
-                    Image(systemName: recipe.isInFavorites ? "star.fill" : "star")
+                    Image(systemName: recipe.isInFavorites ?? false ? "star.fill" : "star")
                         .resizable()
-                        .foregroundStyle(Color.yellow)
+                        .foregroundStyle(Color.orange)
                         .fontWeight(.medium)
                         .gesture(TapGesture().onEnded({ _ in
                             recipe.changeStateOfFavorites()

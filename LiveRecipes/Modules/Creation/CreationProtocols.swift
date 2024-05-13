@@ -15,6 +15,7 @@ protocol CreationViewModelProtocol {
 protocol CreationModelProtocol {
     func showRecipesInDB()
     func createRecipy(dish: Dish, completion: @escaping() -> Void)
+    func isCreationPossible(dish: Dish) -> CreationError?
 }
 
 protocol CreationViewProtocol {}

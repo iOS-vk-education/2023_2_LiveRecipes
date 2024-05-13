@@ -38,11 +38,11 @@ final class ListViewModel: ObservableObject, ListViewModelProtocol {
             let resultStr = "\(recipe.id) \(recipe.title)\n"
           var recipeItemsForRecipe: [ListRecipeItem] = []
           
-          let filteredItems = recipeItems.filter({ $0.parentId == recipe.id })
+          /*let filteredItems = recipeItems.filter({ $0.parentId == recipe.id })
           filteredItems.forEach { item in
               recipeItemsForRecipe.append(ListRecipeItem(id: Int(item.id), title: item.title))
-          }
-          recipesList.append(ListRecipe(id: Int(recipe.id), title: recipe.title, items: recipeItemsForRecipe))
+          }*/
+          //recipesList.append(ListRecipe(id: Int(recipe.id), title: recipe.title, items: recipeItemsForRecipe))
           //print(resultStr)
             
         }

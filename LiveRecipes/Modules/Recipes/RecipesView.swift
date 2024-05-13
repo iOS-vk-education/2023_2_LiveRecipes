@@ -54,21 +54,30 @@ import UserNotifications
 
 struct RecipesView: View {
     @StateObject var viewModel: RecipesViewModel
-    @State private var searchText = ""
-    @State private var isSearching = ""
-    @State var modalKeyWordsIsOpen: Bool = false
-    
-    
+
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack {
-                    keyWordsView()
-                    allRecipesView()
-                    cookToTimeView()
-                    recentRecipesView()
-                    myRecipesView()
+            GeometryReader { proxy in
+                ScrollView {
+                    VStack {
+                        keyWordsView()
+                        if (viewModel.searchQuery == "") {
+                            allRecipesView()
+                            cookToTimeView()
+                            recentRecipesView()
+                            myRecipesView()
+                        }
+                        else {
+                            LazyVStack {
+                                ForEach (viewModel.foundRecipes) { recipe in
+                                    RecipeBigCardView(recipe: recipe, proxy: proxy)
+                                }
+                            }
+                        }
+                    }
                 }
+                .contentMargins(.bottom, 12, for: .scrollContent)
+                .scrollIndicators(.hidden)
             }
             .onAppear {
                 UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert])
@@ -76,28 +85,20 @@ struct RecipesView: View {
                     
                 }
             }
-            .searchable(text: $searchText)
-            .refreshable(action: {
-                            print("refresh")
-                        })
-            .scrollIndicators(.hidden)
             .navigationTitle(Tabs.recipes.tabName)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     HStack (spacing: 4) {
-//                        Button("", systemImage: "gear") {
                             NavigationLink (destination: {
                                 Assembler.sharedAssembly
                                     .resolver
                                     .resolve(SettingsView.self)
                             }, label: {Image(systemName: "gear")})
-
-//                        }
                         Button("", systemImage: "slider.horizontal.2.square") {
-                            viewModel.modalFiltersIsOpen = true
+                            viewModel.modalFiltersIsOpenFromMain = true
                         }
-                        .sheet(isPresented: $viewModel.modalFiltersIsOpen) {
+                        .sheet(isPresented: $viewModel.modalFiltersIsOpenFromMain) {
                             Assembler.sharedAssembly
                                 .resolver
                                 .resolve(FiltersView.self)
@@ -105,7 +106,16 @@ struct RecipesView: View {
                     }
                 }
             }
+                
         }.navigationBarBackButtonHidden(true)
+            .searchable(text: $viewModel.searchQuery, isPresented: $viewModel.searchIsActive)
+            .searchPresentationToolbarBehavior(.avoidHidingContent)
+            .onSubmit (of: .search) {
+                viewModel.findRecipes()
+            }
+        .refreshable(action: {
+                        print("refresh")
+                    })
     }
     
     @ViewBuilder
@@ -114,10 +124,10 @@ struct RecipesView: View {
             Text("recipes.keywords.error.message".localized)
         } else {
             Button  {
-                modalKeyWordsIsOpen = true
+                viewModel.modalKeyWordsIsOpen = true
             } label: {
                 titleButtonOfBlock(blockName: "recipes.keywords.button".localized)
-            }.sheet(isPresented: $modalKeyWordsIsOpen) {
+            }.sheet(isPresented: $viewModel.modalKeyWordsIsOpen) {
                 Assembler.sharedAssembly
                     .resolver
                     .resolve(KeyWordsView.self)
@@ -189,7 +199,7 @@ struct RecipesView: View {
             } else {
                 ScrollView(.horizontal) {
                     LazyHStack(spacing: 12) {
-                        ForEach (viewModel.allRecipes) { recipie in
+                        ForEach (viewModel.allRecipes, id: \.self) { recipie in
                             RecipeCardView(recipe: recipie)
                         }
                     }
@@ -213,74 +223,10 @@ struct RecipesView: View {
             }
             GeometryReader {proxy in
                 HStack(spacing: (proxy.size.width - 320 - 12)/5) {
-                    NavigationLink  {
-                        Assembler.sharedAssembly
-                            .resolver
-                            .resolve(CookToTimeView.self)
-                    } label: {
-                        VStack {
-                            Image("breakfastMain")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 80, height: 80)
-                                .clipShape(.rect(cornerRadius: 8))
-                                .clipped()
-                            Text("recipes.cooktotime.breakfast".localized)
-                                .fontWeight(.bold)
-                                .font(.caption)
-                        }
-                    }
-                    NavigationLink  {
-                        Assembler.sharedAssembly
-                            .resolver
-                            .resolve(CookToTimeView.self)//поменять в будущем
-                    } label: {
-                        VStack {
-                            Image("lunchMain")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 80, height: 80)
-                                .clipShape(.rect(cornerRadius: 8))
-                                .clipped()
-                            Text("recipes.cooktotime.lunch".localized)
-                                .fontWeight(.bold)
-                                .font(.caption)
-                        }
-                    }
-                    NavigationLink  {
-                        Assembler.sharedAssembly
-                            .resolver
-                            .resolve(CookToTimeView.self)
-                    } label: {
-                        VStack {
-                            Image("dinnerMain")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 80, height: 80)
-                                .clipShape(.rect(cornerRadius: 8))
-                                .clipped()
-                            Text("recipes.cooktotime.dinner".localized)
-                                .fontWeight(.bold)
-                                .font(.caption)
-                        }
-                    }
-                    NavigationLink  {
-                        Assembler.sharedAssembly
-                            .resolver
-                            .resolve(CookToTimeView.self)
-                    } label: {
-                        VStack {
-                            Image("snackMain")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 80, height: 80)
-                                .clipShape(.rect(cornerRadius: 8))
-                                .clipped()
-                            Text("recipes.cooktotime.snack".localized)
-                                .fontWeight(.bold)
-                                .font(.caption)
-                        }
-                    }
+                    CardToTimeView(viewModel: viewModel, type: .breakfast, proxy: proxy)
+                    CardToTimeView(viewModel: viewModel, type: .lunch, proxy: proxy)
+                    CardToTimeView(viewModel: viewModel, type: .dinner, proxy: proxy)
+                    CardToTimeView(viewModel: viewModel, type: .snacks, proxy: proxy)
                 }
                 .tint(.black)
                 .padding(.horizontal, (proxy.size.width - 320 + 12)/5)
@@ -311,7 +257,7 @@ struct RecipesView: View {
         } else {
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 12) {
-                    ForEach (viewModel.recentRecipes) { recipe in
+                    ForEach (viewModel.recentRecipes, id: \.self) { recipe in
                         RecipeCardView(recipe: recipe)
                     }
                 }
@@ -345,7 +291,7 @@ struct RecipesView: View {
         } else {
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 12) {
-                    ForEach (viewModel.myRecipes) { recipe in
+                    ForEach (viewModel.myRecipes, id: \.self) { recipe in
                         RecipeCardView(recipe: recipe)
                     }
                 }
