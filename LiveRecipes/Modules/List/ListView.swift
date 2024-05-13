@@ -14,7 +14,25 @@ struct ListView: View {
     @State private var isShowingSettingsView = false
     @State private var textNewRecipe = ""
     @State private var textItems: [String] = Array(repeating: "", count: 1000)
+    @State private var isCreateListOpen = false
     var body: some View {
+        NavigationStack {
+            VStack {
+                HStack {
+                    Text("+")
+                        .frame(maxWidth: .infinity)
+                }
+                .onTapGesture {
+                    if !isCreateListOpen {
+                        print("+")
+                        isCreateListOpen = true
+                    }
+                }
+                Spacer()
+            }
+        }
+    }
+    /*var body: some View {
         NavigationStack {
             VStack {
                 /*List {
@@ -89,7 +107,7 @@ struct ListView: View {
                 }
             }
         }
-    }
+    }*/
     /*var body: some View {
         NavigationStack {
             VStack {

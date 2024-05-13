@@ -42,6 +42,9 @@
         }
       }
     },
+    "+" : {
+
+    },
     "allrecipes.error.message" : {
       "extractionState" : "manual",
       "localizations" : {
