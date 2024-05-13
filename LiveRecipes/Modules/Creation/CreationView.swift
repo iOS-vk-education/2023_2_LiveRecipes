@@ -68,6 +68,8 @@ struct CreationView: View {
                     Image(systemName: "photo.badge.plus")
                         .resizable()
                         .scaledToFit()
+                        .padding(EdgeInsets(top: 15, leading: 25, bottom: 25, trailing: 15))
+                        .foregroundColor(.gray)
                 }
             }
             .onTapGesture {
