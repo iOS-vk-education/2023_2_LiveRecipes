@@ -18,6 +18,7 @@ public struct TimerAttributes: ActivityAttributes {
         var timeRemaining: Int
         var currentStep: String
         var stepsCount: Int
+        var interval: ClosedRange<Date>?
     }
     
     var dishName: String

@@ -78,15 +78,17 @@ struct TimerView: View {
     
     func stopActivity() {
         Task {
-            await currentActivity?.end(using: nil, dismissalPolicy: .after(Date().addingTimeInterval(10)))
+            await currentActivity?.end(nil, dismissalPolicy: .after(Date().addingTimeInterval(10)))
             activityStarted = false
         }
     }
     
     func updateActivity() {
         Task {
-            let state = TimerAttributes.TimeState(progress: progress, totalTime: totalTime, timeRemaining: timeForProgress, currentStep: step ?? "", stepsCount: stepsCount ?? 0)
-            await currentActivity?.update(using: state)
+            let state = TimerAttributes.TimeState(progress: progress, totalTime: totalTime, timeRemaining: timeForProgress, currentStep: step ?? "", stepsCount: stepsCount ?? 0, interval: nil)
+            //await currentActivity?.update(using: state)
+            await currentActivity?.update(ActivityContent<TimerAttributes.TimeState>(state: state, staleDate: nil))
+            //await currentActivity?.update(using: state)
         }
     }
     
@@ -97,10 +99,11 @@ struct TimerView: View {
         let interval = ClosedRange(uncheckedBounds: (lower: Date().addingTimeInterval(endTime), upper: Date().addingTimeInterval(startTime)))
         
         let attributes = TimerAttributes(dishName: dishName ?? "")
-        let state = TimerAttributes.TimeState(progress: 0, totalTime: totalTime, timeRemaining: timeForProgress, currentStep: step ?? "", stepsCount: stepsCount ?? 0)
+        let state = TimerAttributes.TimeState(progress: 0, totalTime: totalTime, timeRemaining: timeForProgress, currentStep: step ?? "", stepsCount: stepsCount ?? 0, interval: interval)
+        let content = ActivityContent(state: state, staleDate: nil, relevanceScore: 0.0)
         
         do {
-            currentActivity = try Activity<TimerAttributes>.request(attributes: attributes, contentState: state)
+            currentActivity = try Activity<TimerAttributes>.request(attributes: attributes, content: content)
         }
         catch {
             print(error.localizedDescription)
@@ -133,10 +136,11 @@ struct TimerView: View {
                 Button(action: {
                     isTimerRunning.toggle()
                     if activityStarted {
-                        updateActivity()
+                       // updateActivity()
                     }
                     else {
                         startActivity()
+                        //progress = timeForProgress
                     }
                 }) {
                     Image(systemName: isTimerRunning ? "pause.fill" : "play.fill")
@@ -146,11 +150,11 @@ struct TimerView: View {
             }.padding(.init(top: 8, leading: 8, bottom: 0, trailing: 8))
             
             ZStack {
-                ProgressView(value: Double(progress), total: Double(totalTime))
+                ProgressView(value: Double(timeForProgress), total: Double(totalTime))
                     .progressViewStyle(CustomProgressViewStyle(progress: $progress))
                 if timeForProgress == 0 {
                     Text("Готово!")
-                        .foregroundColor(.white)
+                        .foregroundColor(.orange)
                         .font(.system(size: 19, weight: .semibold))
                         .padding(.top, 2)
                 }
@@ -165,12 +169,12 @@ struct TimerView: View {
                                 if progress < totalTime {
                                     progress += 1
                                     timeForProgress -= 1
-                                    updateActivity()
+                                    //updateActivity()
                                 }
                                 
                                 if progress == totalTime {
                                     isTimerRunning = false
-                                    updateActivity()
+                                    //updateActivity()
                                     stopActivity()
                                     notify()
                                 }

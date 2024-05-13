@@ -92,10 +92,14 @@ struct TimerActivityWidgetLiveActivity: Widget {
                     Image(systemName: "oven.fill")
                             .foregroundStyle(.orange)
                         .padding(.leading)
+                        if let interval = context.state.interval {
+                            
+                            ProgressView(timerInterval: interval, countsDown: false)
+                        }
             
-                    ProgressView(value: Double(context.state.progress), total: Double(context.state.totalTime))
-                        .progressViewStyle(CustomTimerViewStyle(progress: context.state.progress))
-                        .padding(.top, 4)
+//                    ProgressView(value: Double(context.state.progress), total: Double(context.state.totalTime))
+//                        .progressViewStyle(CustomTimerViewStyle(progress: context.state.progress))
+//                        .padding(.top, 4)
                         
                     Image(systemName: "checkmark")
                         .foregroundStyle(.green)
