@@ -22,7 +22,7 @@ import UIKit
 struct RecipeDTO: Codable, Hashable, Identifiable {
     
     let name: String
-    let duration: String
+    let duration: Int
     let tag: String
     let photo: String
     let id: Int
