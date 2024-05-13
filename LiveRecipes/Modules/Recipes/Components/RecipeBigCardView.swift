@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecipeBigCardView: View {
-    @State var recipe: RecipeDTO
+    @State var recipe: RecipePreviewDTO
     var proxy: GeometryProxy
     
     var body: some View {

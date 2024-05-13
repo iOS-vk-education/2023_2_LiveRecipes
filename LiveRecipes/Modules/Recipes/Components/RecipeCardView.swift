@@ -44,8 +44,8 @@
 import SwiftUI
 
 struct RecipeCardView: View {
-    @State var recipe: RecipeDTO
-    
+    @State var recipe: RecipePreviewDTO
+
     var body: some View {
         NavigationLink(destination: {
             OneDishView(viewState: OneDishViewModel(oneDishModel: OneDishModel()))//??

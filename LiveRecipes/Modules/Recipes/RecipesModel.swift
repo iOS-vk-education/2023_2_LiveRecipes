@@ -11,13 +11,13 @@ final class RecipesModel: ObservableObject, RecipesModelProtocol {
     
     
     let recipeAPI: RecipeAPI
-    //@Published var foundRecipes: [RecipeDTO] = []
+    //@Published var foundRecipes: [RecipePreviewDTO] = []
     
     init(recipeAPI: RecipeAPI) {
         self.recipeAPI = recipeAPI
     }
     
-    func findRecipe(name: String, completion: @escaping ([RecipeDTO])->Void) {
+    func findRecipe(name: String, completion: @escaping ([RecipePreviewDTO])->Void) {
         recipeAPI.getRecipes(name: name, completionHandler: { [weak self] result in
             guard self != nil else { return }
             switch result {
@@ -29,7 +29,7 @@ final class RecipesModel: ObservableObject, RecipesModelProtocol {
         })
     }
     
-    func getAllRecipes(page: Int, completion: @escaping ([RecipeDTO]) -> Void) {
+    func getAllRecipes(page: Int, completion: @escaping ([RecipePreviewDTO]) -> Void) {
         recipeAPI.getAllList(page: page, completionHandler: {  [weak self] result in
             guard self != nil else { return }
             switch result {
@@ -41,19 +41,7 @@ final class RecipesModel: ObservableObject, RecipesModelProtocol {
         })
     }
     
-    func getDesserts(completion: @escaping ([RecipeDTO])->Void) {
-        recipeAPI.getDesserts{ [weak self] result in
-            guard self != nil else { return }
-            switch result {
-                case .success(let result):
-                    completion(result)
-                case .failure(_):
-                    completion([])
-            }
-        }
-    }
-    
-    func getToTimeRecipes(name: NameToTime, completion: @escaping ([RecipeDTO]) -> Void) {
+    func getToTimeRecipes(name: NameToTime, completion: @escaping ([RecipePreviewDTO]) -> Void) {
         recipeAPI.getToTime(name: name) { [weak self] result in
             guard self != nil else { return }
             switch result {
@@ -65,7 +53,7 @@ final class RecipesModel: ObservableObject, RecipesModelProtocol {
         }
     }
     
-    func findRecipesToTime(type: NameToTime, name: String, completion: @escaping ([RecipeDTO]) -> Void) {
+    func findRecipesToTime(type: NameToTime, name: String, completion: @escaping ([RecipePreviewDTO]) -> Void) {
         recipeAPI.getRecipesToTime(type: type, name: name, completionHandler: { [weak self] result in
             guard self != nil else { return }
             switch result {
@@ -133,32 +121,32 @@ final class RecipesModel: ObservableObject, RecipesModelProtocol {
             ]
         }
         
-        func loadAllRecipes() -> [RecipeDTO] {
+        func loadAllRecipes() -> [RecipePreviewDTO] {
             
             return [
-                //            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-                //            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
-                //            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-                //            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-                //            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
-                //            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-                //            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-                //            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
-                //            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar")
+                //            RecipePreviewDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
+                //            RecipePreviewDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
+                //            RecipePreviewDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
+                //            RecipePreviewDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
+                //            RecipePreviewDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
+                //            RecipePreviewDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
+                //            RecipePreviewDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
+                //            RecipePreviewDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
+                //            RecipePreviewDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar")
             ]
         }
         
-        func loadRecentRecipes() -> [RecipeDTO] {
+        func loadRecentRecipes() -> [RecipePreviewDTO] {
             
             return [
-                //            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-                //            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
+                //            RecipePreviewDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
+                //            RecipePreviewDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
             ]
         }
         
-        func loadMyRecipes() -> [RecipeDTO] {
+        func loadMyRecipes() -> [RecipePreviewDTO] {
             return [
-                //            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar")
+                //            RecipePreviewDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar")
             ]
         }
     }

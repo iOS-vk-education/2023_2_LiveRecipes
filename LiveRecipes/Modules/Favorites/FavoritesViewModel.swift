@@ -11,8 +11,8 @@ final class FavoritesViewModel: ObservableObject, FavoritesViewModelProtocol {
     var model: FavoritesModelProtocol
     
     @Published var modalFiltersIsOpen: Bool = false
-    @Published var allRecipes: [RecipeDTO] = []
-    @Published var myRecipes: [RecipeDTO] = []
+    @Published var allRecipes: [RecipePreviewDTO] = []
+    @Published var myRecipes: [RecipePreviewDTO] = []
     init(favoritesModel: FavoritesModel) {
         self.model = favoritesModel
         loadAllData()

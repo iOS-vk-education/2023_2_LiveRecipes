@@ -120,40 +120,36 @@ extension RecipeTarget: TargetType {
 }
 
 protocol RecipeAPIProtocol {
-    func getRecipes(name: String, completionHandler: @escaping (Result<[RecipeDTO], NSError>) -> Void)
-    func getDesserts(completionHandler: @escaping (Result<[RecipeDTO], NSError>) -> Void)
-    func getAllList(page: Int, completionHandler: @escaping (Result<[RecipeDTO], NSError>) -> Void)
-    func getToTime(name: NameToTime, completionHandler: @escaping (Result<[RecipeDTO], NSError>) -> Void)
-    func getRecipesToTime(type: NameToTime, name: String, completionHandler: @escaping (Result<[RecipeDTO], NSError>) -> Void)
+    func getRecipes(name: String, completionHandler: @escaping (Result<[RecipePreviewDTO], NSError>) -> Void)
+    func getAllList(page: Int, completionHandler: @escaping (Result<[RecipePreviewDTO], NSError>) -> Void)
+    func getToTime(name: NameToTime, completionHandler: @escaping (Result<[RecipePreviewDTO], NSError>) -> Void)
+    func getRecipesToTime(type: NameToTime, name: String, completionHandler: @escaping (Result<[RecipePreviewDTO], NSError>) -> Void)
+    func getRecipeById(id: Int, completionHandler: @escaping (Result<RecipeDTO, NSError>) -> Void)
 }
 
 class RecipeAPI: BaseAPI<RecipeTarget>, RecipeAPIProtocol {
-    
-    func getToTime(name: NameToTime, completionHandler: @escaping (Result<[RecipeDTO], NSError>) -> Void) {
-        fetchData(target: .getToTime(name: name), responseClass: [RecipeDTO].self) { result in
+    func getToTime(name: NameToTime, completionHandler: @escaping (Result<[RecipePreviewDTO], NSError>) -> Void) {
+        fetchData(target: .getToTime(name: name), responseClass: [RecipePreviewDTO].self) { result in
             completionHandler(result)
         }
-    }
-    
-    func getDesserts(completionHandler: @escaping (Result<[RecipeDTO], NSError>) -> Void) {
-        fetchData(target: .getDesserts, responseClass: [RecipeDTO].self) { result in completionHandler(result) }
-    }
-    
-    func getRecipes(name: String, completionHandler: @escaping (Result<[RecipeDTO], NSError>) -> Void) {
-        fetchData(target: .getRecipe(name: name), responseClass: [RecipeDTO].self) { result in completionHandler(result) }
     }
 
-    
-    func getRecipesToTime(type: NameToTime, name: String, completionHandler: @escaping (Result<[RecipeDTO], NSError>) -> Void) {
-        fetchData(target: .getRecipeToTime(type: type, name: name), responseClass: [RecipeDTO].self) { result in completionHandler(result) }
+    func getRecipes(name: String, completionHandler: @escaping (Result<[RecipePreviewDTO], NSError>) -> Void) {
+        fetchData(target: .getRecipe(name: name), responseClass: [RecipePreviewDTO].self) { result in completionHandler(result) }
     }
-    
-    func getAllList(page: Int, completionHandler: @escaping (Result<[RecipeDTO], NSError>) -> Void) {
-        fetchData(target: .getAllList(page: page), responseClass: [RecipeDTO].self) { result in
+
+
+    func getRecipesToTime(type: NameToTime, name: String, completionHandler: @escaping (Result<[RecipePreviewDTO], NSError>) -> Void) {
+        fetchData(target: .getRecipeToTime(type: type, name: name), responseClass: [RecipePreviewDTO].self) { result in completionHandler(result) }
+    }
+
+    func getAllList(page: Int, completionHandler: @escaping (Result<[RecipePreviewDTO], NSError>) -> Void) {
+        fetchData(target: .getAllList(page: page), responseClass: [RecipePreviewDTO].self) { result in
             completionHandler(result)
         }
+    }
     func getRecipeById(id: Int, completionHandler: @escaping (Result<RecipeDTO, NSError>) -> Void){
-        fetchData(target: .getById(id: id), responseClass: RecipeDTO.self) { result in completionHandler(result) }
+            fetchData(target: .getById(id: id), responseClass: RecipeDTO.self) { result in completionHandler(result) }
     }
 }
 

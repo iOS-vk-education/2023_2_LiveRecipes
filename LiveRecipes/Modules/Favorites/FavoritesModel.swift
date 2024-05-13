@@ -8,7 +8,7 @@
 import Foundation
 
 final class FavoritesModel: ObservableObject, FavoritesModelProtocol {
-    func loadMyRecipes() -> [RecipeDTO] {
+    func loadMyRecipes() -> [RecipePreviewDTO] {
         return [
 //            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
 //            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
@@ -16,7 +16,7 @@ final class FavoritesModel: ObservableObject, FavoritesModelProtocol {
     }
     
     
-    func loadAllRecipes() -> [RecipeDTO] {
+    func loadAllRecipes() -> [RecipePreviewDTO] {
         return [
 //            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
 //            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),

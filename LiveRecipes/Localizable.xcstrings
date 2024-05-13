@@ -42,50 +42,10 @@
         }
       }
     },
-    "12г" : {
-
-    },
-    "15г" : {
-
-    },
-    "132кКал" : {
-
-    },
     "allrecipes.error.message" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Data upload error"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Ошибка загрузки данных"
-          }
-        }
-      }
-    },
-    "allrecipes.errorFound.message" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nothing found"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Ничего не найдено"
-          }
-        }
-      }
-    },
-    "allrecipes.title" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "hr"
@@ -95,23 +55,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ч."
-          }
-        }
-      }
-    },
-    "creation.button.minutes" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "min"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "мин."
           }
         }
       }
@@ -231,6 +174,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сохранить"
+          }
+        }
+      }
+    },
+    "creation.button.minutes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "min"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "мин."
           }
         }
       }
@@ -944,6 +904,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Keywords"
           }
         },
         "ru" : {

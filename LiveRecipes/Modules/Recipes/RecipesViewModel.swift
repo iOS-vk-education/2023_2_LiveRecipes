@@ -10,8 +10,8 @@ import Foundation
 
 final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     var model: RecipesModelProtocol
-    @Published var foundRecipes: [RecipeDTO] = []
-    @Published var foundRecipesToTime: [RecipeDTO] = []
+    @Published var foundRecipes: [RecipePreviewDTO] = []
+    @Published var foundRecipesToTime: [RecipePreviewDTO] = []
     
     @Published var searchQuery = ""
     @Published var searchQueryAll = ""
@@ -26,10 +26,10 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     @Published var searchIsActiveAll = false
     
     @Published var keyWords: [KeyWord] = []
-    @Published var allRecipes: [RecipeDTO] = []
-    @Published var recentRecipes: [RecipeDTO] = []
-    @Published var myRecipes: [RecipeDTO] = []
-    @Published var recipesForTime: [RecipeDTO] = []
+    @Published var allRecipes: [RecipePreviewDTO] = []
+    @Published var recentRecipes: [RecipePreviewDTO] = []
+    @Published var myRecipes: [RecipePreviewDTO] = []
+    @Published var recipesForTime: [RecipePreviewDTO] = []
     
     @Published var modalFiltersIsOpenFromMain: Bool = false
     @Published var modalFiltersIsOpenFromAll: Bool = false
