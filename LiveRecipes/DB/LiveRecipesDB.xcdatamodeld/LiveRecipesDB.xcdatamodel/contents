@@ -4,6 +4,7 @@
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="product" attributeType="String"/>
         <attribute name="quantity" attributeType="String"/>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CreationRecipeEntity" inverseName="composition" inverseEntity="CreationRecipeEntity"/>
     </entity>
     <entity name="CreationRecipeEntity" representedClassName=".CreationRecipeEntity" syncable="YES">
         <attribute name="dishDescription" optional="YES" attributeType="String"/>
@@ -15,20 +16,24 @@
         <attribute name="nutritionValueProt" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="photoRef" optional="YES" attributeType="String"/>
         <attribute name="timeToPrepare" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="composition" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CreationRecipeCompositionEntity" inverseName="recipe" inverseEntity="CreationRecipeCompositionEntity"/>
+        <relationship name="step" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CreationRecipeStepEntity" inverseName="recipe" inverseEntity="CreationRecipeStepEntity"/>
     </entity>
     <entity name="CreationRecipeStepEntity" representedClassName=".CreationRecipeStepEntity" syncable="YES">
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="photoRef" optional="YES" attributeType="String"/>
         <attribute name="stepDescription" attributeType="String"/>
         <attribute name="stepTittle" attributeType="String"/>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CreationRecipeEntity" inverseName="step" inverseEntity="CreationRecipeEntity"/>
     </entity>
     <entity name="ListRecipeEntity" representedClassName=".ListRecipeEntity" syncable="YES">
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title" attributeType="String" defaultValueString=""/>
+        <relationship name="listItem" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ListRecipeItemEntity" inverseName="listRecipe" inverseEntity="ListRecipeItemEntity"/>
     </entity>
     <entity name="ListRecipeItemEntity" representedClassName=".ListRecipeItemEntity" syncable="YES">
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="parentId" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title" attributeType="String" defaultValueString=""/>
+        <relationship name="listRecipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ListRecipeEntity" inverseName="listItem" inverseEntity="ListRecipeEntity"/>
     </entity>
 </model>

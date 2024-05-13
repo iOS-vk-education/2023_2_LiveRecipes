@@ -22,7 +22,7 @@ struct ListView: View {
                         HStack {
                             Text(recipe.title.uppercased())
                                 .font(.title3)
-                                .foregroundColor(Color(.gray))
+                                .foregroundColor(Color.secondary)
                         }
                         HStack {
                             TextField("Введите продукт", text: $textItems[index])
@@ -98,7 +98,7 @@ struct ListView: View {
                         HStack {
                             Text(recipe.title.uppercased())
                                 .font(.title3)
-                                .foregroundColor(Color(.gray))
+                                .foregroundColor(Color.secondary)
                         }
                         ForEach(recipe.item, id: \.id) { item in
                             HStack {

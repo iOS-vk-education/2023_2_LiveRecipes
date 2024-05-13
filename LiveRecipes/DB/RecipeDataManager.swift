@@ -1,25 +1,26 @@
 //
-//  CoreDataManager.swift
+//  RecipeDataManager.swift
 //  LiveRecipes
 //
-//  Created by  Alexander Fedoseev on 11.04.2024.
+//  Created by  Alexander Fedoseev on 02.05.2024.
 //
 
 import Foundation
 import CoreData
 
-protocol CoreDataManagerDescription {
-    func create<T: NSManagedObject>(entityName: String, configurationBlock: @escaping (T, NSManagedObjectContext) -> ())
-    func fetch<T: NSManagedObject>(request: NSFetchRequest<T>) -> [T]
+protocol RecipeDataManagerDescription {
+    func create(dish: Dish, completion: @escaping() -> Void)
+    func fetch(completion: @escaping([Dish]) -> Void)
+    /*func fetch<T: NSManagedObject>(request: NSFetchRequest<T>) -> [T]
     func count<T: NSManagedObject>(request: NSFetchRequest<T>) -> Int
     func delete<T: NSManagedObject>(request: NSFetchRequest<T>)
     func deleteAll(request: NSFetchRequest<NSFetchRequestResult>)
-    func update<T: NSManagedObject>(request: NSFetchRequest<T>, configurationBlock: @escaping (T) -> ())
+    func update<T: NSManagedObject>(request: NSFetchRequest<T>, configurationBlock: @escaping (T) -> ())*/
     func prepareCoreDataIfNeeded(completion: (() -> ())?)
     var viewContext: NSManagedObjectContext { get }
 }
-final class CoreDataManager {
-    static let shared = CoreDataManager()
+final class RecipeDataManager: RecipeDataManagerDescription {
+    static let shared = RecipeDataManager()
     private let container: NSPersistentContainer
     private var isReady: Bool = false
     lazy var viewContext: NSManagedObjectContext = {
@@ -30,8 +31,6 @@ final class CoreDataManager {
         self.container = NSPersistentContainer(name: "LiveRecipesDB")
         self.container.viewContext.automaticallyMergesChangesFromParent = true
     }
-}
-extension CoreDataManager: CoreDataManagerDescription {
     func prepareCoreDataIfNeeded(completion: (() -> ())?) {
         guard !isReady else {
             completion?()
@@ -43,18 +42,7 @@ extension CoreDataManager: CoreDataManagerDescription {
             completion?()
         }
     }
-    
-    // INSERT
-    func create<T>(entityName: String, configurationBlock: @escaping (T, NSManagedObjectContext) -> ()) where T : NSManagedObject {
-        container.performBackgroundTask { context in
-            guard let object = NSEntityDescription.insertNewObject(forEntityName: entityName, into: context) as? T else {
-                return
-            }
-            configurationBlock(object, context)
-            try? context.save()
-        }
-    }
-    func createRecipe(dish: Dish, completion: @escaping() -> Void) {
+    func create(dish: Dish, completion: @escaping() -> Void) {
         container.performBackgroundTask { context in
             guard let objectRecipeEntity = NSEntityDescription.insertNewObject(forEntityName: "CreationRecipeEntity", into: context) as? CreationRecipeEntity else {
                 return
@@ -77,7 +65,7 @@ extension CoreDataManager: CoreDataManagerDescription {
             } else {
                 objectRecipeEntity.photoRef = nil
             }
-            objectRecipeEntity.timeToPrepare = Int64(dish.timeToPrepare)
+            objectRecipeEntity.timeToPrepare = Int64(dish.timeToPrepare)//непонятная хрень
             for step in dish.dishSteps {
                 guard let objectRecipeStepEntity = NSEntityDescription.insertNewObject(forEntityName: "CreationRecipeStepEntity", into: context) as? CreationRecipeStepEntity else {
                     return
@@ -86,7 +74,24 @@ extension CoreDataManager: CoreDataManagerDescription {
                 objectRecipeStepEntity.id = Int64(step.id)
                 objectRecipeStepEntity.stepTittle = step.title
                 objectRecipeStepEntity.stepDescription = step.description
-                objectRecipeStepEntity.photoRef = ""
+                if let photo = step.photo {
+                    if let imageData = photo.jpegData(compressionQuality: 0.4) {
+                        CreationPhotoFileManager.shared.savePhoto(imageData: imageData) { ref in
+                            objectRecipeEntity.photoRef = ref
+                        }
+                    }
+                } else {
+                    objectRecipeStepEntity.photoRef = nil
+                }
+            }
+            for composition in dish.dishComposition {
+                guard let objectRecipeCompositionEntity = NSEntityDescription.insertNewObject(forEntityName: "CreationRecipeCompositionEntity", into: context) as? CreationRecipeCompositionEntity else {
+                    return
+                }
+                objectRecipeCompositionEntity.recipe = objectRecipeEntity
+                objectRecipeCompositionEntity.id = Int64(composition.id)
+                objectRecipeCompositionEntity.product = composition.product
+                objectRecipeCompositionEntity.quantity = composition.quantity
             }
             do {
                 try context.save()
@@ -96,50 +101,30 @@ extension CoreDataManager: CoreDataManagerDescription {
             completion()
         }
     }
-    
-    // SELECT
-    func fetch<T: NSManagedObject>(request: NSFetchRequest<T>) -> [T] {
-        return (try? viewContext.fetch(request)) ?? []
-    }
-    
-    // COUNT OF OBJECTS
-    func count<T: NSManagedObject>(request: NSFetchRequest<T>) -> Int {
-        return (try? viewContext.count(for: request)) ?? 0
-    }
-    
-    // DELETE
-    func delete<T: NSManagedObject>(request: NSFetchRequest<T>) {
-        let objects = fetch(request: request)
-        
-        objects.forEach({ viewContext.delete($0) })
-        
-        viewContext.performAndWait {
-            try? viewContext.save()
-        }
-    }
-    
-    // DELETE ALL
-    func deleteAll(request: NSFetchRequest<NSFetchRequestResult>) {
-        let batchRequest = NSBatchDeleteRequest(fetchRequest: request)
-        
-        viewContext.performAndWait {
-            _ = try? viewContext.execute(batchRequest)
-            try? viewContext.save()
-        }
-    }
-    
-    // UPDATE
-    func update<T: NSManagedObject>(request: NSFetchRequest<T>, configurationBlock: @escaping (T) -> ()) {
-        let objects = fetch(request: request)
-        
-        guard let object = objects.first else {
-            return
-        }
-        
-        configurationBlock(object)
-        
-        viewContext.performAndWait {
-            try? viewContext.save()
+    func fetch(completion: @escaping([Dish]) -> Void) {
+        var dishes: [Dish] = []
+        if let recipeEntities = try? viewContext.fetch(CreationRecipeEntity.fetchRequest()) {
+            for recipeEntity in recipeEntities {
+                var stepsEntitie: [CreationRecipeStepEntity] = []
+                var compositionsEntities: [CreationRecipeCompositionEntity] = []
+                if let stepEntities = recipeEntity.step?.allObjects {
+                    print(stepEntities)
+                    if let stepsArray = Array(stepEntities) as? [CreationRecipeStepEntity] {
+                        stepsEntitie = stepsArray
+                    }
+                }
+                if let compositionEntities = recipeEntity.composition?.allObjects {
+                    print(compositionEntities)
+                    if let compositionsArray = Array(compositionEntities) as? [CreationRecipeCompositionEntity] {
+                        compositionsEntities = compositionsArray
+                    }
+                }
+                let dish = Dish(recipeEntity: recipeEntity, dishCompositionsEntities: compositionsEntities, dishStepsEntities: stepsEntitie)
+                dishes.append(dish)
+            }
+            completion(dishes)
+        } else {
+            completion([])
         }
     }
 }
