@@ -18,10 +18,10 @@ struct CreationView: View {
     @State private var textButritionalValueCarbohydrates = ""
     @State private var textNewProduct = ""
     @State private var textNewQuantity = ""
-    @State private var selectedTime: Date = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date()) ?? Date()
     @State private var selectedDishStep: DishStep?
-    @State private var hours: Int = 0
-    @State private var minutes: Int = 0
+    @State private var hours = 0
+    @State private var minutes = 0
+    @State private var seconds = 0
     @State private var isTimeOpen = false
     @State private var isStepModalOpen = false
     @State private var image: UIImage?
@@ -88,7 +88,7 @@ struct CreationView: View {
                     viewState.createDish(
                         textTitle: textTitle,
                         textDescription: textDescription,
-                        timeToPrepare: (hours * 60) + minutes,
+                        timeToPrepare: (hours * 60 * 60) + (minutes * 60) + seconds,
                         textButritionalValueCalories: textButritionalValueCalories,
                         textButritionalValueProteins: textButritionalValueProteins,
                         textButritionalValueFats: textButritionalValueFats,
@@ -113,26 +113,47 @@ struct CreationView: View {
     func timeView() -> some View {
         Section(header: Text("creation.label.timeToPrepare".localized)) {
             if isTimeOpen {
-                HStack {
-                    DatePicker("", selection: $selectedTime, displayedComponents: .hourAndMinute)
-                        .datePickerStyle(WheelDatePickerStyle())
+                HStack(spacing: 0) {
+                    Picker("Hours", selection: $hours) {
+                        ForEach(0 ..< 24) { hour in
+                            Text("\(hour)")
+                        }
+                    }
+                    .pickerStyle(.wheel)
+                    .padding(.trailing, -15)
+                    .clipped()
+                    Picker("Minutes", selection: $minutes) {
+                        ForEach(0 ..< 60) { minute in
+                            Text("\(minute)")
+                        }
+                    }
+                    .pickerStyle(.wheel)
+                    .padding(.horizontal, -15)
+                    .clipped()
+                    Picker("Seconds", selection: $seconds) {
+                        ForEach(0 ..< 60) { second in
+                            Text("\(second)")
+                        }
+                    }
+                    .pickerStyle(.wheel)
+                    .padding(.leading, -15)
+                    .clipped()
                 }
-                .onReceive(Just(selectedTime)) { _ in
-                    let calendar = Calendar.current
-                    let components = calendar.dateComponents([.hour, .minute], from: selectedTime)
-                    hours = components.hour ?? 0
-                    minutes = components.minute ?? 0
-                }
+                .padding()
             } else {
                 HStack {
                     Button(action: {
                         isTimeOpen = true
                     }) {
-                        let initialTime = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date()) ?? Date()
-                        let isTimeSet = (selectedTime == initialTime)
+                        let isTimeSet = (
+                            seconds == 0 &&
+                            minutes == 0 &&
+                            hours == 0
+                        )
                         let hoursString = String(format: "%02d", hours)
                         let minutesString = String(format: "%02d", minutes)
-                        Text(isTimeSet ? "creation.button.setTime".localized : "\(hoursString) \("creation.button.hours".localized) \(minutesString) \("creation.button.minutes".localized)")
+                        let secondsString = String(format: "%02d", seconds)
+                        Text(isTimeSet ? "creation.button.setTime".localized : "\(hoursString) \(" : ") \(minutesString) \(" : ")\(secondsString)")
                             .foregroundColor(isTimeSet ? Color.orange : Color.secondary)
                             .font(isTimeSet ? .system(.body) : .system(size: 18))
                             .cornerRadius(12)
