@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+import ActivityKit
+import Foundation
+import UserNotifications
 
 struct BlinkingText: View {
     @State private var isVisible = true
@@ -33,13 +36,20 @@ struct BlinkingText: View {
 }
 
 struct TimerView: View {
+    @State private var currentActivity: Activity<TimerAttributes>?
+   
     @State var isTimerRunning = false
     @State private var progress: Int = 0
     @State private var isPaused = false
     
     var totalTime: Int
+    
     @State var timeForProgress: Int
-    @Binding var disconnectText: Bool
+    @State var activityStarted: Bool = false
+    
+    var step: String?
+    var stepsCount: Int?
+    var dishName: String?
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -50,7 +60,56 @@ struct TimerView: View {
         
         return (hours, minutes, seconds)
     }
-
+    
+    func notify() -> Void {
+        let content = UNMutableNotificationContent()
+        content.title = "LiveRecipes"
+        if let step = step {
+            content.body = step + "timer.step.completed".localized
+        }
+        else {
+            content.body = "timer.over".localized
+        }
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        let req = UNNotificationRequest(identifier: "MSG", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(req, withCompletionHandler: nil)
+    }
+    
+    func stopActivity() {
+        Task {
+            await currentActivity?.end(nil, dismissalPolicy: .after(Date().addingTimeInterval(10)))
+            activityStarted = false
+        }
+    }
+    
+    func updateActivity() {
+        Task {
+            let state = TimerAttributes.TimeState(progress: progress, totalTime: totalTime, timeRemaining: timeForProgress, currentStep: step ?? "", stepsCount: stepsCount ?? 0, interval: nil)
+            //await currentActivity?.update(using: state)
+            await currentActivity?.update(ActivityContent<TimerAttributes.TimeState>(state: state, staleDate: nil))
+            //await currentActivity?.update(using: state)
+        }
+    }
+    
+    func startActivity() {
+        activityStarted = true
+        let startTime = TimeInterval(totalTime)
+        let endTime = TimeInterval(0)
+        let interval = ClosedRange(uncheckedBounds: (lower: Date().addingTimeInterval(endTime), upper: Date().addingTimeInterval(startTime)))
+        
+        let attributes = TimerAttributes(dishName: dishName ?? "")
+        let state = TimerAttributes.TimeState(progress: 0, totalTime: totalTime, timeRemaining: timeForProgress, currentStep: step ?? "", stepsCount: stepsCount ?? 0, interval: interval)
+        let content = ActivityContent(state: state, staleDate: nil, relevanceScore: 0.0)
+        
+        do {
+            currentActivity = try Activity<TimerAttributes>.request(attributes: attributes, content: content)
+        }
+        catch {
+            print(error.localizedDescription)
+        }
+    }
+    
     var body: some View {
         let (hours, minutes, seconds) = minutesAndSeconds
         
@@ -60,7 +119,7 @@ struct TimerView: View {
                     isTimerRunning = false
                     progress = 0
                     timeForProgress = totalTime
-                    disconnectText = false
+                    stopActivity()
                 }) {
                     Image(systemName: "arrow.counterclockwise")
                         .imageScale(.large)
@@ -68,14 +127,21 @@ struct TimerView: View {
                 
                 Spacer()
                 
-                Text("Таймер")
+                Text("timer".localized)
+                    
                 Image(systemName: "timer")
                 
                 Spacer()
                 
                 Button(action: {
                     isTimerRunning.toggle()
-                    
+                    if activityStarted {
+                       // updateActivity()
+                    }
+                    else {
+                        startActivity()
+                        //progress = timeForProgress
+                    }
                 }) {
                     Image(systemName: isTimerRunning ? "pause.fill" : "play.fill")
                         .imageScale(.large)
@@ -84,10 +150,13 @@ struct TimerView: View {
             }.padding(.init(top: 8, leading: 8, bottom: 0, trailing: 8))
             
             ZStack {
-                ProgressView(value: Double(progress), total: Double(totalTime))
+                ProgressView(value: Double(timeForProgress), total: Double(totalTime))
                     .progressViewStyle(CustomProgressViewStyle(progress: $progress))
                 if timeForProgress == 0 {
-                    BlinkingText(text: "Готово", disconnectTimer: $disconnectText)
+                    Text("Готово!")
+                        .foregroundColor(.orange)
+                        .font(.system(size: 19, weight: .semibold))
+                        .padding(.top, 2)
                 }
                 else {
                     Text(hours == 0 ? "\(minutes)m:\(seconds)s" : "\(hours)h:\(minutes)m:\(seconds)s")
@@ -100,11 +169,14 @@ struct TimerView: View {
                                 if progress < totalTime {
                                     progress += 1
                                     timeForProgress -= 1
-                                    
+                                    //updateActivity()
                                 }
+                                
                                 if progress == totalTime {
-                                    disconnectText = false
                                     isTimerRunning = false
+                                    //updateActivity()
+                                    stopActivity()
+                                    notify()
                                 }
                             }
                         }
@@ -113,7 +185,7 @@ struct TimerView: View {
             .padding(.init(top: 0, leading: 8, bottom: 16, trailing: 8))
         }.background(Color(UIColor.systemGray6))
             .cornerRadius(10)
-        .padding()
+            .frame(width: UIScreen.main.bounds.width - 20)
     }
 }
 
@@ -129,7 +201,7 @@ struct CustomProgressViewStyle: ProgressViewStyle {
                     .overlay(alignment: .leading){
                         RoundedRectangle(cornerRadius: 15)
                             .foregroundColor(.orange)
-                            .frame(width: configuration.fractionCompleted.map { $0 * geometry.size.width }, height: 30)
+                            .frame(width: configuration.fractionCompleted.map { $0 * geometry.size.width }, height: configuration.fractionCompleted ?? 0 < 0.025 ? 15 : 30)
                             .animation(.linear, value: progress)
                     }
             }

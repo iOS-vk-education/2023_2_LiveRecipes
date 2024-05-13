@@ -4,6 +4,7 @@
 
 ## User settings
 xcuserdata/
+LiveRecipes.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
 
 ## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
 *.xcuserstate
@@ -41,7 +42,7 @@ playground.xcworkspace
 # Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
 # Packages/
 # Package.pins
-# Package.resolved
+Package.resolved
 # *.xcodeproj
 #
 # Xcode automatically generates this directory with a .xcworkspacedata file and xcuserdata
