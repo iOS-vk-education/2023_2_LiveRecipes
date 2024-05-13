@@ -44,15 +44,15 @@
 import SwiftUI
 
 struct RecipeCardView: View {
-    @State var recipe: Recipe
-    
+    @State var recipe: RecipePreviewDTO
+
     var body: some View {
         NavigationLink(destination: {
             OneDishView(viewState: OneDishViewModel(oneDishModel: OneDishModel()))//??
         }, label: {
             ZStack (alignment: .topTrailing){
                 VStack (spacing: 0) {
-                    Image(recipe.image)
+                    Image(uiImage: UIImage(data: Data(base64Encoded: recipe.photo)!)!)
                         .resizable()
                         .scaledToFill()
                         .frame(width: 180, height: 110)
@@ -62,11 +62,12 @@ struct RecipeCardView: View {
                             Text(recipe.name)
                                 .fontWeight(.medium)
                                 .font(.system(size: 12))
-                            Spacer()
+                                .multilineTextAlignment(.center)
                         }
                         .padding(.horizontal, 8)
+                        .padding(.vertical, 0)
                         HStack {
-                            Text(recipe.cathegory)
+                            Text(recipe.tag)
                                 .fontWeight(.light)
                                 .foregroundStyle(Color(uiColor: .darkGray))
                                 .font(.system(size: 11))
@@ -75,21 +76,22 @@ struct RecipeCardView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 10, height: 10)
-                            Text(recipe.time + "recipes.card.time".localized)
+                            Text(String(recipe.duration) + "recipes.card.time".localized)
                                 .font(.system(size: 11))
                         }
                         .padding(.horizontal, 8)
+                        .padding(.vertical, 0)
                     }
-                    .frame(width: 180, height: 50)
+                    .frame(width: 180, height: 60)
                 }
-                .frame(width: 180, height: 160)
+                .frame(width: 180, height: 170)
                 .background(Color(UIColor.secondarySystemBackground))
                 .clipShape(.rect(cornerRadius: 8))
                 .tint(.black)
                 VStack {
-                    Image(systemName: recipe.isInFavorites ? "star.fill" : "star")
+                    Image(systemName: recipe.isInFavorites ?? false ? "star.fill" : "star")
                         .resizable()
-                        .foregroundStyle(Color.yellow)
+                        .foregroundStyle(Color.orange)
                         .fontWeight(.medium)
                         .gesture(TapGesture().onEnded({ _ in
                             recipe.changeStateOfFavorites()

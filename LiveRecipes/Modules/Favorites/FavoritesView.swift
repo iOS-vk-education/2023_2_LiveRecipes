@@ -67,7 +67,7 @@ struct FavoritesView: View {
             GeometryReader {proxy in
                 ScrollView() {
                     LazyVStack(spacing: 12) {
-                        ForEach(viewState.allRecipes) { recipe in
+                        ForEach(viewState.allRecipes, id: \.self) { recipe in
                             RecipeBigCardView(recipe: recipe, proxy: proxy)
                         }
                     }
@@ -124,7 +124,7 @@ struct FavoritesView: View {
             GeometryReader {proxy in
                 ScrollView() {
                     LazyVStack(spacing: 12) {
-                        ForEach(viewState.myRecipes) { recipe in
+                        ForEach(viewState.myRecipes, id: \.self) { recipe in
                             withAnimation(.easeInOut) {
                                 RecipeBigCardView(recipe: recipe, proxy: proxy)
                             }

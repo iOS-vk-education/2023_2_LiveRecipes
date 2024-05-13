@@ -10,45 +10,70 @@ import Swinject
 
 struct CookToTimeView: View {
     @StateObject var viewModel: RecipesViewModel
-    @State private var searchText = ""
     
     var body: some View {
-            recipesView()
-            .navigationTitle("cooktotime.title.name".localized)
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button("", systemImage: "slider.horizontal.2.square") {
-                            viewModel.modalFiltersIsOpenFromTime = true
-                        }
-                        .sheet(isPresented: $viewModel.modalFiltersIsOpenFromTime) {
-                            Assembler.sharedAssembly
-                                .resolver
-                                .resolve(FiltersView.self)
-                           }
-                        .tint(.orange)
+        recipesView()
+            .onAppear() {
+                viewModel.loadToTimeRecipes(chosenOption: viewModel.type ?? .breakfast)
+            }
+            .navigationTitle((viewModel.type ?? .breakfast).title)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("", systemImage: "slider.horizontal.2.square") {
+                        viewModel.modalFiltersIsOpenFromTime = true
                     }
+                    .sheet(isPresented: $viewModel.modalFiltersIsOpenFromTime) {
+                        Assembler.sharedAssembly
+                            .resolver
+                            .resolve(FiltersView.self)
+                    }
+                    .tint(.orange)
                 }
-        .searchable(text: $searchText)
+            }
+            .searchable(text: $viewModel.searchQueryToTime)
+            .searchPresentationToolbarBehavior(.avoidHidingContent)
+            .onSubmit(of: .search) {
+                viewModel.findRecipesToTime()
+            }
     }
     
     @ViewBuilder
     func recipesView() -> some View {
-        if (!viewModel.allRecipes.isEmpty) {
-            GeometryReader {proxy in
-                ScrollView() {
-                    LazyVStack(spacing: 12) {
-                        ForEach(viewModel.allRecipes) { recipe in
-                           RecipeBigCardView(recipe: recipe, proxy: proxy)
+        if (viewModel.searchQueryToTime == "") {
+            if (!viewModel.recipesForTime.isEmpty) {
+                GeometryReader {proxy in
+                    ScrollView() {
+                        LazyVStack(spacing: 12) {
+                            ForEach(viewModel.recipesForTime, id: \.self) { recipe in
+                                RecipeBigCardView(recipe: recipe, proxy: proxy)
+                            }
                         }
                     }
+                    .scrollIndicators(.hidden)
+                    .contentMargins(.horizontal, 12)
                 }
-                .scrollIndicators(.hidden)
-                .contentMargins(.horizontal, 12)
             }
-        }
-        else {
-            Text("cooktotime.error.message".localized)
+            else {
+                Text("cooktotime.error.message".localized)
+            }
+        } else {
+            if (!viewModel.foundRecipesToTime.isEmpty) {
+                GeometryReader {proxy in
+                    ScrollView() {
+                        LazyVStack(spacing: 12) {
+                            ForEach(viewModel.foundRecipesToTime, id: \.self) { recipe in
+                                RecipeBigCardView(recipe: recipe, proxy: proxy)
+                            }
+                        }
+                    }
+                    .scrollIndicators(.hidden)
+                    .contentMargins(.horizontal, 12)
+                }
+            }
+            else {
+                Text("allrecipes.errorFound.message".localized)
+            }
         }
     }
 }

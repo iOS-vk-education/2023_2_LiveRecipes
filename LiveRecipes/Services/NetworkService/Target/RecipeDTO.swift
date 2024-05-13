@@ -6,6 +6,36 @@
 //
 
 import Foundation
+import SwiftUI
+import UIKit
+//struct RecipeDTO: Codable, Hashable {
+//    var id: Int
+//    var name: String
+//    var bzy: [String: String]
+//    var photo: String
+//    var duration: String
+//    var ingredients: [String]
+//    var steps: [String: [String]]
+//    var tag: [Int]
+//}
+
+struct RecipePreviewDTO: Codable, Hashable, Identifiable {
+    let name: String
+    let duration: Int
+    let tag: String
+    let photo: String
+    let id: Int
+    var isInFavorites: Bool?
+    mutating func changeStateOfFavorites() {
+        if (isInFavorites == nil) {isInFavorites = false}
+        if(isInFavorites == false) {
+            isInFavorites = true
+        }
+        else {
+            isInFavorites = false
+        }
+    }
+}
 
 struct BZY: Codable, Hashable {
     var calories: String
@@ -58,13 +88,6 @@ func getTranslation(_ dishType: String) -> String {
         return "Заготовка".localized
     default:
         return "Блюдо".localized
+
     }
 }
-
-
-//struct RecipeDTO: Codable, Hashable {
-//    var title: String
-//    var ingredients: String
-//    var servings: String
-//    var instructions: String
-//}

@@ -11,12 +11,13 @@ import SwiftUI
 protocol RecipesViewModelProtocol {}
 
 protocol RecipesModelProtocol {
-    func findRecipe(name: String, completion: @escaping ([RecipeDTO])->Void)
-    func getDesserts(completion: @escaping ([RecipeDTO])->Void)
+    func findRecipe(name: String, completion: @escaping ([RecipePreviewDTO])->Void)
+    func findRecipesToTime(type: NameToTime, name: String, completion: @escaping ([RecipePreviewDTO]) -> Void)
     func loadKeyWords() -> [KeyWord]
-    func loadAllRecipes() -> [Recipe]
-    func loadRecentRecipes() -> [Recipe]
-    func loadMyRecipes() -> [Recipe]
+    func getAllRecipes(page: Int, completion: @escaping([RecipePreviewDTO]) -> Void)
+    func getToTimeRecipes(name: NameToTime, completion: @escaping([RecipePreviewDTO]) -> Void)
+    func loadRecentRecipes() -> [RecipePreviewDTO]
+    func loadMyRecipes() -> [RecipePreviewDTO]
 }
 
 protocol RecipesViewProtocol {}

@@ -10,45 +10,82 @@ import Swinject
 
 struct AllRecipesView: View {
     @StateObject var viewModel: RecipesViewModel
-    @State private var searchText = ""
     
     var body: some View {
-            recipesView()
+        recipesView()
             .navigationTitle("allrecipes.title".localized)
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button("", systemImage: "slider.horizontal.2.square") {
-                            viewModel.modalFiltersIsOpenFromAll = true
-                        }
-                        .sheet(isPresented: $viewModel.modalFiltersIsOpenFromAll) {
-                            Assembler.sharedAssembly
-                                .resolver
-                                .resolve(FiltersView.self)
-                           }
-                        .tint(.orange)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("", systemImage: "slider.horizontal.2.square") {
+                        viewModel.modalFiltersIsOpenFromAll = true
                     }
+                    .sheet(isPresented: $viewModel.modalFiltersIsOpenFromAll) {
+                        Assembler.sharedAssembly
+                            .resolver
+                            .resolve(FiltersView.self)
+                    }
+                    .tint(.orange)
                 }
-        .searchable(text: $searchText)
+            }
+            .searchable(text: $viewModel.searchQueryAll, isPresented: $viewModel.searchIsActiveAll)
+            .searchPresentationToolbarBehavior(.avoidHidingContent)
+            .onChange(of: viewModel.searchQueryAll, { _, _ in
+                viewModel.isLoadingAll = true
+            })
+            .onSubmit(of: .search) {
+                viewModel.findRecipesAll()
+            }
     }
     
     @ViewBuilder
     func recipesView() -> some View {
-        if (!viewModel.allRecipes.isEmpty) {
-            GeometryReader {proxy in
-                ScrollView() {
-                    LazyVStack(spacing: 12) {
-                        ForEach(viewModel.allRecipes) { recipe in
-                           RecipeBigCardView(recipe: recipe, proxy: proxy)
+        if (viewModel.isLoadingAll) {
+            ProgressView()
+        } else {
+            if (viewModel.searchQueryAll == "") {
+                if (!viewModel.allRecipes.isEmpty) {
+                    GeometryReader {proxy in
+                        ScrollView() {
+                            LazyVStack(spacing: 12) {
+                                ForEach(viewModel.allRecipes) { recipe in
+                                    RecipeBigCardView(recipe: recipe, proxy: proxy)
+                                }
+                            }
+                            .scrollTargetLayout()
                         }
+                        .scrollPosition(id: $viewModel.scrollID)
+                        .onChange(of: viewModel.scrollID) { oldValue, newValue in
+                            viewModel.loadMoreAllRecipes()
+                        }
+                        .scrollIndicators(.hidden)
+                        .contentMargins(.horizontal, 12, for: .scrollContent)
+                        .contentMargins(.bottom, 12, for: .scrollContent)
                     }
                 }
-                .scrollIndicators(.hidden)
-                .contentMargins(.horizontal, 12)
+                else {
+                    Text("allrecipes.error.message".localized)
+                }
             }
-        }
-        else {
-            Text("allrecipes.error.message".localized)
+            else {
+                if (!viewModel.foundRecipes.isEmpty) {
+                    GeometryReader {proxy in
+                        ScrollView() {
+                            LazyVStack(spacing: 12) {
+                                ForEach(viewModel.foundRecipes, id: \.self) { recipe in
+                                    RecipeBigCardView(recipe: recipe, proxy: proxy)
+                                }
+                            }
+                        }
+                        .onAppear(){print("all view")}
+                        .scrollIndicators(.hidden)
+                        .contentMargins(.horizontal, 12)
+                    }
+                }
+                else {
+                    Text("allrecipes.errorFound.message".localized)
+                }
+            }
         }
     }
 }

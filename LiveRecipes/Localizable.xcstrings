@@ -42,15 +42,6 @@
         }
       }
     },
-    "12г" : {
-
-    },
-    "15г" : {
-
-    },
-    "132кКал" : {
-
-    },
     "allrecipes.error.message" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -64,23 +55,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ч."
-          }
-        }
-      }
-    },
-    "creation.button.minutes" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "min"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "мин."
           }
         }
       }
@@ -200,6 +174,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сохранить"
+          }
+        }
+      }
+    },
+    "creation.button.minutes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "min"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "мин."
           }
         }
       }

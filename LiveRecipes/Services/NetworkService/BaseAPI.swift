@@ -30,20 +30,18 @@ class BaseAPI<T: TargetType> {
                 completionHandler(.failure(NSError()))
                 return
             }
-
+            
             if statusCode == 200 {
                 guard let jsonResponse = try? response.result.get() else {
                     print("jsonResponse error")
                     completionHandler(.failure(NSError()))
                     return
                 }
-
                 guard let theJSONData = try? JSONSerialization.data(withJSONObject: jsonResponse, options: []) else {
                     print("theJSONData error")
                     completionHandler(.failure(NSError()))
                     return
                 }
-
                 guard let responseObj = try? JSONDecoder().decode(M.self, from: theJSONData) else {
                     print("responseObj error")
                     completionHandler(.failure(NSError()))
@@ -54,7 +52,6 @@ class BaseAPI<T: TargetType> {
             } else {
                 print("error statusCode is \(statusCode)")
                 completionHandler(.failure(NSError()))
-
             }
 
         }
