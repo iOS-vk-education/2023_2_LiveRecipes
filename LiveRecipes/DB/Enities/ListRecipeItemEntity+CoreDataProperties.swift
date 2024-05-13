@@ -2,7 +2,7 @@
 //  ListRecipeItemEntity+CoreDataProperties.swift
 //  LiveRecipes
 //
-//  Created by  Alexander Fedoseev on 11.04.2024.
+//  Created by  Alexander Fedoseev on 17.04.2024.
 //
 //
 
@@ -17,8 +17,8 @@ extension ListRecipeItemEntity {
     }
 
     @NSManaged public var id: Int64
-    @NSManaged public var title: String
-    @NSManaged public var parentId: Int64
+    @NSManaged public var title: String?
+    @NSManaged public var listRecipe: ListRecipeEntity?
 
 }
 

@@ -22,6 +22,19 @@
 		745DA4D72BB862D500BE4C5D /* OneDishAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745DA4D62BB862D500BE4C5D /* OneDishAssembly.swift */; };
 		745DA4D92BB862EC00BE4C5D /* OneDishProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745DA4D82BB862EC00BE4C5D /* OneDishProtocols.swift */; };
 		745DA4DB2BC889DD00BE4C5D /* OneStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745DA4DA2BC889DD00BE4C5D /* OneStepView.swift */; };
+		74BF32C92BEF92B100C946D5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74BF32C82BEF92B100C946D5 /* WidgetKit.framework */; };
+		74BF32CB2BEF92B100C946D5 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74BF32CA2BEF92B100C946D5 /* SwiftUI.framework */; };
+		74BF32CE2BEF92B100C946D5 /* TimerActivityWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BF32CD2BEF92B100C946D5 /* TimerActivityWidgetBundle.swift */; };
+		74BF32D02BEF92B100C946D5 /* TimerActivityWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BF32CF2BEF92B100C946D5 /* TimerActivityWidgetLiveActivity.swift */; };
+		74BF32D22BEF92B100C946D5 /* TimerActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BF32D12BEF92B100C946D5 /* TimerActivityWidget.swift */; };
+		74BF32D42BEF92B100C946D5 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BF32D32BEF92B100C946D5 /* AppIntent.swift */; };
+		74BF32D62BEF92B300C946D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74BF32D52BEF92B300C946D5 /* Assets.xcassets */; };
+		74BF32DA2BEF92B300C946D5 /* TimerActivityWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 74BF32C72BEF92B100C946D5 /* TimerActivityWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		74BF32E02BEF933C00C946D5 /* LiveActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BF32DF2BEF933C00C946D5 /* LiveActivityAttributes.swift */; };
+		74BF32E72BF167DA00C946D5 /* LiveActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BF32DF2BEF933C00C946D5 /* LiveActivityAttributes.swift */; };
+		74BF32E92BF1687A00C946D5 /* CustomTimerViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BF32E82BF1687A00C946D5 /* CustomTimerViewStyle.swift */; };
+		74BF32EA2BF1687A00C946D5 /* CustomTimerViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BF32E82BF1687A00C946D5 /* CustomTimerViewStyle.swift */; };
+		74BF32EC2BF16B2600C946D5 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA6C632BB85AEC00995C49 /* String+Localized.swift */; };
 		74D1B8542BD7BED300F317A9 /* PrepareForCookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D1B8532BD7BED300F317A9 /* PrepareForCookingView.swift */; };
 		74D1B8582BD8688600F317A9 /* TransperentBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D1B8572BD8688600F317A9 /* TransperentBlur.swift */; };
 		74D1B85B2BD9443400F317A9 /* StartCookingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D1B85A2BD9443400F317A9 /* StartCookingButton.swift */; };
@@ -79,33 +92,43 @@
 		C0EA6CC42BB85B1500995C49 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C0EA6CC32BB85B1500995C49 /* Alamofire */; };
 		C0EA6CC92BB85B3C00995C49 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = C0EA6CC82BB85B3C00995C49 /* Swinject */; };
 		D003AFF92BCBCA1A00873500 /* StepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D003AFF82BCBCA1A00873500 /* StepView.swift */; };
+		D01FA38B2BE3AE2600890D71 /* RecipeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01FA38A2BE3AE2600890D71 /* RecipeDataManager.swift */; };
 		D02D7EEA2BCD79630056DC33 /* CreationPhotoFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02D7EE92BCD79620056DC33 /* CreationPhotoFileManager.swift */; };
 		D02D7EEC2BCD79760056DC33 /* CreationPhotoFileProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02D7EEB2BCD79760056DC33 /* CreationPhotoFileProtocol.swift */; };
 		D02D7EEE2BCD7E5E0056DC33 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02D7EED2BCD7E5E0056DC33 /* ImagePicker.swift */; };
-		D02D7F062BCDB14A0056DC33 /* CreationRecipeEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02D7F022BCDB14A0056DC33 /* CreationRecipeEntity+CoreDataClass.swift */; };
-		D02D7F072BCDB14A0056DC33 /* CreationRecipeEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02D7F032BCDB14A0056DC33 /* CreationRecipeEntity+CoreDataProperties.swift */; };
-		D02D7F0B2BCDB3D30056DC33 /* CreationRecipeCompositionEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02D7F092BCDB3D30056DC33 /* CreationRecipeCompositionEntity+CoreDataClass.swift */; };
-		D02D7F0C2BCDB3D30056DC33 /* CreationRecipeCompositionEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02D7F0A2BCDB3D30056DC33 /* CreationRecipeCompositionEntity+CoreDataProperties.swift */; };
 		D02D7F0F2BCDB5FB0056DC33 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02D7F0E2BCDB5FB0056DC33 /* Dish.swift */; };
 		D02D7F122BCDB6200056DC33 /* DishComposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02D7F112BCDB6200056DC33 /* DishComposition.swift */; };
 		D02D7F142BCDB6390056DC33 /* DishStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02D7F132BCDB6390056DC33 /* DishStep.swift */; };
-		D02D7F172BCDB8340056DC33 /* CreationRecipeStepEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02D7F152BCDB8340056DC33 /* CreationRecipeStepEntity+CoreDataClass.swift */; };
-		D02D7F182BCDB8340056DC33 /* CreationRecipeStepEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02D7F162BCDB8340056DC33 /* CreationRecipeStepEntity+CoreDataProperties.swift */; };
 		D0596F942BC7FC3B00A1BF50 /* LiveRecipesDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0596F922BC7FC3B00A1BF50 /* LiveRecipesDB.xcdatamodeld */; };
 		D0596F962BC7FCA200A1BF50 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0596F952BC7FCA200A1BF50 /* CoreDataManager.swift */; };
-		D0596F9B2BC806A500A1BF50 /* ListRecipeEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0596F972BC806A500A1BF50 /* ListRecipeEntity+CoreDataClass.swift */; };
-		D0596F9C2BC806A500A1BF50 /* ListRecipeEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0596F982BC806A500A1BF50 /* ListRecipeEntity+CoreDataProperties.swift */; };
-		D0596F9D2BC806A500A1BF50 /* ListRecipeItemEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0596F992BC806A500A1BF50 /* ListRecipeItemEntity+CoreDataClass.swift */; };
-		D0596F9E2BC806A500A1BF50 /* ListRecipeItemEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0596F9A2BC806A500A1BF50 /* ListRecipeItemEntity+CoreDataProperties.swift */; };
 		D0596FA42BC862B200A1BF50 /* SettingsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0596FA32BC862B200A1BF50 /* SettingsAssembly.swift */; };
 		D0596FA62BC862DB00A1BF50 /* SettingsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0596FA52BC862DB00A1BF50 /* SettingsProtocols.swift */; };
 		D0596FA82BC8630300A1BF50 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0596FA72BC8630300A1BF50 /* SettingsViewModel.swift */; };
 		D0596FAA2BC8632100A1BF50 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0596FA92BC8632100A1BF50 /* SettingsView.swift */; };
 		D0596FAC2BC8633F00A1BF50 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0596FAB2BC8633F00A1BF50 /* SettingsModel.swift */; };
+		D070FB642BCF4D2D009EE042 /* CreationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D070FB632BCF4D2D009EE042 /* CreationError.swift */; };
+		D09CFB572BEAAADE00E341AD /* ListDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09CFB562BEAAADD00E341AD /* ListDataManager.swift */; };
 		D0B36AD52BCA9B1A00D8826D /* CreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B36AD42BCA9B1A00D8826D /* CreationViewController.swift */; };
+		D0FA9E132BCFF2DE0010F42B /* ListRecipeItemEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FA9E092BCFF2DE0010F42B /* ListRecipeItemEntity+CoreDataClass.swift */; };
+		D0FA9E142BCFF2DE0010F42B /* ListRecipeItemEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FA9E0A2BCFF2DE0010F42B /* ListRecipeItemEntity+CoreDataProperties.swift */; };
+		D0FA9E152BCFF2DE0010F42B /* CreationRecipeCompositionEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FA9E0B2BCFF2DE0010F42B /* CreationRecipeCompositionEntity+CoreDataClass.swift */; };
+		D0FA9E162BCFF2DE0010F42B /* CreationRecipeCompositionEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FA9E0C2BCFF2DE0010F42B /* CreationRecipeCompositionEntity+CoreDataProperties.swift */; };
+		D0FA9E172BCFF2DE0010F42B /* CreationRecipeEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FA9E0D2BCFF2DE0010F42B /* CreationRecipeEntity+CoreDataClass.swift */; };
+		D0FA9E182BCFF2DE0010F42B /* CreationRecipeEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FA9E0E2BCFF2DE0010F42B /* CreationRecipeEntity+CoreDataProperties.swift */; };
+		D0FA9E192BCFF2DE0010F42B /* ListRecipeEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FA9E0F2BCFF2DE0010F42B /* ListRecipeEntity+CoreDataClass.swift */; };
+		D0FA9E1A2BCFF2DE0010F42B /* ListRecipeEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FA9E102BCFF2DE0010F42B /* ListRecipeEntity+CoreDataProperties.swift */; };
+		D0FA9E1B2BCFF2DE0010F42B /* CreationRecipeStepEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FA9E112BCFF2DE0010F42B /* CreationRecipeStepEntity+CoreDataClass.swift */; };
+		D0FA9E1C2BCFF2DE0010F42B /* CreationRecipeStepEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FA9E122BCFF2DE0010F42B /* CreationRecipeStepEntity+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		74BF32D82BEF92B300C946D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C0EA6C1C2BB85A9100995C49 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 74BF32C62BEF92B100C946D5;
+			remoteInfo = TimerActivityWidgetExtension;
+		};
 		C0EA6C3A2BB85A9200995C49 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C0EA6C1C2BB85A9100995C49 /* Project object */;
@@ -121,6 +144,20 @@
 			remoteInfo = LiveRecipes;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		74BF32DE2BEF92B300C946D5 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				74BF32DA2BEF92B300C946D5 /* TimerActivityWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		660E20592BC6D1FB00BB23AA /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
@@ -138,6 +175,18 @@
 		745DA4D62BB862D500BE4C5D /* OneDishAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDishAssembly.swift; sourceTree = "<group>"; };
 		745DA4D82BB862EC00BE4C5D /* OneDishProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDishProtocols.swift; sourceTree = "<group>"; };
 		745DA4DA2BC889DD00BE4C5D /* OneStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneStepView.swift; sourceTree = "<group>"; };
+		74BF32C72BEF92B100C946D5 /* TimerActivityWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TimerActivityWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		74BF32C82BEF92B100C946D5 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		74BF32CA2BEF92B100C946D5 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		74BF32CD2BEF92B100C946D5 /* TimerActivityWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerActivityWidgetBundle.swift; sourceTree = "<group>"; };
+		74BF32CF2BEF92B100C946D5 /* TimerActivityWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerActivityWidgetLiveActivity.swift; sourceTree = "<group>"; };
+		74BF32D12BEF92B100C946D5 /* TimerActivityWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerActivityWidget.swift; sourceTree = "<group>"; };
+		74BF32D32BEF92B100C946D5 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
+		74BF32D52BEF92B300C946D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		74BF32D72BEF92B300C946D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74BF32DF2BEF933C00C946D5 /* LiveActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityAttributes.swift; sourceTree = "<group>"; };
+		74BF32E22BEFD61000C946D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		74BF32E82BF1687A00C946D5 /* CustomTimerViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimerViewStyle.swift; sourceTree = "<group>"; };
 		74D1B8532BD7BED300F317A9 /* PrepareForCookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareForCookingView.swift; sourceTree = "<group>"; };
 		74D1B8572BD8688600F317A9 /* TransperentBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransperentBlur.swift; sourceTree = "<group>"; };
 		74D1B85A2BD9443400F317A9 /* StartCookingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCookingButton.swift; sourceTree = "<group>"; };
@@ -197,33 +246,45 @@
 		C0EA6C912BB85AED00995C49 /* LiveRecipesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveRecipesView.swift; sourceTree = "<group>"; };
 		C0EA6C932BB85AED00995C49 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D003AFF82BCBCA1A00873500 /* StepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepView.swift; sourceTree = "<group>"; };
+		D01FA38A2BE3AE2600890D71 /* RecipeDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDataManager.swift; sourceTree = "<group>"; };
 		D02D7EE92BCD79620056DC33 /* CreationPhotoFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationPhotoFileManager.swift; sourceTree = "<group>"; };
 		D02D7EEB2BCD79760056DC33 /* CreationPhotoFileProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationPhotoFileProtocol.swift; sourceTree = "<group>"; };
 		D02D7EED2BCD7E5E0056DC33 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		D02D7F022BCDB14A0056DC33 /* CreationRecipeEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreationRecipeEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D02D7F032BCDB14A0056DC33 /* CreationRecipeEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreationRecipeEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		D02D7F092BCDB3D30056DC33 /* CreationRecipeCompositionEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreationRecipeCompositionEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D02D7F0A2BCDB3D30056DC33 /* CreationRecipeCompositionEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreationRecipeCompositionEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D02D7F0E2BCDB5FB0056DC33 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		D02D7F112BCDB6200056DC33 /* DishComposition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishComposition.swift; sourceTree = "<group>"; };
 		D02D7F132BCDB6390056DC33 /* DishStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishStep.swift; sourceTree = "<group>"; };
-		D02D7F152BCDB8340056DC33 /* CreationRecipeStepEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreationRecipeStepEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D02D7F162BCDB8340056DC33 /* CreationRecipeStepEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreationRecipeStepEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D0596F932BC7FC3B00A1BF50 /* LiveRecipesDB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LiveRecipesDB.xcdatamodel; sourceTree = "<group>"; };
 		D0596F952BC7FCA200A1BF50 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		D0596F972BC806A500A1BF50 /* ListRecipeEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListRecipeEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D0596F982BC806A500A1BF50 /* ListRecipeEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListRecipeEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		D0596F992BC806A500A1BF50 /* ListRecipeItemEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListRecipeItemEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D0596F9A2BC806A500A1BF50 /* ListRecipeItemEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListRecipeItemEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D0596FA32BC862B200A1BF50 /* SettingsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAssembly.swift; sourceTree = "<group>"; };
 		D0596FA52BC862DB00A1BF50 /* SettingsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProtocols.swift; sourceTree = "<group>"; };
 		D0596FA72BC8630300A1BF50 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		D0596FA92BC8632100A1BF50 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D0596FAB2BC8633F00A1BF50 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		D070FB632BCF4D2D009EE042 /* CreationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationError.swift; sourceTree = "<group>"; };
+		D09CFB562BEAAADD00E341AD /* ListDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataManager.swift; sourceTree = "<group>"; };
 		D0B36AD42BCA9B1A00D8826D /* CreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationViewController.swift; sourceTree = "<group>"; };
+		D0FA9E092BCFF2DE0010F42B /* ListRecipeItemEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListRecipeItemEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D0FA9E0A2BCFF2DE0010F42B /* ListRecipeItemEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListRecipeItemEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D0FA9E0B2BCFF2DE0010F42B /* CreationRecipeCompositionEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreationRecipeCompositionEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D0FA9E0C2BCFF2DE0010F42B /* CreationRecipeCompositionEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreationRecipeCompositionEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D0FA9E0D2BCFF2DE0010F42B /* CreationRecipeEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreationRecipeEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D0FA9E0E2BCFF2DE0010F42B /* CreationRecipeEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreationRecipeEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D0FA9E0F2BCFF2DE0010F42B /* ListRecipeEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListRecipeEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D0FA9E102BCFF2DE0010F42B /* ListRecipeEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListRecipeEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D0FA9E112BCFF2DE0010F42B /* CreationRecipeStepEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreationRecipeStepEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D0FA9E122BCFF2DE0010F42B /* CreationRecipeStepEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreationRecipeStepEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		74BF32C42BEF92B100C946D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74BF32CB2BEF92B100C946D5 /* SwiftUI.framework in Frameworks */,
+				74BF32C92BEF92B100C946D5 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C0EA6C212BB85A9100995C49 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -262,6 +323,40 @@
 			path = OneDish;
 			sourceTree = "<group>";
 		};
+		74BF32A32BEF88A600C946D5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				74BF32C82BEF92B100C946D5 /* WidgetKit.framework */,
+				74BF32CA2BEF92B100C946D5 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		74BF32CC2BEF92B100C946D5 /* TimerActivityWidget */ = {
+			isa = PBXGroup;
+			children = (
+				74BF32CD2BEF92B100C946D5 /* TimerActivityWidgetBundle.swift */,
+				74BF32CF2BEF92B100C946D5 /* TimerActivityWidgetLiveActivity.swift */,
+				74BF32D12BEF92B100C946D5 /* TimerActivityWidget.swift */,
+				74BF32D32BEF92B100C946D5 /* AppIntent.swift */,
+				74BF32D52BEF92B300C946D5 /* Assets.xcassets */,
+				74BF32D72BEF92B300C946D5 /* Info.plist */,
+			);
+			path = TimerActivityWidget;
+			sourceTree = "<group>";
+		};
+		74BF32E62BF163F800C946D5 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				745DA4DA2BC889DD00BE4C5D /* OneStepView.swift */,
+				74D1B8532BD7BED300F317A9 /* PrepareForCookingView.swift */,
+				74D1B8622BD9453700F317A9 /* NoStepsView.swift */,
+				74BF32DF2BEF933C00C946D5 /* LiveActivityAttributes.swift */,
+				74BF32E82BF1687A00C946D5 /* CustomTimerViewStyle.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		74D1B8592BD943B100F317A9 /* AnimatedElements */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,7 +375,9 @@
 				C0EA6C262BB85A9100995C49 /* LiveRecipes */,
 				C0EA6C3C2BB85A9200995C49 /* LiveRecipesTests */,
 				C0EA6C462BB85A9200995C49 /* LiveRecipesUITests */,
+				74BF32CC2BEF92B100C946D5 /* TimerActivityWidget */,
 				C0EA6C252BB85A9100995C49 /* Products */,
+				74BF32A32BEF88A600C946D5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -290,6 +387,7 @@
 				C0EA6C242BB85A9100995C49 /* LiveRecipes.app */,
 				C0EA6C392BB85A9200995C49 /* LiveRecipesTests.xctest */,
 				C0EA6C432BB85A9200995C49 /* LiveRecipesUITests.xctest */,
+				74BF32C72BEF92B100C946D5 /* TimerActivityWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -297,6 +395,7 @@
 		C0EA6C262BB85A9100995C49 /* LiveRecipes */ = {
 			isa = PBXGroup;
 			children = (
+				74BF32E22BEFD61000C946D5 /* Info.plist */,
 				D02D7EE82BCD79300056DC33 /* FileManager */,
 				D0596F912BC7FBB800A1BF50 /* DB */,
 				C0EA6C642BB85AEC00995C49 /* ApplicationViewBuilder.swift */,
@@ -405,15 +504,13 @@
 		C0EA6C712BB85AEC00995C49 /* Cooking */ = {
 			isa = PBXGroup;
 			children = (
+				74BF32E62BF163F800C946D5 /* Components */,
 				74D1B8592BD943B100F317A9 /* AnimatedElements */,
 				C0EA6C722BB85AEC00995C49 /* CookingView.swift */,
 				C0EA6C732BB85AEC00995C49 /* CookingViewModel.swift */,
 				C0EA6C742BB85AEC00995C49 /* CookingProtocols.swift */,
 				C0EA6C752BB85AEC00995C49 /* CookingAssembly.swift */,
 				C0EA6C762BB85AEC00995C49 /* CookingModel.swift */,
-				745DA4DA2BC889DD00BE4C5D /* OneStepView.swift */,
-				74D1B8532BD7BED300F317A9 /* PrepareForCookingView.swift */,
-				74D1B8622BD9453700F317A9 /* NoStepsView.swift */,
 			);
 			path = Cooking;
 			sourceTree = "<group>";
@@ -444,6 +541,7 @@
 				D0B36AD42BCA9B1A00D8826D /* CreationViewController.swift */,
 				D003AFF82BCBCA1A00873500 /* StepView.swift */,
 				D02D7EED2BCD7E5E0056DC33 /* ImagePicker.swift */,
+				D070FB632BCF4D2D009EE042 /* CreationError.swift */,
 			);
 			path = Creation;
 			sourceTree = "<group>";
@@ -507,63 +605,16 @@
 			path = FileManager;
 			sourceTree = "<group>";
 		};
-		D02D7EF72BCDADFE0056DC33 /* CreationRecipeEntity */ = {
-			isa = PBXGroup;
-			children = (
-				D02D7F022BCDB14A0056DC33 /* CreationRecipeEntity+CoreDataClass.swift */,
-				D02D7F032BCDB14A0056DC33 /* CreationRecipeEntity+CoreDataProperties.swift */,
-			);
-			path = CreationRecipeEntity;
-			sourceTree = "<group>";
-		};
-		D02D7F082BCDB1590056DC33 /* CreationRecipeStepEntity */ = {
-			isa = PBXGroup;
-			children = (
-				D02D7F152BCDB8340056DC33 /* CreationRecipeStepEntity+CoreDataClass.swift */,
-				D02D7F162BCDB8340056DC33 /* CreationRecipeStepEntity+CoreDataProperties.swift */,
-			);
-			path = CreationRecipeStepEntity;
-			sourceTree = "<group>";
-		};
-		D02D7F0D2BCDB3E40056DC33 /* CreationRecipeCompositionEntity */ = {
-			isa = PBXGroup;
-			children = (
-				D02D7F092BCDB3D30056DC33 /* CreationRecipeCompositionEntity+CoreDataClass.swift */,
-				D02D7F0A2BCDB3D30056DC33 /* CreationRecipeCompositionEntity+CoreDataProperties.swift */,
-			);
-			path = CreationRecipeCompositionEntity;
-			sourceTree = "<group>";
-		};
 		D0596F912BC7FBB800A1BF50 /* DB */ = {
 			isa = PBXGroup;
 			children = (
-				D02D7F0D2BCDB3E40056DC33 /* CreationRecipeCompositionEntity */,
-				D02D7F082BCDB1590056DC33 /* CreationRecipeStepEntity */,
-				D02D7EF72BCDADFE0056DC33 /* CreationRecipeEntity */,
-				D0596FA02BC817E500A1BF50 /* ListRecipeItemEnity */,
-				D0596F9F2BC817C800A1BF50 /* ListRecipeEntity */,
+				D0FA9E082BCFF20A0010F42B /* Enities */,
 				D0596F922BC7FC3B00A1BF50 /* LiveRecipesDB.xcdatamodeld */,
 				D0596F952BC7FCA200A1BF50 /* CoreDataManager.swift */,
+				D01FA38A2BE3AE2600890D71 /* RecipeDataManager.swift */,
+				D09CFB562BEAAADD00E341AD /* ListDataManager.swift */,
 			);
 			path = DB;
-			sourceTree = "<group>";
-		};
-		D0596F9F2BC817C800A1BF50 /* ListRecipeEntity */ = {
-			isa = PBXGroup;
-			children = (
-				D0596F972BC806A500A1BF50 /* ListRecipeEntity+CoreDataClass.swift */,
-				D0596F982BC806A500A1BF50 /* ListRecipeEntity+CoreDataProperties.swift */,
-			);
-			path = ListRecipeEntity;
-			sourceTree = "<group>";
-		};
-		D0596FA02BC817E500A1BF50 /* ListRecipeItemEnity */ = {
-			isa = PBXGroup;
-			children = (
-				D0596F992BC806A500A1BF50 /* ListRecipeItemEntity+CoreDataClass.swift */,
-				D0596F9A2BC806A500A1BF50 /* ListRecipeItemEntity+CoreDataProperties.swift */,
-			);
-			path = ListRecipeItemEnity;
 			sourceTree = "<group>";
 		};
 		D0596FA22BC8627200A1BF50 /* Settings */ = {
@@ -578,9 +629,43 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		D0FA9E082BCFF20A0010F42B /* Enities */ = {
+			isa = PBXGroup;
+			children = (
+				D0FA9E0D2BCFF2DE0010F42B /* CreationRecipeEntity+CoreDataClass.swift */,
+				D0FA9E0E2BCFF2DE0010F42B /* CreationRecipeEntity+CoreDataProperties.swift */,
+				D0FA9E0B2BCFF2DE0010F42B /* CreationRecipeCompositionEntity+CoreDataClass.swift */,
+				D0FA9E0C2BCFF2DE0010F42B /* CreationRecipeCompositionEntity+CoreDataProperties.swift */,
+				D0FA9E112BCFF2DE0010F42B /* CreationRecipeStepEntity+CoreDataClass.swift */,
+				D0FA9E122BCFF2DE0010F42B /* CreationRecipeStepEntity+CoreDataProperties.swift */,
+				D0FA9E0F2BCFF2DE0010F42B /* ListRecipeEntity+CoreDataClass.swift */,
+				D0FA9E102BCFF2DE0010F42B /* ListRecipeEntity+CoreDataProperties.swift */,
+				D0FA9E092BCFF2DE0010F42B /* ListRecipeItemEntity+CoreDataClass.swift */,
+				D0FA9E0A2BCFF2DE0010F42B /* ListRecipeItemEntity+CoreDataProperties.swift */,
+			);
+			path = Enities;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		74BF32C62BEF92B100C946D5 /* TimerActivityWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 74BF32DB2BEF92B300C946D5 /* Build configuration list for PBXNativeTarget "TimerActivityWidgetExtension" */;
+			buildPhases = (
+				74BF32C32BEF92B100C946D5 /* Sources */,
+				74BF32C42BEF92B100C946D5 /* Frameworks */,
+				74BF32C52BEF92B100C946D5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TimerActivityWidgetExtension;
+			productName = TimerActivityWidgetExtension;
+			productReference = 74BF32C72BEF92B100C946D5 /* TimerActivityWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C0EA6C232BB85A9100995C49 /* LiveRecipes */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0EA6C4D2BB85A9200995C49 /* Build configuration list for PBXNativeTarget "LiveRecipes" */;
@@ -588,10 +673,12 @@
 				C0EA6C202BB85A9100995C49 /* Sources */,
 				C0EA6C212BB85A9100995C49 /* Frameworks */,
 				C0EA6C222BB85A9100995C49 /* Resources */,
+				74BF32DE2BEF92B300C946D5 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				74BF32D92BEF92B300C946D5 /* PBXTargetDependency */,
 			);
 			name = LiveRecipes;
 			packageProductDependencies = (
@@ -645,9 +732,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1520;
+				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
+					74BF32C62BEF92B100C946D5 = {
+						CreatedOnToolsVersion = 15.3;
+					};
 					C0EA6C232BB85A9100995C49 = {
 						CreatedOnToolsVersion = 15.2;
 						LastSwiftMigration = 1520;
@@ -682,11 +772,20 @@
 				C0EA6C232BB85A9100995C49 /* LiveRecipes */,
 				C0EA6C382BB85A9200995C49 /* LiveRecipesTests */,
 				C0EA6C422BB85A9200995C49 /* LiveRecipesUITests */,
+				74BF32C62BEF92B100C946D5 /* TimerActivityWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		74BF32C52BEF92B100C946D5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74BF32D62BEF92B300C946D5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C0EA6C222BB85A9100995C49 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -714,6 +813,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		74BF32C32BEF92B100C946D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74BF32E72BF167DA00C946D5 /* LiveActivityAttributes.swift in Sources */,
+				74BF32D22BEF92B100C946D5 /* TimerActivityWidget.swift in Sources */,
+				74BF32D42BEF92B100C946D5 /* AppIntent.swift in Sources */,
+				74BF32EA2BF1687A00C946D5 /* CustomTimerViewStyle.swift in Sources */,
+				74BF32EC2BF16B2600C946D5 /* String+Localized.swift in Sources */,
+				74BF32CE2BEF92B100C946D5 /* TimerActivityWidgetBundle.swift in Sources */,
+				74BF32D02BEF92B100C946D5 /* TimerActivityWidgetLiveActivity.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C0EA6C202BB85A9100995C49 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -723,6 +836,7 @@
 				C0EA6CBB2BB85AED00995C49 /* ListModel.swift in Sources */,
 				D0596F9B2BC806A500A1BF50 /* ListRecipeEntity+CoreDataClass.swift in Sources */,
 				D0596F9C2BC806A500A1BF50 /* ListRecipeEntity+CoreDataProperties.swift in Sources */,
+				74BF32E02BEF933C00C946D5 /* LiveActivityAttributes.swift in Sources */,
 				74D1B85D2BD9446400F317A9 /* DurationTextWithBlur.swift in Sources */,
 				D0596F9D2BC806A500A1BF50 /* ListRecipeItemEntity+CoreDataClass.swift in Sources */,
 				D0596F9E2BC806A500A1BF50 /* ListRecipeItemEntity+CoreDataProperties.swift in Sources */,
@@ -735,9 +849,11 @@
 				660E205A2BC6D1FB00BB23AA /* FiltersView.swift in Sources */,
 				745DA4DB2BC889DD00BE4C5D /* OneStepView.swift in Sources */,
 				C0EA6C962BB85AED00995C49 /* RecipeDTO.swift in Sources */,
+				D09CFB572BEAAADE00E341AD /* ListDataManager.swift in Sources */,
 				C0EA6CA62BB85AED00995C49 /* CookingView.swift in Sources */,
 				745DA4D32BB862BF00BE4C5D /* OneDishModel.swift in Sources */,
 				C0EA6C9C2BB85AED00995C49 /* ApplicationViewBuilder.swift in Sources */,
+				74BF32E92BF1687A00C946D5 /* CustomTimerViewStyle.swift in Sources */,
 				C0EA6CAD2BB85AED00995C49 /* FavoritesAssembly.swift in Sources */,
 				D0596FAC2BC8633F00A1BF50 /* SettingsModel.swift in Sources */,
 				C0EA6CA72BB85AED00995C49 /* CookingViewModel.swift in Sources */,
@@ -777,6 +893,17 @@
 				66A5FBAE2BEF5A5F00730AA4 /* CardToTimeView.swift in Sources */,
 				C0EA6CBA2BB85AED00995C49 /* RecipesProtocols.swift in Sources */,
 				C0EA6CB12BB85AED00995C49 /* CreationProtocols.swift in Sources */,
+				D0FA9E132BCFF2DE0010F42B /* ListRecipeItemEntity+CoreDataClass.swift in Sources */,
+				D0FA9E142BCFF2DE0010F42B /* ListRecipeItemEntity+CoreDataProperties.swift in Sources */,
+				D0FA9E152BCFF2DE0010F42B /* CreationRecipeCompositionEntity+CoreDataClass.swift in Sources */,
+				D0FA9E162BCFF2DE0010F42B /* CreationRecipeCompositionEntity+CoreDataProperties.swift in Sources */,
+				D0FA9E172BCFF2DE0010F42B /* CreationRecipeEntity+CoreDataClass.swift in Sources */,
+				D0FA9E182BCFF2DE0010F42B /* CreationRecipeEntity+CoreDataProperties.swift in Sources */,
+				D0FA9E192BCFF2DE0010F42B /* ListRecipeEntity+CoreDataClass.swift in Sources */,
+				D0FA9E1A2BCFF2DE0010F42B /* ListRecipeEntity+CoreDataProperties.swift in Sources */,
+				D0FA9E1B2BCFF2DE0010F42B /* CreationRecipeStepEntity+CoreDataClass.swift in Sources */,
+				D0FA9E1C2BCFF2DE0010F42B /* CreationRecipeStepEntity+CoreDataProperties.swift in Sources */,
+				D070FB642BCF4D2D009EE042 /* CreationError.swift in Sources */,
 				D02D7F0B2BCDB3D30056DC33 /* CreationRecipeCompositionEntity+CoreDataClass.swift in Sources */,
 				74D1B8632BD9453700F317A9 /* NoStepsView.swift in Sources */,
 				D02D7F0C2BCDB3D30056DC33 /* CreationRecipeCompositionEntity+CoreDataProperties.swift in Sources */,
@@ -796,6 +923,7 @@
 				D0B36AD52BCA9B1A00D8826D /* CreationViewController.swift in Sources */,
 				D02D7EEE2BCD7E5E0056DC33 /* ImagePicker.swift in Sources */,
 				C0EA6CB82BB85AED00995C49 /* RecipesView.swift in Sources */,
+				D01FA38B2BE3AE2600890D71 /* RecipeDataManager.swift in Sources */,
 				C0EA6C9A2BB85AED00995C49 /* NavigationTabs.swift in Sources */,
 				66266C6D2BD2F6D300DE08E6 /* CookToTimeView.swift in Sources */,
 				C0EA6CA92BB85AED00995C49 /* CookingAssembly.swift in Sources */,
@@ -831,6 +959,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		74BF32D92BEF92B300C946D5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 74BF32C62BEF92B100C946D5 /* TimerActivityWidgetExtension */;
+			targetProxy = 74BF32D82BEF92B300C946D5 /* PBXContainerItemProxy */;
+		};
 		C0EA6C3B2BB85A9200995C49 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C0EA6C232BB85A9100995C49 /* LiveRecipes */;
@@ -844,6 +977,62 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		74BF32DC2BEF92B300C946D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TimerActivityWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TimerActivityWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.LiveRecipes.TimerActivityWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		74BF32DD2BEF92B300C946D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TimerActivityWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TimerActivityWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.LiveRecipes.TimerActivityWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		C0EA6C4B2BB85A9200995C49 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -966,6 +1155,7 @@
 		C0EA6C4E2BB85A9200995C49 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
@@ -975,6 +1165,8 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LiveRecipes/Info.plist;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -999,6 +1191,7 @@
 		C0EA6C4F2BB85A9200995C49 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
@@ -1008,6 +1201,8 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LiveRecipes/Info.plist;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1107,6 +1302,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		74BF32DB2BEF92B300C946D5 /* Build configuration list for PBXNativeTarget "TimerActivityWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				74BF32DC2BEF92B300C946D5 /* Debug */,
+				74BF32DD2BEF92B300C946D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C0EA6C1F2BB85A9100995C49 /* Build configuration list for PBXProject "LiveRecipes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -14,6 +14,7 @@ enum RecipeTarget {
     case getAllList(page: Int)
     case getDesserts
     case getToTime(name: NameToTime)
+    case getById(id: Int)
 }
 
 enum NameToTime {
@@ -52,7 +53,8 @@ enum NameToTime {
 
 extension RecipeTarget: TargetType {
     var baseURL: String {
-        return "http://127.0.0.1:8000"
+        //return "https://api.api-ninjas.com/v1"
+        return "https://liverecipes.online"
     }
 
     var path: String {
@@ -85,20 +87,23 @@ extension RecipeTarget: TargetType {
                     case .snacks:
                         return "/snacks/querysetSnack=\(name)"
                 }
+        case .getById(let id):
+            return "/id/\(id)"
         }
+        
     }
 
     var method: HTTPMethod {
         switch self {
-            case .getRecipe, .getDesserts, .getAllList, .getToTime, .getRecipeToTime:
-            return .get
+            case .getRecipe, .getDesserts, .getAllList, .getToTime, .getRecipeToTime , .getById:
+              return .get
         }
     }
 
     var task: NetworkTask {
         switch self {
-            case .getRecipe, .getDesserts, .getAllList, .getToTime, .getRecipeToTime:
-            return .requestPlain
+            case .getRecipe, .getDesserts, .getAllList, .getToTime, .getRecipeToTime, .getById:
+              return .requestPlain
         }
     }
 
@@ -137,6 +142,7 @@ class RecipeAPI: BaseAPI<RecipeTarget>, RecipeAPIProtocol {
     func getRecipes(name: String, completionHandler: @escaping (Result<[RecipeDTO], NSError>) -> Void) {
         fetchData(target: .getRecipe(name: name), responseClass: [RecipeDTO].self) { result in completionHandler(result) }
     }
+
     
     func getRecipesToTime(type: NameToTime, name: String, completionHandler: @escaping (Result<[RecipeDTO], NSError>) -> Void) {
         fetchData(target: .getRecipeToTime(type: type, name: name), responseClass: [RecipeDTO].self) { result in completionHandler(result) }
@@ -146,6 +152,8 @@ class RecipeAPI: BaseAPI<RecipeTarget>, RecipeAPIProtocol {
         fetchData(target: .getAllList(page: page), responseClass: [RecipeDTO].self) { result in
             completionHandler(result)
         }
+    func getRecipeById(id: Int, completionHandler: @escaping (Result<RecipeDTO, NSError>) -> Void){
+        fetchData(target: .getById(id: id), responseClass: RecipeDTO.self) { result in completionHandler(result) }
     }
 }
 

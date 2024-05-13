@@ -4,6 +4,24 @@
     "" : {
 
     },
+    " %lld" : {
+
+    },
+    " дн " : {
+
+    },
+    " мин " : {
+
+    },
+    " ч " : {
+
+    },
+    "%@" : {
+
+    },
+    "%lld" : {
+
+    },
     "%lldh:%lldm:%llds" : {
       "localizations" : {
         "en" : {
@@ -68,57 +86,139 @@
       }
     },
     "allrecipes.title" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "hr"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ч."
+          }
+        }
+      }
+    },
+    "creation.button.minutes" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Recipes"
+            "value" : "min"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "мин."
+          }
+        }
+      }
+    },
+    "cookingPrepare.days" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " d. "
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Рецепты"
+            "value" : " д. "
+          }
+        }
+      }
+    },
+    "cookingPrepare.dontForget" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don't forget before cooking"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Не забудьте перед готовкой"
+          }
+        }
+      }
+    },
+    "cookingPrepare.Go" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Let's go!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Поехали!"
+          }
+        }
+      }
+    },
+    "cookingPrepare.hours" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " h. "
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " ч. "
+          }
+        }
+      }
+    },
+    "cookingPrepare.minutes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " min. "
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " мин. "
+          }
+        }
+      }
+    },
+    "cookingPrepare.timeNeeded" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time needed"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Понадобиться времени"
           }
         }
       }
     },
     "cooktotime.error.message" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Data upload error"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Ошибка загрузки данных"
-          }
-        }
-      }
-    },
-    "cooktotime.title.name" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cook to time"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Ко времени"
-          }
-        }
-      }
-    },
-    "creation.button.save" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -131,6 +231,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сохранить"
+          }
+        }
+      }
+    },
+    "creation.button.saveTime" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save time"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Готово"
+          }
+        }
+      }
+    },
+    "creation.button.setTime" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set time"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Установить время"
           }
         }
       }
@@ -169,19 +303,70 @@
         }
       }
     },
-    "creation.firstStep" : {
+    "creation.error.withoutComposition" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Step 1"
+            "value" : "It is necessary to enter the composition"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Шаг 1"
+            "value" : "Необходимо ввести состав"
+          }
+        }
+      }
+    },
+    "creation.error.withoutDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You must enter a description"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Необходимо ввести описание"
+          }
+        }
+      }
+    },
+    "creation.error.withoutTime" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It is necessary to enter the time"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Необходимо ввести время"
+          }
+        }
+      }
+    },
+    "creation.error.withoutTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You must enter the name"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Необходимо ввести название"
           }
         }
       }
@@ -318,6 +503,23 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "ВРЕМЯ ПРИГОТОВЛЕНИЯ"
+          }
+        }
+      }
+    },
+    "creation.newStep" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New step"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Новый шаг"
           }
         }
       }
@@ -491,6 +693,9 @@
           }
         }
       }
+    },
+    "Delete" : {
+
     },
     "filters" : {
       "extractionState" : "manual",
@@ -679,6 +884,26 @@
         }
       }
     },
+    "Image" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ImageEN"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "ImageRU"
+          }
+        }
+      }
+    },
+    "Key" : {
+      "extractionState" : "manual"
+    },
     "keywords.error.message" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -719,7 +944,6 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Keywords"
           }
         },
         "ru" : {
@@ -777,6 +1001,601 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Тут пока ничего нет"
+          }
+        }
+      }
+    },
+    "oneDish.calories" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calories"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Калории"
+          }
+        }
+      }
+    },
+    "oneDish.carbohydrates" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carbs"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Углеводы"
+          }
+        }
+      }
+    },
+    "oneDish.compostion" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Composition:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Состав:"
+          }
+        }
+      }
+    },
+    "oneDish.description" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Описание:"
+          }
+        }
+      }
+    },
+    "oneDish.dishNumber" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Portions: 3"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кол-во порций: 3"
+          }
+        }
+      }
+    },
+    "oneDish.fats" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fats"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Жиры"
+          }
+        }
+      }
+    },
+    "oneDish.kcal" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kcal"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ккал"
+          }
+        }
+      }
+    },
+    "oneDish.nutritionalValue" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nutritional Values"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пищевая ценность:"
+          }
+        }
+      }
+    },
+    "oneDish.nutritionalValue100gr" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nutritional Values for 100g"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пищевая ценность на 100гр"
+          }
+        }
+      }
+    },
+    "oneDish.proteins" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proteins"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Белки"
+          }
+        }
+      }
+    },
+    "oneDish.timeToCook" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time needed:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Время приготовления"
+          }
+        }
+      }
+    },
+    "oneDish.toCooking" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To cooking"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "К приготовлению"
+          }
+        }
+      }
+    },
+    "oneStep.lastStep" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last step"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Последний шаг"
+          }
+        }
+      }
+    },
+    "oneStep.nextStep" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next step"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Следующий шаг"
+          }
+        }
+      }
+    },
+    "oneStep.step1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step 1"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шаг 1"
+          }
+        }
+      }
+    },
+    "oneStep.step2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step 2"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шаг 2"
+          }
+        }
+      }
+    },
+    "oneStep.step3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step 3"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шаг 3"
+          }
+        }
+      }
+    },
+    "oneStep.step4" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step 4"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шаг 4"
+          }
+        }
+      }
+    },
+    "oneStep.step5" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step 5"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шаг 5"
+          }
+        }
+      }
+    },
+    "oneStep.step6" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step 6"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шаг 6"
+          }
+        }
+      }
+    },
+    "oneStep.step7" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step 7"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шаг 7"
+          }
+        }
+      }
+    },
+    "oneStep.step8" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step 8"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шаг 8"
+          }
+        }
+      }
+    },
+    "oneStep.step9" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step 9"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шаг 9"
+          }
+        }
+      }
+    },
+    "oneStep.step10" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step 10"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шаг 10"
+          }
+        }
+      }
+    },
+    "oneStep.step11" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step 11"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шаг 11"
+          }
+        }
+      }
+    },
+    "oneStep.step12" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step 12"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шаг 12"
+          }
+        }
+      }
+    },
+    "oneStep.step13" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step 13"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шаг 13"
+          }
+        }
+      }
+    },
+    "oneStep.step14" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step 14"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шаг 14"
+          }
+        }
+      }
+    },
+    "oneStep.step15" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step 15"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шаг 15"
+          }
+        }
+      }
+    },
+    "oneStep.step16" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step 16"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шаг 16"
+          }
+        }
+      }
+    },
+    "oneStep.step17" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step 17"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шаг 17"
+          }
+        }
+      }
+    },
+    "oneStep.step18" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step 18"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шаг 18"
+          }
+        }
+      }
+    },
+    "oneStep.step19" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step 19"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шаг 19"
+          }
+        }
+      }
+    },
+    "oneStep.step20" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step 20"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шаг 20"
+          }
+        }
+      }
+    },
+    "oneStep.toMainPage" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Main page"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "На главную"
           }
         }
       }
@@ -1124,6 +1943,9 @@
     "Select a segment" : {
 
     },
+    "Set time for Timer" : {
+
+    },
     "settings" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1294,106 +2116,110 @@
         }
       }
     },
-    "Белки" : {
-
+    "timer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timer"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Таймер"
+          }
+        }
+      }
     },
-    "Время приготовления 20 - 30 мин" : {
-
+    "timer.over" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timer is over"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Таймер завершен"
+          }
+        }
+      }
+    },
+    "timer.step.completed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " completed"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : " завершен"
+          }
+        }
+      }
     },
     "Выберете рецепт и начните готовить!" : {
 
     },
+    "г" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "g"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "г"
+          }
+        }
+      }
+    },
+    "Гарнир" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Garnish"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Гарнир"
+          }
+        }
+      }
+    },
     "Готовка" : {
 
     },
-    "Добавить продукты\n в список покупок" : {
-
-    },
-    "Жиры" : {
-
-    },
-    "К приготовлению" : {
+    "Готово!" : {
 
     },
     "К рецептам" : {
 
     },
-    "Калории" : {
-
-    },
-    "Кол-во порций: 5" : {
-
-    },
-    "Креветки 4шт" : {
-
-    },
-    "На главную" : {
-
-    },
-    "Не забудьте перед готовкой" : {
-
-    },
-    "Описание:" : {
-
-    },
     "Ошибка загрузки данных" : {
-
-    },
-    "Перец по вкусу" : {
-
-    },
-    "Пищевая ценность на 100г" : {
-
-    },
-    "Пищевая ценность:" : {
-
-    },
-    "Поехали!" : {
-
-    },
-    "Понадобиться времени" : {
-
-    },
-    "Последний шаг" : {
-
-    },
-    "Салат 8 листов" : {
-
-    },
-    "Следующий шаг" : {
 
     },
     "Создать" : {
 
     },
-    "Соль по вкусу" : {
-
-    },
-    "Состав:" : {
-
-    },
-    "Соус для салата «Цезарь» был придуман почти 100 лет назад в Америке. Когда посетители ресторана съели все приготовленные блюда и требовали еще, хозяину ничего другого не оставалось, как собрать все оставшиеся продукты в один салат и добавить к нему тот самый соус. Классический соус для салата «Цезарь» довольно-таки непрост в приготовлении. Вариаций приготовления много. Например, в нашем рецепте салата «Цезарь» с курицей в основе заправки — вустерширский соус, яичные желтки и горчица." : {
-
-    },
-    "Сухарики 9 грамм" : {
-
-    },
-    "Таймер" : {
-
-    },
     "Тут пока ничего нет" : {
-
-    },
-    "Углеводы" : {
-
-    },
-    "Цезарь" : {
-
-    },
-    "Цезарь с креветками" : {
-
-    },
-    "Шаг %lld" : {
 
     }
   },

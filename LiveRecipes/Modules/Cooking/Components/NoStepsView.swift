@@ -10,6 +10,10 @@ import SwiftUI
 struct NoStepsView: View {
     @Binding var tabSelected: Tabs
 
+//    init(tabSelected: Binding<Tabs?>?) {
+//        self._tabSelected = tabSelected ?? Binding.constant(nil)
+//    }
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -27,7 +31,7 @@ struct NoStepsView: View {
                     .font(.headline)
                     .foregroundStyle(.orange)
                     .gesture(TapGesture().onEnded({
-                        withAnimation(.linear(duration: 2)) {
+                        withAnimation {
                             tabSelected = Tabs.recipes
                         }
                 }))

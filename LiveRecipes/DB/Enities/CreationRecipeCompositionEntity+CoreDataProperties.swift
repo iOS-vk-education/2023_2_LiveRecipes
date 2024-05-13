@@ -2,7 +2,7 @@
 //  CreationRecipeCompositionEntity+CoreDataProperties.swift
 //  LiveRecipes
 //
-//  Created by  Alexander Fedoseev on 15.04.2024.
+//  Created by  Alexander Fedoseev on 17.04.2024.
 //
 //
 
@@ -17,8 +17,9 @@ extension CreationRecipeCompositionEntity {
     }
 
     @NSManaged public var id: Int64
-    @NSManaged public var quantity: String
     @NSManaged public var product: String
+    @NSManaged public var quantity: String
+    @NSManaged public var recipe: CreationRecipeEntity?
 
 }
 

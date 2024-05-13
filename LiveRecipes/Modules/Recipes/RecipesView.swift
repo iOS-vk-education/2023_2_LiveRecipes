@@ -50,6 +50,7 @@
 import Foundation
 import SwiftUI
 import Swinject
+import UserNotifications
 
 struct RecipesView: View {
     @StateObject var viewModel: RecipesViewModel
@@ -77,6 +78,12 @@ struct RecipesView: View {
                 }
                 .contentMargins(.bottom, 12, for: .scrollContent)
                 .scrollIndicators(.hidden)
+            }
+            .onAppear {
+                UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert])
+                { (_, _) in
+                    
+                }
             }
             .navigationTitle(Tabs.recipes.tabName)
             .navigationBarTitleDisplayMode(.inline)
