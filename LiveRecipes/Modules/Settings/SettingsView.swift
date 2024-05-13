@@ -22,6 +22,9 @@ struct SettingsView: View {
                     Text("settings.clearMyRecipes".localized)
                         .onTapGesture {
                             print("settings.clearMyRecipes".localized)
+                            RecipeDataManager.shared.deleteAll {
+                                print("everything is deleted")
+                            }
                         }
                     Text("settings.clearList".localized)
                         .onTapGesture {
