@@ -13,8 +13,17 @@ struct CookToTimeView: View {
     
     var body: some View {
         recipesView()
+            .refreshable(action: {
+                if viewModel.searchQueryToTime == "" {
+                    viewModel.isLoading = true
+                    viewModel.loadToTimeRecipes()
+                } else {
+                    viewModel.isLoading = true
+                    viewModel.findRecipesToTime()
+                }
+                        })
             .onAppear() {
-                viewModel.loadToTimeRecipes(chosenOption: viewModel.type ?? .breakfast)
+                viewModel.loadToTimeRecipes()
             }
             .navigationTitle((viewModel.type ?? .breakfast).title)
             .navigationBarTitleDisplayMode(.inline)

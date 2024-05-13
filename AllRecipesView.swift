@@ -13,6 +13,15 @@ struct AllRecipesView: View {
     
     var body: some View {
         recipesView()
+            .refreshable(action: {
+                if viewModel.searchQueryAll == "" {
+                    viewModel.isLoading1 = true
+                    viewModel.loadAllRecipes()
+                } else {
+                    viewModel.isLoading = true
+                    viewModel.findRecipesAll()
+                }
+                        })
             .navigationTitle("allrecipes.title".localized)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -43,7 +52,7 @@ struct AllRecipesView: View {
     
     @ViewBuilder
     func recipesView() -> some View {
-        if viewModel.isLoading {
+        if viewModel.isLoading || viewModel.isLoading1 {
             ProgressView()
         } else {
             if (viewModel.searchQueryAll == "") {

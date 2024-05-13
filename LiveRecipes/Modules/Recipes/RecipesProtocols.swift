@@ -16,8 +16,6 @@ protocol RecipesModelProtocol {
     func loadKeyWords() -> [KeyWord]
     func getAllRecipes(page: Int, completion: @escaping([RecipePreviewDTO]) -> Void)
     func getToTimeRecipes(name: NameToTime, completion: @escaping([RecipePreviewDTO]) -> Void)
-    func loadRecentRecipes() -> [RecipePreviewDTO]
-    func loadMyRecipes() -> [RecipePreviewDTO]
 }
 
 protocol RecipesViewProtocol {}

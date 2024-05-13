@@ -117,8 +117,8 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
         }
     }
     
-    func loadToTimeRecipes(chosenOption: NameToTime) {
-        model.getToTimeRecipes(name: chosenOption) { [weak self] result in
+    func loadToTimeRecipes() {
+        model.getToTimeRecipes(name: type ?? .breakfast) { [weak self] result in
             self?.recipesForTime = result
             DispatchQueue.main.async {
                 self?.isLoading = false
@@ -129,8 +129,6 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     func loadAllData() {
         loadAllRecipes()
         keyWords = model.loadKeyWords()
-        recentRecipes = model.loadRecentRecipes()
-        myRecipes = model.loadMyRecipes()
     }
     
     func sortKeyWordsByChoose() {

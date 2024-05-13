@@ -43,7 +43,7 @@ struct RecipeCardView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 10, height: 10)
-                            Text(String(recipe.duration) + "recipes.card.time".localized)
+                            Text(recipe.decomposeDuration())
                                 .font(.system(size: 11))
                         }
                         .padding(.horizontal, 8)

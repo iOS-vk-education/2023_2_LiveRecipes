@@ -10,8 +10,8 @@ import SwiftUI
 struct FiltersView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel: RecipesViewModel
-    @State private var ccal: Float = 900
-    @State private var time: Float = 120
+    @State private var ccal: Float = 0
+    @State private var time: Float = 0
     @State private var contains = ""
     @State private var notContains = ""
 

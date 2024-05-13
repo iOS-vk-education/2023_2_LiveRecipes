@@ -86,6 +86,15 @@ struct RecipesView: View {
                         }
                     }
                 }
+                .refreshable(action: {
+                    if viewModel.searchQuery == "" {
+                        viewModel.isLoading1 = true
+                        viewModel.loadAllRecipes()
+                    } else {
+                        viewModel.isLoading = true
+                        viewModel.findRecipes()
+                    }
+                            })
                 .contentMargins(.bottom, 12, for: .scrollContent)
                 .scrollIndicators(.hidden)
             }
@@ -126,9 +135,6 @@ struct RecipesView: View {
             .onSubmit (of: .search) {
                 viewModel.findRecipes()
             }
-        .refreshable(action: {
-                        print("refresh")
-                    })
     }
     
     @ViewBuilder
