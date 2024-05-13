@@ -48,13 +48,47 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "hr"
+            "value" : "Data upload error"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ч."
+            "value" : "Ошибка загрузки данных"
+          }
+        }
+      }
+    },
+    "allrecipes.errorFound.message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing found"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ничего не найдено"
+          }
+        }
+      }
+    },
+    "allrecipes.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All recipes"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Все рецепты"
           }
         }
       }
@@ -167,13 +201,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Save"
+            "value" : "Data upload error"
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Сохранить"
+            "state" : "needs_review",
+            "value" : "Ошибка загрузки  данных"
           }
         }
       }
@@ -860,9 +894,6 @@
           }
         }
       }
-    },
-    "Key" : {
-      "extractionState" : "manual"
     },
     "keywords.error.message" : {
       "extractionState" : "manual",
