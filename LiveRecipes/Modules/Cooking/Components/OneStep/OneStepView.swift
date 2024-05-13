@@ -12,25 +12,17 @@ import ActivityKit
 
 struct OneStepView: View {
     //@StateObject var viewModel: CookingViewModel
-    @State var isTimerOnView = false
-    @State var isLanded = false
-    @State var isDatePicker = false
-    @State var blurIsActive = false
-    @State var firstAppearence = true
-    var stepNumber: Int
-    var steps: [[String]]
-    var dishName: String
-    var dishType: String
-    
+    @EnvironmentObject var model: OneStepViewModel
+
     var body: some View {
         ZStack(alignment: .center) {
             
             ScrollView {
                 HStack {
                     VStack(alignment: .leading) {
-                        Text(dishName)
+                        Text(model.dishName)
                             .font(.system(size: 20, weight: .medium))
-                        Text(dishType)
+                        Text(model.dishType)
                             .font(.system(size: 16, weight: .light))
                     }
                     Spacer()
@@ -39,45 +31,45 @@ struct OneStepView: View {
                 
                 VStack {
                     VStack {
-                        if let data = Data(base64Encoded: steps[stepNumber - 1][1]), let image = UIImage(data: data) {
+                        if let data = Data(base64Encoded: model.steps[model.stepNumber - 1][1]), let image = UIImage(data: data) {
                             Image(uiImage: image)
                                 .resizable()
                                 .frame(width: UIScreen.main.bounds.width - 20, height: 260)
                                 .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
                         }
-                        Text(steps[stepNumber - 1][0])
+                        Text(model.steps[model.stepNumber - 1][0])
                             .lineSpacing(8)
                             .padding(.init(top: 8, leading: 8, bottom: 8, trailing: 8))
                     }.background(Color(UIColor.secondarySystemBackground))
                         .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
                         .padding()
                     
-                    if steps[stepNumber - 1][2] != "0" {
-                        TimerView(totalTime: Int(steps[stepNumber - 1][2]) ?? 0, timeForProgress: Int(steps[stepNumber - 1][2]) ?? 0, step: "oneStep.step\(stepNumber)".localized, stepsCount: steps.count, dishName: dishName)
+                    if model.steps[model.stepNumber - 1][2] != "0" {
+                        TimerView(totalTime: Int(model.steps[model.stepNumber - 1][2]) ?? 0, timeForProgress: Int(model.steps[model.stepNumber - 1][2]) ?? 0, step: "oneStep.step\(model.stepNumber)".localized, stepsCount: model.steps.count, dishName: model.dishName)
                             .onAppear {
-                                isTimerOnView = true
+                                model.isTimerOnView = true
                             }
                     }
                     else {
-                        TimerView(totalTime: 20, timeForProgress: 20, step: "oneStep.step\(stepNumber)".localized, stepsCount: steps.count, dishName: dishName)
-                            .offset(y: isLanded ? 0 : -1000)
+                        TimerView(totalTime: 20, timeForProgress: 20, step: "oneStep.step\(model.stepNumber)".localized, stepsCount: model .steps.count, dishName: model.dishName)
+                            .offset(y: model.isLanded ? 0 : -1000)
                             .contextMenu(menuItems: {
                                 Button("Delete", systemImage: "trash") {
                                     withAnimation(.spring()) {
-                                        isLanded = false
-                                        isTimerOnView = false
+                                        model.isLanded = false
+                                        model.isTimerOnView = false
                                     }
                                 }
                                 Button("Set time for Timer", systemImage: "gear") {
-                                    isDatePicker = true
+                                    model.isDatePicker = true
                                 }
                             })
                     }
-                    if stepNumber + 1 <= steps.count {
+                    if model.stepNumber + 1 <= model.steps.count {
                         Button(action: {
                             
                         }) {
-                            NavigationLink(destination: OneStepView(stepNumber: stepNumber + 1, steps: steps, dishName: dishName, dishType: dishType)) {
+                            NavigationLink(destination: OneStepView()) {
                                 HStack {
                                     Spacer()
                                     Text("oneStep.nextStep".localized)
@@ -90,12 +82,15 @@ struct OneStepView: View {
                                 }
                                 
                             }
-                            
+                                .simultaneousGesture(TapGesture().onEnded {
+                                    model.stepNumber = model.stepNumber + 1
+                                    model.objectWillChange.send()
+                              })
                         }.buttonStyle(.borderedProminent)
                             .tint(.orange)
                             .padding(.init(top: 0, leading: 0, bottom: 40, trailing: 0))
                             .frame(width: UIScreen.main.bounds.width - 20)
-                            .offset(y: isTimerOnView ? 10 : -100)
+                            .offset(y: model.isTimerOnView ? 10 : -100)
                         
                     }
                     else {
@@ -124,41 +119,41 @@ struct OneStepView: View {
                         .tint(.black)
                         .padding(.bottom, 20)
                         .frame(width: UIScreen.main.bounds.width - 20)
-                        .offset(y: isTimerOnView ? 10 : -100)
+                        .offset(y: model.isTimerOnView ? 10 : -100)
                     }
                 }
             }
-            .blur(radius: blurIsActive ? 20 : 0)
+            .blur(radius: model.blurIsActive ? 20 : 0)
             .onAppear {
                 
-                if stepNumber == 1 && firstAppearence {
-                    blurIsActive = true
+                if model.stepNumber == 1 && model.firstAppearence {
+                    model.blurIsActive = true
                 }
-                firstAppearence = false
+                model.firstAppearence = false
             }
-            if blurIsActive {
+            if model.blurIsActive {
                 Image("Image".localized)
             }
         }
         .onTapGesture {
-            blurIsActive = false
+            model.blurIsActive = false
         }
-        .navigationTitle(stepNumber == steps.count ? "oneStep.lastStep".localized :"oneStep.step\(stepNumber)".localized)
+        .navigationTitle(model.stepNumber == model.steps.count ? "oneStep.lastStep".localized :"oneStep.step\(model.stepNumber)".localized)
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarBackButtonHidden(stepNumber == 1 ? true : false)
+        .navigationBarBackButtonHidden(model.stepNumber == 1 ? true : false)
         .toolbar(.visible, for: .tabBar)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button (action: {
                     withAnimation(.spring()) {
-                        isLanded = true
-                        isTimerOnView = true
+                        model.isLanded = true
+                        model.isTimerOnView = true
                     }
                 }) {
                     Image(systemName: "timer")
                         .imageScale(.large)
                         .foregroundStyle(.orange)
-                }.opacity(isTimerOnView ? 0.0 : 1.0)
+                }.opacity(model.isTimerOnView ? 0.0 : 1.0)
             }
         }
         

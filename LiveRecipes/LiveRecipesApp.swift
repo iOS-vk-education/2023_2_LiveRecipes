@@ -25,7 +25,8 @@ extension Assembler {
                 SettingsAssembly(),
                 CreationAssembly(),
                 ListAssembly(),
-                OneDishAssembly()
+                OneDishAssembly(),
+                TabSelectionManagerAssembly()
             ], container: Container.sharedContainer
         )
     }()

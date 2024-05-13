@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Swinject
 
 //class TabSelection: ObservableObject {
 //    @Published var selectedTab: Tabs = .recipes
@@ -31,15 +32,20 @@ import SwiftUI
 
 struct RootView: View {
     @ObservedObject var appViewBuilder: ApplicationViewBuilder
-    @State private var tabSelected = Tabs.recipes
+//    @State private var tabSelected = Tabs.recipes
+    @StateObject private var tabSelectionManager: TabSelectionManager = Assembler.sharedAssembly.resolver.resolve(TabSelectionManager.self) ?? TabSelectionManager()
 
+    @StateObject private var cookingRecipe: OneStepViewModel = OneStepViewModel(model: OneStepModel(stepNumber: 0, steps: [], dishName: "", dishType: ""))
     var body: some View {
-        TabView(selection: $tabSelected) {
+        TabView(selection: $tabSelectionManager.selection) {
             ForEach(Tabs.allCases) { tab in
-                appViewBuilder.build(view: tab, tabBinding: $tabSelected)
+                appViewBuilder.build(view: tab, tabBinding: $tabSelectionManager.selection)
                     .tabItem { Label(tab.tabName, systemImage: tab.tabIcon) }
             }.toolbarBackground(.visible, for: .tabBar)
-        }.tint(.orange)
+        }
+        .tint(.orange)
+        .environmentObject(tabSelectionManager)
+        .environmentObject(cookingRecipe)
     }
 }
 
