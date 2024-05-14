@@ -115,7 +115,7 @@ struct TimerActivityWidgetLiveActivity: Widget {
             
 //                    ProgressView(value: Double(context.state.progress), total: Double(context.state.totalTime))
 //                        .progressViewStyle(CustomTimerViewStyle(progress: context.state.progress))
-//                        .padding(.top, 4)
+//                        
                         
                         Image(systemName: "oven.fill")
                         .foregroundStyle(.orange)
