@@ -79,7 +79,7 @@ struct TimerView: View {
     
     func stopActivity() {
         Task {
-            await currentActivity?.end(nil, dismissalPolicy: .after(Date().addingTimeInterval(10)))
+            await currentActivity?.end(nil, dismissalPolicy: .immediate))
             activityStarted = false
         }
     }

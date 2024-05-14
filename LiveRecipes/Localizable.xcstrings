@@ -45,6 +45,39 @@
         }
       }
     },
+    "+" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+"
+          }
+        }
+      }
+    },
+    "+ 2 мин" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+2 мин"
+          }
+        }
+      }
+    },
+    "0m:0s" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0m:0s"
+          }
+        }
+      }
+    },
     "allrecipes.error.message" : {
       "extractionState" : "manual",
       "localizations" : {

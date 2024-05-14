@@ -33,12 +33,12 @@ struct FavoritesView: View {
                     
                 if selectedSegment == 0 {
                     Spacer()
-                    myRecipesView()
+                    recipesView()
                     Spacer()
                 }
                 else {
                     Spacer()
-                    recipesView()
+                    myRecipesView()
                     Spacer()
                 }
             }
