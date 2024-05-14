@@ -22,6 +22,8 @@
 		745DA4D72BB862D500BE4C5D /* OneDishAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745DA4D62BB862D500BE4C5D /* OneDishAssembly.swift */; };
 		745DA4D92BB862EC00BE4C5D /* OneDishProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745DA4D82BB862EC00BE4C5D /* OneDishProtocols.swift */; };
 		745DA4DB2BC889DD00BE4C5D /* OneStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745DA4DA2BC889DD00BE4C5D /* OneStepView.swift */; };
+		748A53C32BF38FFF008063EE /* OneStepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748A53C22BF38FFF008063EE /* OneStepViewModel.swift */; };
+		748A53C52BF390BD008063EE /* TabSelectionManagerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748A53C42BF390BD008063EE /* TabSelectionManagerAssembly.swift */; };
 		74BF32C92BEF92B100C946D5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74BF32C82BEF92B100C946D5 /* WidgetKit.framework */; };
 		74BF32CB2BEF92B100C946D5 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74BF32CA2BEF92B100C946D5 /* SwiftUI.framework */; };
 		74BF32CE2BEF92B100C946D5 /* TimerActivityWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BF32CD2BEF92B100C946D5 /* TimerActivityWidgetBundle.swift */; };
@@ -176,6 +178,8 @@
 		745DA4D62BB862D500BE4C5D /* OneDishAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDishAssembly.swift; sourceTree = "<group>"; };
 		745DA4D82BB862EC00BE4C5D /* OneDishProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDishProtocols.swift; sourceTree = "<group>"; };
 		745DA4DA2BC889DD00BE4C5D /* OneStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneStepView.swift; sourceTree = "<group>"; };
+		748A53C22BF38FFF008063EE /* OneStepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneStepViewModel.swift; sourceTree = "<group>"; };
+		748A53C42BF390BD008063EE /* TabSelectionManagerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionManagerAssembly.swift; sourceTree = "<group>"; };
 		74BF32C72BEF92B100C946D5 /* TimerActivityWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TimerActivityWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		74BF32C82BEF92B100C946D5 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		74BF32CA2BEF92B100C946D5 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -325,6 +329,15 @@
 			path = OneDish;
 			sourceTree = "<group>";
 		};
+		748A53C12BF38FE3008063EE /* OneStep */ = {
+			isa = PBXGroup;
+			children = (
+				745DA4DA2BC889DD00BE4C5D /* OneStepView.swift */,
+				748A53C22BF38FFF008063EE /* OneStepViewModel.swift */,
+			);
+			path = OneStep;
+			sourceTree = "<group>";
+		};
 		74BF32A32BEF88A600C946D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -350,7 +363,7 @@
 		74BF32E62BF163F800C946D5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				745DA4DA2BC889DD00BE4C5D /* OneStepView.swift */,
+				748A53C12BF38FE3008063EE /* OneStep */,
 				74D1B8532BD7BED300F317A9 /* PrepareForCookingView.swift */,
 				74D1B8622BD9453700F317A9 /* NoStepsView.swift */,
 				74BF32DF2BEF933C00C946D5 /* LiveActivityAttributes.swift */,
@@ -466,6 +479,7 @@
 			isa = PBXGroup;
 			children = (
 				C0EA6C612BB85AEC00995C49 /* NavigationTabs.swift */,
+				748A53C42BF390BD008063EE /* TabSelectionManagerAssembly.swift */,
 			);
 			path = NavigationService;
 			sourceTree = "<group>";
@@ -854,6 +868,7 @@
 				C0EA6C9C2BB85AED00995C49 /* ApplicationViewBuilder.swift in Sources */,
 				74BF32E92BF1687A00C946D5 /* CustomTimerViewStyle.swift in Sources */,
 				C0EA6CAD2BB85AED00995C49 /* FavoritesAssembly.swift in Sources */,
+				748A53C52BF390BD008063EE /* TabSelectionManagerAssembly.swift in Sources */,
 				D0596FAC2BC8633F00A1BF50 /* SettingsModel.swift in Sources */,
 				C0EA6CA72BB85AED00995C49 /* CookingViewModel.swift in Sources */,
 				74D1B8582BD8688600F317A9 /* TransperentBlur.swift in Sources */,
@@ -926,6 +941,7 @@
 				D093B7332BF2920800C2F6C4 /* CreationRecipeEntity+CoreDataClass.swift in Sources */,
 				D093B7342BF2920800C2F6C4 /* CreationRecipeEntity+CoreDataProperties.swift in Sources */,
 				D02D7F142BCDB6390056DC33 /* DishStep.swift in Sources */,
+				748A53C32BF38FFF008063EE /* OneStepViewModel.swift in Sources */,
 				D003AFF92BCBCA1A00873500 /* StepView.swift in Sources */,
 				C0EA6CAA2BB85AED00995C49 /* CookingModel.swift in Sources */,
 				C0EA6C952BB85AED00995C49 /* Recipe.swift in Sources */,

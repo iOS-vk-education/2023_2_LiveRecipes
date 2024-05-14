@@ -16,6 +16,9 @@
     " ч " : {
 
     },
+    "- 2 мин" : {
+
+    },
     "%@" : {
 
     },
@@ -41,9 +44,6 @@
           }
         }
       }
-    },
-    "+" : {
-
     },
     "allrecipes.error.message" : {
       "extractionState" : "manual",
@@ -694,6 +694,74 @@
     "Delete" : {
 
     },
+    "favorites" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favourites"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Избранное"
+          }
+        }
+      }
+    },
+    "favorites.favorites.isEmpty" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favourites are empty"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "В избранных пусто"
+          }
+        }
+      }
+    },
+    "favorites.myRecipes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My recipes"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мои рецепты"
+          }
+        }
+      }
+    },
+    "favorites.myRecipes.isEmpty" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My recipes are empty"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Тут пока ничего нет"
+          }
+        }
+      }
+    },
     "filters" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -934,6 +1002,15 @@
           }
         }
       }
+    },
+    "Key" : {
+      "extractionState" : "manual"
+    },
+    "Key 1" : {
+      "extractionState" : "manual"
+    },
+    "Key 2" : {
+      "extractionState" : "manual"
     },
     "keywords.error.message" : {
       "extractionState" : "manual",
@@ -1981,9 +2058,6 @@
     "Select a segment" : {
 
     },
-    "Set time for Timer" : {
-
-    },
     "settings" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2108,13 +2182,13 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Favorites"
+            "state" : "translated",
+            "value" : "Favourites"
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Сохраненные"
           }
         }
@@ -2205,8 +2279,42 @@
         }
       }
     },
+    "Второе блюдо" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Second dish"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Второе блюдо"
+          }
+        }
+      }
+    },
     "Выберете рецепт и начните готовить!" : {
 
+    },
+    "Выпечка" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bakery"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выпечка"
+          }
+        }
+      }
     },
     "г" : {
       "extractionState" : "stale",
@@ -2248,17 +2356,127 @@
     "Готово!" : {
 
     },
+    "Дессерт" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dessert"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Дессерт"
+          }
+        }
+      }
+    },
+    "Заготовка" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Harvesting"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Заготовка"
+          }
+        }
+      }
+    },
+    "Закуска" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snack"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Закуска"
+          }
+        }
+      }
+    },
     "К рецептам" : {
 
     },
-    "Ошибка загрузки данных" : {
-
+    "Напиток" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drink"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Напиток"
+          }
+        }
+      }
     },
-    "Создать" : {
-
+    "Первое блюдо" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "First dish"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Первое блюдо"
+          }
+        }
+      }
     },
-    "Тут пока ничего нет" : {
-
+    "Салат" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salad"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Салат"
+          }
+        }
+      }
+    },
+    "Соус" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sauce"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Соус"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

@@ -19,8 +19,6 @@ final class ApplicationViewBuilder: ObservableObject {
             Assembler.sharedAssembly.resolver.resolve(RecipesView.self)
         case .favorites:
             Assembler.sharedAssembly.resolver.resolve(FavoritesView.self)
-        case .list:
-            Assembler.sharedAssembly.resolver.resolve(ListView.self)
         case .cooking:
             Assembler.sharedAssembly.resolver.resolve(CookingView.self, argument: tabBinding)
         }

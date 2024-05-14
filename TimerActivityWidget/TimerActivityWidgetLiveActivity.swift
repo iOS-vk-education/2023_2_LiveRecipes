@@ -48,12 +48,17 @@ struct TimerActivityWidgetLiveActivity: Widget {
                 VStack(alignment: .trailing) {
                     Image(systemName: "timer")
                     Spacer()
-                    Text(getSeconds(context.state.timeRemaining) < 10 ?
-                         "\(getMinutes(context.state.timeRemaining))m:0\(getSeconds(context.state.timeRemaining))s" :
-                            "\(getMinutes(context.state.timeRemaining))m:\(getSeconds(context.state.timeRemaining))s" )
-                    .foregroundStyle(.orange)
-                    .font(.title3)
-                    .fontWeight(.medium)
+                    if let interval = context.state.interval {
+                        Text(timerInterval: interval)
+                        
+                        //                    Text(getSeconds(context.state.timeRemaining) < 10 ?
+                        //                         "\(getMinutes(context.state.timeRemaining))m:0\(getSeconds(context.state.timeRemaining))s" :
+                        //                            "\(getMinutes(context.state.timeRemaining))m:\(getSeconds(context.state.timeRemaining))s" )
+                            .foregroundStyle(.orange)
+                            .font(.title2)
+                            .fontWeight(.medium)
+                            .multilineTextAlignment(.trailing)
+                    }
                     
                 }
             }
@@ -79,42 +84,64 @@ struct TimerActivityWidgetLiveActivity: Widget {
                 }
                 
                 DynamicIslandExpandedRegion(.trailing) {
-                    Text(getSeconds(context.state.timeRemaining) < 10 ?
-                            "\(getMinutes(context.state.timeRemaining))m:0\(getSeconds(context.state.timeRemaining))s" :
-                            "\(getMinutes(context.state.timeRemaining))m:\(getSeconds(context.state.timeRemaining))s" )
-                        .font(.title2)
-                        .foregroundStyle(.orange)
-                        .fontWeight(.semibold)
+                    HStack {
+                        //                    Text(getSeconds(context.state.timeRemaining) < 10 ?
+                        //                            "\(getMinutes(context.state.timeRemaining))m:0\(getSeconds(context.state.timeRemaining))s" :
+                        //                            "\(getMinutes(context.state.timeRemaining))m:\(getSeconds(context.state.timeRemaining))s" )
+                        if let interval = context.state.interval {
+                            Text(timerInterval: interval)
+                                .font(.title2)
+                                .foregroundStyle(.orange)
+                                .fontWeight(.semibold)
+                                .multilineTextAlignment(.trailing)
+                                .padding(.trailing)
+                            
+                        }
+                    }
                 }
                 
                 DynamicIslandExpandedRegion(.bottom) {
-                    HStack {
-                    Image(systemName: "oven.fill")
-                            .foregroundStyle(.orange)
+                    HStack(alignment: .center) {
+                        Image(systemName: "checkmark")
+                            .foregroundStyle(.green)
                         .padding(.leading)
                         if let interval = context.state.interval {
                             
-                            ProgressView(timerInterval: interval, countsDown: false)
+                            ProgressView(timerInterval: interval, countsDown: true, label: {}, currentValueLabel: {})
+                                .tint(.orange)
+                                .foregroundStyle(.orange)
+                                .scaleEffect(x: 1, y: 2.5, anchor: .center)
                         }
             
 //                    ProgressView(value: Double(context.state.progress), total: Double(context.state.totalTime))
 //                        .progressViewStyle(CustomTimerViewStyle(progress: context.state.progress))
-//                        .padding(.top, 4)
+//                        
                         
-                    Image(systemName: "checkmark")
-                        .foregroundStyle(.green)
+                        Image(systemName: "oven.fill")
+                        .foregroundStyle(.orange)
                             .padding(.trailing)
                     }
                 }
                 
             } compactLeading: {
                 Image(systemName: "oven.fill")
+                    .resizable().aspectRatio(contentMode: .fit)
+                    .frame(width: 18, height: 18)
                     .foregroundStyle(.orange)
+                    .padding(.leading, 4)
             } compactTrailing: {
-                Text(getSeconds(context.state.timeRemaining) < 10 ? 
-                        "\(getMinutes(context.state.timeRemaining)):0\(getSeconds(context.state.timeRemaining))" :
-                        "\(getMinutes(context.state.timeRemaining)):\(getSeconds(context.state.timeRemaining))" )
-                    .foregroundStyle(.orange)
+                
+                if let interval = context.state.interval {
+                    Text(timerInterval: interval)
+                        .foregroundStyle(.orange)
+                        .multilineTextAlignment(.leading)
+                        .frame(width: 40)
+                        
+                }
+//                Text(getSeconds(context.state.timeRemaining) < 10 ?
+//                        "\(getMinutes(context.state.timeRemaining)):0\(getSeconds(context.state.timeRemaining))" :
+//                        "\(getMinutes(context.state.timeRemaining)):\(getSeconds(context.state.timeRemaining))" )
+//                    .foregroundStyle(.orange)
             } minimal: {
                 Image(systemName: "oven.fill")
                     .foregroundStyle(.orange)

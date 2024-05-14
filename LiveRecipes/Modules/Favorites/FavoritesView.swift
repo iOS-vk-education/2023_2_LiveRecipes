@@ -16,7 +16,7 @@ struct FavoritesView: View {
     @State private var searchText = ""
     @State private var selectedSegment = 0
     
-    let segments = ["Мои рецепты", "Избранные"]
+    let segments = ["favorites".localized, "favorites.myRecipes".localized]
     var body: some View {
         NavigationView {
             VStack {
@@ -37,7 +37,9 @@ struct FavoritesView: View {
                     Spacer()
                 }
                 else {
+                    Spacer()
                     recipesView()
+                    Spacer()
                 }
             }
             
@@ -45,17 +47,13 @@ struct FavoritesView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("", systemImage: "slider.horizontal.2.square") {
-                        viewState.modalFiltersIsOpen = true
+                        NavigationLink (destination: {
+                            Assembler.sharedAssembly
+                                .resolver
+                                .resolve(SettingsView.self)
+                        }, label: {Image(systemName: "gear")})
                     }
-                    .sheet(isPresented: $viewState.modalFiltersIsOpen) {
-                        Assembler.sharedAssembly
-                            .resolver
-                            .resolve(FiltersView.self)
-                    }
-                    .tint(.orange)
                 }
-            }
             .searchable(text: $searchText)
             
         }
@@ -77,7 +75,18 @@ struct FavoritesView: View {
             }
         }
         else {
-            Text("Ошибка загрузки данных")
+            Image(systemName: "star.slash.fill")
+                .resizable()
+                .frame(width: 180, height: 155)
+                .fontWeight(.semibold)
+                .foregroundStyle(Color(UIColor.systemGray3))
+                .padding(.bottom, 0)
+            Text("favorites.favorites.isEmpty".localized)
+                .fontWeight(.semibold)
+                .foregroundStyle(Color(UIColor.systemGray3))
+                .font(.title2)
+                .multilineTextAlignment(.center)
+                .padding(.bottom, 4)
         }
     }
     
@@ -105,16 +114,18 @@ struct FavoritesView: View {
                     .fontWeight(.semibold)
                     .foregroundStyle(Color(UIColor.systemGray3))
                     .padding(.bottom, 0)
-                Text("Тут пока ничего нет")
+                Text("favorites.myRecipes.isEmpty".localized)
                     .fontWeight(.semibold)
                     .foregroundStyle(Color(UIColor.systemGray3))
                     .font(.title2)
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 4)
-                Button {
-                    print("К созданию")
+                NavigationLink {
+                    Assembler.sharedAssembly
+                        .resolver
+                        .resolve(CreationView.self)
                 } label: {
-                    Text("Создать")
+                    Text("myrecipes.tocreation".localized)
                         .fontWeight(.semibold)
                     Image(systemName: "plus.app")
                 }

@@ -10,6 +10,7 @@ import Foundation
 final class OneDishViewModel: ObservableObject, OneDishViewModelProtocol {
     var model: OneDishModel
     var id: Int
+    
     @Published var foundRecipe = RecipeDTO(id: 0, name: "", bzy: BZY(calories: "0", protein: "0", fats: "0", carbohydrates: "0"), duration: 0, photo: "", description: "", ingredients: [], steps: [[]], tag: "")
 
     init(oneDishModel: OneDishModel, id: Int) {

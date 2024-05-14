@@ -42,7 +42,7 @@ struct TimerView: View {
     @State private var progress: Int = 0
     @State private var isPaused = false
     
-    var totalTime: Int
+    @State var totalTime: Int
     
     @State var timeForProgress: Int
     @State var activityStarted: Bool = false
@@ -50,6 +50,7 @@ struct TimerView: View {
     var step: String?
     var stepsCount: Int?
     var dishName: String?
+    var timerSeted: Bool = false
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -127,9 +128,42 @@ struct TimerView: View {
                 
                 Spacer()
                 
+                Button(action: {
+                    if timeForProgress >= 120 {
+                        if totalTime > 120 {
+                            totalTime -= 120
+                        }
+                        else {
+                            totalTime -= 119
+                        }
+                        timeForProgress = totalTime
+                    }
+                    }) {
+                    Text("- 2 мин")
+                        .foregroundStyle(.red)
+                }.opacity(activityStarted || timerSeted ? 0.0 : 1.0)
+                
+                Spacer()
+                
                 Text("timer".localized)
                     
                 Image(systemName: "timer")
+                
+                Spacer()
+                
+                Button(action: {
+                    if totalTime == 1 {
+                        totalTime += 119
+                    }
+                    else {
+                        totalTime += 120
+                    }
+                    timeForProgress = totalTime
+                }) {
+                    Text("+ 2 мин")
+                        .foregroundStyle(.green)
+                        
+                }.opacity(activityStarted || timerSeted ? 0.0 : 1.0)
                 
                 Spacer()
                 
@@ -145,41 +179,49 @@ struct TimerView: View {
                 }) {
                     Image(systemName: isTimerRunning ? "pause.fill" : "play.fill")
                         .imageScale(.large)
-                }.disabled(timeForProgress == 0 ? true : false)
+                }.disabled(timeForProgress == 0 || totalTime == 1 ? true : false)
                 
             }.padding(.init(top: 8, leading: 8, bottom: 0, trailing: 8))
             
             ZStack {
                 ProgressView(value: Double(timeForProgress), total: Double(totalTime))
                     .progressViewStyle(CustomProgressViewStyle(progress: $progress))
-                if timeForProgress == 0 {
+                if timeForProgress < 0 {
                     Text("Готово!")
                         .foregroundColor(.orange)
                         .font(.system(size: 19, weight: .semibold))
                         .padding(.top, 2)
                 }
                 else {
-                    Text(hours == 0 ? "\(minutes)m:\(seconds)s" : "\(hours)h:\(minutes)m:\(seconds)s")
-                        .foregroundColor(.black)
-                        .font(.system(size: 19, weight: .semibold))
-                        .padding(.top, 2)
-                    
-                        .onReceive(timer) { _ in
-                            if isTimerRunning {
-                                if progress < totalTime {
-                                    progress += 1
-                                    timeForProgress -= 1
-                                    //updateActivity()
-                                }
-                                
-                                if progress == totalTime {
-                                    isTimerRunning = false
-                                    //updateActivity()
-                                    stopActivity()
-                                    notify()
+                    if totalTime == 1 {
+                        Text("0m:0s")
+                            .foregroundColor(.black)
+                            .font(.system(size: 19, weight: .semibold))
+                            .padding(.top, 2)
+                    }
+                    else {
+                        Text(hours == 0 ? "\(minutes)m:\(seconds)s" : "\(hours)h:\(minutes)m:\(seconds)s")
+                            .foregroundColor(.black)
+                            .font(.system(size: 19, weight: .semibold))
+                            .padding(.top, 2)
+                        
+                            .onReceive(timer) { _ in
+                                if isTimerRunning {
+                                    if progress < totalTime {
+                                        progress += 1
+                                        timeForProgress -= 1
+                                        //updateActivity()
+                                    }
+                                    
+                                    if progress == totalTime {
+                                        isTimerRunning = false
+                                        //updateActivity()
+                                        stopActivity()
+                                        notify()
+                                    }
                                 }
                             }
-                        }
+                    }
                 }
             }
             .padding(.init(top: 0, leading: 8, bottom: 16, trailing: 8))
