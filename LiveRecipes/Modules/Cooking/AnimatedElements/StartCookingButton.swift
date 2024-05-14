@@ -17,14 +17,13 @@ struct StartCookingButton: View {
     var body: some View {
         VStack {
             Spacer()
-            Button(action: { print("acccc" )}, label: {
-                Text("TEST")
-            })
+
             Button(action: {
 
             }) {
                 NavigationLink(destination:{
-                    OneStepView()
+                    Assembler.sharedAssembly.resolver.resolve(RecipesView.self)
+                    //OneStepView()
                 }) {
                     Text("cookingPrepare.Go".localized)
                         .font(.title2)

@@ -22,11 +22,11 @@ struct OneStepModel {
 }
 
 final class OneStepViewModel: ObservableObject, SettingsViewModelProtocol {
-    @State var isTimerOnView = false
-    @State var isLanded = false
-    @State var isDatePicker = false
-    @State var blurIsActive = false
-    @State var firstAppearence = true
+    @Published var isTimerOnView: Bool
+    @Published var isLanded: Bool
+    @Published var isDatePicker: Bool
+    @Published var blurIsActive: Bool
+    @Published var firstAppearence: Bool
     var stepNumber: Int
     var steps: [[String]]
     var dishName: String
@@ -37,6 +37,20 @@ final class OneStepViewModel: ObservableObject, SettingsViewModelProtocol {
         self.steps = model.steps
         self.dishName = model.dishName
         self.dishType = model.dishType
+        
+        self.isTimerOnView = false
+        self.isLanded = false
+        self.isDatePicker = false
+        self.blurIsActive = false
+        self.firstAppearence = true
+    }
+    
+    func updatePublished() {
+        self.isTimerOnView = false
+        self.isLanded = false
+        self.isDatePicker = false
+        self.blurIsActive = false
+        self.firstAppearence = true
     }
     
     func setRecipe(model: RecipeDTO) {
@@ -44,5 +58,11 @@ final class OneStepViewModel: ObservableObject, SettingsViewModelProtocol {
         self.steps = model.steps
         self.dishName = model.name
         self.dishType = model.tag
+        
+        self.isTimerOnView = false
+        self.isLanded = false
+        self.isDatePicker = false
+        self.blurIsActive = false
+        self.firstAppearence = true
     }
 }
