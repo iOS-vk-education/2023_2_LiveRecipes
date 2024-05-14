@@ -42,6 +42,9 @@
         }
       }
     },
+    "+" : {
+
+    },
     "allrecipes.error.message" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -912,6 +915,9 @@
         }
       }
     },
+    "Hours" : {
+
+    },
     "Image" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -979,6 +985,9 @@
           }
         }
       }
+    },
+    "Minutes" : {
+
     },
     "myrecipes.title" : {
       "extractionState" : "manual",
@@ -1965,6 +1974,9 @@
           }
         }
       }
+    },
+    "Seconds" : {
+
     },
     "Select a segment" : {
 

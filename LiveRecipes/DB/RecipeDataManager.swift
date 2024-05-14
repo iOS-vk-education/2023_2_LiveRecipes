@@ -16,6 +16,7 @@ protocol RecipeDataManagerDescription {
     func delete<T: NSManagedObject>(request: NSFetchRequest<T>)
     func deleteAll(request: NSFetchRequest<NSFetchRequestResult>)
     func update<T: NSManagedObject>(request: NSFetchRequest<T>, configurationBlock: @escaping (T) -> ())*/
+    func deleteAll(completion: @escaping() -> Void)
     func prepareCoreDataIfNeeded(completion: (() -> ())?)
     var viewContext: NSManagedObjectContext { get }
 }
@@ -52,10 +53,10 @@ final class RecipeDataManager: RecipeDataManagerDescription {
             objectRecipeEntity.id = newDishId
             objectRecipeEntity.dishDescription = dish.description
             objectRecipeEntity.dishTitle = dish.title
-            objectRecipeEntity.nutritionValueCal = Int64(dish.nutritionValue.0)
-            objectRecipeEntity.nutritionValueProt = Int64(dish.nutritionValue.1)
-            objectRecipeEntity.nutritionValueFats = Int64(dish.nutritionValue.2)
-            objectRecipeEntity.nutritionValueCarb = Int64(dish.nutritionValue.3)
+            objectRecipeEntity.nutritionValueCal = dish.nutritionValue.calories
+            objectRecipeEntity.nutritionValueProt = dish.nutritionValue.protein
+            objectRecipeEntity.nutritionValueFats = dish.nutritionValue.fats
+            objectRecipeEntity.nutritionValueCarb = dish.nutritionValue.carbohydrates
             if let photo = dish.photo {
                 if let imageData = photo.jpegData(compressionQuality: 0.4) {
                     CreationPhotoFileManager.shared.savePhoto(imageData: imageData) { ref in
@@ -125,6 +126,26 @@ final class RecipeDataManager: RecipeDataManagerDescription {
             completion(dishes)
         } else {
             completion([])
+        }
+    }
+    /*func deleteAll(completion: @escaping () -> Void) {
+        let batchRequest = NSBatchDeleteRequest(fetchRequest: CreationRecipeEntity.fetchRequest())
+        viewContext.performAndWait {
+            _ = try? viewContext.execute(batchRequest)
+            try? viewContext.save()
+            completion()
+        }
+    }*/
+    func deleteAll(completion: @escaping () -> Void) {
+        let fetchRequest: NSFetchRequest<CreationRecipeEntity> = CreationRecipeEntity.fetchRequest()
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
+        do {
+            try viewContext.execute(batchDeleteRequest)
+            try viewContext.save()
+            completion()
+        } catch {
+            print("Error deleting all CreationRecipeEntity entities: \(error)")
+            completion()
         }
     }
 }

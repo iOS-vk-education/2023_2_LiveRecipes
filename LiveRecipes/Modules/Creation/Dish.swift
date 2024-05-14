@@ -13,10 +13,10 @@ class Dish: Identifiable {
     var description: String
     var photo: UIImage?
     var timeToPrepare: Int
-    var nutritionValue: (Int, Int, Int, Int)
+    var nutritionValue: Nutrition
     var dishComposition: [DishComposition]
     var dishSteps: [DishStep]
-    init(id: Int?, title: String, description: String, photo: UIImage? = nil, timeToPrepare: Int, nutritionValue: (Int, Int, Int, Int), dishComposition: [DishComposition], dishSteps: [DishStep]) {
+    init(id: Int?, title: String, description: String, photo: UIImage? = nil, timeToPrepare: Int, nutritionValue: Nutrition, dishComposition: [DishComposition], dishSteps: [DishStep]) {
         self.id = id
         self.title = title
         self.description = description
@@ -30,7 +30,19 @@ class Dish: Identifiable {
     var recipeDTO: RecipeDTO {
         let photoData = photo?.jpegData(compressionQuality: 0.4)
         let photoDataBase64 = photoData?.base64EncodedString() ?? ""
-        return RecipeDTO(id: id ?? 0, name: title, bzy: BZY(calories: String(nutritionValue.0), protein: String(nutritionValue.1), fats: String(nutritionValue.2), carbohydrates: String(nutritionValue.3)), duration: timeToPrepare, photo: photoDataBase64, description: description, ingredients: dishComposition.map({ return ($0.product + " " + $0.quantity) }), steps: [], tag: "")
+        return RecipeDTO(id: id ?? 0, 
+                         name: title,
+                         bzy: BZY(
+            calories: nutritionValue.calories,
+            protein: nutritionValue.protein,
+            fats: nutritionValue.fats,
+            carbohydrates: nutritionValue.carbohydrates), 
+                         duration: timeToPrepare,
+                         photo: photoDataBase64,
+                         description: description,
+                         ingredients: dishComposition.map({ return ($0.product + " " + $0.quantity) }),
+                         steps: [],
+                         tag: "")
     }
 
     init(
@@ -42,11 +54,11 @@ class Dish: Identifiable {
         self.title = recipeEntity.dishTitle
         self.description = recipeEntity.dishDescription
         self.timeToPrepare = Int(recipeEntity.timeToPrepare)
-        self.nutritionValue = (
-            Int(recipeEntity.nutritionValueCal),
-            Int(recipeEntity.nutritionValueProt),
-            Int(recipeEntity.nutritionValueFats),
-            Int(recipeEntity.nutritionValueCarb))
+        self.nutritionValue = Nutrition(
+            calories: recipeEntity.nutritionValueCal,
+            protein: recipeEntity.nutritionValueProt,
+            fats: recipeEntity.nutritionValueFats,
+            carbohydrates: recipeEntity.nutritionValueCarb)
         self.dishComposition = dishCompositionsEntities.map({ DishComposition(enity: $0) })
         self.dishSteps = dishStepsEntities.map({ DishStep(entity: $0) })
         if let ref = recipeEntity.photoRef {
