@@ -10,10 +10,10 @@
         <attribute name="dishDescription" optional="YES" attributeType="String"/>
         <attribute name="dishTitle" attributeType="String"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="nutritionValueCal" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="nutritionValueCarb" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="nutritionValueFats" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="nutritionValueProt" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nutritionValueCal" attributeType="String" defaultValueString=""/>
+        <attribute name="nutritionValueCarb" attributeType="String" defaultValueString=""/>
+        <attribute name="nutritionValueFats" attributeType="String" defaultValueString=""/>
+        <attribute name="nutritionValueProt" attributeType="String" defaultValueString=""/>
         <attribute name="photoRef" optional="YES" attributeType="String"/>
         <attribute name="timeToPrepare" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="composition" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CreationRecipeCompositionEntity" inverseName="recipe" inverseEntity="CreationRecipeCompositionEntity"/>

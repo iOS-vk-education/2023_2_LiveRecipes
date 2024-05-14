@@ -35,6 +35,16 @@ struct RecipePreviewDTO: Codable, Hashable, Identifiable {
             isInFavorites = false
         }
     }
+    func decomposeDuration() -> String {
+        let hours = duration / 60
+        let minutes = duration % 60
+        
+        if hours > 0 {
+            return "\(hours)" + "cookingPrepare.hours".localized + "\(minutes)" + "cookingPrepare.minutes".localized
+        } else {
+            return "\(minutes)" + "cookingPrepare.minutes".localized
+        }
+    }
 }
 
 struct BZY: Codable, Hashable {

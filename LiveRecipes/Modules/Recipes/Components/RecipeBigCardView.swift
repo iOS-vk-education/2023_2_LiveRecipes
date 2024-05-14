@@ -17,11 +17,13 @@ struct RecipeBigCardView: View {
         }, label: {
             ZStack(alignment: .topTrailing) {
                 VStack (spacing: 0) {
-                    Image(uiImage: UIImage(data: Data(base64Encoded: recipe.photo)!)!)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: proxy.size.width - 24, height: 170)
-                        .clipped()
+                    if let data = Data(base64Encoded: recipe.photo), let image = UIImage(data: data) {
+                        Image(uiImage: UIImage(data: Data(base64Encoded: recipe.photo)!)!)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: proxy.size.width - 24, height: 170)
+                            .clipped()
+                    }
                     VStack {
                         HStack {
                             Text(recipe.name)
@@ -40,7 +42,7 @@ struct RecipeBigCardView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 13, height: 13)
-                            Text(String(recipe.duration) + "recipes.card.time".localized)
+                            Text(recipe.decomposeDuration())
                                 .font(.system(size: 14))
                         }
                         .padding(.horizontal, 8)

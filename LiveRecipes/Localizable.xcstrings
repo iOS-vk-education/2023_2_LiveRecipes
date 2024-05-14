@@ -45,25 +45,53 @@
         }
       }
     },
-    "+ 2 мин" : {
-
-    },
-    "0m:0s" : {
-
-    },
     "allrecipes.error.message" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "hr"
+            "value" : "Data upload error"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ч."
+            "value" : "Ошибка загрузки данных"
+          }
+        }
+      }
+    },
+    "allrecipes.errorFound.message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing found"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ничего не найдено"
+          }
+        }
+      }
+    },
+    "allrecipes.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All recipes"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Все рецепты"
           }
         }
       }
@@ -176,13 +204,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Save"
+            "value" : "Data upload error"
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Сохранить"
+            "state" : "needs_review",
+            "value" : "Ошибка загрузки  данных"
           }
         }
       }
@@ -768,6 +796,23 @@
         }
       }
     },
+    "filters.addIngr.button" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить"
+          }
+        }
+      }
+    },
     "filters.caloricity" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -791,13 +836,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "kCal"
+            "value" : "Cal"
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "кКал"
+            "state" : "translated",
+            "value" : " Кал"
           }
         }
       }
@@ -832,6 +877,23 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Диета (временно)"
+          }
+        }
+      }
+    },
+    "filters.dismiss" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Очистить"
           }
         }
       }
@@ -921,6 +983,9 @@
         }
       }
     },
+    "Hours" : {
+
+    },
     "Image" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -997,6 +1062,9 @@
           }
         }
       }
+    },
+    "Minutes" : {
+
     },
     "myrecipes.title" : {
       "extractionState" : "manual",
@@ -1983,6 +2051,9 @@
           }
         }
       }
+    },
+    "Seconds" : {
+
     },
     "Select a segment" : {
 

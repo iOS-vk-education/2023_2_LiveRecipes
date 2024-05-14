@@ -13,6 +13,15 @@ struct AllRecipesView: View {
     
     var body: some View {
         recipesView()
+            .refreshable(action: {
+                if viewModel.searchQueryAll == "" {
+                    viewModel.isLoading1 = true
+                    viewModel.loadAllRecipes()
+                } else {
+                    viewModel.isLoading = true
+                    viewModel.findRecipesAll()
+                }
+                        })
             .navigationTitle("allrecipes.title".localized)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -31,16 +40,19 @@ struct AllRecipesView: View {
             .searchable(text: $viewModel.searchQueryAll, isPresented: $viewModel.searchIsActiveAll)
             .searchPresentationToolbarBehavior(.avoidHidingContent)
             .onChange(of: viewModel.searchQueryAll, { _, _ in
-                viewModel.isLoadingAll = true
+                viewModel.isLoading = true
             })
             .onSubmit(of: .search) {
                 viewModel.findRecipesAll()
             }
+            .onDisappear(perform: {
+                viewModel.searchQueryAll = ""
+            })
     }
     
     @ViewBuilder
     func recipesView() -> some View {
-        if (viewModel.isLoadingAll) {
+        if viewModel.isLoading || viewModel.isLoading1 {
             ProgressView()
         } else {
             if (viewModel.searchQueryAll == "") {
@@ -55,7 +67,7 @@ struct AllRecipesView: View {
                             .scrollTargetLayout()
                         }
                         .scrollPosition(id: $viewModel.scrollID)
-                        .onChange(of: viewModel.scrollID) { oldValue, newValue in
+                        .onChange(of: viewModel.scrollID) { _, _  in
                             viewModel.loadMoreAllRecipes()
                         }
                         .scrollIndicators(.hidden)
@@ -70,14 +82,13 @@ struct AllRecipesView: View {
             else {
                 if (!viewModel.foundRecipes.isEmpty) {
                     GeometryReader {proxy in
-                        ScrollView() {
+                        ScrollView {
                             LazyVStack(spacing: 12) {
                                 ForEach(viewModel.foundRecipes, id: \.self) { recipe in
                                     RecipeBigCardView(recipe: recipe, proxy: proxy)
                                 }
                             }
                         }
-                        .onAppear(){print("all view")}
                         .scrollIndicators(.hidden)
                         .contentMargins(.horizontal, 12)
                     }
