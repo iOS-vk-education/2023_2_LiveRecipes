@@ -5,48 +5,6 @@
 //  Created by Leonid Perlin on 3/5/24.
 //
 
-//import Foundation
-//import SwiftUI
-//
-//struct RecipesView: View {
-//    @StateObject var viewModel: RecipesViewModel
-//
-//    var body: some View {
-//        VStack {
-//            NavigationStack {
-//                ScrollView(showsIndicators: false) {
-//                    if !viewModel.foundRecipes.isEmpty {
-//                        ForEach(viewModel.foundRecipes, id: \.self) { recipe in
-//                            Text(recipe.title).padding()
-//                        }
-//                    } else {
-//                        Text("recipes.havent.load")
-//                    }
-//                }
-//                .scrollIndicators(.hidden)
-//                .navigationTitle(Tabs.recipes.tabName)
-//                .navigationBarTitleDisplayMode(.inline)
-//                .toolbar {
-//                    ToolbarItem(placement: .topBarTrailing) {
-//                        Button("", systemImage: "gear") {
-//                            print("hello")
-//                        }
-//                    }
-//                }
-//            }
-//            .refreshable(action: {
-//                viewModel.findRecipes()
-//            })
-//            .searchable(text: $viewModel.searchQuery, isPresented: $viewModel.searchIsActive)
-//            .onSubmit(of: .search) { viewModel.findRecipes() }
-//        }
-//    }
-//}
-//
-//#Preview {
-//    ApplicationViewBuilder.stub.build(view: .recipes)
-//}
-
 import Foundation
 import SwiftUI
 import Swinject

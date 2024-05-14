@@ -24,6 +24,10 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     @Published var keyWordsSearchArr: [String] = []
     @Published var duration: Double = 0
     @Published var calories: Double = 0
+    @Published var containsTextField: String = ""
+    @Published var notContainsTextField: String = ""
+    @Published var contains: [String] = []
+    @Published var notContains: [String] = []
     
     @Published var pageAll = 1
     @Published var scrollID: Int?
@@ -143,7 +147,7 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     }
     
     func findRecipesByFilter() {
-        model.findRecipesByFilter(query: searchQuery, keyWords: keyWordsSearchArr, duration: Int(duration), calories: String(Int(calories))) { [weak self] result in
+        model.findRecipesByFilter(query: searchQuery, keyWords: keyWordsSearchArr, duration: Int(duration), calories: String(Int(calories)), contains: contains, notContains: notContains) { [weak self] result in
             self?.foundRecipes = result
             DispatchQueue.main.async {
                 self?.isLoading = false
@@ -160,15 +164,35 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
                 keyWordsSearchArr.append(word.keyWord)
             }
         } else {
-            keyWordsSearchArr = keyWordsSearchArr.filter{$0 != word.keyWord}
+            keyWordsSearchArr = keyWordsSearchArr.filter{ $0 != word.keyWord }
         }
         findRecipesByFilter()
     }
+    
+    func addToContains(word: String) {
+        if contains.count < 5 && word != "" {
+            contains.append(word)
+        }
+    }
+    func addToNotContains(word: String) {
+        if notContains.count < 5 && word != "" {
+            notContains.append(word)
+        }
+    }
+    func removeFromContains(word: String) {
+        contains = contains.filter { $0 != word }
+    }
+    func removeFromNotContains(word: String) {
+        notContains = notContains.filter { $0 != word }
+    }
+    
     func isFilterActive() -> Bool {
         if !keyWordsSearchArr.isEmpty { return true }
         if searchQuery != "" { return true }
         if duration != 0 { return true }
         if calories != 0 { return true }
+        if !contains.isEmpty { return true }
+        if !notContains.isEmpty { return true }
         return false
     }
 }
