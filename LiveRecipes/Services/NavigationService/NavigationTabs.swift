@@ -6,6 +6,25 @@
 //
 
 import Foundation
+import SwiftUI
+
+class TabSelectionManager: ObservableObject {
+    @Published var selection: Tabs = .recipes
+
+    public func changeSelection(to newSelection: Tabs) {
+        selection = newSelection
+//        selection = newSelection
+        objectWillChange.send()
+      }
+}
+
+//
+//class CookingRecipeManager: ObservedObject {
+//    private var recipe: RecipeDTO?
+//
+//    @Published var recipeIsSet = false
+//
+//}
 
 enum Tabs: CaseIterable, Identifiable {
     var id: Self {

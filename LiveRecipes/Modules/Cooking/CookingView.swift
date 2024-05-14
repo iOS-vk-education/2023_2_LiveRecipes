@@ -10,19 +10,29 @@ import Swinject
 
 struct CookingView: View {
     var tabSelected: Binding<Tabs>
+    @EnvironmentObject var model: OneStepViewModel
     @StateObject var viewModel: CookingViewModel
-    @State var timeRemaining = 2
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
     var body: some View {
-        if viewModel.steps.count == 0 {
+        
+        if model.steps.count == 0 {
             NoStepsView(tabSelected: tabSelected)
+        } else {
+            NavigationView {
+                OneStepView()
+            }
+            
+            
         }
+        
     }
+}
+
 //        else {
 //            let _ = print(viewModel.steps.count)
 //            OneStepView(viewModel: viewModel, stepNumber: 1)
 //        }
-}
+
 
 
 #Preview {

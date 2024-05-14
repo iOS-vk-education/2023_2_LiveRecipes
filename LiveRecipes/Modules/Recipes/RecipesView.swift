@@ -87,6 +87,7 @@ struct RecipesView: View {
             }
             .navigationTitle(Tabs.recipes.tabName)
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar(.visible, for: .tabBar)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     HStack (spacing: 4) {
