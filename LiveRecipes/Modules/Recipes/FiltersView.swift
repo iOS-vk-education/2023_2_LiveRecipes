@@ -99,16 +99,15 @@ struct FiltersView: View {
                     if (!viewModel.contains.isEmpty) {
                         HStack (spacing: 4) {
                             ForEach (viewModel.contains.indices, id: \.self) {index in
-                                Button(action: {
-                                    viewModel.removeFromContains(word: viewModel.contains[index])
-                                }, label: {
-                                    Text(viewModel.contains[index])
-                                        .tint(.white)
-                                        .font(.caption)
-                                })
+                                Text(viewModel.contains[index])
+                                    .foregroundStyle(.white)
+                                    .font(.caption)
                                 .padding(8)
                                 .background(.orange)
                                 .clipShape(.capsule)
+                                .gesture(TapGesture().onEnded({
+                                    viewModel.removeFromContains(word: viewModel.contains[index])
+                                }))
                             }
                             Spacer()
                         }
@@ -140,17 +139,15 @@ struct FiltersView: View {
                     if (!viewModel.notContains.isEmpty) {
                         HStack (spacing: 4) {
                             ForEach (viewModel.notContains.indices, id: \.self) {index in
-                                Button(action: {
-                                    viewModel.removeFromNotContains(word: viewModel.notContains[index])
-                                    print(viewModel.notContains)
-                                }, label: {
-                                    Text(viewModel.notContains[index])
-                                        .tint(.white)
-                                        .font(.caption)
-                                })
+                                Text(viewModel.notContains[index])
+                                    .foregroundStyle(.white)
+                                    .font(.caption)
                                 .padding(8)
                                 .background(.orange)
                                 .clipShape(.capsule)
+                                .gesture(TapGesture().onEnded({
+                                    viewModel.removeFromNotContains(word: viewModel.notContains[index])
+                                }))
                             }
                             Spacer()
                         }
