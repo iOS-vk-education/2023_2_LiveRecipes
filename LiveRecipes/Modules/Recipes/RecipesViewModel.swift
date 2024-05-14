@@ -20,6 +20,9 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     @Published var isEmptyFoundToTime = false
     @Published var isEmptyToTime = false
     
+    @Published var filtersIsActive = false
+    @Published var keyWordsSearchArr: [String] = []
+    
     @Published var pageAll = 1
     @Published var scrollID: Int?
     @Published var isLoading: Bool = true
@@ -49,7 +52,7 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
                     .debounce(for: .seconds(0.5), scheduler: DispatchQueue.global())
                     .removeDuplicates()
                     .sink { [weak self] _ in
-                        self?.findRecipes()
+                        self?.findRecipesByFilter()
                     }
                     .store(in: &cancellables)
         
@@ -135,5 +138,33 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
         keyWords.sort {
             $0.isChoosed && !$1.isChoosed
         }
+    }
+    
+    func findRecipesByFilter() {
+        model.findRecipesByFilter(query: searchQuery, keyWords: keyWordsSearchArr) { [weak self] result in
+            self?.foundRecipes = result
+            DispatchQueue.main.async {
+                self?.isLoading = false
+                self?.filtersIsActive = false
+            }
+        }
+    }
+    
+    func keywordSearch(word: KeyWord) {
+        if (word.isChoosed) {
+            print(word.isChoosed)
+            if keyWordsSearchArr.count < 5 {
+                filtersIsActive = true
+                keyWordsSearchArr.append(word.keyWord)
+            }
+        } else {
+            keyWordsSearchArr = keyWordsSearchArr.filter{$0 != word.keyWord}
+        }
+        findRecipesByFilter()
+    }
+    func isFilterActive() -> Bool {
+        if !keyWordsSearchArr.isEmpty { return true }
+        if searchQuery != "" { return true }
+        return false
     }
 }

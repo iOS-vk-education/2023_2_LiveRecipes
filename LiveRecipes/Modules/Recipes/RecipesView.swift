@@ -61,7 +61,7 @@ struct RecipesView: View {
                 ScrollView {
                     VStack {
                         keyWordsView()
-                        if (viewModel.searchQuery == "") {
+                        if (viewModel.searchQuery == "" && !viewModel.isFilterActive()) {
                             allRecipesView()
                             cookToTimeView()
                             recentRecipesView()
@@ -87,12 +87,12 @@ struct RecipesView: View {
                     }
                 }
                 .refreshable(action: {
-                    if viewModel.searchQuery == "" {
+                    if viewModel.searchQuery == "" && !viewModel.isFilterActive() {
                         viewModel.isLoading1 = true
                         viewModel.loadAllRecipes()
                     } else {
                         viewModel.isLoading = true
-                        viewModel.findRecipes()
+                        viewModel.findRecipesByFilter()
                     }
                             })
                 .contentMargins(.bottom, 12, for: .scrollContent)
@@ -104,7 +104,7 @@ struct RecipesView: View {
                     
                 }
             }
-            .onChange(of: viewModel.searchQuery, { oldValue, newValue in
+            .onChange(of: viewModel.searchQuery, { _, _ in
                 viewModel.isLoading = true
             })
             .navigationTitle(Tabs.recipes.tabName)
@@ -133,7 +133,7 @@ struct RecipesView: View {
             .searchable(text: $viewModel.searchQuery, isPresented: $viewModel.searchIsActive)
             .searchPresentationToolbarBehavior(.avoidHidingContent)
             .onSubmit (of: .search) {
-                viewModel.findRecipes()
+                viewModel.findRecipesByFilter()
             }
     }
     
@@ -155,7 +155,9 @@ struct RecipesView: View {
                 LazyHStack {
                     ForEach (viewModel.keyWords.indices, id: \.self) { index in
                         Button(action: {
+                            viewModel.isLoading = true
                             viewModel.keyWords[index].choose()
+                            viewModel.keywordSearch(word: viewModel.keyWords[index])
                             viewModel.sortKeyWordsByChoose()
                         }, label: {
                             Text(viewModel.keyWords[index].keyWord)

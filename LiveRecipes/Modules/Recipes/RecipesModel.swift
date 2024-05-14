@@ -65,10 +65,23 @@ final class RecipesModel: ObservableObject, RecipesModelProtocol {
         })
     }
         
-        //мок на главную и переходы
+    func findRecipesByFilter(query: String, keyWords: [String] ,completion: @escaping ([RecipePreviewDTO]) -> Void) {
+        recipeAPI.getRecipesByFilter(query: query, keyWords: keyWords) { [weak self] result in
+            guard self != nil else { return }
+            switch result {
+                case .success(let result):
+                    completion(result)
+                case .failure(_):
+                    completion([])
+            }
+        }
+    }
+
         func loadKeyWords() -> [KeyWord] {
             return [
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты"),
+                KeyWord(keyWord: "Суп"), KeyWord(keyWord: "Завтрак"), KeyWord(keyWord: "Салат"), KeyWord(keyWord: "Вкус"), KeyWord(keyWord: "Быстрое"), KeyWord(keyWord: "Дессерт"), KeyWord(keyWord: "Секрет"), KeyWord(keyWord: "Тесто"),
+                KeyWord(keyWord: "Форма"), KeyWord(keyWord: "Сахар"), KeyWord(keyWord: "Сладкое"), KeyWord(keyWord: "Традиционное"), KeyWord(keyWord: "Легкий"), KeyWord(keyWord: "Диета"), KeyWord(keyWord: "Пудинг"), KeyWord(keyWord: "Сироп"),
+                KeyWord(keyWord: "Фрукт")
             ]
         }
     }
