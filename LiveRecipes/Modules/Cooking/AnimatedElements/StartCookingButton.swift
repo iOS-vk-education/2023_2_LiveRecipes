@@ -9,6 +9,8 @@ import SwiftUI
 import Swinject
 
 struct StartCookingButton: View {
+    @EnvironmentObject private var tabSelectionManager: TabSelectionManager
+    @EnvironmentObject private var stepViewModel: OneStepViewModel
     @State private var buttonOffset = CGSize(width: 0, height: 300)
     var transferData: RecipeDTO
     
@@ -19,7 +21,7 @@ struct StartCookingButton: View {
         
             }) {
                 NavigationLink(destination:{
-                    OneStepView(stepNumber: 1, steps: transferData.steps, dishName: transferData.name, dishType: getTranslation(transferData.tag))
+                    Assembler.sharedAssembly.resolver.resolve(RecipesView.self)
                 }) {
                     Text("cookingPrepare.Go".localized)
                         .font(.title2)
@@ -29,6 +31,10 @@ struct StartCookingButton: View {
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .offset(buttonOffset)
                 }
+                .simultaneousGesture(TapGesture().onEnded {
+                    stepViewModel.setRecipe(model: transferData)
+                    tabSelectionManager.changeSelection(to: .cooking)
+                })
             }
             .onAppear {
                 withAnimation(.easeOut(duration: 3.5)) {
