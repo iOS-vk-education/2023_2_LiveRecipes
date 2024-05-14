@@ -16,8 +16,7 @@ protocol RecipesModelProtocol {
     func loadKeyWords() -> [KeyWord]
     func getAllRecipes(page: Int, completion: @escaping([RecipePreviewDTO]) -> Void)
     func getToTimeRecipes(name: NameToTime, completion: @escaping([RecipePreviewDTO]) -> Void)
-    func loadRecentRecipes() -> [RecipePreviewDTO]
-    func loadMyRecipes() -> [RecipePreviewDTO]
+    func findRecipesByFilter(query: String, keyWords: [String], duration: Int, calories: String, contains: [String], notContains: [String], completion: @escaping ([RecipePreviewDTO]) -> Void)
 }
 
 protocol RecipesViewProtocol {}
@@ -36,23 +35,4 @@ struct KeyWord: Identifiable {
             isChoosed = false
         }
     }
-}
-
-struct Recipe: Identifiable {
-    let name: String
-    let time: String
-    let cathegory: String
-    var isInFavorites: Bool = false
-    let image: String
-    
-    mutating func changeStateOfFavorites() {
-        if(isInFavorites == false) {
-            isInFavorites = true
-        }
-        else {
-            isInFavorites = false
-        }
-    }
-    
-    let id = UUID()
 }

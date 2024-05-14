@@ -725,6 +725,23 @@
         }
       }
     },
+    "filters.addIngr.button" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить"
+          }
+        }
+      }
+    },
     "filters.caloricity" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -748,13 +765,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "kCal"
+            "value" : "Cal"
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "кКал"
+            "state" : "translated",
+            "value" : " Кал"
           }
         }
       }
@@ -789,6 +806,23 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Диета (временно)"
+          }
+        }
+      }
+    },
+    "filters.dismiss" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Очистить"
           }
         }
       }

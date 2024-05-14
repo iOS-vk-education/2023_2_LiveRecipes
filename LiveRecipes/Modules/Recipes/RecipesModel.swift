@@ -65,88 +65,24 @@ final class RecipesModel: ObservableObject, RecipesModelProtocol {
         })
     }
         
-        //мок на главную и переходы
+    func findRecipesByFilter(query: String, keyWords: [String], duration: Int, calories: String, contains: [String], notContains: [String],completion: @escaping ([RecipePreviewDTO]) -> Void) {
+        print(contains)
+        recipeAPI.getRecipesByFilter(query: query, keyWords: keyWords, duration: duration, calories: calories, contains: contains, notContains: notContains) { [weak self] result in
+            guard self != nil else { return }
+            switch result {
+                case .success(let result):
+                    completion(result)
+                case .failure(_):
+                    completion([])
+            }
+        }
+    }
+
         func loadKeyWords() -> [KeyWord] {
             return [
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "ЗавтракиЗавтраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "СупЗавтракиы"), KeyWord(keyWord: "ЗаЗавтракивтраки"), KeyWord(keyWord: "СаЗавтракилаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки ЗавтраЗавтракики"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "СупыЗавтраки"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "СалатыЗавтраки"),
-                KeyWord(keyWord: "СупЗавтракиы"), KeyWord(keyWord: "ЗавЗавтракитраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "СупЗавтракиы"), KeyWord(keyWord: "ЗавтраЗавтракики ЗавтраЗавтракики"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "ЗавтракиЗавтраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "СупЗавтракиы"), KeyWord(keyWord: "ЗаЗавтракивтраки"), KeyWord(keyWord: "СаЗавтракилаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки ЗавтраЗавтракики"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "СупыЗавтраки"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "СалатыЗавтраки"),
-                KeyWord(keyWord: "СупЗавтракиы"), KeyWord(keyWord: "ЗавЗавтракитраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "СупЗавтракиы"), KeyWord(keyWord: "ЗавтраЗавтракики ЗавтраЗавтракики"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "ЗавтракиЗавтраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "СупЗавтракиы"), KeyWord(keyWord: "ЗаЗавтракивтраки"), KeyWord(keyWord: "СаЗавтракилаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки ЗавтраЗавтракики"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "СупыЗавтраки"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "СалатыЗавтраки"),
-                KeyWord(keyWord: "СупЗавтракиы"), KeyWord(keyWord: "ЗавЗавтракитраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "СупЗавтракиы"), KeyWord(keyWord: "ЗавтраЗавтракики ЗавтраЗавтракики"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "ЗавтракиЗавтраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "СупЗавтракиы"), KeyWord(keyWord: "ЗаЗавтракивтраки"), KeyWord(keyWord: "СаЗавтракилаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки ЗавтраЗавтракики"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "СупыЗавтраки"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "СалатыЗавтраки"),
-                KeyWord(keyWord: "СупЗавтракиы"), KeyWord(keyWord: "ЗавЗавтракитраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "СупЗавтракиы"), KeyWord(keyWord: "ЗавтраЗавтракики ЗавтраЗавтракики"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "ЗавтракиЗавтраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "СупЗавтракиы"), KeyWord(keyWord: "ЗаЗавтракивтраки"), KeyWord(keyWord: "СаЗавтракилаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки ЗавтраЗавтракики"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "СупыЗавтраки"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "Супы"), KeyWord(keyWord: "Завтраки"), KeyWord(keyWord: "СалатыЗавтраки"),
-                KeyWord(keyWord: "СупЗавтракиы"), KeyWord(keyWord: "ЗавЗавтракитраки"), KeyWord(keyWord: "Салаты"),
-                KeyWord(keyWord: "СупЗавтракиы"), KeyWord(keyWord: "ЗавтраЗавтракики ЗавтраЗавтракики"), KeyWord(keyWord: "Салаты"),
-            ]
-        }
-        
-        func loadAllRecipes() -> [RecipePreviewDTO] {
-            
-            return [
-                //            RecipePreviewDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-                //            RecipePreviewDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
-                //            RecipePreviewDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-                //            RecipePreviewDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-                //            RecipePreviewDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
-                //            RecipePreviewDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-                //            RecipePreviewDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-                //            RecipePreviewDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
-                //            RecipePreviewDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar")
-            ]
-        }
-        
-        func loadRecentRecipes() -> [RecipePreviewDTO] {
-            
-            return [
-                //            RecipePreviewDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-                //            RecipePreviewDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
-            ]
-        }
-        
-        func loadMyRecipes() -> [RecipePreviewDTO] {
-            return [
-                //            RecipePreviewDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar")
+                KeyWord(keyWord: "Суп"), KeyWord(keyWord: "Завтрак"), KeyWord(keyWord: "Салат"), KeyWord(keyWord: "Вкус"), KeyWord(keyWord: "Быстрое"), KeyWord(keyWord: "Дессерт"), KeyWord(keyWord: "Секрет"), KeyWord(keyWord: "Тесто"),
+                KeyWord(keyWord: "Форма"), KeyWord(keyWord: "Сахар"), KeyWord(keyWord: "Сладкое"), KeyWord(keyWord: "Традиционное"), KeyWord(keyWord: "Легкий"), KeyWord(keyWord: "Диета"), KeyWord(keyWord: "Пудинг"), KeyWord(keyWord: "Сироп"),
+                KeyWord(keyWord: "Фрукт")
             ]
         }
     }

@@ -10,10 +10,6 @@ import SwiftUI
 struct FiltersView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel: RecipesViewModel
-    @State private var ccal: Float = 900
-    @State private var time: Float = 120
-    @State private var contains = ""
-    @State private var notContains = ""
 
     
     var body: some View {
@@ -35,6 +31,20 @@ struct FiltersView: View {
                         .clipShape(.circle)
                     }
                 }
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        self.presentationMode.wrappedValue.dismiss()
+                        viewModel.duration = 0
+                        viewModel.calories = 0
+                        viewModel.contains = []
+                        viewModel.notContains = []
+                        viewModel.findRecipesByFilter()
+                    } label: {
+                        VStack {
+                            Text("filters.dismiss".localized)
+                        }
+                    }
+                }
             }
             .navigationTitle("filters".localized)
             .navigationBarTitleDisplayMode(.inline)
@@ -48,8 +58,8 @@ struct FiltersView: View {
         List {
             Section {
                 HStack {
-                    Slider(value: $ccal, in: 0...3000, step: 1)
-                    Text("\(Int(ccal))" + "filters.caloricity.enter".localized)
+                    Slider(value: $viewModel.calories, in: 0...400, step: 5)
+                    Text("\(Int(viewModel.calories))" + "filters.caloricity.enter".localized)
                         .frame(width: 90)
                 }
                 .listRowBackground(Color.clear)
@@ -58,8 +68,8 @@ struct FiltersView: View {
             }
             Section {
                 HStack {
-                    Slider(value: $time, in: 0...240, step: 5)
-                    Text(String("\(Int(time))") + "filters.time.enter".localized)
+                    Slider(value: $viewModel.duration, in: 0...500, step: 5)
+                    Text(String("\(Int(viewModel.duration))") + "filters.time.enter".localized)
                         .frame(width: 90)
                 }
                 .listRowBackground(Color.clear)
@@ -67,50 +77,104 @@ struct FiltersView: View {
                 Text("filters.time.cook".localized)
             }
             Section {
-                TextField("filters.enter.ingridient".localized, text: $contains)
-                    .overlay(
-                        Button(action: {
-                            contains = ""
-                        }) {
-                            Image(systemName: "xmark.circle.fill")
-                                .opacity(contains.isEmpty ? 0 : 1)
-                                .imageScale(.medium)
-                        },
-                        alignment: .trailing
-                    )
+                VStack {
+                    HStack {
+                        TextField("filters.enter.ingridient".localized, text: $viewModel.containsTextField)
+                            VStack {
+                                Image(systemName: "plus")
+                                    .resizable()
+                                    .tint(.white)
+                                    .fontWeight(.semibold)
+                                    .frame(width: 20, height: 20)
+                            }
+                            .gesture(TapGesture().onEnded {
+                                viewModel.addToContains(word: viewModel.containsTextField)
+                                viewModel.containsTextField = ""
+                            })
+                            .frame(width: 28, height: 28)
+                            .background(.orange, in: .rect(cornerRadius: 4))
+                            .opacity(viewModel.containsTextField == "" ? 0 : 1)
+                            .foregroundStyle(.white)
+                    }
+                    if (!viewModel.contains.isEmpty) {
+                        HStack (spacing: 4) {
+                            ForEach (viewModel.contains.indices, id: \.self) {index in
+                                Button(action: {
+                                    viewModel.removeFromContains(word: viewModel.contains[index])
+                                }, label: {
+                                    Text(viewModel.contains[index])
+                                        .tint(.white)
+                                        .font(.caption)
+                                })
+                                .padding(8)
+                                .background(.orange)
+                                .clipShape(.capsule)
+                            }
+                            Spacer()
+                        }
+                    }
+                }
             } header: {
                 Text("filters.contains".localized)
             }
             Section {
-                TextField("filters.enter.ingridient".localized, text: $notContains)
-                    .overlay(
-                        Button(action: {
-                            notContains = ""
-                        }) {
-                            Image(systemName: "xmark.circle.fill")
-                                .opacity(notContains.isEmpty ? 0 : 1)
-                                .imageScale(.medium)
-                        },
-                        alignment: .trailing
-                    )
+                VStack {
+                    HStack {
+                        TextField("filters.enter.ingridient".localized, text: $viewModel.notContainsTextField)
+                        VStack {
+                            Image(systemName: "plus")
+                                .resizable()
+                                .tint(.white)
+                                .fontWeight(.semibold)
+                                .frame(width: 20, height: 20)
+                        }
+                        .gesture(TapGesture().onEnded {
+                            viewModel.addToNotContains(word: viewModel.notContainsTextField)
+                            viewModel.notContainsTextField = ""
+                        })
+                        .frame(width: 28, height: 28)
+                        .background(.orange, in: .rect(cornerRadius: 4))
+                        .opacity(viewModel.notContainsTextField == "" ? 0 : 1)
+                        .foregroundStyle(.white)
+                    }
+                    if (!viewModel.notContains.isEmpty) {
+                        HStack (spacing: 4) {
+                            ForEach (viewModel.notContains.indices, id: \.self) {index in
+                                Button(action: {
+                                    viewModel.removeFromNotContains(word: viewModel.notContains[index])
+                                    print(viewModel.notContains)
+                                }, label: {
+                                    Text(viewModel.notContains[index])
+                                        .tint(.white)
+                                        .font(.caption)
+                                })
+                                .padding(8)
+                                .background(.orange)
+                                .clipShape(.capsule)
+                            }
+                            Spacer()
+                        }
+                    }
+                }
             } header: {
                 Text("filters.not.contains".localized)
             }
-            Section {
-                DietCellView()
-                DietCellView()
-                DietCellView()
-                DietCellView()
-                DietCellView()
-            } header: {
-                Text("filters.find.diet".localized)
-            }
+//            Section {
+//                DietCellView()
+//                DietCellView()
+//                DietCellView()
+//                DietCellView()
+//                DietCellView()
+//            } header: {
+//                Text("filters.find.diet".localized)
+//            }
         }
         .listSectionSpacing(8)
         .overlay(
             Button  {
+                viewModel.isLoading = true
                 self.presentationMode.wrappedValue.dismiss()
-                viewModel.sortKeyWordsByChoose()
+                viewModel.findRecipesByFilter()
             } label: {
                 HStack {
                     Text("filters.accept.button".localized)

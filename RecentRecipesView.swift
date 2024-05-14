@@ -11,7 +11,7 @@ import Swinject
 struct RecentRecipesView: View {
     @StateObject var viewModel: RecipesViewModel
     @Environment(\.presentationMode) var presentation
-    @State var recentRecipes: [Recipe] = []
+    @State var recentRecipes: [RecipePreviewDTO] = []
     @State var searchText = ""
     
     var body: some View {

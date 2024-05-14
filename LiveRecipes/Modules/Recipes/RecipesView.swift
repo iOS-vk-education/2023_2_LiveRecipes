@@ -5,48 +5,6 @@
 //  Created by Leonid Perlin on 3/5/24.
 //
 
-//import Foundation
-//import SwiftUI
-//
-//struct RecipesView: View {
-//    @StateObject var viewModel: RecipesViewModel
-//
-//    var body: some View {
-//        VStack {
-//            NavigationStack {
-//                ScrollView(showsIndicators: false) {
-//                    if !viewModel.foundRecipes.isEmpty {
-//                        ForEach(viewModel.foundRecipes, id: \.self) { recipe in
-//                            Text(recipe.title).padding()
-//                        }
-//                    } else {
-//                        Text("recipes.havent.load")
-//                    }
-//                }
-//                .scrollIndicators(.hidden)
-//                .navigationTitle(Tabs.recipes.tabName)
-//                .navigationBarTitleDisplayMode(.inline)
-//                .toolbar {
-//                    ToolbarItem(placement: .topBarTrailing) {
-//                        Button("", systemImage: "gear") {
-//                            print("hello")
-//                        }
-//                    }
-//                }
-//            }
-//            .refreshable(action: {
-//                viewModel.findRecipes()
-//            })
-//            .searchable(text: $viewModel.searchQuery, isPresented: $viewModel.searchIsActive)
-//            .onSubmit(of: .search) { viewModel.findRecipes() }
-//        }
-//    }
-//}
-//
-//#Preview {
-//    ApplicationViewBuilder.stub.build(view: .recipes)
-//}
-
 import Foundation
 import SwiftUI
 import Swinject
@@ -61,21 +19,40 @@ struct RecipesView: View {
                 ScrollView {
                     VStack {
                         keyWordsView()
-                        if (viewModel.searchQuery == "") {
+                        if (viewModel.searchQuery == "" && !viewModel.isFilterActive()) {
                             allRecipesView()
                             cookToTimeView()
                             recentRecipesView()
                             myRecipesView()
                         }
                         else {
-                            LazyVStack {
-                                ForEach (viewModel.foundRecipes) { recipe in
-                                    RecipeBigCardView(recipe: recipe, proxy: proxy)
+                            if viewModel.isLoading {
+                                ProgressView()
+                                    .padding(.top, UIScreen.main.bounds.height/4)
+                            } else {
+                                if !viewModel.foundRecipes.isEmpty {
+                                    LazyVStack {
+                                        ForEach (viewModel.foundRecipes) { recipe in
+                                            RecipeBigCardView(recipe: recipe, proxy: proxy)
+                                        }
+                                    }
+                                } else {
+                                    Text("allrecipes.errorFound.message".localized)
+                                        .padding(.top, UIScreen.main.bounds.height/4)
                                 }
                             }
                         }
                     }
                 }
+                .refreshable(action: {
+                    if viewModel.searchQuery == "" && !viewModel.isFilterActive() {
+                        viewModel.isLoading1 = true
+                        viewModel.loadAllRecipes()
+                    } else {
+                        viewModel.isLoading = true
+                        viewModel.findRecipesByFilter()
+                    }
+                            })
                 .contentMargins(.bottom, 12, for: .scrollContent)
                 .scrollIndicators(.hidden)
             }
@@ -85,6 +62,9 @@ struct RecipesView: View {
                     
                 }
             }
+            .onChange(of: viewModel.searchQuery, { _, _ in
+                viewModel.isLoading = true
+            })
             .navigationTitle(Tabs.recipes.tabName)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -111,11 +91,8 @@ struct RecipesView: View {
             .searchable(text: $viewModel.searchQuery, isPresented: $viewModel.searchIsActive)
             .searchPresentationToolbarBehavior(.avoidHidingContent)
             .onSubmit (of: .search) {
-                viewModel.findRecipes()
+                viewModel.findRecipesByFilter()
             }
-        .refreshable(action: {
-                        print("refresh")
-                    })
     }
     
     @ViewBuilder
@@ -136,7 +113,9 @@ struct RecipesView: View {
                 LazyHStack {
                     ForEach (viewModel.keyWords.indices, id: \.self) { index in
                         Button(action: {
+                            viewModel.isLoading = true
                             viewModel.keyWords[index].choose()
+                            viewModel.keywordSearch(word: viewModel.keyWords[index])
                             viewModel.sortKeyWordsByChoose()
                         }, label: {
                             Text(viewModel.keyWords[index].keyWord)
@@ -186,16 +165,23 @@ struct RecipesView: View {
     
     @ViewBuilder
     func allRecipesView() -> some View {
-        NavigationLink (destination: {
-            Assembler.sharedAssembly
-                .resolver
-                .resolve(AllRecipesView.self)
-        }, label: {
-            titleButtonOfBlock(blockName: "recipes.allrecipes.button".localized)
-                .padding(.top, 8)
-        })
+            NavigationLink {
+                Assembler.sharedAssembly
+                    .resolver
+                    .resolve(AllRecipesView.self)
+            } label: {
+                titleButtonOfBlock(blockName: "recipes.allrecipes.button".localized)
+                    .padding(.top, 8)
+            }
+        if viewModel.isLoading1 {
+            ProgressView()
+                .frame(height: 170)
+        } else {
             if (viewModel.allRecipes.isEmpty) {
                 Text("recipes.allrecipes.error.message".localized)
+                    .frame(width: 250, height: 170)
+                    .background(Color(UIColor.secondarySystemBackground))
+                    .clipShape(.rect(cornerRadius: 8))
             } else {
                 ScrollView(.horizontal) {
                     LazyHStack(spacing: 12) {
@@ -207,6 +193,7 @@ struct RecipesView: View {
                 .scrollIndicators(.hidden)
                 .contentMargins(.horizontal, 12)
             }
+        }
     }
     
     @ViewBuilder

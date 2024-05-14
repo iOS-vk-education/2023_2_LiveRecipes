@@ -12,9 +12,9 @@ enum RecipeTarget {
     case getRecipe(name: String)
     case getRecipeToTime(type: NameToTime, name: String)
     case getAllList(page: Int)
-    case getDesserts
     case getToTime(name: NameToTime)
     case getById(id: Int)
+    case getByFilters(query: String, keyWord: [String], duration: Int, calories: String, ingrContains: [String], ingrNotContains: [String])
 }
 
 enum NameToTime {
@@ -53,56 +53,86 @@ enum NameToTime {
 
 extension RecipeTarget: TargetType {
     var baseURL: String {
-        //return "https://api.api-ninjas.com/v1"
         return "https://liverecipes.online"
+        //return "http://127.0.0.1:8000"
     }
 
     var path: String {
         switch self {
-        case .getRecipe(let name):
-            return "/queryset=\(name)"
-        case .getDesserts:
-            return "/desserts"
-        case .getAllList(let page):
-            return "/recipes_feed/?page=\(page)"
-        case .getToTime(let name):
-                switch name {
-                    case .breakfast:
-                        return "/salads"
-                    case .lunch:
-                        return "/first_dishes"
-                    case .dinner:
-                        return "/second_dishes"
-                    case .snacks:
-                        return "/snacks"
+            case .getRecipe(let name):
+                return "/filters/?query=\(name)"
+            case .getAllList(let page):
+                return "/recipes_feed/?page=\(page)"
+            case .getToTime(let name):
+                    switch name {
+                        case .breakfast:
+                            return "/salads"
+                        case .lunch:
+                            return "/first_dishes"
+                        case .dinner:
+                            return "/second_dishes"
+                        case .snacks:
+                            return "/snacks"
+                    }
+            case .getRecipeToTime(let type, let name):
+                    switch type {
+                        case .breakfast:
+                            return "/salads/querysetBreakfast=\(name)/"
+                        case .lunch:
+                            return "/first_dishes/querysetLunch=\(name)"
+                        case .dinner:
+                            return "/second_dishes/querysetDinner=\(name)"
+                        case .snacks:
+                            return "/snacks/querysetSnack=\(name)"
+                    }
+            case .getById(let id):
+                return "/id/\(id)"
+                    
+            case .getByFilters(let query, let keywords, let duration, let calories, let ingrContains, let ingrNotContains):
+                var path = ""
+                if query == "" {
+                    path = "/filters/?"
+                } else {
+                    path = "/filters/?query=\(query)&"
                 }
-        case .getRecipeToTime(let type, let name):
-                switch type {
-                    case .breakfast:
-                        return "/salads/querysetBreakfast=\(name)/"
-                    case .lunch:
-                        return "/first_dishes/querysetLunch=\(name)"
-                    case .dinner:
-                        return "/second_dishes/querysetDinner=\(name)"
-                    case .snacks:
-                        return "/snacks/querysetSnack=\(name)"
+                if !keywords.isEmpty {
+                    for index in 0..<keywords.count {
+                        path = path + "keyword\(index + 1)=\(keywords[index])&"
+                    }
                 }
-        case .getById(let id):
-            return "/id/\(id)"
+                if duration != 0 {
+                    path = path + "duration=\(duration)&"
+                }
+                if Int(calories) != 0 {
+                    path = path + "caloriesl=\(calories)&"
+                }
+                if !ingrContains.isEmpty {
+                    for index in 0..<ingrContains.count {
+                        print(ingrContains)
+                        path = path + "ingredient\(index + 1)y=\(ingrContains[index])&"
+                    }
+                }
+                if !ingrContains.isEmpty {
+                    for index in 0..<ingrNotContains.count {
+                        path = path + "ingredient\(index + 1)n=\(ingrNotContains[index])&"
+                    }
+                }
+                path = path + "/"
+                print(path)
+                return path
+            }
         }
-        
-    }
 
     var method: HTTPMethod {
         switch self {
-            case .getRecipe, .getDesserts, .getAllList, .getToTime, .getRecipeToTime , .getById:
+            case .getRecipe, .getAllList, .getToTime, .getRecipeToTime , .getById, .getByFilters:
               return .get
         }
     }
 
     var task: NetworkTask {
         switch self {
-            case .getRecipe, .getDesserts, .getAllList, .getToTime, .getRecipeToTime, .getById:
+            case .getRecipe, .getAllList, .getToTime, .getRecipeToTime, .getById, .getByFilters:
               return .requestPlain
         }
     }
@@ -125,6 +155,7 @@ protocol RecipeAPIProtocol {
     func getToTime(name: NameToTime, completionHandler: @escaping (Result<[RecipePreviewDTO], NSError>) -> Void)
     func getRecipesToTime(type: NameToTime, name: String, completionHandler: @escaping (Result<[RecipePreviewDTO], NSError>) -> Void)
     func getRecipeById(id: Int, completionHandler: @escaping (Result<RecipeDTO, NSError>) -> Void)
+    func getRecipesByFilter(query: String, keyWords: [String], duration: Int, calories: String, contains: [String], notContains: [String], completionHandler: @escaping (Result<[RecipePreviewDTO], NSError>) -> Void)
 }
 
 class RecipeAPI: BaseAPI<RecipeTarget>, RecipeAPIProtocol {
@@ -150,6 +181,10 @@ class RecipeAPI: BaseAPI<RecipeTarget>, RecipeAPIProtocol {
     }
     func getRecipeById(id: Int, completionHandler: @escaping (Result<RecipeDTO, NSError>) -> Void){
             fetchData(target: .getById(id: id), responseClass: RecipeDTO.self) { result in completionHandler(result) }
+    }
+    func getRecipesByFilter(query: String, keyWords: [String], duration: Int, calories: String, contains: [String], notContains: [String], completionHandler: @escaping (Result<[RecipePreviewDTO], NSError>) -> Void) {
+        fetchData(target: .getByFilters(query: query, keyWord: keyWords, duration: duration, calories: calories, ingrContains: contains, ingrNotContains: notContains), responseClass: [RecipePreviewDTO].self) { result in completionHandler(result) }
+        print(query, keyWords)
     }
 }
 
