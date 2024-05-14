@@ -10,8 +10,6 @@ import SwiftUI
 struct FiltersView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel: RecipesViewModel
-    @State private var ccal: Float = 0
-    @State private var time: Float = 0
     @State private var contains = ""
     @State private var notContains = ""
 
@@ -35,6 +33,17 @@ struct FiltersView: View {
                         .clipShape(.circle)
                     }
                 }
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        self.presentationMode.wrappedValue.dismiss()
+                        viewModel.duration = 0
+                        viewModel.findRecipesByFilter()
+                    } label: {
+                        VStack {
+                            Text("filters.dismiss".localized)
+                        }
+                    }
+                }
             }
             .navigationTitle("filters".localized)
             .navigationBarTitleDisplayMode(.inline)
@@ -48,8 +57,8 @@ struct FiltersView: View {
         List {
             Section {
                 HStack {
-                    Slider(value: $ccal, in: 0...3000, step: 1)
-                    Text("\(Int(ccal))" + "filters.caloricity.enter".localized)
+                    Slider(value: $viewModel.calories, in: 0...400, step: 5)
+                    Text("\(Int(viewModel.calories))" + "filters.caloricity.enter".localized)
                         .frame(width: 90)
                 }
                 .listRowBackground(Color.clear)
@@ -58,8 +67,8 @@ struct FiltersView: View {
             }
             Section {
                 HStack {
-                    Slider(value: $time, in: 0...240, step: 5)
-                    Text(String("\(Int(time))") + "filters.time.enter".localized)
+                    Slider(value: $viewModel.duration, in: 0...500, step: 5)
+                    Text(String("\(Int(viewModel.duration))") + "filters.time.enter".localized)
                         .frame(width: 90)
                 }
                 .listRowBackground(Color.clear)
@@ -109,8 +118,9 @@ struct FiltersView: View {
         .listSectionSpacing(8)
         .overlay(
             Button  {
+                viewModel.isLoading = true
                 self.presentationMode.wrappedValue.dismiss()
-                viewModel.sortKeyWordsByChoose()
+                viewModel.findRecipesByFilter()
             } label: {
                 HStack {
                     Text("filters.accept.button".localized)

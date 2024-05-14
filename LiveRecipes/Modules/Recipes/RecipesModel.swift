@@ -65,8 +65,8 @@ final class RecipesModel: ObservableObject, RecipesModelProtocol {
         })
     }
         
-    func findRecipesByFilter(query: String, keyWords: [String] ,completion: @escaping ([RecipePreviewDTO]) -> Void) {
-        recipeAPI.getRecipesByFilter(query: query, keyWords: keyWords) { [weak self] result in
+    func findRecipesByFilter(query: String, keyWords: [String], duration: Int, calories: String, completion: @escaping ([RecipePreviewDTO]) -> Void) {
+        recipeAPI.getRecipesByFilter(query: query, keyWords: keyWords, duration: duration, calories: calories) { [weak self] result in
             guard self != nil else { return }
             switch result {
                 case .success(let result):

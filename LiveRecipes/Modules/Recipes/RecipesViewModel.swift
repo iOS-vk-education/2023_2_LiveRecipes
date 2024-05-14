@@ -22,6 +22,8 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     
     @Published var filtersIsActive = false
     @Published var keyWordsSearchArr: [String] = []
+    @Published var duration: Double = 0
+    @Published var calories: Double = 0
     
     @Published var pageAll = 1
     @Published var scrollID: Int?
@@ -141,7 +143,7 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     }
     
     func findRecipesByFilter() {
-        model.findRecipesByFilter(query: searchQuery, keyWords: keyWordsSearchArr) { [weak self] result in
+        model.findRecipesByFilter(query: searchQuery, keyWords: keyWordsSearchArr, duration: Int(duration), calories: String(Int(calories))) { [weak self] result in
             self?.foundRecipes = result
             DispatchQueue.main.async {
                 self?.isLoading = false
@@ -165,6 +167,8 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     func isFilterActive() -> Bool {
         if !keyWordsSearchArr.isEmpty { return true }
         if searchQuery != "" { return true }
+        if duration != 0 { return true }
+        if calories != 0 { return true }
         return false
     }
 }

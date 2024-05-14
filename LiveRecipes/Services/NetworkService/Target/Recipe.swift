@@ -14,7 +14,7 @@ enum RecipeTarget {
     case getAllList(page: Int)
     case getToTime(name: NameToTime)
     case getById(id: Int)
-    case getByFilters(query: String, keyWord: [String])
+    case getByFilters(query: String, keyWord: [String], duration: Int, calories: String)
 }
 
 enum NameToTime {
@@ -53,7 +53,8 @@ enum NameToTime {
 
 extension RecipeTarget: TargetType {
     var baseURL: String {
-        return "https://liverecipes.online"
+//        return "https://liverecipes.online"
+        return "http://127.0.0.1:8000"
     }
 
     var path: String {
@@ -87,7 +88,7 @@ extension RecipeTarget: TargetType {
             case .getById(let id):
                 return "/id/\(id)"
                     
-            case .getByFilters(let query, let keywords):
+            case .getByFilters(let query, let keywords, let duration, let calories):
                 var path = ""
                 if query == "" {
                     path = "/filters/?"
@@ -98,6 +99,12 @@ extension RecipeTarget: TargetType {
                     for index in 0..<keywords.count {
                         path = path + "keyword\(index + 1)=\(keywords[index])&"
                     }
+                }
+                if duration != 0 {
+                    path = path + "duration=\(duration)&"
+                }
+                if calories != "" {
+                    path = path + "caloriesl=\(calories)&"
                 }
                 path = path + "/"
                 print(path)
@@ -137,7 +144,7 @@ protocol RecipeAPIProtocol {
     func getToTime(name: NameToTime, completionHandler: @escaping (Result<[RecipePreviewDTO], NSError>) -> Void)
     func getRecipesToTime(type: NameToTime, name: String, completionHandler: @escaping (Result<[RecipePreviewDTO], NSError>) -> Void)
     func getRecipeById(id: Int, completionHandler: @escaping (Result<RecipeDTO, NSError>) -> Void)
-    func getRecipesByFilter(query: String, keyWords: [String], completionHandler: @escaping (Result<[RecipePreviewDTO], NSError>) -> Void)
+    func getRecipesByFilter(query: String, keyWords: [String], duration: Int, calories: String, completionHandler: @escaping (Result<[RecipePreviewDTO], NSError>) -> Void)
 }
 
 class RecipeAPI: BaseAPI<RecipeTarget>, RecipeAPIProtocol {
@@ -164,8 +171,8 @@ class RecipeAPI: BaseAPI<RecipeTarget>, RecipeAPIProtocol {
     func getRecipeById(id: Int, completionHandler: @escaping (Result<RecipeDTO, NSError>) -> Void){
             fetchData(target: .getById(id: id), responseClass: RecipeDTO.self) { result in completionHandler(result) }
     }
-    func getRecipesByFilter(query: String, keyWords: [String], completionHandler: @escaping (Result<[RecipePreviewDTO], NSError>) -> Void) {
-        fetchData(target: .getByFilters(query: query, keyWord: keyWords), responseClass: [RecipePreviewDTO].self) { result in completionHandler(result) }
+    func getRecipesByFilter(query: String, keyWords: [String], duration: Int, calories: String, completionHandler: @escaping (Result<[RecipePreviewDTO], NSError>) -> Void) {
+        fetchData(target: .getByFilters(query: query, keyWord: keyWords, duration: duration, calories: calories), responseClass: [RecipePreviewDTO].self) { result in completionHandler(result) }
         print(query, keyWords)
     }
 }
