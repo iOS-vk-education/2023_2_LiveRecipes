@@ -20,8 +20,6 @@ enum Tabs: CaseIterable, Identifiable {
             return "tab.cooking".localized
         case .favorites:
             return "tab.favorites".localized
-        case .list:
-            return "tab.list".localized
         }
     }
 
@@ -33,12 +31,9 @@ enum Tabs: CaseIterable, Identifiable {
             return "oven".localized
         case .favorites:
             return "star".localized
-        case .list:
-            return "square.and.pencil".localized
         }
     }
     case recipes
     case cooking
     case favorites
-    case list
 }

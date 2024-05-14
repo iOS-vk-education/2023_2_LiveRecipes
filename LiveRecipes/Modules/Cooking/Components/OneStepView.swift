@@ -53,13 +53,13 @@ struct OneStepView: View {
                         .padding()
                     
                     if steps[stepNumber - 1][2] != "0" {
-                        TimerView(totalTime: Int(steps[stepNumber - 1][2]) ?? 0, timeForProgress: Int(steps[stepNumber - 1][2]) ?? 0, step: "oneStep.step\(stepNumber)".localized, stepsCount: steps.count, dishName: dishName)
+                        TimerView(totalTime: Int(steps[stepNumber - 1][2]) ?? 0, timeForProgress: Int(steps[stepNumber - 1][2]) ?? 0, step: "oneStep.step\(stepNumber)".localized, stepsCount: steps.count, dishName: dishName, timerSeted: true)
                             .onAppear {
                                 isTimerOnView = true
                             }
                     }
                     else {
-                        TimerView(totalTime: 20, timeForProgress: 20, step: "oneStep.step\(stepNumber)".localized, stepsCount: steps.count, dishName: dishName)
+                        TimerView(totalTime: 1, timeForProgress: 1, step: "oneStep.step\(stepNumber)".localized, stepsCount: steps.count, dishName: dishName)
                             .offset(y: isLanded ? 0 : -1000)
                             .contextMenu(menuItems: {
                                 Button("Delete", systemImage: "trash") {

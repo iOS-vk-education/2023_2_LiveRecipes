@@ -31,7 +31,7 @@ struct RecipeBigCardView: View {
                         }
                         .padding(.horizontal, 8)
                         HStack {
-                            Text(recipe.tag)
+                            Text(getTranslation(recipe.tag))
                                 .fontWeight(.light)
                                 .foregroundStyle(Color(uiColor: .darkGray))
                                 .font(.system(size: 14))

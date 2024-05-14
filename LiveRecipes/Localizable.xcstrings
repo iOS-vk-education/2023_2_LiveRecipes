@@ -16,6 +16,9 @@
     " ч " : {
 
     },
+    "- 2 мин" : {
+
+    },
     "%@" : {
 
     },
@@ -41,6 +44,12 @@
           }
         }
       }
+    },
+    "+ 2 мин" : {
+
+    },
+    "0m:0s" : {
+
     },
     "allrecipes.error.message" : {
       "extractionState" : "manual",
@@ -657,6 +666,74 @@
     "Delete" : {
 
     },
+    "favorites" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favourites"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Избранное"
+          }
+        }
+      }
+    },
+    "favorites.favorites.isEmpty" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favourites are empty"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "В избранных пусто"
+          }
+        }
+      }
+    },
+    "favorites.myRecipes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My recipes"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мои рецепты"
+          }
+        }
+      }
+    },
+    "favorites.myRecipes.isEmpty" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My recipes are empty"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Тут пока ничего нет"
+          }
+        }
+      }
+    },
     "filters" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -862,6 +939,9 @@
       }
     },
     "Key" : {
+      "extractionState" : "manual"
+    },
+    "Key 1" : {
       "extractionState" : "manual"
     },
     "keywords.error.message" : {
@@ -2031,13 +2111,13 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Favorites"
+            "state" : "translated",
+            "value" : "Favourites"
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Сохраненные"
           }
         }
@@ -2172,15 +2252,6 @@
 
     },
     "К рецептам" : {
-
-    },
-    "Ошибка загрузки данных" : {
-
-    },
-    "Создать" : {
-
-    },
-    "Тут пока ничего нет" : {
 
     }
   },

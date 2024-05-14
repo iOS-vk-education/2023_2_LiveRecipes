@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Swinject
 
 struct NoStepsView: View {
     @Binding var tabSelected: Tabs
@@ -38,6 +39,15 @@ struct NoStepsView: View {
 
             }.navigationTitle("Готовка")
                 .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                            NavigationLink (destination: {
+                                Assembler.sharedAssembly
+                                    .resolver
+                                    .resolve(SettingsView.self)
+                            }, label: {Image(systemName: "gear")})
+                        }
+                    }
         }.tint(.orange)
     }
 }
