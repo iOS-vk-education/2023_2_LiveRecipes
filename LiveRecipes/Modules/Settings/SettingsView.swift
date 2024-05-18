@@ -17,7 +17,7 @@ struct SettingsView: View {
                 Section(header: Text("settings.userSettings".localized)) {
                     Text("settings.clearFavourites".localized)
                         .onTapGesture {
-                            print("settings.clearFavourites".localized)
+                            viewState.clearFavorites()
                         }
                     Text("settings.clearMyRecipes".localized)
                         .onTapGesture {
