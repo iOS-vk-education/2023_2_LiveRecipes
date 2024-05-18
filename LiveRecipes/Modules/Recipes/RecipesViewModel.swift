@@ -33,6 +33,7 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     @Published var scrollID: Int?
     @Published var isLoading: Bool = true
     @Published var isLoading1: Bool = true
+    @Published var isLoadingRecents: Bool = true
         
     @Published var searchIsActive = false
     @Published var searchIsActiveAll = false
@@ -137,7 +138,21 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
 
     func loadAllData() {
         loadAllRecipes()
+        loadRecents()
         keyWords = model.loadKeyWords()
+    }
+    
+    func loadRecents() {
+        recentRecipes = []
+        let arrayOfRecentsID = UserDefaults.standard.array(forKey: "recentsID") as? [Int] ?? []
+        for id in arrayOfRecentsID {
+            model.findRecipe(id: id) { [weak self] result in
+                self?.recentRecipes.append(result)
+                DispatchQueue.main.async {
+                    self?.isLoadingRecents = false
+                }
+            }
+        }
     }
     
     func sortKeyWordsByChoose() {
@@ -195,4 +210,6 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
         if !notContains.isEmpty { return true }
         return false
     }
+    
+    
 }

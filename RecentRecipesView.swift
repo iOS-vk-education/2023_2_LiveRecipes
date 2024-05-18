@@ -17,61 +17,52 @@ struct RecentRecipesView: View {
     var body: some View {
             recipesView()
             .navigationTitle("recents.title".localized)
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button("", systemImage: "slider.horizontal.2.square") {
-                            viewModel.modalFiltersIsOpenFromRecents = true
-                        }
-                        .sheet(isPresented: $viewModel.modalFiltersIsOpenFromRecents) {
-                            Assembler.sharedAssembly
-                                .resolver
-                                .resolve(FiltersView.self)
-                           }
-                        .tint(.orange)
-                    }
-                }
-                .searchable(text: $searchText)
-                .searchPresentationToolbarBehavior(.avoidHidingContent)
-        .tint(.orange)
+            .navigationBarTitleDisplayMode(.inline)
+            .tint(.orange)
+            .searchable(text: $searchText)
+            .refreshable {
+                viewModel.isLoadingRecents = true
+                viewModel.loadRecents()
+            }
     }
     
     
     
     @ViewBuilder
     func recipesView() -> some View {
-        if (viewModel.recentRecipes.isEmpty) {
-            VStack {
-                Image(systemName: "clock.badge.questionmark")
-                    .resizable()
-                    .frame(width: 180, height: 155)
-                    .fontWeight(.semibold)
-                    .foregroundStyle(Color(UIColor.systemGray3))
-                    .padding(.bottom, 0)
-                    .padding(.leading, 25)
-                Text("recents.zero.message".localized)
-                    .fontWeight(.semibold)
-                    .foregroundStyle(Color(UIColor.systemGray3))
-                    .font(.title2)
-                    .padding(.bottom, 4)
-                Button {
-                    self.presentation.wrappedValue.dismiss()
-                } label: {
-                    Text("recents.torecipes.button".localized)
-                        .fontWeight(.semibold)
-                }
-            }
-            .padding(.bottom, 30)
+        if (viewModel.isLoadingRecents) {
+            ProgressView()
         } else {
-            GeometryReader {proxy in
+            if (viewModel.recentRecipes.isEmpty) {
+                VStack {
+                    Image(systemName: "clock.badge.questionmark")
+                        .resizable()
+                        .frame(width: 180, height: 155)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(Color(UIColor.systemGray3))
+                        .padding(.bottom, 0)
+                        .padding(.leading, 25)
+                    Text("recents.zero.message".localized)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(Color(UIColor.systemGray3))
+                        .font(.title2)
+                        .padding(.bottom, 4)
+                    Button {
+                        self.presentation.wrappedValue.dismiss()
+                    } label: {
+                        Text("recents.torecipes.button".localized)
+                            .fontWeight(.semibold)
+                    }
+                }
+                .padding(.bottom, 30)
+            } else {
                 ScrollView() {
                     LazyVStack(spacing: 12) {
-                        ForEach(viewModel.foundRecipes, id: \.self) { recipe in
-                            RecipeBigCardView(recipe: recipe, proxy: proxy)
+                        ForEach(viewModel.recentRecipes, id: \.self) { recipe in
+                            RecipeBigCardView(recipe: recipe)
                         }
                     }
                 }
-                
                 .scrollIndicators(.hidden)
                 .contentMargins(.horizontal, 12)
             }

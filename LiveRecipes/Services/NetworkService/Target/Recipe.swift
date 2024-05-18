@@ -156,9 +156,14 @@ protocol RecipeAPIProtocol {
     func getRecipesToTime(type: NameToTime, name: String, completionHandler: @escaping (Result<[RecipePreviewDTO], NSError>) -> Void)
     func getRecipeById(id: Int, completionHandler: @escaping (Result<RecipeDTO, NSError>) -> Void)
     func getRecipesByFilter(query: String, keyWords: [String], duration: Int, calories: String, contains: [String], notContains: [String], completionHandler: @escaping (Result<[RecipePreviewDTO], NSError>) -> Void)
+    func getRecipeByIdToMain(id: Int, completionHandler: @escaping (Result<RecipePreviewDTO, NSError>) -> Void)
 }
 
 class RecipeAPI: BaseAPI<RecipeTarget>, RecipeAPIProtocol {
+    func getRecipeByIdToMain(id: Int, completionHandler: @escaping (Result<RecipePreviewDTO, NSError>) -> Void) {
+        fetchData(target: .getById(id: id), responseClass: RecipePreviewDTO.self) { result in completionHandler(result) }
+    }
+    
     func getToTime(name: NameToTime, completionHandler: @escaping (Result<[RecipePreviewDTO], NSError>) -> Void) {
         fetchData(target: .getToTime(name: name), responseClass: [RecipePreviewDTO].self) { result in
             completionHandler(result)

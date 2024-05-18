@@ -9,7 +9,6 @@ import SwiftUI
 
 struct RecipeBigCardView: View {
     @State var recipe: RecipePreviewDTO
-    var proxy: GeometryProxy
     
     var body: some View {
         NavigationLink(destination: {
@@ -18,10 +17,10 @@ struct RecipeBigCardView: View {
             ZStack(alignment: .topTrailing) {
                 VStack (spacing: 0) {
                     if let data = Data(base64Encoded: recipe.photo), let image = UIImage(data: data) {
-                        Image(uiImage: UIImage(data: Data(base64Encoded: recipe.photo)!)!)
+                        Image(uiImage: image)
                             .resizable()
                             .scaledToFill()
-                            .frame(width: proxy.size.width - 24, height: 170)
+                            .frame(width: UIScreen.main.bounds.width - 24, height: 170)
                             .clipped()
                     }
                     VStack {
@@ -48,9 +47,9 @@ struct RecipeBigCardView: View {
                         .padding(.horizontal, 8)
 
                     }
-                    .frame(width: proxy.size.width - 24, height: 60)
+                    .frame(width: UIScreen.main.bounds.width - 24, height: 60)
                 }
-                .frame(width: proxy.size.width - 24, height: 230)
+                .frame(width: UIScreen.main.bounds.width - 24, height: 230)
                 .background(Color(UIColor.secondarySystemBackground))
                 .clipShape(.rect(cornerRadius: 8))
                 .tint(.black)
