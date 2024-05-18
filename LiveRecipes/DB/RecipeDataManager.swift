@@ -11,11 +11,7 @@ import CoreData
 protocol RecipeDataManagerDescription {
     func create(dish: Dish, completion: @escaping() -> Void)
     func fetch(completion: @escaping([Dish]) -> Void)
-    /*func fetch<T: NSManagedObject>(request: NSFetchRequest<T>) -> [T]
-    func count<T: NSManagedObject>(request: NSFetchRequest<T>) -> Int
-    func delete<T: NSManagedObject>(request: NSFetchRequest<T>)
-    func deleteAll(request: NSFetchRequest<NSFetchRequestResult>)
-    func update<T: NSManagedObject>(request: NSFetchRequest<T>, configurationBlock: @escaping (T) -> ())*/
+    func delete(id: Int, completion: @escaping (Bool) -> Void)
     func deleteAll(completion: @escaping() -> Void)
     func prepareCoreDataIfNeeded(completion: (() -> ())?)
     var viewContext: NSManagedObjectContext { get }
@@ -128,14 +124,6 @@ final class RecipeDataManager: RecipeDataManagerDescription {
             completion([])
         }
     }
-    /*func deleteAll(completion: @escaping () -> Void) {
-        let batchRequest = NSBatchDeleteRequest(fetchRequest: CreationRecipeEntity.fetchRequest())
-        viewContext.performAndWait {
-            _ = try? viewContext.execute(batchRequest)
-            try? viewContext.save()
-            completion()
-        }
-    }*/
     func deleteAll(completion: @escaping () -> Void) {
         let fetchRequest: NSFetchRequest<CreationRecipeEntity> = CreationRecipeEntity.fetchRequest()
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
@@ -146,6 +134,21 @@ final class RecipeDataManager: RecipeDataManagerDescription {
         } catch {
             print("Error deleting all CreationRecipeEntity entities: \(error)")
             completion()
+        }
+    }
+    func delete(id: Int, completion: @escaping (Bool) -> Void) {
+        let fetchRequest: NSFetchRequest<CreationRecipeEntity> = CreationRecipeEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %d", id)
+        do {
+            let results = try viewContext.fetch(fetchRequest)
+            for object in results {
+                viewContext.delete(object)
+            }
+            try viewContext.save()
+            completion(true)
+        } catch {
+            print("Error deleting CreationRecipeEntity entities with ID \(id): \(error)")
+            completion(false)
         }
     }
 }
