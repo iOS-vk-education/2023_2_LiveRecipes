@@ -161,6 +161,10 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     func loadRecents() {
         recentRecipes = []
         let arrayOfRecentsID = UserDefaults.standard.array(forKey: "recentsID") as? [Int] ?? []
+        if arrayOfRecentsID.isEmpty {
+            isLoadingRecents = false
+            return
+        }
         for id in arrayOfRecentsID {
             model.findRecipe(id: id) { [weak self] result in
                 self?.recentRecipes.append(result)
