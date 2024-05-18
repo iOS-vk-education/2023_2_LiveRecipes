@@ -10,16 +10,26 @@ import Foundation
 
 final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     var model: RecipesModelProtocol
+    
+    //результаты поиска
     @Published var foundRecipes: [RecipePreviewDTO] = []
     @Published var foundRecipesToTime: [RecipePreviewDTO] = []
+    @Published var foundRecipesRecentsLocal: [RecipePreviewDTO] = []
     
+    //поиск
     @Published var searchQuery = ""
     @Published var searchQueryAll = ""
     @Published var searchQueryToTime = ""
+    @Published var searchQueryLocalRecents = ""
+    @Published var searchIsActive = false
+    @Published var searchIsActiveAll = false
+    
+    //cook to time block
     @Published var type: NameToTime?
     @Published var isEmptyFoundToTime = false
     @Published var isEmptyToTime = false
     
+    //фильтры
     @Published var filtersIsActive = false
     @Published var keyWordsSearchArr: [String] = []
     @Published var duration: Double = 0
@@ -29,21 +39,23 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     @Published var contains: [String] = []
     @Published var notContains: [String] = []
     
+    //лента во всех рецептах
     @Published var pageAll = 1
     @Published var scrollID: Int?
+    
+    //отслеживание загрузки
     @Published var isLoading: Bool = true
     @Published var isLoading1: Bool = true
     @Published var isLoadingRecents: Bool = true
         
-    @Published var searchIsActive = false
-    @Published var searchIsActiveAll = false
-    
+    //данные
     @Published var keyWords: [KeyWord] = []
     @Published var allRecipes: [RecipePreviewDTO] = []
     @Published var recentRecipes: [RecipePreviewDTO] = []
     @Published var myRecipes: [RecipePreviewDTO] = []
     @Published var recipesForTime: [RecipePreviewDTO] = []
     
+    //работа с модальным окном фильтров
     @Published var modalFiltersIsOpenFromMain: Bool = false
     @Published var modalFiltersIsOpenFromAll: Bool = false
     @Published var modalFiltersIsOpenFromRecents: Bool = false
@@ -211,5 +223,8 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
         return false
     }
     
+    func findLocalRecents() {
+        foundRecipesRecentsLocal = recentRecipes.filter({ $0.name.localizedStandardContains(searchQueryLocalRecents) })
+    }
     
 }

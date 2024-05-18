@@ -11,18 +11,22 @@ import Swinject
 struct RecentRecipesView: View {
     @StateObject var viewModel: RecipesViewModel
     @Environment(\.presentationMode) var presentation
-    @State var recentRecipes: [RecipePreviewDTO] = []
-    @State var searchText = ""
     
     var body: some View {
             recipesView()
             .navigationTitle("recents.title".localized)
             .navigationBarTitleDisplayMode(.inline)
             .tint(.orange)
-            .searchable(text: $searchText)
+            .searchable(text: $viewModel.searchQueryLocalRecents)
             .refreshable {
                 viewModel.isLoadingRecents = true
                 viewModel.loadRecents()
+            }
+            .onChange(of: viewModel.searchQueryLocalRecents) { _, _ in
+                viewModel.findLocalRecents()
+            }
+            .onSubmit(of: .search) {
+                viewModel.findLocalRecents()
             }
     }
     
@@ -56,15 +60,31 @@ struct RecentRecipesView: View {
                 }
                 .padding(.bottom, 30)
             } else {
-                ScrollView() {
-                    LazyVStack(spacing: 12) {
-                        ForEach(viewModel.recentRecipes, id: \.self) { recipe in
-                            RecipeBigCardView(recipe: recipe)
+                if (viewModel.searchQueryLocalRecents == "") {
+                    ScrollView() {
+                        LazyVStack(spacing: 12) {
+                            ForEach(viewModel.recentRecipes, id: \.self) { recipe in
+                                RecipeBigCardView(recipe: recipe)
+                            }
                         }
                     }
+                    .scrollIndicators(.hidden)
+                    .contentMargins(.horizontal, 12)
+                } else {
+                    if (viewModel.foundRecipesRecentsLocal.isEmpty) {
+                        Text("allrecipes.errorFound.message".localized)
+                    } else {
+                        ScrollView() {
+                            LazyVStack(spacing: 12) {
+                                ForEach(viewModel.foundRecipesRecentsLocal, id: \.self) { recipe in
+                                    RecipeBigCardView(recipe: recipe)
+                                }
+                            }
+                        }
+                        .scrollIndicators(.hidden)
+                        .contentMargins(.horizontal, 12)
+                    }
                 }
-                .scrollIndicators(.hidden)
-                .contentMargins(.horizontal, 12)
             }
         }
     }
