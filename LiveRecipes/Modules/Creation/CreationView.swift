@@ -48,6 +48,9 @@ struct CreationView: View {
             stepView()
             buttonView()
         }
+        .onAppear {
+            viewState.showDishes()
+        }
         .navigationTitle("creation.title".localized)
         .toolbarBackground(.visible, for: .navigationBar)
         .navigationBarTitleDisplayMode(.inline)

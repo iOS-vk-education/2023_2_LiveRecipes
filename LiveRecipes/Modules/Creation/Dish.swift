@@ -7,7 +7,16 @@
 
 import UIKit
 
-class Dish: Identifiable {
+class Dish: Identifiable, Hashable {
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    static func == (lhs: Dish, rhs: Dish) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
     var id: Int?//если еще нет в базе данных, в процесе создания
     var title: String
     var description: String
@@ -25,6 +34,12 @@ class Dish: Identifiable {
         self.nutritionValue = nutritionValue
         self.dishComposition = dishComposition
         self.dishSteps = dishSteps
+    }
+    
+    var recipePreviewDTO: RecipePreviewDTO {
+        let photoData = photo?.jpegData(compressionQuality: 0.4)
+        let photoDataBase64 = photoData?.base64EncodedString() ?? ""
+        return RecipePreviewDTO(name: title, duration: timeToPrepare, tag: "", photo: photoDataBase64, id: id ?? 0)
     }
 
     var recipeDTO: RecipeDTO {
@@ -72,4 +87,5 @@ class Dish: Identifiable {
         }
             
     }
+    
 }

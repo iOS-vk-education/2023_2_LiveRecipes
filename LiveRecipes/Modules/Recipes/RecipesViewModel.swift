@@ -52,7 +52,7 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     @Published var keyWords: [KeyWord] = []
     @Published var allRecipes: [RecipePreviewDTO] = []
     @Published var recentRecipes: [RecipePreviewDTO] = []
-    @Published var myRecipes: [RecipePreviewDTO] = []
+    @Published var myRecipes: [Dish] = []
     @Published var recipesForTime: [RecipePreviewDTO] = []
     
     //работа с модальным окном фильтров
@@ -92,6 +92,15 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
                     .store(in: &cancellables)
 
         loadAllData()
+        findMyRecipes()
+    }
+    
+    func deleteMyRecipe(id: Int) -> Void {
+        RecipeDataManager.shared.delete(id: id) { _ in }
+    }
+    
+    func findMyRecipes() {
+        myRecipes = model.getMyRecipes()
     }
 
     func findRecipes() {

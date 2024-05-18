@@ -8,12 +8,12 @@
 import Foundation
 
 protocol FavoritesViewModelProtocol {
-    
+    func deleteFromFavorites(id: Int) -> Void 
+    func loadData() -> Void 
 }
 
 protocol FavoritesModelProtocol {
-    func loadAllRecipes() -> [RecipePreviewDTO]
-    func loadMyRecipes() -> [RecipePreviewDTO]
+    func loadFavorites() -> [Dish]
 }
 
 protocol FavoritesViewProtocol {}

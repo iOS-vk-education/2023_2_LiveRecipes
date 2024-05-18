@@ -11,6 +11,7 @@ import SwiftUI
 protocol RecipesViewModelProtocol {}
 
 protocol RecipesModelProtocol {
+    func getMyRecipes() -> [Dish]
     func findRecipe(name: String, completion: @escaping ([RecipePreviewDTO])->Void)
     func findRecipesToTime(type: NameToTime, name: String, completion: @escaping ([RecipePreviewDTO]) -> Void)
     func loadKeyWords() -> [KeyWord]
