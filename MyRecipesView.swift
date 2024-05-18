@@ -60,18 +60,15 @@ struct MyRecipesView: View {
             }
             .padding(.bottom, 30)
         } else {
-            GeometryReader {proxy in
-                ScrollView() {
-                    LazyVStack(spacing: 12) {
-                        ForEach(viewModel.foundRecipes, id: \.self) { recipe in
-                            RecipeBigCardView(recipe: recipe, proxy: proxy)
-                        }
+            ScrollView() {
+                LazyVStack(spacing: 12) {
+                    ForEach(viewModel.foundRecipes, id: \.self) { recipe in
+                        RecipeBigCardView(recipe: recipe)
                     }
                 }
-                
-                .scrollIndicators(.hidden)
-                .contentMargins(.horizontal, 12)
             }
+            .scrollIndicators(.hidden)
+            .contentMargins(.horizontal, 12)
         }
     }
 }

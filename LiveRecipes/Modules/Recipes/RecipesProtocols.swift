@@ -17,6 +17,7 @@ protocol RecipesModelProtocol {
     func getAllRecipes(page: Int, completion: @escaping([RecipePreviewDTO]) -> Void)
     func getToTimeRecipes(name: NameToTime, completion: @escaping([RecipePreviewDTO]) -> Void)
     func findRecipesByFilter(query: String, keyWords: [String], duration: Int, calories: String, contains: [String], notContains: [String], completion: @escaping ([RecipePreviewDTO]) -> Void)
+    func findRecipe(id: Int, completion: @escaping (RecipePreviewDTO)->Void)
 }
 
 protocol RecipesViewProtocol {}

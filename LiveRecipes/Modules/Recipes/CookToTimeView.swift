@@ -27,19 +27,6 @@ struct CookToTimeView: View {
             }
             .navigationTitle((viewModel.type ?? .breakfast).title)
             .navigationBarTitleDisplayMode(.inline)
-//            .toolbar {
-//                ToolbarItem(placement: .topBarTrailing) {
-//                    Button("", systemImage: "slider.horizontal.2.square") {
-//                        viewModel.modalFiltersIsOpenFromTime = true
-//                    }
-//                    .sheet(isPresented: $viewModel.modalFiltersIsOpenFromTime) {
-//                        Assembler.sharedAssembly
-//                            .resolver
-//                            .resolve(FiltersView.self)
-//                    }
-//                    .tint(.orange)
-//                }
-//            }
             .searchable(text: $viewModel.searchQueryToTime)
             .searchPresentationToolbarBehavior(.avoidHidingContent)
             .onChange(of: viewModel.searchQueryToTime, { _, _ in
@@ -64,7 +51,7 @@ struct CookToTimeView: View {
                         ScrollView() {
                             LazyVStack(spacing: 12) {
                                 ForEach(viewModel.recipesForTime, id: \.self) { recipe in
-                                    RecipeBigCardView(recipe: recipe, proxy: proxy)
+                                    RecipeBigCardView(recipe: recipe)
                                 }
                             }
                         }
@@ -81,7 +68,7 @@ struct CookToTimeView: View {
                         ScrollView() {
                             LazyVStack(spacing: 12) {
                                 ForEach(viewModel.foundRecipesToTime, id: \.self) { recipe in
-                                    RecipeBigCardView(recipe: recipe, proxy: proxy)
+                                    RecipeBigCardView(recipe: recipe)
                                 }
                             }
                         }

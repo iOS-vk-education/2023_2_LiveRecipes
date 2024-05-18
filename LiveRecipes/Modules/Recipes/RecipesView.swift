@@ -33,7 +33,7 @@ struct RecipesView: View {
                                 if !viewModel.foundRecipes.isEmpty {
                                     LazyVStack {
                                         ForEach (viewModel.foundRecipes) { recipe in
-                                            RecipeBigCardView(recipe: recipe, proxy: proxy)
+                                            RecipeBigCardView(recipe: recipe)
                                         }
                                     }
                                 } else {
@@ -45,6 +45,8 @@ struct RecipesView: View {
                     }
                 }
                 .refreshable(action: {
+                    viewModel.isLoadingRecents = true
+                    viewModel.loadRecents()
                     if viewModel.searchQuery == "" && !viewModel.isFilterActive() {
                         viewModel.isLoading1 = true
                         viewModel.loadAllRecipes()
@@ -154,14 +156,18 @@ struct RecipesView: View {
     func titleButtonOfBlock(blockName: String) -> some View {
         HStack {
             Text(blockName)
-            Image(systemName: "chevron.right")
-            .imageScale(.small)
+                .imageScale(.small)
+                .tint(.black)
+                .font(.title3)
+                .fontWeight(.light)
+                .padding(.leading, 20)
             Spacer()
+            Text("more.titleBlock.main".localized)
+                .tint(.orange)
+                .font(.caption)
+                .padding(.trailing, 20)
         }
-            .tint(.black)
-            .font(.title3)
-            .fontWeight(.light)
-            .padding(.leading, 20)
+        .padding(0)
     }
     
     @ViewBuilder
@@ -231,27 +237,32 @@ struct RecipesView: View {
                 .resolver
                 .resolve(RecentRecipesView.self)
         }, label: {titleButtonOfBlock(blockName: "recipes.recents.button".localized)})
-        .padding(.top, 8)
-        if (viewModel.recentRecipes.isEmpty) {
-            VStack(spacing: 10) {
-                Text("recipes.recents.zero.message".localized)
-                Text("recipes.recents.zero.info".localized)
-                    .font(.caption2)
-                    .multilineTextAlignment(.center)
-            }
-            .frame(width: 220, height: 100)
-            .background(Color(UIColor.secondarySystemBackground))
-            .clipShape(.rect(cornerRadius: 8))
+        .padding(.top, 12)
+        if (viewModel.isLoadingRecents) {
+            ProgressView()
+                .frame(height: 170)
         } else {
-            ScrollView(.horizontal) {
-                LazyHStack(spacing: 12) {
-                    ForEach (viewModel.recentRecipes, id: \.self) { recipe in
-                        RecipeCardView(recipe: recipe)
+            if (viewModel.recentRecipes.isEmpty) {
+                VStack(spacing: 10) {
+                    Text("recipes.recents.zero.message".localized)
+                    Text("recipes.recents.zero.info".localized)
+                        .font(.caption2)
+                        .multilineTextAlignment(.center)
+                }
+                .frame(width: 220, height: 170)
+                .background(Color(UIColor.secondarySystemBackground))
+                .clipShape(.rect(cornerRadius: 8))
+            } else {
+                ScrollView(.horizontal) {
+                    LazyHStack(spacing: 12) {
+                        ForEach (viewModel.recentRecipes, id: \.self) { recipe in
+                            RecipeCardView(recipe: recipe)
+                        }
                     }
                 }
+                .scrollIndicators(.hidden)
+                .contentMargins(.horizontal, 12)
             }
-            .scrollIndicators(.hidden)
-            .contentMargins(.horizontal, 12)
         }
     }
     

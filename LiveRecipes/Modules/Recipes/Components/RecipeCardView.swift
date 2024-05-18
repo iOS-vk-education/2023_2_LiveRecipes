@@ -13,7 +13,7 @@ struct RecipeCardView: View {
 
     var body: some View {
         NavigationLink(destination: {
-            OneDishView(viewState: OneDishViewModel(oneDishModel: OneDishModel(), id: recipe.id))//??
+            OneDishView(viewState: OneDishViewModel(oneDishModel: OneDishModel(), id: recipe.id))
         }, label: {
             ZStack (alignment: .topTrailing){
                 VStack (spacing: 0) {
