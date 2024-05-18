@@ -1099,6 +1099,23 @@
     "Minutes" : {
 
     },
+    "more.titleBlock.main" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "more..."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "ещё..."
+          }
+        }
+      }
+    },
     "myrecipes.title" : {
       "extractionState" : "manual",
       "localizations" : {

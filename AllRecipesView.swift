@@ -61,7 +61,7 @@ struct AllRecipesView: View {
                         ScrollView() {
                             LazyVStack(spacing: 12) {
                                 ForEach(viewModel.allRecipes) { recipe in
-                                    RecipeBigCardView(recipe: recipe, proxy: proxy)
+                                    RecipeBigCardView(recipe: recipe)
                                 }
                             }
                             .scrollTargetLayout()
@@ -85,7 +85,7 @@ struct AllRecipesView: View {
                         ScrollView {
                             LazyVStack(spacing: 12) {
                                 ForEach(viewModel.foundRecipes, id: \.self) { recipe in
-                                    RecipeBigCardView(recipe: recipe, proxy: proxy)
+                                    RecipeBigCardView(recipe: recipe)
                                 }
                             }
                         }

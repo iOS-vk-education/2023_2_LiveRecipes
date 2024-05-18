@@ -236,6 +236,9 @@ struct OneDishView: View {
                             Spacer()
                         }.frame(width: 200, height: 35)
                     }
+                    .simultaneousGesture(TapGesture().onEnded{
+                        viewState.updateRecentsID(recipe: viewState.foundRecipe)
+                    })
                 }.buttonStyle(.borderedProminent)
                     .tint(.orange)
                     .opacity(isScrollDown ? 1.0 : 0.0)
