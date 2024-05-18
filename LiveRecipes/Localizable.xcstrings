@@ -784,7 +784,14 @@
       }
     },
     "Delete" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить"
+          }
+        }
+      }
     },
     "favorites" : {
       "extractionState" : "manual",

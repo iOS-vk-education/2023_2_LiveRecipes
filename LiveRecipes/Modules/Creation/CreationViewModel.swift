@@ -60,6 +60,10 @@ final class CreationViewModel: ObservableObject, CreationViewModelProtocol {
             dishSteps.remove(at: index)
         }
     }
+    func showDishes() {
+        self.model.showRecipesInDB()
+    }
+    
     func createDish(textTitle: String,
                     textDescription: String,
                     timeToPrepare: Int,

@@ -291,7 +291,7 @@ struct RecipesView: View {
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 12) {
                     ForEach (viewModel.myRecipes, id: \.self) { recipe in
-                        RecipeCardView(recipe: recipe)
+                        RecipeCardView(recipe: recipe.recipePreviewDTO)
                     }
                 }
             }
