@@ -44,6 +44,7 @@ struct OneDishView: View {
                                     .font(.system(size: 20))
                                     .fontWeight(.semibold)
                                     .padding(.bottom, 5)
+                                    .multilineTextAlignment(.center)
                             
                             HStack {
                                 Image(systemName: "clock")
@@ -52,17 +53,24 @@ struct OneDishView: View {
                                     Text("oneDish.timeToCook".localized)
                                     if viewState.foundRecipe.decomposeDuration().0 != 0 {
                                         Text(" \(viewState.foundRecipe.decomposeDuration().0)")
-                                        Text(" дн ")
+                                        Text(" дн ".localized)
                                         Text("\(viewState.foundRecipe.decomposeDuration().1)")
-                                        Text(" ч ")
+                                        Text(" ч ".localized)
                                         Text("\(viewState.foundRecipe.decomposeDuration().2)")
-                                        Text(" мин ")
+                                        Text(" мин ".localized)
                                     }
                                     else {
-                                        Text(" \(viewState.foundRecipe.decomposeDuration().1)")
-                                        Text(" ч ")
-                                        Text("\(viewState.foundRecipe.decomposeDuration().2)")
-                                        Text(" мин ")
+                                        if viewState.foundRecipe.decomposeDuration().1 != 0 {
+                                            Text(" \(viewState.foundRecipe.decomposeDuration().1)")
+                                            Text(" ч ".localized)
+                                            Text("\(viewState.foundRecipe.decomposeDuration().2)")
+                                            Text(" мин ".localized)
+                                        }
+                                        else {
+                                            Text(" \(viewState.foundRecipe.decomposeDuration().2)")
+                                            Text(" мин ".localized)
+                                        }
+                                        
                                     }
                                 }
                                 Spacer()

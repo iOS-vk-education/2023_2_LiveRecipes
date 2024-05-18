@@ -62,6 +62,37 @@ struct TimerView: View {
         return (hours, minutes, seconds)
     }
     
+    func addNotification(time: Double, title: String, subtitle: String, body: String) {
+        let center = UNUserNotificationCenter.current()
+        
+        let addRequest = {
+            let content = UNMutableNotificationContent()
+            content.title = title
+            content.body = body
+            content.sound = UNNotificationSound.default
+    
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time, repeats: false)
+    
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+            center.add(request)
+            print("add")
+        }
+    
+        center.getNotificationSettings { settings in
+            if settings.authorizationStatus == .authorized {
+                addRequest()
+            } else {
+                center.requestAuthorization(options: [.alert, .badge, .sound]) { success, _ in
+                    if success {
+                        addRequest()
+                    } else {
+                        print("Authorization declined")
+                    }
+                }
+            }
+        }
+    }
+    
     func notify() -> Void {
         let content = UNMutableNotificationContent()
         content.title = "LiveRecipes"
@@ -168,6 +199,7 @@ struct TimerView: View {
                 Spacer()
                 
                 Button(action: {
+                    addNotification(time: 5, title: "Title", subtitle: "Sub", body: "body")
                     isTimerRunning.toggle()
                     if activityStarted {
                        // updateActivity()

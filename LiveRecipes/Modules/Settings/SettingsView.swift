@@ -26,10 +26,6 @@ struct SettingsView: View {
                                 print("everything is deleted")
                             }
                         }
-                    Text("settings.clearList".localized)
-                        .onTapGesture {
-                            print("settings.clearList".localized)
-                        }
                     NavigationLink(destination: CreationView(viewState: creationViewModel), isActive: $isShowingCreationView, label: {
                         Text("settings.publishMyRecipe".localized)
                             .onTapGesture {

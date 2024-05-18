@@ -116,7 +116,6 @@
 		D093B7322BF2920800C2F6C4 /* CreationRecipeStepEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D093B72C2BF2920800C2F6C4 /* CreationRecipeStepEntity+CoreDataProperties.swift */; };
 		D093B7332BF2920800C2F6C4 /* CreationRecipeEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D093B72D2BF2920800C2F6C4 /* CreationRecipeEntity+CoreDataClass.swift */; };
 		D093B7342BF2920800C2F6C4 /* CreationRecipeEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D093B72E2BF2920800C2F6C4 /* CreationRecipeEntity+CoreDataProperties.swift */; };
-		D09CFB572BEAAADE00E341AD /* ListDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09CFB562BEAAADD00E341AD /* ListDataManager.swift */; };
 		D0B36AD52BCA9B1A00D8826D /* CreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B36AD42BCA9B1A00D8826D /* CreationViewController.swift */; };
 		D0FA9E132BCFF2DE0010F42B /* ListRecipeItemEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FA9E092BCFF2DE0010F42B /* ListRecipeItemEntity+CoreDataClass.swift */; };
 		D0FA9E142BCFF2DE0010F42B /* ListRecipeItemEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FA9E0A2BCFF2DE0010F42B /* ListRecipeItemEntity+CoreDataProperties.swift */; };
@@ -180,6 +179,7 @@
 		745DA4DA2BC889DD00BE4C5D /* OneStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneStepView.swift; sourceTree = "<group>"; };
 		748A53C22BF38FFF008063EE /* OneStepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneStepViewModel.swift; sourceTree = "<group>"; };
 		748A53C42BF390BD008063EE /* TabSelectionManagerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionManagerAssembly.swift; sourceTree = "<group>"; };
+		748A53C72BF3D967008063EE /* LiveRecipes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LiveRecipes.entitlements; sourceTree = "<group>"; };
 		74BF32C72BEF92B100C946D5 /* TimerActivityWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TimerActivityWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		74BF32C82BEF92B100C946D5 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		74BF32CA2BEF92B100C946D5 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -273,7 +273,6 @@
 		D093B72C2BF2920800C2F6C4 /* CreationRecipeStepEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreationRecipeStepEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D093B72D2BF2920800C2F6C4 /* CreationRecipeEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreationRecipeEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D093B72E2BF2920800C2F6C4 /* CreationRecipeEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreationRecipeEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		D09CFB562BEAAADD00E341AD /* ListDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataManager.swift; sourceTree = "<group>"; };
 		D0B36AD42BCA9B1A00D8826D /* CreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationViewController.swift; sourceTree = "<group>"; };
 		D0FA9E092BCFF2DE0010F42B /* ListRecipeItemEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListRecipeItemEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D0FA9E0A2BCFF2DE0010F42B /* ListRecipeItemEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListRecipeItemEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -410,6 +409,7 @@
 		C0EA6C262BB85A9100995C49 /* LiveRecipes */ = {
 			isa = PBXGroup;
 			children = (
+				748A53C72BF3D967008063EE /* LiveRecipes.entitlements */,
 				74BF32E22BEFD61000C946D5 /* Info.plist */,
 				D02D7EE82BCD79300056DC33 /* FileManager */,
 				D0596F912BC7FBB800A1BF50 /* DB */,
@@ -629,7 +629,6 @@
 				D0596F922BC7FC3B00A1BF50 /* LiveRecipesDB.xcdatamodeld */,
 				D0596F952BC7FCA200A1BF50 /* CoreDataManager.swift */,
 				D01FA38A2BE3AE2600890D71 /* RecipeDataManager.swift */,
-				D09CFB562BEAAADD00E341AD /* ListDataManager.swift */,
 			);
 			path = DB;
 			sourceTree = "<group>";
@@ -862,7 +861,6 @@
 				660E205A2BC6D1FB00BB23AA /* FiltersView.swift in Sources */,
 				745DA4DB2BC889DD00BE4C5D /* OneStepView.swift in Sources */,
 				C0EA6C962BB85AED00995C49 /* RecipeDTO.swift in Sources */,
-				D09CFB572BEAAADE00E341AD /* ListDataManager.swift in Sources */,
 				C0EA6CA62BB85AED00995C49 /* CookingView.swift in Sources */,
 				745DA4D32BB862BF00BE4C5D /* OneDishModel.swift in Sources */,
 				C0EA6C9C2BB85AED00995C49 /* ApplicationViewBuilder.swift in Sources */,
@@ -1169,6 +1167,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = LiveRecipes/LiveRecipes.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LiveRecipes/Preview Content\"";
@@ -1205,6 +1204,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = LiveRecipes/LiveRecipes.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LiveRecipes/Preview Content\"";

@@ -80,11 +80,13 @@ struct IngredientRunningTextView2: View {
         .onAppear {
             withAnimation(.bouncy(duration: duration)) {
                 if startX < 0 {
+                    //computedFinishX = (340) / 2 - 8
                     computedFinishX = (UIScreen.main.bounds.width - getWidth(for: text) - 25) / 2 - 8
                     
                 }
                 else {
                     computedFinishX = -((UIScreen.main.bounds.width - getWidth(for: text) - 25) / 2 - 8)
+                    //computedFinishX = -((340) / 2 - 8)
                 }
             }
             }
