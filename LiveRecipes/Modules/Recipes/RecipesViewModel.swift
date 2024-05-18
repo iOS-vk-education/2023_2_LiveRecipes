@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import SwiftUI
 
 final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     var model: RecipesModelProtocol
@@ -251,5 +252,39 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
             favoritesID.removeAll { $0 == recipe.id }
             UserDefaults.standard.set(favoritesID, forKey: "favoritesID")
         }
+    }
+    func saveToCoreDataFavorites(recipe: RecipePreviewDTO) {
+        model.findRecipeForCoreData(id: recipe.id) { [weak self] result in
+            guard let data = Data(base64Encoded: recipe.photo) else { return }
+            let image = UIImage(data: data)
+            var dishComposition: [DishComposition] = []
+            for i in result.ingredients.indices {
+                dishComposition.append(DishComposition(id: i,
+                                                       product: result.ingredients[i],
+                                                       quantity: ""))
+            }
+            var dishSteps: [DishStep] = []
+            for i in result.steps.indices {
+                guard let datastep = Data(base64Encoded: result.steps[i][1]) else { return }
+                let imagestep = UIImage(data: datastep)
+                dishSteps.append(DishStep(id: i,
+                                          title: result.steps[i][0],
+                                          description: result.steps[i][2],
+                                          photo: imagestep))
+            }
+            CoreDataManager().createRecipe(dish: Dish(id: result.id,
+                                                      title: result.name,
+                                                      description: result.description,
+                                                      photo: image,
+                                                      timeToPrepare: result.duration,
+                                                      nutritionValue: Nutrition(bzy: result.bzy),
+                                                      dishComposition: dishComposition,
+                                                      dishSteps: dishSteps)) {
+                print("success")
+            }
+        }
+    }
+    func deleteFromCoreDataFavorites(recipe: RecipePreviewDTO) {
+        
     }
 }

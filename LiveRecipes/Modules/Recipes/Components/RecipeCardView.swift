@@ -64,8 +64,10 @@ struct RecipeCardView: View {
                         .gesture(TapGesture().onEnded({ _ in
                             if (recipe.isInFavorites ?? viewModel.isSaved(recipe: recipe)) {
                                 viewModel.deleteIdFromFavorites(recipe: recipe)
+                                viewModel.deleteFromCoreDataFavorites(recipe: recipe)
                             } else {
                                 viewModel.saveIdToFavorites(recipe: recipe)
+                                viewModel.saveToCoreDataFavorites(recipe: recipe)
                             }
                             recipe.changeStateOfFavorites()
                         }))
