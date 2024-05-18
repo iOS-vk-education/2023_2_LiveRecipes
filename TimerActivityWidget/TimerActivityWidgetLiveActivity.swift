@@ -106,7 +106,6 @@ struct TimerActivityWidgetLiveActivity: Widget {
                             .foregroundStyle(.green)
                         .padding(.leading)
                         if let interval = context.state.interval {
-                            
                             ProgressView(timerInterval: interval, countsDown: true, label: {}, currentValueLabel: {})
                                 .tint(.orange)
                                 .foregroundStyle(.orange)
@@ -132,7 +131,7 @@ struct TimerActivityWidgetLiveActivity: Widget {
             } compactTrailing: {
                 
                 if let interval = context.state.interval {
-                    Text(timerInterval: interval)
+                    Text(timerInterval: interval, countsDown: false)
                         .foregroundStyle(.orange)
                         .multilineTextAlignment(.leading)
                         .frame(width: 40)

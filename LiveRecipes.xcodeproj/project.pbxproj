@@ -179,6 +179,7 @@
 		745DA4DA2BC889DD00BE4C5D /* OneStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneStepView.swift; sourceTree = "<group>"; };
 		748A53C22BF38FFF008063EE /* OneStepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneStepViewModel.swift; sourceTree = "<group>"; };
 		748A53C42BF390BD008063EE /* TabSelectionManagerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionManagerAssembly.swift; sourceTree = "<group>"; };
+		748A53C72BF3D967008063EE /* LiveRecipes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LiveRecipes.entitlements; sourceTree = "<group>"; };
 		74BF32C72BEF92B100C946D5 /* TimerActivityWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TimerActivityWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		74BF32C82BEF92B100C946D5 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		74BF32CA2BEF92B100C946D5 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -408,6 +409,7 @@
 		C0EA6C262BB85A9100995C49 /* LiveRecipes */ = {
 			isa = PBXGroup;
 			children = (
+				748A53C72BF3D967008063EE /* LiveRecipes.entitlements */,
 				74BF32E22BEFD61000C946D5 /* Info.plist */,
 				D02D7EE82BCD79300056DC33 /* FileManager */,
 				D0596F912BC7FBB800A1BF50 /* DB */,
@@ -1165,6 +1167,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = LiveRecipes/LiveRecipes.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LiveRecipes/Preview Content\"";
@@ -1201,6 +1204,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = LiveRecipes/LiveRecipes.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LiveRecipes/Preview Content\"";

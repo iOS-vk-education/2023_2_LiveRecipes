@@ -42,10 +42,16 @@ struct PrepareForCookingView: View {
                                 durationText += "cookingPrepare.minutes".localized
                             }
                             else {
-                                durationText += " \(recipe.decomposeDuration().1)"
-                                durationText += "cookingPrepare.hours".localized
-                                durationText += " \(recipe.decomposeDuration().2)"
-                                durationText += "cookingPrepare.minutes".localized
+                                if recipe.decomposeDuration().1 != 0 {
+                                    durationText += " \(recipe.decomposeDuration().1)"
+                                    durationText += "cookingPrepare.hours".localized
+                                    durationText += " \(recipe.decomposeDuration().2)"
+                                    durationText += "cookingPrepare.minutes".localized
+                                }
+                                else {
+                                    durationText += " \(recipe.decomposeDuration().2)"
+                                    durationText += "cookingPrepare.minutes".localized
+                                }
                             }
                         }
                     TransperentBlur()
