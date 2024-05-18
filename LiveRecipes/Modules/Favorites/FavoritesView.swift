@@ -66,7 +66,9 @@ struct FavoritesView: View {
                 ScrollView() {
                     LazyVStack(spacing: 12) {
                         ForEach(viewState.allRecipes, id: \.self) { recipe in
-                            RecipeBigCardView(recipe: recipe)
+                            Assembler.sharedAssembly
+                                .resolver
+                                .resolve(RecipeBigCardView.self, argument: recipe)
                         }
                     }
                 }
@@ -137,7 +139,9 @@ struct FavoritesView: View {
                     LazyVStack(spacing: 12) {
                         ForEach(viewState.myRecipes, id: \.self) { recipe in
                             withAnimation(.easeInOut) {
-                                RecipeBigCardView(recipe: recipe)
+                                Assembler.sharedAssembly
+                                    .resolver
+                                    .resolve(RecipeBigCardView.self, argument: recipe)
                             }
                         }
                     }

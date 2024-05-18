@@ -33,7 +33,9 @@ struct RecipesView: View {
                                 if !viewModel.foundRecipes.isEmpty {
                                     LazyVStack {
                                         ForEach (viewModel.foundRecipes) { recipe in
-                                            RecipeBigCardView(recipe: recipe)
+                                            Assembler.sharedAssembly
+                                                .resolver
+                                                .resolve(RecipeBigCardView.self, argument: recipe)
                                         }
                                     }
                                 } else {
@@ -192,8 +194,10 @@ struct RecipesView: View {
             } else {
                 ScrollView(.horizontal) {
                     LazyHStack(spacing: 12) {
-                        ForEach (viewModel.allRecipes, id: \.self) { recipie in
-                            RecipeCardView(recipe: recipie)
+                        ForEach (viewModel.allRecipes, id: \.self) { recipe in
+                            Assembler.sharedAssembly
+                                .resolver
+                                .resolve(RecipeCardView.self, argument: recipe)
                         }
                     }
                 }
@@ -256,7 +260,9 @@ struct RecipesView: View {
                 ScrollView(.horizontal) {
                     LazyHStack(spacing: 12) {
                         ForEach (viewModel.recentRecipes, id: \.self) { recipe in
-                            RecipeCardView(recipe: recipe)
+                            Assembler.sharedAssembly
+                                .resolver
+                                .resolve(RecipeCardView.self, argument: recipe)
                         }
                     }
                 }
@@ -291,7 +297,9 @@ struct RecipesView: View {
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 12) {
                     ForEach (viewModel.myRecipes, id: \.self) { recipe in
-                        RecipeCardView(recipe: recipe)
+                        Assembler.sharedAssembly
+                            .resolver
+                            .resolve(RecipeCardView.self, argument: recipe)
                     }
                 }
             }

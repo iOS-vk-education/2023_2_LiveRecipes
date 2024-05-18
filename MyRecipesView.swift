@@ -63,7 +63,9 @@ struct MyRecipesView: View {
             ScrollView() {
                 LazyVStack(spacing: 12) {
                     ForEach(viewModel.foundRecipes, id: \.self) { recipe in
-                        RecipeBigCardView(recipe: recipe)
+                        Assembler.sharedAssembly
+                            .resolver
+                            .resolve(RecipeBigCardView.self, argument: recipe)
                     }
                 }
             }

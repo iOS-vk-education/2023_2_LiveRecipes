@@ -43,6 +43,9 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     @Published var pageAll = 1
     @Published var scrollID: Int?
     
+    //для сохраненных
+    @Published var favoritesID: [Int] = []
+    
     //отслеживание загрузки
     @Published var isLoading: Bool = true
     @Published var isLoading1: Bool = true
@@ -227,4 +230,26 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
         foundRecipesRecentsLocal = recentRecipes.filter({ $0.name.localizedStandardContains(searchQueryLocalRecents) })
     }
     
+    func isSaved(recipe: RecipePreviewDTO) -> Bool {
+        favoritesID = UserDefaults.standard.array(forKey: "favoritesID") as? [Int] ?? []
+        if (favoritesID.contains(recipe.id)) {
+            return true
+        } else {
+            return false
+        }
+    }
+    func saveIdToFavorites(recipe: RecipePreviewDTO) {
+        favoritesID = UserDefaults.standard.array(forKey: "favoritesID") as? [Int] ?? []
+        if (!favoritesID.contains(recipe.id)) {
+            favoritesID.append(recipe.id)
+            UserDefaults.standard.set(favoritesID, forKey: "favoritesID")
+        }
+    }
+    func deleteIdFromFavorites(recipe: RecipePreviewDTO) {
+        favoritesID = UserDefaults.standard.array(forKey: "favoritesID") as? [Int] ?? []
+        if (favoritesID.contains(recipe.id)) {
+            favoritesID.removeAll { $0 == recipe.id }
+            UserDefaults.standard.set(favoritesID, forKey: "favoritesID")
+        }
+    }
 }
