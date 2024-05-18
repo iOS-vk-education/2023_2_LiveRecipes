@@ -26,6 +26,7 @@ struct CreationView: View {
     @State private var isStepModalOpen = false
     @State private var image: UIImage?
     @State private var isImagePickerOn: Bool = false
+    @State private var delId: String = ""
     
     var body: some View {
         List {
