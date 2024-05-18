@@ -11,6 +11,7 @@ import SwiftUI
 
 final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     var model: RecipesModelProtocol
+    var coreData = RecipeDataManager.shared
     
     //результаты поиска
     @Published var foundRecipes: [RecipePreviewDTO] = []
@@ -51,7 +52,7 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     @Published var isLoading: Bool = true
     @Published var isLoading1: Bool = true
     @Published var isLoadingRecents: Bool = true
-        
+    
     //данные
     @Published var keyWords: [KeyWord] = []
     @Published var allRecipes: [RecipePreviewDTO] = []
@@ -68,36 +69,36 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     @Published var modalKeyWordsIsOpen: Bool = false
     
     private var cancellables: Set<AnyCancellable> = []
-
+    
     init(recipesModel: RecipesModel) {
         self.model = recipesModel
         $searchQuery
-                    .debounce(for: .seconds(0.5), scheduler: DispatchQueue.global())
-                    .removeDuplicates()
-                    .sink { [weak self] _ in
-                        self?.findRecipesByFilter()
-                    }
-                    .store(in: &cancellables)
+            .debounce(for: .seconds(0.5), scheduler: DispatchQueue.global())
+            .removeDuplicates()
+            .sink { [weak self] _ in
+                self?.findRecipesByFilter()
+            }
+            .store(in: &cancellables)
         
         $searchQueryAll
-                    .debounce(for: .seconds(0.5), scheduler: DispatchQueue.global())
-                    .removeDuplicates()
-                    .sink { [weak self] _ in
-                        self?.findRecipesAll()
-                    }
-                    .store(in: &cancellables)
+            .debounce(for: .seconds(0.5), scheduler: DispatchQueue.global())
+            .removeDuplicates()
+            .sink { [weak self] _ in
+                self?.findRecipesAll()
+            }
+            .store(in: &cancellables)
         
         $searchQueryToTime
-                    .debounce(for: .seconds(0.5), scheduler: DispatchQueue.global())
-                    .removeDuplicates()
-                    .sink { [weak self] _ in
-                        self?.findRecipesToTime()
-                    }
-                    .store(in: &cancellables)
-
+            .debounce(for: .seconds(0.5), scheduler: DispatchQueue.global())
+            .removeDuplicates()
+            .sink { [weak self] _ in
+                self?.findRecipesToTime()
+            }
+            .store(in: &cancellables)
+        
         loadAllData()
     }
-
+    
     func findRecipes() {
         model.findRecipe(name: searchQuery) { [weak self] result in
             self?.foundRecipes = result
@@ -151,7 +152,7 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
             }
         }
     }
-
+    
     func loadAllData() {
         loadAllRecipes()
         loadRecents()
@@ -276,19 +277,60 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
                                           description: result.steps[i][2],
                                           photo: imagestep))
             }
-            CoreDataManager().createRecipe(dish: Dish(id: result.id,
-                                                      title: result.name,
-                                                      description: result.description,
-                                                      photo: image,
-                                                      timeToPrepare: result.duration,
-                                                      nutritionValue: Nutrition(bzy: result.bzy),
-                                                      dishComposition: dishComposition,
-                                                      dishSteps: dishSteps)) {
+            self?.coreData.create(dish: Dish(id: result.id,
+                                             title: result.name,
+                                             description: result.description,
+                                             photo: image,
+                                             timeToPrepare: result.duration,
+                                             nutritionValue: Nutrition(bzy: result.bzy),
+                                             dishComposition: dishComposition,
+                                             dishSteps: dishSteps)) {
                 print("success")
+                self?.showRecipesInDB()//////////////////////////////////////////////
             }
         }
     }
     func deleteFromCoreDataFavorites(recipe: RecipePreviewDTO) {
-        
+        coreData.delete(id: recipe.id) {[weak self] _ in
+            print("sucksess")
+            self?.showRecipesInDB()//////////////////////////////////////////////////
+        }
+    }
+    
+    
+    func showRecipesInDB() {
+        print("----------------------------")
+        print("[DEBUG] begin")
+        RecipeDataManager.shared.fetch { dishes in
+            print("[DEBUG] dishes:")
+            for dish in dishes {
+                print("---")
+                print("id: \(dish.id)")
+                print("title: \(dish.title)")
+                print("description: \(dish.description)")
+                print("timeToPrepare: \(dish.timeToPrepare)")
+                print("photoRef: \(dish.photo == nil ? "NO" : "YES")")
+                print("nutritionValueCal: \(dish.nutritionValue.calories)")
+                print("nutritionValueProt: \(dish.nutritionValue.protein)")
+                print("nutritionValueFats: \(dish.nutritionValue.fats)")
+                print("nutritionValueCarb: \(dish.nutritionValue.carbohydrates)")
+                print("---")
+                for step in dish.dishSteps {
+                    print("---")
+                    print("step.id: \(step.id)")
+                    print("step.title: \(step.title)")
+                    print("step.description: \(step.description)")
+                    print("step.photo: \(step.photo == nil ? "NO" : "YES")")
+                }
+                for composition in dish.dishComposition {
+                    print("---")
+                    print("composition.id: \(composition.id)")
+                    print("composition.product: \(composition.product)")
+                    print("composition.quantity: \(composition.quantity)")
+                }
+            }
+        }
+        print("[DEBUG] end")
+        print("----------------------------")
     }
 }
