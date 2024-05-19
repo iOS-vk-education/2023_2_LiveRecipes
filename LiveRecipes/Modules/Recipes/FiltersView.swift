@@ -156,15 +156,17 @@ struct FiltersView: View {
                 HStack {
                     Text("Пищевая ценность")
                     Spacer()
-                    Button {
-                        viewModel.calories = ""
-                        viewModel.carbohydrates = ""
-                        viewModel.fats = ""
-                        viewModel.protein = ""
-                    } label: {
-                        Text("Очистить")
-                            .textCase(.none)
-                            .font(.caption)
+                    if (viewModel.calories != "" || viewModel.carbohydrates != "" || viewModel.fats != "" || viewModel.protein != "") {
+                        Button {
+                            viewModel.calories = ""
+                            viewModel.carbohydrates = ""
+                            viewModel.fats = ""
+                            viewModel.protein = ""
+                        } label: {
+                                Text("Очистить")
+                                    .textCase(.none)
+                                    .font(.caption)
+                        }
                     }
                 }
             }
@@ -229,14 +231,16 @@ struct FiltersView: View {
                 HStack {
                     Text("filters.time.cook".localized)
                     Spacer()
-                    Button {
-                        viewModel.isTimeSetted = false
-                        viewModel.isTimeSetting = false
-                        viewModel.duration = ""
-                    } label: {
-                        Text("Очистить")
-                            .textCase(.none)
-                            .font(.caption)
+                    if viewModel.isTimeSetted || viewModel.isTimeSetting {
+                        Button {
+                            viewModel.isTimeSetted = false
+                            viewModel.isTimeSetting = false
+                            viewModel.duration = ""
+                        } label: {
+                            Text("Очистить")
+                                .textCase(.none)
+                                .font(.caption)
+                        }
                     }
                 }
             }
@@ -281,13 +285,15 @@ struct FiltersView: View {
                 HStack {
                     Text("filters.contains".localized)
                     Spacer()
-                    Button {
-                        viewModel.containsTextField = ""
-                        viewModel.contains = []
-                    } label: {
-                        Text("Очистить")
-                            .textCase(.none)
-                            .font(.caption)
+                    if viewModel.contains != [] || viewModel.containsTextField != "" {
+                        Button {
+                            viewModel.containsTextField = ""
+                            viewModel.contains = []
+                        } label: {
+                            Text("Очистить")
+                                .textCase(.none)
+                                .font(.caption)
+                        }
                     }
                 }
             }
@@ -332,13 +338,15 @@ struct FiltersView: View {
                 HStack {
                     Text("filters.not.contains".localized)
                     Spacer()
-                    Button {
-                        viewModel.notContainsTextField = ""
-                        viewModel.notContains = []
-                    } label: {
-                        Text("Очистить")
-                            .textCase(.none)
-                            .font(.caption)
+                    if viewModel.notContains != [] || viewModel.notContainsTextField != "" {
+                        Button {
+                            viewModel.notContainsTextField = ""
+                            viewModel.notContains = []
+                        } label: {
+                            Text("Очистить")
+                                .textCase(.none)
+                                .font(.caption)
+                        }
                     }
                 }
             }

@@ -56,14 +56,13 @@ struct RecipesView: View {
                         viewModel.isLoading = true
                         viewModel.findRecipesByFilter()
                     }
-                            })
+                })
                 .contentMargins(.bottom, 12, for: .scrollContent)
                 .scrollIndicators(.hidden)
             }
             .onAppear {
                 UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert])
                 { (_, _) in
-                    
                 }
             }
             .onChange(of: viewModel.searchQuery, { _, _ in
