@@ -2,7 +2,7 @@
 //  CreationRecipeStepEntity+CoreDataProperties.swift
 //  LiveRecipes
 //
-//  Created by  Alexander Fedoseev on 13.05.2024.
+//  Created by  Alexander Fedoseev on 18.05.2024.
 //
 //
 
@@ -17,9 +17,9 @@ extension CreationRecipeStepEntity {
     }
 
     @NSManaged public var id: Int64
-    @NSManaged public var photoRef: String?
+    @NSManaged public var stepPhotoRef: String?
     @NSManaged public var stepDescription: String
-    @NSManaged public var stepTittle: String
+    @NSManaged public var stepTime: Int64
     @NSManaged public var recipe: CreationRecipeEntity?
 
 }

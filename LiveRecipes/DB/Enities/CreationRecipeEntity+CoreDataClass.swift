@@ -2,7 +2,7 @@
 //  CreationRecipeEntity+CoreDataClass.swift
 //  LiveRecipes
 //
-//  Created by  Alexander Fedoseev on 13.05.2024.
+//  Created by  Alexander Fedoseev on 19.05.2024.
 //
 //
 

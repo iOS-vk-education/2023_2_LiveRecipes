@@ -40,16 +40,16 @@ final class CreationViewModel: ObservableObject, CreationViewModelProtocol {
             dishComposition.remove(at: index)
         }
     }
-    func addStep(title: String, description: String, photo: UIImage?) {
+    func addStep(stepTime: Int, description: String, photo: UIImage?) {
         if let maxIdStep = dishSteps.max(by: { $0.id < $1.id }) {
-            dishSteps.append(DishStep(id: maxIdStep.id + 1, title: title, description: description, photo: photo))
+            dishSteps.append(DishStep(id: maxIdStep.id + 1, stepTime: stepTime, description: description, photo: photo))
         } else {
-            dishSteps.append(DishStep(id: 0, title: title, description: description, photo: photo))
+            dishSteps.append(DishStep(id: 0, stepTime: stepTime, description: description, photo: photo))
         }
     }
-    func editStep(id: Int, title: String, description: String, photo: UIImage?) {
+    func editStep(id: Int, stepTime: Int, description: String, photo: UIImage?) {
         if let index = dishSteps.firstIndex(where: { $0.id == id }) {
-            dishSteps[index].title = title
+            dishSteps[index].stepTime = stepTime
             dishSteps[index].description = description
             dishSteps[index].photo = photo
         }

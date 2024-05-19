@@ -9,9 +9,10 @@ import Foundation
 import CoreData
 
 protocol RecipeDataManagerDescription {
-    func create(dish: Dish, completion: @escaping() -> Void)
+    func create(id: Int?, dish: Dish, completion: @escaping() -> Void)
     func fetch(completion: @escaping([Dish]) -> Void)
-    func delete(id: Int, completion: @escaping (Bool) -> Void)
+    func delete(recipeMyId: Int, completion: @escaping (Bool) -> Void)
+    func delete(recipeNetId: Int, completion: @escaping (Bool) -> Void)
     func deleteAll(completion: @escaping() -> Void)
     func prepareCoreDataIfNeeded(completion: (() -> ())?)
     var viewContext: NSManagedObjectContext { get }
@@ -39,14 +40,18 @@ final class RecipeDataManager: RecipeDataManagerDescription {
             completion?()
         }
     }
-    func create(dish: Dish, completion: @escaping() -> Void) {
+    func create(id: Int?, dish: Dish, completion: @escaping() -> Void) {
         container.performBackgroundTask { context in
             guard let objectRecipeEntity = NSEntityDescription.insertNewObject(forEntityName: "CreationRecipeEntity", into: context) as? CreationRecipeEntity else {
                 return
             }
-            let countDishes = CoreDataManager.shared.count(request:CreationRecipeEntity.fetchRequest())
-            let newDishId = Int64(countDishes + 1)
-            objectRecipeEntity.id = newDishId
+            if let netId = id {
+                objectRecipeEntity.recipeMyId = Int64(netId)
+            } else {
+                let countDishes = CoreDataManager.shared.count(request:CreationRecipeEntity.fetchRequest())
+                let newDishId = Int64(countDishes + 1)
+                objectRecipeEntity.recipeMyId = newDishId
+            }
             objectRecipeEntity.dishDescription = dish.description
             objectRecipeEntity.dishTitle = dish.title
             objectRecipeEntity.nutritionValueCal = dish.nutritionValue.calories
@@ -69,16 +74,16 @@ final class RecipeDataManager: RecipeDataManagerDescription {
                 }
                 objectRecipeStepEntity.recipe = objectRecipeEntity
                 objectRecipeStepEntity.id = Int64(step.id)
-                objectRecipeStepEntity.stepTittle = step.title
+                objectRecipeStepEntity.stepTime = Int64(step.stepTime)
                 objectRecipeStepEntity.stepDescription = step.description
                 if let photo = step.photo {
                     if let imageData = photo.jpegData(compressionQuality: 0.4) {
                         CreationPhotoFileManager.shared.savePhoto(imageData: imageData) { ref in
-                            objectRecipeEntity.photoRef = ref
+                            objectRecipeStepEntity.stepPhotoRef = ref
                         }
                     }
                 } else {
-                    objectRecipeStepEntity.photoRef = nil
+                    objectRecipeStepEntity.stepPhotoRef = nil
                 }
             }
             for composition in dish.dishComposition {
@@ -136,9 +141,9 @@ final class RecipeDataManager: RecipeDataManagerDescription {
             completion()
         }
     }
-    func delete(id: Int, completion: @escaping (Bool) -> Void) {
+    func delete(recipeMyId: Int, completion: @escaping (Bool) -> Void) {
         let fetchRequest: NSFetchRequest<CreationRecipeEntity> = CreationRecipeEntity.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "id == %d", id)
+        fetchRequest.predicate = NSPredicate(format: "recipeMyId == %d", recipeMyId)
         do {
             let results = try viewContext.fetch(fetchRequest)
             for object in results {
@@ -147,7 +152,22 @@ final class RecipeDataManager: RecipeDataManagerDescription {
             try viewContext.save()
             completion(true)
         } catch {
-            print("Error deleting CreationRecipeEntity entities with ID \(id): \(error)")
+            print("Error deleting CreationRecipeEntity entities with ID \(recipeMyId): \(error)")
+            completion(false)
+        }
+    }
+    func delete(recipeNetId: Int, completion: @escaping (Bool) -> Void) {
+        let fetchRequest: NSFetchRequest<CreationRecipeEntity> = CreationRecipeEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "recipeNetId == %d", recipeNetId)
+        do {
+            let results = try viewContext.fetch(fetchRequest)
+            for object in results {
+                viewContext.delete(object)
+            }
+            try viewContext.save()
+            completion(true)
+        } catch {
+            print("Error deleting CreationRecipeEntity entities with ID \(recipeNetId): \(error)")
             completion(false)
         }
     }

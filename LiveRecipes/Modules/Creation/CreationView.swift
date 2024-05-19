@@ -287,7 +287,7 @@ struct CreationView: View {
             } else {
                 ForEach(Array(viewState.dishSteps.enumerated()), id: \.element.id) { index, dishStep in
                     HStack {
-                        Text(dishStep.title)
+                        Text(String(dishStep.stepTime))
                         Spacer()
                         Image(systemName: "chevron.right")
                     }
