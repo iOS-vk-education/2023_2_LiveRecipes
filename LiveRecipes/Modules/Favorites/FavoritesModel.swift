@@ -8,25 +8,15 @@
 import Foundation
 
 final class FavoritesModel: ObservableObject, FavoritesModelProtocol {
-    func loadMyRecipes() -> [RecipePreviewDTO] {
-        return [
-//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
-        ]
-    }
     
-    
-    func loadAllRecipes() -> [RecipePreviewDTO] {
-        return [
-//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
-//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
-//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"),
-//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", isInFavorites: true, image: "caesar"),
-//            RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar")
-        ]
-    }
+    func loadFavorites() -> [Dish] {
+        var recipes: [Dish] = []
+        RecipeDataManager.shared.fetch { dishes in
+            for dish in dishes {
+                recipes.append(dish)
+            }
+        }
+        return recipes
+        }
+
 }

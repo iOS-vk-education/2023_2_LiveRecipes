@@ -33,6 +33,9 @@ struct MyRecipesView: View {
                 }
                 .searchable(text: $searchText)
                 .searchPresentationToolbarBehavior(.avoidHidingContent)
+                .onAppear {
+                    viewModel.findMyRecipes()
+                }
     }
     @ViewBuilder
     func myRecipesView() -> some View {
@@ -54,7 +57,11 @@ struct MyRecipesView: View {
                         .resolver
                         .resolve(CreationView.self)
                 } label: {
-                    Text("myrecipes.tocreation".localized)
+                    HStack {
+                        Text("myrecipes.tocreation".localized)
+                            .font(.headline)
+                        Image(systemName: "plus.app")
+                    }
                 }
 
             }
@@ -62,10 +69,32 @@ struct MyRecipesView: View {
         } else {
             ScrollView() {
                 LazyVStack(spacing: 12) {
-                    ForEach(viewModel.foundRecipes, id: \.self) { recipe in
+                    ForEach(viewModel.myRecipes, id: \.self) { recipe in
                         Assembler.sharedAssembly
                             .resolver
-                            .resolve(RecipeBigCardView.self, argument: recipe)
+                            .resolve(RecipeBigCardView.self, argument: recipe.recipePreviewDTO)
+                            .contextMenu(menuItems: {
+                                Button("Delete", systemImage: "trash") {
+                                    withAnimation(.spring()) {
+                                        viewModel.deleteMyRecipe(id: recipe.id ?? 0)
+                                        viewModel.findMyRecipes()
+                                    }
+                                }
+                            })
+                    }
+                }
+                Button(action: {}) {
+                    NavigationLink(destination: {
+                    Assembler.sharedAssembly
+                        .resolver
+                        .resolve(CreationView.self)
+                    })
+                    {
+                        Image(systemName: "plus")
+                            .foregroundStyle(.white)
+                            .padding(10)
+                            .background(.orange)
+                            .clipShape(.circle)
                     }
                 }
             }

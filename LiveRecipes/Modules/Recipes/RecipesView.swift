@@ -299,7 +299,7 @@ struct RecipesView: View {
                     ForEach (viewModel.myRecipes, id: \.self) { recipe in
                         Assembler.sharedAssembly
                             .resolver
-                            .resolve(RecipeCardView.self, argument: recipe)
+                            .resolve(RecipeCardView.self, argument: recipe.recipePreviewDTO)
                     }
                 }
             }

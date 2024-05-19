@@ -34,12 +34,24 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     //фильтры
     @Published var filtersIsActive = false
     @Published var keyWordsSearchArr: [String] = []
-    @Published var duration: Double = 0
-    @Published var calories: Double = 0
+    @Published var duration: String = ""
+    @Published var calories: String = ""
+    @Published var isMoreCalories: Bool = false
+    @Published var fats: String = ""
+    @Published var isMoreFats: Bool = false
+    @Published var protein: String = ""
+    @Published var isMoreProtein: Bool = false
+    @Published var carbohydrates: String = ""
+    @Published var isMoreCarbohydrates: Bool = false
     @Published var containsTextField: String = ""
     @Published var notContainsTextField: String = ""
     @Published var contains: [String] = []
     @Published var notContains: [String] = []
+    @Published var isTimeSetting: Bool = false
+    @Published var minutes: Int = 0
+    @Published var hours: Int = 0
+    @Published var isTimeSetted: Bool = false
+    var temp: CGFloat = 0
     
     //лента во всех рецептах
     @Published var pageAll = 1
@@ -57,7 +69,7 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     @Published var keyWords: [KeyWord] = []
     @Published var allRecipes: [RecipePreviewDTO] = []
     @Published var recentRecipes: [RecipePreviewDTO] = []
-    @Published var myRecipes: [RecipePreviewDTO] = []
+    @Published var myRecipes: [Dish] = []
     @Published var recipesForTime: [RecipePreviewDTO] = []
     
     //работа с модальным окном фильтров
@@ -97,6 +109,15 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
             .store(in: &cancellables)
         
         loadAllData()
+        findMyRecipes()
+    }
+    
+    func deleteMyRecipe(id: Int) -> Void {
+        RecipeDataManager.shared.delete(id: id) { _ in }
+    }
+    
+    func findMyRecipes() {
+        myRecipes = model.getMyRecipes()
     }
     
     func findRecipes() {
@@ -183,7 +204,7 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     }
     
     func findRecipesByFilter() {
-        model.findRecipesByFilter(query: searchQuery, keyWords: keyWordsSearchArr, duration: Int(duration), calories: String(Int(calories)), contains: contains, notContains: notContains) { [weak self] result in
+        model.findRecipesByFilter(query: searchQuery, keyWords: keyWordsSearchArr, duration: duration, calories: calories, contains: contains, notContains: notContains) { [weak self] result in
             self?.foundRecipes = result
             DispatchQueue.main.async {
                 self?.isLoading = false
@@ -225,8 +246,8 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     func isFilterActive() -> Bool {
         if !keyWordsSearchArr.isEmpty { return true }
         if searchQuery != "" { return true }
-        if duration != 0 { return true }
-        if calories != 0 { return true }
+        if duration != "" { return true }
+        if calories != "" { return true }
         if !contains.isEmpty { return true }
         if !notContains.isEmpty { return true }
         return false
@@ -296,8 +317,12 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
             self?.showRecipesInDB()//////////////////////////////////////////////////
         }
     }
-    
-    
+    func durationSet() {
+        duration = "\(hours * 60 + minutes)"
+    }
+    func getSizeOfElement(proxy: GeometryProxy) {
+        temp = proxy.size.width
+    }
     func showRecipesInDB() {
         print("----------------------------")
         print("[DEBUG] begin")

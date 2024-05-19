@@ -12,19 +12,17 @@ final class FavoritesViewModel: ObservableObject, FavoritesViewModelProtocol {
     
     @Published var modalFiltersIsOpen: Bool = false
     @Published var allRecipes: [RecipePreviewDTO] = []
-    @Published var myRecipes: [RecipePreviewDTO] = []
+    @Published var favoriteRecipes: [Dish] = []
+    
     init(favoritesModel: FavoritesModel) {
         self.model = favoritesModel
-        loadAllData()
+        //loadData()
     }
-    func loadAllData() {
-        //keyWords = model.loadKeyWords()
-        allRecipes = model.loadAllRecipes()
-        
-//        recentRecipes = model.loadRecentRecipes()
-        myRecipes = model.loadMyRecipes()
+    func loadData() -> Void {
+        favoriteRecipes = model.loadFavorites()
     }
-    func findMore() {
-//        myRecipes.append(RecipeDTO(name: "Цезарь с креветками", time: "20-30", cathegory: "Салаты", image: "caesar"))
+    
+    func deleteFromFavorites(id: Int) -> Void {
+        RecipeDataManager.shared.delete(id: id) { _ in }
     }
 }

@@ -17,6 +17,16 @@ final class RecipesModel: ObservableObject, RecipesModelProtocol {
         self.recipeAPI = recipeAPI
     }
     
+    func getMyRecipes() -> [Dish] {
+        var recipes: [Dish] = []
+        RecipeDataManager.shared.fetch { dishes in
+            for dish in dishes {
+                recipes.append(dish)
+            }
+        }
+        return recipes
+    }
+    
     func findRecipe(id: Int, completion: @escaping (RecipePreviewDTO)->Void) {
         recipeAPI.getRecipeByIdToMain(id: id, completionHandler: { [weak self] result in
             guard self != nil else { return }
@@ -88,7 +98,7 @@ final class RecipesModel: ObservableObject, RecipesModelProtocol {
         })
     }
         
-    func findRecipesByFilter(query: String, keyWords: [String], duration: Int, calories: String, contains: [String], notContains: [String],completion: @escaping ([RecipePreviewDTO]) -> Void) {
+    func findRecipesByFilter(query: String, keyWords: [String], duration: String, calories: String, contains: [String], notContains: [String],completion: @escaping ([RecipePreviewDTO]) -> Void) {
         recipeAPI.getRecipesByFilter(query: query, keyWords: keyWords, duration: duration, calories: calories, contains: contains, notContains: notContains) { [weak self] result in
             guard self != nil else { return }
             switch result {
