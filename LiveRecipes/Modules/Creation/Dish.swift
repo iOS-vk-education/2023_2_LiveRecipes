@@ -50,7 +50,7 @@ class Dish: Identifiable {
         dishCompositionsEntities: [CreationRecipeCompositionEntity],
         dishStepsEntities: [CreationRecipeStepEntity]) 
     {
-        self.id = Int(recipeEntity.id)
+        self.id = Int(recipeEntity.recipeMyId) // я (alexfedsv) тут не уверен, может я задумку автора не так понимаю
         self.title = recipeEntity.dishTitle
         self.description = recipeEntity.dishDescription
         self.timeToPrepare = Int(recipeEntity.timeToPrepare)

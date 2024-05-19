@@ -29,7 +29,7 @@ final class CreationModel: ObservableObject, CreationModelProtocol {
                 for step in dish.dishSteps {
                     print("---")
                     print("step.id: \(step.id)")
-                    print("step.title: \(step.title)")
+                    print("step.title: \(step.stepTime)")
                     print("step.description: \(step.description)")
                     print("step.photo: \(step.photo == nil ? "NO" : "YES")")
                 }
@@ -41,49 +41,11 @@ final class CreationModel: ObservableObject, CreationModelProtocol {
                 }
             }
         }
-        /*print("Вытаскиваем прямо из Базы Данных")
-        let recipes = CoreDataManager.shared.fetch(request: CreationRecipeEntity.fetchRequest())
-        for recipe in recipes {
-            print("---")
-            print("id: \(recipe.id)")
-            print("dishTitle: \(recipe.dishTitle)")
-            print("dishDescription: \(recipe.dishDescription)")
-            print("timeToPrepare: \(recipe.timeToPrepare)")
-            print("photoRef: \(String(describing: recipe.photoRef))")
-            print("nutritionValueCal: \(recipe.nutritionValueCal)")
-            print("nutritionValueProt: \(recipe.nutritionValueProt)")
-            print("nutritionValueFats: \(recipe.nutritionValueFats)")
-            print("nutritionValueCarb: \(recipe.nutritionValueCarb)")
-            print("---")
-            if let steps = recipe.step?.allObjects {
-                print(steps)
-                if let stepsArray = Array(steps) as? [CreationRecipeStepEntity] {
-                    for step in stepsArray {
-                        print("---")
-                        print("step.id: \(step.id)")
-                        print("step.stepTittle: \(step.stepTittle)")
-                        print("step.stepDescription: \(step.stepDescription)")
-                        print("step.photoRef: \(String(describing: step.photoRef))")
-                    }
-                }
-            }
-            if let composition = recipe.composition?.allObjects {
-                print(composition)
-                if let compositionArray = Array(composition) as? [CreationRecipeCompositionEntity] {
-                    for composition in compositionArray {
-                        print("---")
-                        print("composition.id: \(composition.id)")
-                        print("composition.product: \(composition.product)")
-                        print("composition.quantity: \(composition.quantity)")
-                    }
-                }
-            }
-        }*/
         print("[DEBUG] end")
         print("----------------------------")
     }
     func createRecipy(dish: Dish, completion: @escaping() -> Void) {
-        RecipeDataManager.shared.create(dish: dish) {
+        RecipeDataManager.shared.create(id: nil, dish: dish) {
             completion()
         }
     }
