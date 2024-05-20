@@ -66,7 +66,7 @@ struct RecentRecipesView: View {
                             ForEach(viewModel.recentRecipes, id: \.self) { recipe in
                                 Assembler.sharedAssembly
                                     .resolver
-                                    .resolve(RecipeBigCardView.self, arguments: recipe, false)
+                                    .resolve(RecipeBigCardView.self, arguments: recipe, false, false)
                             }
                         }
                     }
@@ -81,7 +81,7 @@ struct RecentRecipesView: View {
                                 ForEach(viewModel.foundRecipesRecentsLocal, id: \.self) { recipe in
                                     Assembler.sharedAssembly
                                         .resolver
-                                        .resolve(RecipeBigCardView.self, arguments: recipe, false)
+                                        .resolve(RecipeBigCardView.self, arguments: recipe, false, false)
                                 }
                             }
                         }

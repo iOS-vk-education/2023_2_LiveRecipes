@@ -35,7 +35,7 @@ struct RecipesView: View {
                                         ForEach (viewModel.foundRecipes) { recipe in
                                             Assembler.sharedAssembly
                                                 .resolver
-                                                .resolve(RecipeBigCardView.self, arguments: recipe, false)
+                                                .resolve(RecipeBigCardView.self, arguments: recipe, false, false)
                                         }
                                     }
                                 } else {
@@ -131,7 +131,7 @@ struct RecipesView: View {
                         .clipShape(.capsule)
                     }
                     Button(action: {
-                        print("next view")
+                        viewModel.modalKeyWordsIsOpen = true
                     }, label: {
                         HStack {
                             Text("recipes.keywords.more".localized)
@@ -143,6 +143,11 @@ struct RecipesView: View {
                                 .imageScale(.small)
                         }
                     })
+                    .sheet(isPresented: $viewModel.modalKeyWordsIsOpen) {
+                         Assembler.sharedAssembly
+                             .resolver
+                             .resolve(KeyWordsView.self)
+                        }
                     .padding(8)
                     .background(Color(UIColor.secondarySystemBackground))
                     .clipShape(.capsule)
@@ -196,7 +201,7 @@ struct RecipesView: View {
                         ForEach (viewModel.allRecipes, id: \.self) { recipe in
                             Assembler.sharedAssembly
                                 .resolver
-                                .resolve(RecipeCardView.self, arguments: recipe, false)
+                                .resolve(RecipeCardView.self, arguments: recipe, false, false)
                         }
                     }
                 }
@@ -261,7 +266,7 @@ struct RecipesView: View {
                         ForEach (viewModel.recentRecipes, id: \.self) { recipe in
                             Assembler.sharedAssembly
                                 .resolver
-                                .resolve(RecipeCardView.self, arguments: recipe, false)
+                                .resolve(RecipeCardView.self, arguments: recipe, false, false)
                         }
                     }
                 }
@@ -298,7 +303,7 @@ struct RecipesView: View {
                     ForEach (viewModel.myRecipes, id: \.self) { recipe in
                         Assembler.sharedAssembly
                             .resolver
-                            .resolve(RecipeCardView.self, arguments: recipe.recipePreviewDTO, true)
+                            .resolve(RecipeCardView.self, arguments: recipe.recipePreviewDTO, true, true)
                     }
                 }
             }
