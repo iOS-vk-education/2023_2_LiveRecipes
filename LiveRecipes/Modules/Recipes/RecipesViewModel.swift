@@ -96,7 +96,7 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     }
     
     func deleteMyRecipe(id: Int) -> Void {
-        RecipeDataManager.shared.delete(id: id) { _ in }
+        RecipeDataManager.shared.delete(recipeMyId: id) { _ in }
     }
     
     func findMyRecipes() {
