@@ -28,6 +28,10 @@ struct RecipePreviewDTO: Codable, Hashable, Identifiable {
     let id: Int
     var isInFavorites: Bool?
     
+    mutating func makeToFavorites() {
+        isInFavorites = true
+    }
+    
     mutating func setFavorites() {
         let arrayOfID = UserDefaults.standard.array(forKey: "favoritesID") as? [Int] ?? []
         if (arrayOfID.contains(id)) {

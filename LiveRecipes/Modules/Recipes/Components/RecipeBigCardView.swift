@@ -78,6 +78,9 @@ struct RecipeBigCardView: View {
         })
         .onAppear {
             recipe.setFavorites()
+            if loadRecipeFromCD {
+                recipe.makeToFavorites()
+            }
         }
     }
 }
