@@ -23,6 +23,6 @@ final class FavoritesViewModel: ObservableObject, FavoritesViewModelProtocol {
     }
     
     func deleteFromFavorites(id: Int) -> Void {
-        RecipeDataManager.shared.delete(id: id) { _ in }
+        RecipeDataManager.shared.delete(recipeMyId: id) { _ in }
     }
 }
