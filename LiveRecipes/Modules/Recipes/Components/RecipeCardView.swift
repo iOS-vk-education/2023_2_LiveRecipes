@@ -11,7 +11,7 @@ import SwiftUI
 struct RecipeCardView: View {
     @State var viewModel: RecipesViewModel
     @State var recipe: RecipePreviewDTO
-    var loadRecipeFromCD = false
+    var loadRecipeFromCD: Bool
 
     var body: some View {
         NavigationLink(destination: {

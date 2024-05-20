@@ -16,6 +16,7 @@ final class CreationModel: ObservableObject, CreationModelProtocol {
             print("[DEBUG] dishes:")
             for dish in dishes {
                 print("---")
+                print("myId: \(String(dish.myId))")
                 print("id: \(String(describing: dish.id))")
                 print("title: \(dish.title)")
                 print("description: \(dish.description)")

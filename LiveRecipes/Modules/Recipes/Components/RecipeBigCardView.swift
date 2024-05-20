@@ -10,7 +10,7 @@ import SwiftUI
 struct RecipeBigCardView: View {
     @State var viewModel: RecipesViewModel
     @State var recipe: RecipePreviewDTO
-    var loadRecipeFromCD = false
+    var loadRecipeFromCD: Bool
     
     var body: some View {
         NavigationLink(destination: {
