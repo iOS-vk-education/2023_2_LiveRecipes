@@ -9,6 +9,7 @@ import Foundation
 
 final class OneDishModel: ObservableObject, OneDishModelProtocol {
     let recipeAPI = RecipeAPI()
+    let coreData = RecipeDataManager.shared
     
     @Published var foundRecipe = RecipeDTO(id: 0, name: "", bzy: BZY(calories: "0", protein: "0", fats: "0", carbohydrates: "0"), duration: 0, photo: "", description: "", ingredients: [], steps: [[]], tag: "")
 
@@ -22,5 +23,18 @@ final class OneDishModel: ObservableObject, OneDishModelProtocol {
                 completion(RecipeDTO(id: 0, name: "", bzy: BZY(calories: "0", protein: "0", fats: "0", carbohydrates: "0"), duration: 0, photo: "", description: "", ingredients: [], steps: [[]], tag: ""))
             }
         })
+    }
+    
+    func getRecipeFromCD(id: Int) -> Dish {
+        var recipe = Dish(id: nil, title: "", description: "", timeToPrepare: 0, nutritionValue: Nutrition(bzy: BZY(calories: "", protein: "", fats: "", carbohydrates: "")), dishComposition: [], dishSteps: [])
+        coreData.fetch { dishes in
+            for dish in dishes {
+                if dish.id == id {
+                    recipe = dish
+                    break
+                }
+            }
+        }
+        return recipe
     }
 }
