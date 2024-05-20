@@ -320,6 +320,12 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
             self?.showRecipesInDB()//////////////////////////////////////////////////
         }
     }
+    func deleteFromCoreDataFavoritesFromFavoritesView(recipe: RecipePreviewDTO) {
+        coreData.delete(recipeMyId: recipe.id) { [weak self] _ in
+            print("sucksess")
+            self?.showRecipesInDB()
+        }
+    }
     func durationSet() {
         duration = "\(hours * 60 + minutes)"
     }
