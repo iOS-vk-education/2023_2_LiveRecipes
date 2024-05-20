@@ -72,7 +72,7 @@ struct MyRecipesView: View {
                     ForEach(viewModel.myRecipes, id: \.self) { recipe in
                         Assembler.sharedAssembly
                             .resolver
-                            .resolve(RecipeBigCardView.self, argument: recipe.recipePreviewDTO)
+                            .resolve(RecipeBigCardView.self, arguments: recipe.recipePreviewDTO, true)
                             .contextMenu(menuItems: {
                                 Button("Delete", systemImage: "trash") {
                                     withAnimation(.spring()) {

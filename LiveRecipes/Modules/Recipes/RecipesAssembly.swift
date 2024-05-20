@@ -36,11 +36,11 @@ final class RecipesAssembly: Assembly {
         container.register(CookToTimeView.self) { _ in
             return CookToTimeView(viewModel: viewModel)
         }
-        container.register(RecipeCardView.self) { _, recipeArg1 in
-            return RecipeCardView(viewModel: viewModel, recipe: recipeArg1)
+        container.register(RecipeCardView.self) { _, recipeArg1, recipeArg2 in
+            return RecipeCardView(viewModel: viewModel, recipe: recipeArg1, loadRecipeFromCD: recipeArg2)
         }
-        container.register(RecipeBigCardView.self) { _, recipeArg1 in
-            return RecipeBigCardView(viewModel: viewModel, recipe: recipeArg1)
+        container.register(RecipeBigCardView.self) { _, recipeArg1, recipeArg2 in
+            return RecipeBigCardView(viewModel: viewModel, recipe: recipeArg1, loadRecipeFromCD: recipeArg2)
         }
     }
 }

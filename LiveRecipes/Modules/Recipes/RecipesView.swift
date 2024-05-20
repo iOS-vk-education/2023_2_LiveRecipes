@@ -35,7 +35,7 @@ struct RecipesView: View {
                                         ForEach (viewModel.foundRecipes) { recipe in
                                             Assembler.sharedAssembly
                                                 .resolver
-                                                .resolve(RecipeBigCardView.self, argument: recipe)
+                                                .resolve(RecipeBigCardView.self, arguments: recipe, false)
                                         }
                                     }
                                 } else {
@@ -196,7 +196,7 @@ struct RecipesView: View {
                         ForEach (viewModel.allRecipes, id: \.self) { recipe in
                             Assembler.sharedAssembly
                                 .resolver
-                                .resolve(RecipeCardView.self, argument: recipe)
+                                .resolve(RecipeCardView.self, arguments: recipe, false)
                         }
                     }
                 }
@@ -261,7 +261,7 @@ struct RecipesView: View {
                         ForEach (viewModel.recentRecipes, id: \.self) { recipe in
                             Assembler.sharedAssembly
                                 .resolver
-                                .resolve(RecipeCardView.self, argument: recipe)
+                                .resolve(RecipeCardView.self, arguments: recipe, false)
                         }
                     }
                 }
@@ -298,7 +298,7 @@ struct RecipesView: View {
                     ForEach (viewModel.myRecipes, id: \.self) { recipe in
                         Assembler.sharedAssembly
                             .resolver
-                            .resolve(RecipeCardView.self, argument: recipe.recipePreviewDTO)
+                            .resolve(RecipeCardView.self, arguments: recipe.recipePreviewDTO, true)
                     }
                 }
             }
