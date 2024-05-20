@@ -70,7 +70,7 @@ struct MyRecipesView: View {
             ScrollView() {
                 LazyVStack(spacing: 12) {
                     ForEach(viewModel.myRecipes, id: \.self) { recipe in
-                        RecipeBigCardView(recipe: recipe.recipePreviewDTO)
+                        RecipeBigCardView(recipe: recipe.recipePreviewDTO, loadRecipeFromCD: true)
                             .contextMenu(menuItems: {
                                 Button("Delete", systemImage: "trash") {
                                     withAnimation(.spring()) {

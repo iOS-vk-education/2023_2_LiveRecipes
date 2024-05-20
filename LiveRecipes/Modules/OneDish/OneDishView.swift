@@ -29,22 +29,21 @@ struct OneDishView: View {
                     VStack {
                         VStack {
                             if let data = Data(base64Encoded: viewState.foundRecipe.photo), let image = UIImage(data: data) {
-                                    Image(uiImage: image)
-                                        .resizable()
-                                        .frame(width: UIScreen.main.bounds.width - 20, height: 280)
-                                        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .frame(width: UIScreen.main.bounds.width - 20, height: 280)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
                             }
                             else {
-                                Image("caesar")
+                                Image("mockDishImage")
                                     .resizable()
                                     .frame(width: 370, height: 260)
-                                
                             }
-                                Text(viewState.foundRecipe.name)
-                                    .font(.system(size: 20))
-                                    .fontWeight(.semibold)
-                                    .padding(.bottom, 5)
-                                    .multilineTextAlignment(.center)
+                            Text(viewState.foundRecipe.name)
+                                .font(.system(size: 20))
+                                .fontWeight(.semibold)
+                                .padding(.bottom, 5)
+                                .multilineTextAlignment(.center)
                             
                             HStack {
                                 Image(systemName: "clock")
@@ -142,7 +141,6 @@ struct OneDishView: View {
                             
                             Divider()
                             
-                            
                             Text("oneDish.nutritionalValue100gr".localized)
                                 .font(.system(size: 13))
                                 .padding(.bottom, 20)
@@ -180,14 +178,11 @@ struct OneDishView: View {
                         }
                         .padding(.init(top: 16, leading: 0, bottom: 1, trailing: 0))
                         .frame(width: UIScreen.main.bounds.width - 20)
-                        //.padding(.init(top: 0, leading: 18, bottom: 5, trailing: 0))
                         HStack {
                             Text(viewState.foundRecipe.description)
                                 .lineSpacing(8)
                             
                         }.frame(width: UIScreen.main.bounds.width - 20)
-                            //.padding(.top, 1)
-                        //.padding(.init(top: 0, leading: 18, bottom: 10, trailing: 10))
                     }
                     .padding()
                     
@@ -251,28 +246,9 @@ struct OneDishView: View {
                     .tint(.orange)
                     .opacity(isScrollDown ? 1.0 : 0.0)
                     .padding()
-            }
-
-//                Button(action: {
-//                    
-//                }) {
-//                    NavigationLink(destination:{
-//                        Assembler.sharedAssembly
-//                            .resolver
-//                        .resolve(CookingView.self)}) {
-//                            Image(systemName: "oven.fill")
-//                                .foregroundColor(.white)
-//                            Text("К приготовлению")
-//                                .frame(width: 150, height: 35)
-//                                .foregroundStyle(.white)
-//                            Image(systemName: "arrow.right")
-//                                .foregroundStyle(.white)
-//                        }
-//                }.buttonStyle(.borderedProminent)
-//                    .tint(.orange)
-//                    .opacity(isScrollDown ? 1.0 : 0.0)
-//                    .padding()
+                    .disabled(viewState.foundRecipe.steps.count == 0 ? true: false)
             }
         }
     }
+}
 

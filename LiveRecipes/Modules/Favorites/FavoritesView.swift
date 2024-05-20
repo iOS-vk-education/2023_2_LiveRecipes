@@ -62,7 +62,7 @@ struct FavoritesView: View {
                 ScrollView() {
                     LazyVStack(spacing: 12) {
                         ForEach(viewState.favoriteRecipes, id: \.self) { recipe in
-                            RecipeBigCardView(recipe: recipe.recipePreviewDTO)
+                            RecipeBigCardView(recipe: recipe.recipePreviewDTO, loadRecipeFromCD: true)
                         }
                     }
                 }
