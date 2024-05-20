@@ -13,4 +13,8 @@ final class SettingsViewModel: ObservableObject, SettingsViewModelProtocol {
     init(settingsModel: SettingsModelProtocol) {
         self.model = settingsModel
     }
+    
+    func clearFavorites() {
+        UserDefaults.standard.set([], forKey: "favoritesID")
+    }
 }

@@ -20,14 +20,23 @@ import UIKit
 //}
 
 struct RecipePreviewDTO: Codable, Hashable, Identifiable {
+    
     let name: String
     let duration: Int
     let tag: String
     let photo: String
     let id: Int
     var isInFavorites: Bool?
+    
+    mutating func setFavorites() {
+        let arrayOfID = UserDefaults.standard.array(forKey: "favoritesID") as? [Int] ?? []
+        if (arrayOfID.contains(id)) {
+            isInFavorites = true
+        } else {
+            isInFavorites = false
+        }
+    }
     mutating func changeStateOfFavorites() {
-        if (isInFavorites == nil) {isInFavorites = false}
         if(isInFavorites == false) {
             isInFavorites = true
         }
@@ -35,6 +44,7 @@ struct RecipePreviewDTO: Codable, Hashable, Identifiable {
             isInFavorites = false
         }
     }
+    
     func decomposeDuration() -> String {
         let hours = duration / 60
         let minutes = duration % 60

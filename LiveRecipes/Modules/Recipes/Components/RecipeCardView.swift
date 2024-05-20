@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct RecipeCardView: View {
+    @State var viewModel: RecipesViewModel
     @State var recipe: RecipePreviewDTO
     var loadRecipeFromCD = false
 
@@ -62,6 +63,13 @@ struct RecipeCardView: View {
                         .foregroundStyle(Color.orange)
                         .fontWeight(.medium)
                         .gesture(TapGesture().onEnded({ _ in
+                            if (recipe.isInFavorites ?? viewModel.isSaved(recipe: recipe)) {
+                                viewModel.deleteIdFromFavorites(recipe: recipe)
+                                viewModel.deleteFromCoreDataFavorites(recipe: recipe)
+                            } else {
+                                viewModel.saveIdToFavorites(recipe: recipe)
+                                viewModel.saveToCoreDataFavorites(recipe: recipe)
+                            }
                             recipe.changeStateOfFavorites()
                         }))
                         .scaledToFit()
@@ -70,5 +78,8 @@ struct RecipeCardView: View {
                 .padding(3)
             }
         })
+        .onAppear {
+            recipe.setFavorites()
+        }
     }
 }

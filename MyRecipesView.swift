@@ -93,7 +93,6 @@ struct MyRecipesView: View {
                             .padding(10)
                             .background(.orange)
                             .clipShape(.circle)
-                            
                     }
                 }
             }

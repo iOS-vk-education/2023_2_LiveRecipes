@@ -18,6 +18,7 @@ class DishStep: Identifiable {
         self.description = description
         self.photo = photo
     }
+    
     init(entity: CreationRecipeStepEntity) {
         self.id = Int(entity.id)
         self.stepTime = Int(entity.stepTime)
