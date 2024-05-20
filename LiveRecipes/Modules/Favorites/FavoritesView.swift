@@ -11,7 +11,6 @@ import Swinject
 struct FavoritesView: View {
     @StateObject var viewState: FavoritesViewModel
     
-    @State private var searchText = ""
     @State private var selectedSegment = 0
     
     let segments = ["favorites".localized, "favorites.myRecipes".localized]
@@ -54,41 +53,66 @@ struct FavoritesView: View {
                     }, label: {Image(systemName: "gear")})
                 }
             }
-            .searchable(text: $searchText)
+            .searchable(text: $viewState.query)
+            .onChange(of: viewState.query) { _, _ in
+                viewState.findFavorites()
+            }
+            .onSubmit(of: .search) {
+                viewState.findFavorites()
+            }
         }.navigationBarBackButtonHidden(true)
     }
     
     @ViewBuilder
     func recipesView() -> some View {
-        if (!viewState.favoriteRecipes.isEmpty) {
-            GeometryReader {proxy in
-                ScrollView() {
-                    LazyVStack(spacing: 12) {
-                        ForEach(viewState.favoriteRecipes, id: \.self) { recipe in
-                            Assembler.sharedAssembly
-                                .resolver
-                                .resolve(RecipeBigCardView.self, arguments: recipe.recipePreviewDTO, true, false)
+        if viewState.query == "" {
+            if (!viewState.favoriteRecipes.isEmpty) {
+                GeometryReader {proxy in
+                    ScrollView() {
+                        LazyVStack(spacing: 12) {
+                            ForEach(viewState.favoriteRecipes, id: \.self) { recipe in
+                                Assembler.sharedAssembly
+                                    .resolver
+                                    .resolve(RecipeBigCardView.self, arguments: recipe.recipePreviewDTO, true, false)
+                            }
                         }
                     }
+                    .scrollIndicators(.hidden)
+                    .contentMargins(.horizontal, 12)
                 }
-                .scrollIndicators(.hidden)
-                .contentMargins(.horizontal, 12)
+            }
+            else {
+                Image(systemName: "star.slash.fill")
+                    .resizable()
+                    .frame(width: 180, height: 155)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(Color(UIColor.systemGray3))
+                    .padding(.bottom, 0)
+                Text("favorites.favorites.isEmpty".localized)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(Color(UIColor.systemGray3))
+                    .font(.title2)
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom, 4)
+            }
+        } else {
+            if viewState.foundRecipes.isEmpty {
+                Text("allrecipes.errorFound.message".localized)
+            } else {
+                GeometryReader {proxy in
+                    ScrollView() {
+                        LazyVStack(spacing: 12) {
+                            ForEach(viewState.foundRecipes, id: \.self) { recipe in
+                                Assembler.sharedAssembly
+                                    .resolver
+                                    .resolve(RecipeBigCardView.self, arguments: recipe.recipePreviewDTO, true, false)
+                            }
+                        }
+                    }
+                    .scrollIndicators(.hidden)
+                    .contentMargins(.horizontal, 12)
+                }
             }
         }
-        else {
-            Image(systemName: "star.slash.fill")
-                .resizable()
-                .frame(width: 180, height: 155)
-                .fontWeight(.semibold)
-                .foregroundStyle(Color(UIColor.systemGray3))
-                .padding(.bottom, 0)
-            Text("favorites.favorites.isEmpty".localized)
-                .fontWeight(.semibold)
-                .foregroundStyle(Color(UIColor.systemGray3))
-                .font(.title2)
-                .multilineTextAlignment(.center)
-                .padding(.bottom, 4)
-        }
     }
-    
 }

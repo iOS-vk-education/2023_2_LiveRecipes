@@ -17,12 +17,14 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     @Published var foundRecipes: [RecipePreviewDTO] = []
     @Published var foundRecipesToTime: [RecipePreviewDTO] = []
     @Published var foundRecipesRecentsLocal: [RecipePreviewDTO] = []
+    @Published var foundRecipesMyLocal: [Dish] = []
     
     //поиск
     @Published var searchQuery = ""
     @Published var searchQueryAll = ""
     @Published var searchQueryToTime = ""
     @Published var searchQueryLocalRecents = ""
+    @Published var searchQueryLocalMy = ""
     @Published var searchIsActive = false
     @Published var searchIsActiveAll = false
     
@@ -258,6 +260,9 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     
     func findLocalRecents() {
         foundRecipesRecentsLocal = recentRecipes.filter({ $0.name.localizedStandardContains(searchQueryLocalRecents) })
+    }
+    func findLocalMy() {
+        foundRecipesMyLocal = myRecipes.filter({ $0.title.localizedStandardContains(searchQueryLocalMy) })
     }
     
     func isSaved(recipe: RecipePreviewDTO) -> Bool {

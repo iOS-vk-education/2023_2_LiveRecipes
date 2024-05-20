@@ -13,6 +13,8 @@ final class FavoritesViewModel: ObservableObject, FavoritesViewModelProtocol {
     @Published var modalFiltersIsOpen: Bool = false
     @Published var allRecipes: [RecipePreviewDTO] = []
     @Published var favoriteRecipes: [Dish] = []
+    @Published var query: String = ""
+    @Published var foundRecipes: [Dish] = []
     
     init(favoritesModel: FavoritesModel) {
         self.model = favoritesModel
@@ -25,5 +27,8 @@ final class FavoritesViewModel: ObservableObject, FavoritesViewModelProtocol {
     
     func deleteFromFavorites(id: Int) -> Void {
         RecipeDataManager.shared.delete(recipeNetId: id) { _ in }
+    }
+    func findFavorites() {
+        foundRecipes = favoriteRecipes.filter({ $0.title.localizedStandardContains(query) })
     }
 }

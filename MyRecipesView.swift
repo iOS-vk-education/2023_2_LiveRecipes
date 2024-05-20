@@ -11,17 +11,22 @@ import Foundation
 
 struct MyRecipesView: View {
     @StateObject var viewModel: RecipesViewModel
-    @State private var searchText = ""
     
     var body: some View {
             myRecipesView()
                 .scrollIndicators(.hidden)
                 .navigationTitle("myrecipes.title".localized)
                 .navigationBarTitleDisplayMode(.inline)
-                .searchable(text: $searchText)
+                .searchable(text: $viewModel.searchQueryLocalMy)
                 .searchPresentationToolbarBehavior(.avoidHidingContent)
                 .onAppear {
                     viewModel.findMyRecipes()
+                }
+                .onChange(of: viewModel.searchQueryLocalMy) { _, _ in
+                    viewModel.findLocalMy()
+                }
+                .onSubmit(of: .search) {
+                    viewModel.findLocalMy()
                 }
     }
     @ViewBuilder
@@ -54,39 +59,65 @@ struct MyRecipesView: View {
             }
             .padding(.bottom, 30)
         } else {
-            ScrollView() {
-                LazyVStack(spacing: 12) {
-                    ForEach(viewModel.myRecipes, id: \.self) { recipe in
-                        Assembler.sharedAssembly
-                            .resolver
-                            .resolve(RecipeBigCardView.self, arguments: recipe.recipePreviewDTO, true, true)
-                            .contextMenu(menuItems: {
-                                Button("Delete", systemImage: "trash") {
-                                    withAnimation(.spring()) {
-                                        viewModel.deleteMyRecipe(id: recipe.id ?? 0)
-                                        viewModel.findMyRecipes()
+            if viewModel.searchQueryLocalMy == "" {
+                ScrollView() {
+                    LazyVStack(spacing: 12) {
+                        ForEach(viewModel.myRecipes, id: \.self) { recipe in
+                            Assembler.sharedAssembly
+                                .resolver
+                                .resolve(RecipeBigCardView.self, arguments: recipe.recipePreviewDTO, true, true)
+                                .contextMenu(menuItems: {
+                                    Button("Delete", systemImage: "trash") {
+                                        withAnimation(.spring()) {
+                                            viewModel.deleteMyRecipe(id: recipe.id ?? 0)
+                                            viewModel.findMyRecipes()
+                                        }
                                     }
-                                }
-                            })
+                                })
+                        }
+                    }
+                    Button(action: {}) {
+                        NavigationLink(destination: {
+                            Assembler.sharedAssembly
+                                .resolver
+                                .resolve(CreationView.self)
+                        })
+                        {
+                            Image(systemName: "plus")
+                                .foregroundStyle(.white)
+                                .padding(10)
+                                .background(.orange)
+                                .clipShape(.circle)
+                        }
                     }
                 }
-                Button(action: {}) {
-                    NavigationLink(destination: {
-                    Assembler.sharedAssembly
-                        .resolver
-                        .resolve(CreationView.self)
-                    })
-                    {
-                        Image(systemName: "plus")
-                            .foregroundStyle(.white)
-                            .padding(10)
-                            .background(.orange)
-                            .clipShape(.circle)
+                .scrollIndicators(.hidden)
+                .contentMargins(.horizontal, 12)
+            } else {
+                if (viewModel.foundRecipesMyLocal.isEmpty) {
+                    Text("allrecipes.errorFound.message".localized)
+                } else {
+                    ScrollView() {
+                        LazyVStack(spacing: 12) {
+                            ForEach(viewModel.foundRecipesMyLocal, id: \.self) { recipe in
+                                Assembler.sharedAssembly
+                                    .resolver
+                                    .resolve(RecipeBigCardView.self, arguments: recipe.recipePreviewDTO, true, true)
+                                    .contextMenu(menuItems: {
+                                        Button("Delete", systemImage: "trash") {
+                                            withAnimation(.spring()) {
+                                                viewModel.deleteMyRecipe(id: recipe.id ?? 0)
+                                                viewModel.findMyRecipes()
+                                            }
+                                        }
+                                    })
+                            }
+                        }
                     }
+                    .scrollIndicators(.hidden)
+                    .contentMargins(.horizontal, 12)
                 }
             }
-            .scrollIndicators(.hidden)
-            .contentMargins(.horizontal, 12)
         }
     }
 }
