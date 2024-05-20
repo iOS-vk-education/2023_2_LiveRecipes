@@ -15,9 +15,9 @@ final class OneDishAssembly: Assembly {
         //let model = OneDishModel(recipeAPI: networkAPI)
         
 
-        container.register(OneDishView.self) { _, id in
+        container.register(OneDishView.self) { _, id, loadFromCD in
             let model = OneDishModel()
-            let viewModel = OneDishViewModel(oneDishModel: model, id: id)
+            let viewModel = OneDishViewModel(oneDishModel: model, id: id, loadRecipeFromCD: loadFromCD)
             return OneDishView(viewState: viewModel)
             
         }
