@@ -18,19 +18,6 @@ struct MyRecipesView: View {
                 .scrollIndicators(.hidden)
                 .navigationTitle("myrecipes.title".localized)
                 .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button("", systemImage: "slider.horizontal.2.square") {
-                            viewModel.modalFiltersIsOpenFromMy = true
-                        }
-                        .sheet(isPresented: $viewModel.modalFiltersIsOpenFromMy) {
-                            Assembler.sharedAssembly
-                                .resolver
-                                .resolve(FiltersView.self)
-                           }
-                        .tint(.orange)
-                    }
-                }
                 .searchable(text: $searchText)
                 .searchPresentationToolbarBehavior(.avoidHidingContent)
                 .onAppear {
