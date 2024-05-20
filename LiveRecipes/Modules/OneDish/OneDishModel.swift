@@ -30,7 +30,7 @@ final class OneDishModel: ObservableObject, OneDishModelProtocol {
         coreData.fetch { dishes in
             print("dishes")
             for dish in dishes {
-                if dish.myId == id {
+                if dish.id == id {
                     recipe = dish
                     break
                 }

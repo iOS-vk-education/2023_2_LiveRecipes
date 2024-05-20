@@ -240,7 +240,9 @@ struct OneDishView: View {
                         }.frame(width: 200, height: 35)
                     }
                     .simultaneousGesture(TapGesture().onEnded{
-                        viewState.updateRecentsID(recipe: viewState.foundRecipe)
+                        if !viewState.loadRecipeFromCD {
+                            viewState.updateRecentsID(recipe: viewState.foundRecipe)
+                        }
                     })
                 }.buttonStyle(.borderedProminent)
                     .tint(.orange)
