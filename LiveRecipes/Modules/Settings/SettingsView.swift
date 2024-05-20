@@ -30,7 +30,13 @@ struct SettingsView: View {
                         Text("settings.clearFavourites".localized)
                             .tint(.black)
                     }
-                    
+                    Button(action: {
+                        viewState.clearRecents()
+                    })
+                    {
+                        Text("settings.clearRecents".localized)
+                            .tint(.black)
+                    }
                     NavigationLink(destination: CreationView(viewState: creationViewModel), isActive: $isShowingCreationView, label: {
                         Text("settings.publishMyRecipe".localized)
                             .onTapGesture {

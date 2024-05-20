@@ -2553,6 +2553,23 @@
         }
       }
     },
+    "settings.clearRecents" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear recents"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Очистить недавние"
+          }
+        }
+      }
+    },
     "settings.publishMyRecipe" : {
       "extractionState" : "manual",
       "localizations" : {

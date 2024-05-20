@@ -24,6 +24,13 @@ final class SettingsViewModel: ObservableObject, SettingsViewModelProtocol {
             UserDefaults.standard.setValue(favoritesID, forKey: "favoritesID")
         }
     }
+    func clearRecents() {
+        var recentsID = UserDefaults.standard.array(forKey: "recentsID") as? [Int] ?? []
+        if !recentsID.isEmpty {
+            recentsID = []
+            UserDefaults.standard.setValue(recentsID, forKey: "recentsID")
+        }
+    }
     func clearMyRecipes () {
         RecipeDataManager.shared.fetch { dishes in
             for dish in dishes {
