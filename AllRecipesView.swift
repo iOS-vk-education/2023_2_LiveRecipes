@@ -63,7 +63,7 @@ struct AllRecipesView: View {
                                 ForEach(viewModel.allRecipes) { recipe in
                                     Assembler.sharedAssembly
                                         .resolver
-                                        .resolve(RecipeBigCardView.self, arguments: recipe, false)
+                                        .resolve(RecipeBigCardView.self, arguments: recipe, false, false)
                                 }
                             }
                             .scrollTargetLayout()
@@ -89,7 +89,7 @@ struct AllRecipesView: View {
                                 ForEach(viewModel.foundRecipes, id: \.self) { recipe in
                                     Assembler.sharedAssembly
                                         .resolver
-                                        .resolve(RecipeBigCardView.self, arguments: recipe, false)
+                                        .resolve(RecipeBigCardView.self, arguments: recipe, false, false)
                                 }
                             }
                         }

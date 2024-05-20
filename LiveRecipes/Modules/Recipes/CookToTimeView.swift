@@ -53,7 +53,7 @@ struct CookToTimeView: View {
                                 ForEach(viewModel.recipesForTime, id: \.self) { recipe in
                                     Assembler.sharedAssembly
                                         .resolver
-                                        .resolve(RecipeBigCardView.self, arguments: recipe, false)
+                                        .resolve(RecipeBigCardView.self, arguments: recipe, false, false)
                                 }
                             }
                         }
@@ -72,7 +72,7 @@ struct CookToTimeView: View {
                                 ForEach(viewModel.foundRecipesToTime, id: \.self) { recipe in
                                     Assembler.sharedAssembly
                                         .resolver
-                                        .resolve(RecipeBigCardView.self, arguments: recipe, false)
+                                        .resolve(RecipeBigCardView.self, arguments: recipe, false, false)
                                 }
                             }
                         }

@@ -130,6 +130,7 @@ struct KeyWordsView: View {
                             VStack {
                                 Button(action: {
                                     viewModel.keyWords[index].choose()
+                                    viewModel.keywordSearch(word: viewModel.keyWords[index])
                                 }, label: {
                                     Text(viewModel.keyWords[index].keyWord)
                                         .tint(viewModel.keyWords[index].isChoosed ? .white : .black)
@@ -146,6 +147,8 @@ struct KeyWordsView: View {
                     Button  {
                         self.presentationMode.wrappedValue.dismiss()
                         viewModel.sortKeyWordsByChoose()
+                        viewModel.isLoading = true
+                        viewModel.findRecipesByFilter()
                     } label: {
                         HStack {
                             Image(systemName: "magnifyingglass")

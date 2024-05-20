@@ -12,6 +12,7 @@ struct RecipeCardView: View {
     @State var viewModel: RecipesViewModel
     @State var recipe: RecipePreviewDTO
     var loadRecipeFromCD: Bool
+    var isMy: Bool
 
     var body: some View {
         NavigationLink(destination: {
@@ -57,29 +58,33 @@ struct RecipeCardView: View {
                 .background(Color(UIColor.secondarySystemBackground))
                 .clipShape(.rect(cornerRadius: 8))
                 .tint(.black)
-                VStack {
-                    Image(systemName: recipe.isInFavorites ?? false ? "star.fill" : "star")
-                        .resizable()
-                        .foregroundStyle(Color.orange)
-                        .fontWeight(.medium)
-                        .gesture(TapGesture().onEnded({ _ in
-                            if (recipe.isInFavorites ?? viewModel.isSaved(recipe: recipe)) {
-                                viewModel.deleteIdFromFavorites(recipe: recipe)
-                                viewModel.deleteFromCoreDataFavorites(recipe: recipe)
-                            } else {
-                                viewModel.saveIdToFavorites(recipe: recipe)
-                                viewModel.saveToCoreDataFavorites(recipe: recipe)
-                            }
-                            recipe.changeStateOfFavorites()
-                        }))
-                        .scaledToFit()
+                if !isMy {
+                    VStack {
+                        Image(systemName: recipe.isInFavorites ?? false ? "star.fill" : "star")
+                            .resizable()
+                            .foregroundStyle(Color.orange)
+                            .fontWeight(.medium)
+                            .gesture(TapGesture().onEnded({ _ in
+                                if (recipe.isInFavorites ?? viewModel.isSaved(recipe: recipe)) {
+                                    viewModel.deleteIdFromFavorites(recipe: recipe)
+                                    viewModel.deleteFromCoreDataFavorites(recipe: recipe)
+                                } else {
+                                    viewModel.saveIdToFavorites(recipe: recipe)
+                                    viewModel.saveToCoreDataFavorites(recipe: recipe)
+                                }
+                                recipe.changeStateOfFavorites()
+                            }))
+                            .scaledToFit()
+                    }
+                    .frame(width: 25, height: 25)
+                    .padding(3)
                 }
-                .frame(width: 25, height: 25)
-                .padding(3)
             }
         })
         .onAppear {
-            recipe.setFavorites()
+            if !isMy {
+                recipe.setFavorites()
+            }
         }
     }
 }

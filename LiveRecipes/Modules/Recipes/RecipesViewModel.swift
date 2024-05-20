@@ -248,6 +248,9 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
         if searchQuery != "" { return true }
         if duration != "" { return true }
         if calories != "" { return true }
+        if fats != "" { return true }
+        if carbohydrates != "" { return true }
+        if protein != "" { return true }
         if !contains.isEmpty { return true }
         if !notContains.isEmpty { return true }
         return false
