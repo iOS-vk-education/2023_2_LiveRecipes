@@ -17,6 +17,8 @@ final class CreationModel: ObservableObject, CreationModelProtocol {
             for dish in dishes {
                 print("---")
                 print("id: \(String(describing: dish.id))")
+                print("dish.id: \(String(describing: dish.id))")
+                print("dish.netId: \(String(describing: dish.netId))")
                 print("title: \(dish.title)")
                 print("description: \(dish.description)")
                 print("timeToPrepare: \(dish.timeToPrepare)")
@@ -29,7 +31,7 @@ final class CreationModel: ObservableObject, CreationModelProtocol {
                 for step in dish.dishSteps {
                     print("---")
                     print("step.id: \(step.id)")
-                    print("step.title: \(step.stepTime)")
+                    print("step.stepTime: \(step.stepTime)")
                     print("step.description: \(step.description)")
                     print("step.photo: \(step.photo == nil ? "NO" : "YES")")
                 }

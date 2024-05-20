@@ -13,10 +13,10 @@ struct StepView: View {
         didSet {
             print("dishStep did set")
             let totalSeconds = dishStep?.stepTime ?? 0
-            hours = totalSeconds / 3600
+            self.hours = totalSeconds / 3600
             let remainingSeconds = totalSeconds % 3600
-            minutes = remainingSeconds / 60
-            seconds = remainingSeconds % 60
+            self.minutes = remainingSeconds / 60
+            self.seconds = remainingSeconds % 60
         }
     }
     var creationViewModel: CreationViewModel
