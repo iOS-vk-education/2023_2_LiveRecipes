@@ -460,6 +460,23 @@
         }
       }
     },
+    "creation.editedStep" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edited Step"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Редактирование"
+          }
+        }
+      }
+    },
     "creation.error.withoutComposition" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -613,7 +630,7 @@
         }
       }
     },
-    "creation.label.stepName" : {
+    "creation.label.step" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -625,7 +642,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "НАЗВАНИЕ ШАГА"
+            "value" : "ШАГ"
           }
         }
       }
