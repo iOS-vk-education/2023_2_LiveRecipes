@@ -868,6 +868,23 @@
         }
       }
     },
+    "dark.theme" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Темная"
+          }
+        }
+      }
+    },
     "Delete" : {
       "localizations" : {
         "ru" : {
@@ -1343,6 +1360,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Меньше чем "
+          }
+        }
+      }
+    },
+    "light.theme" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Светлая"
           }
         }
       }
@@ -2604,6 +2638,23 @@
         }
       }
     },
+    "system.theme" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Системная"
+          }
+        }
+      }
+    },
     "tab.cooking" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2668,6 +2719,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Рецепты"
+          }
+        }
+      }
+    },
+    "theme.settings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Theme"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тема"
           }
         }
       }

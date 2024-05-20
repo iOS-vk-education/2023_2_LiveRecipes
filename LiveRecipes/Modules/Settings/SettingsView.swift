@@ -10,42 +10,59 @@ import SwiftUI
 struct SettingsView: View {
     @StateObject var viewState: SettingsViewModel
     @State private var isShowingCreationView = false
-    @StateObject var creationViewModel = CreationViewModel(creationModel: CreationModel())//это временная дичь
+    @StateObject var creationViewModel = CreationViewModel(creationModel: CreationModel())
 
     var body: some View {
-            List {
-                Section(header: Text("settings.userSettings".localized)) {
-                    Button(action: {
-                        viewState.clearMyRecipes()
-                    })
-                    {
-                        Text("settings.clearMyRecipes".localized)
-                            .tint(.black)
+        List {
+            Section {
+                    Picker(selection: $viewState.selectedSegment, label: Text("Select a segment")) {
+                        ForEach(0..<viewState.segments.count) { index in
+                            Text(viewState.segments[index]).tag(index)
+                        }
                     }
-                    
-                    Button(action: {
-                        viewState.clearFavorites()
-                    })
-                    {
-                        Text("settings.clearFavourites".localized)
-                            .tint(.black)
+                    .pickerStyle(.segmented)
+                    .frame(width: 350)
+                    .listRowBackground(Color.clear)
+                    .onChange(of: viewState.selectedSegment) { _, _ in
+                        viewState.changeTheme()
                     }
-                    Button(action: {
-                        viewState.clearRecents()
-                    })
-                    {
-                        Text("settings.clearRecents".localized)
-                            .tint(.black)
-                    }
-                    NavigationLink(destination: CreationView(viewState: creationViewModel), isActive: $isShowingCreationView, label: {
-                        Text("settings.publishMyRecipe".localized)
-                            .onTapGesture {
-                                print("settings.publishMyRecipe".localized)
-                                isShowingCreationView = true
-                            }
-                    })
-                }
+                    .preferredColorScheme(viewState.colorScheme)
+            } header: {
+                Text("theme.settings".localized)
             }
+            Section(header: Text("settings.userSettings".localized)) {
+                Button(action: {
+                    viewState.clearMyRecipes()
+                })
+                {
+                    Text("settings.clearMyRecipes".localized)
+                        .tint(.black)
+                }
+                
+                Button(action: {
+                    viewState.clearFavorites()
+                })
+                {
+                    Text("settings.clearFavourites".localized)
+                        .tint(.black)
+                }
+                Button(action: {
+                    viewState.clearRecents()
+                })
+                {
+                    Text("settings.clearRecents".localized)
+                        .tint(.black)
+                }
+                NavigationLink(destination: CreationView(viewState: creationViewModel), isActive: $isShowingCreationView, label: {
+                    Text("settings.publishMyRecipe".localized)
+                        .onTapGesture {
+                            print("settings.publishMyRecipe".localized)
+                            isShowingCreationView = true
+                        }
+                })
+            }
+        }
+        .listSectionSpacing(.custom(10))
         .navigationTitle("settings".localized)
         .navigationBarTitleDisplayMode(.inline)
     }
