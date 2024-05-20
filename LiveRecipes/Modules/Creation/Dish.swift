@@ -18,6 +18,8 @@ class Dish: Identifiable, Hashable {
     }
     
     var id: Int?//если еще нет в базе данных, в процесе создания
+    var myId: Int = -1
+    var netId: Int = -1
     var title: String
     var description: String
     var photo: UIImage?
@@ -65,7 +67,8 @@ class Dish: Identifiable, Hashable {
         dishCompositionsEntities: [CreationRecipeCompositionEntity],
         dishStepsEntities: [CreationRecipeStepEntity]) 
     {
-        self.id = Int(recipeEntity.recipeMyId) // я (alexfedsv) тут не уверен, может я задумку автора не так понимаю
+        self.myId = Int(recipeEntity.recipeMyId)
+        self.netId = Int(recipeEntity.recipeNetId)
         self.title = recipeEntity.dishTitle
         self.description = recipeEntity.dishDescription
         self.timeToPrepare = Int(recipeEntity.timeToPrepare)

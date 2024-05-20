@@ -47,10 +47,12 @@ final class RecipeDataManager: RecipeDataManagerDescription {
             }
             if let netId = id {
                 objectRecipeEntity.recipeMyId = Int64(netId)
+                objectRecipeEntity.recipeNetId = -1
             } else {
                 let countDishes = CoreDataManager.shared.count(request:CreationRecipeEntity.fetchRequest())
                 let newDishId = Int64(countDishes + 1)
                 objectRecipeEntity.recipeMyId = newDishId
+                objectRecipeEntity.recipeNetId = -1
             }
             objectRecipeEntity.dishDescription = dish.description
             objectRecipeEntity.dishTitle = dish.title
