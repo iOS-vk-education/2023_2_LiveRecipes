@@ -15,17 +15,22 @@ struct SettingsView: View {
     var body: some View {
             List {
                 Section(header: Text("settings.userSettings".localized)) {
-                    Text("settings.clearFavourites".localized)
-                        .onTapGesture {
-                            viewState.clearFavorites()
-                        }
-                    Text("settings.clearMyRecipes".localized)
-                        .onTapGesture {
-                            print("settings.clearMyRecipes".localized)
-                            RecipeDataManager.shared.deleteAll {
-                                print("everything is deleted")
-                            }
-                        }
+                    Button(action: {
+                        viewState.clearMyRecipes()
+                    })
+                    {
+                        Text("settings.clearMyRecipes".localized)
+                            .tint(.black)
+                    }
+                    
+                    Button(action: {
+                        viewState.clearFavorites()
+                    })
+                    {
+                        Text("settings.clearFavourites".localized)
+                            .tint(.black)
+                    }
+                    
                     NavigationLink(destination: CreationView(viewState: creationViewModel), isActive: $isShowingCreationView, label: {
                         Text("settings.publishMyRecipe".localized)
                             .onTapGesture {

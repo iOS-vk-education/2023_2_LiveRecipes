@@ -226,7 +226,7 @@ struct OneDishView: View {
                     
                 }) {
                     NavigationLink(destination:{
-                        PrepareForCookingView(recipe: viewState.foundRecipe)
+                        PrepareForCookingView(openedFromFavorites: viewState.loadRecipeFromCD, recipe: viewState.foundRecipe)
                     }) {
                         HStack {
                             Spacer()

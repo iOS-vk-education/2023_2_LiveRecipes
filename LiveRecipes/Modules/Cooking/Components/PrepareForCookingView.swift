@@ -12,6 +12,7 @@ struct PrepareForCookingView: View {
     @State private var animatedTextIndex = 0
     @State private var durationText = ""
     @Environment(\.presentationMode) var presentationMode
+    var openedFromFavorites = false
     
     let recipe: RecipeDTO
 
@@ -61,9 +62,8 @@ struct PrepareForCookingView: View {
                     
                 }
                 
-                
                 DurationTextWithBlur(text: durationText)
-                StartCookingButton(transferData: recipe)
+                StartCookingButton(openedFromFavorites: openedFromFavorites, transferData: recipe)
                 
             }.background(RadialGradient(gradient: Gradient(colors: [.orange, .white]), center: .center, startRadius: 50, endRadius: 400)
                 .ignoresSafeArea()

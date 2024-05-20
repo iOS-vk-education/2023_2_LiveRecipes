@@ -15,6 +15,22 @@ final class SettingsViewModel: ObservableObject, SettingsViewModelProtocol {
     }
     
     func clearFavorites() {
-        UserDefaults.standard.set([], forKey: "favoritesID")
+        var favoritesID = UserDefaults.standard.array(forKey: "favoritesID") as? [Int] ?? []
+        if !favoritesID.isEmpty {
+            for favId in favoritesID {
+                RecipeDataManager.shared.delete(recipeNetId: favId) { _ in }
+            }
+            favoritesID = []
+            UserDefaults.standard.setValue(favoritesID, forKey: "favoritesID")
+        }
+    }
+    func clearMyRecipes () {
+        RecipeDataManager.shared.fetch { dishes in
+            for dish in dishes {
+                if dish.netId == -1 {
+                    RecipeDataManager.shared.delete(recipeMyId: dish.id ?? 0) { _ in }
+                }
+            }
+        }
     }
 }

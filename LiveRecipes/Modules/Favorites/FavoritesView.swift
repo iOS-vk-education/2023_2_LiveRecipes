@@ -42,6 +42,7 @@ struct FavoritesView: View {
                     Spacer()
                 }
             }
+            .toolbar(.visible, for: .tabBar)
             .navigationTitle(Tabs.favorites.tabName)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -54,8 +55,7 @@ struct FavoritesView: View {
                 }
             }
             .searchable(text: $searchText)
-            
-        }
+        }.navigationBarBackButtonHidden(true)
     }
     
     @ViewBuilder

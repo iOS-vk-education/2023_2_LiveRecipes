@@ -21,7 +21,7 @@ struct OneStepModel {
   let dishType: String
 }
 
-final class OneStepViewModel: ObservableObject, SettingsViewModelProtocol {
+final class OneStepViewModel: ObservableObject {
     @Published var isTimerOnView: Bool
     @Published var isLanded: Bool
     @Published var isDatePicker: Bool

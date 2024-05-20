@@ -7,7 +7,11 @@
 
 import Foundation
 
-protocol SettingsViewModelProtocol {}
+protocol SettingsViewModelProtocol {
+    func clearFavorites() -> Void
+    func clearMyRecipes () -> Void
+    
+}
 
 protocol SettingsModelProtocol {}
 
