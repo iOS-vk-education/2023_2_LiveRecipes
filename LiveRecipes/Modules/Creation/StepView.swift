@@ -9,16 +9,7 @@ import SwiftUI
 
 struct StepView: View {
     @Environment(\.presentationMode) var presentation
-    var dishStep: DishStep? {
-        didSet {
-            print("dishStep did set")
-            let totalSeconds = dishStep?.stepTime ?? 0
-            hours = totalSeconds / 3600
-            let remainingSeconds = totalSeconds % 3600
-            minutes = remainingSeconds / 60
-            seconds = remainingSeconds % 60
-        }
-    }
+    var dishStep: DishStep?
     var creationViewModel: CreationViewModel
     @State private var textDescription = ""
     @State private var image: UIImage?
@@ -36,8 +27,13 @@ struct StepView: View {
                     .onTapGesture {
                         saveStep()
                     }
-                Text("creation.newStep".localized)
-                    .frame(maxWidth: .infinity)
+                if dishStep == nil {
+                    Text("creation.newStep".localized)
+                        .frame(maxWidth: .infinity)
+                } else {
+                    Text("creation.editedStep".localized)
+                        .frame(maxWidth: .infinity)
+                }
                 Image(systemName: "xmark.circle.fill")
                     .onTapGesture {
                         closeModal()
@@ -46,16 +42,6 @@ struct StepView: View {
             }
             .padding()
             List {
-                /*Section(header: Text("creation.label.stepName".localized)) {
-                    HStack {
-                        TextField("creation.placeholder.name", text:  $textTitle)
-                    }
-                    .onAppear {
-                        if let dishStep = dishStep {
-                            textTitle = dishStep.stepTime
-                        }
-                    }
-                }*/
                 Section(header: Text("creation.label.description".localized)) {
                     HStack {
                         TextEditor(text: $textDescription)
@@ -64,6 +50,12 @@ struct StepView: View {
                     .onAppear {
                         if let dishStep = dishStep {
                             textDescription = dishStep.description
+                            let totalSeconds = dishStep.stepTime
+                            hours = totalSeconds / 3600
+                            let remainingSeconds = totalSeconds % 3600
+                            minutes = remainingSeconds / 60
+                            seconds = remainingSeconds % 60
+                            
                         }
                     }
                 }
