@@ -2559,13 +2559,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Publish my recipe"
+            "value" : "Create my recipe"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Опубликовать мой рецепт"
+            "value" : "Создать свой рецепт"
           }
         }
       }

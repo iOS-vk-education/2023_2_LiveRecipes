@@ -41,7 +41,6 @@ struct SettingsView: View {
                 }
             }
         .navigationTitle("settings".localized)
-        //.toolbarBackground(.visible, for: .navigationBar)
         .navigationBarTitleDisplayMode(.inline)
     }
 }
