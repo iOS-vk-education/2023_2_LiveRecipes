@@ -26,7 +26,7 @@ final class CoreDataManager {
         return container.viewContext
     }()
     
-    private init() {
+    init() {
         self.container = NSPersistentContainer(name: "LiveRecipesDB")
         self.container.viewContext.automaticallyMergesChangesFromParent = true
     }

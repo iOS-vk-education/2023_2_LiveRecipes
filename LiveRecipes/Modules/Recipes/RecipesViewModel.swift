@@ -7,9 +7,11 @@
 
 import Combine
 import Foundation
+import SwiftUI
 
 final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     var model: RecipesModelProtocol
+    var coreData = RecipeDataManager.shared
     
     //результаты поиска
     @Published var foundRecipes: [RecipePreviewDTO] = []
@@ -32,22 +34,37 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     //фильтры
     @Published var filtersIsActive = false
     @Published var keyWordsSearchArr: [String] = []
-    @Published var duration: Double = 0
-    @Published var calories: Double = 0
+    @Published var duration: String = ""
+    @Published var calories: String = ""
+    @Published var isMoreCalories: Bool = false
+    @Published var fats: String = ""
+    @Published var isMoreFats: Bool = false
+    @Published var protein: String = ""
+    @Published var isMoreProtein: Bool = false
+    @Published var carbohydrates: String = ""
+    @Published var isMoreCarbohydrates: Bool = false
     @Published var containsTextField: String = ""
     @Published var notContainsTextField: String = ""
     @Published var contains: [String] = []
     @Published var notContains: [String] = []
+    @Published var isTimeSetting: Bool = false
+    @Published var minutes: Int = 0
+    @Published var hours: Int = 0
+    @Published var isTimeSetted: Bool = false
+    var temp: CGFloat = 0
     
     //лента во всех рецептах
     @Published var pageAll = 1
     @Published var scrollID: Int?
     
+    //для сохраненных
+    @Published var favoritesID: [Int] = []
+    
     //отслеживание загрузки
     @Published var isLoading: Bool = true
     @Published var isLoading1: Bool = true
     @Published var isLoadingRecents: Bool = true
-        
+    
     //данные
     @Published var keyWords: [KeyWord] = []
     @Published var allRecipes: [RecipePreviewDTO] = []
@@ -64,33 +81,33 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     @Published var modalKeyWordsIsOpen: Bool = false
     
     private var cancellables: Set<AnyCancellable> = []
-
+    
     init(recipesModel: RecipesModel) {
         self.model = recipesModel
         $searchQuery
-                    .debounce(for: .seconds(0.5), scheduler: DispatchQueue.global())
-                    .removeDuplicates()
-                    .sink { [weak self] _ in
-                        self?.findRecipesByFilter()
-                    }
-                    .store(in: &cancellables)
+            .debounce(for: .seconds(0.5), scheduler: DispatchQueue.global())
+            .removeDuplicates()
+            .sink { [weak self] _ in
+                self?.findRecipesByFilter()
+            }
+            .store(in: &cancellables)
         
         $searchQueryAll
-                    .debounce(for: .seconds(0.5), scheduler: DispatchQueue.global())
-                    .removeDuplicates()
-                    .sink { [weak self] _ in
-                        self?.findRecipesAll()
-                    }
-                    .store(in: &cancellables)
+            .debounce(for: .seconds(0.5), scheduler: DispatchQueue.global())
+            .removeDuplicates()
+            .sink { [weak self] _ in
+                self?.findRecipesAll()
+            }
+            .store(in: &cancellables)
         
         $searchQueryToTime
-                    .debounce(for: .seconds(0.5), scheduler: DispatchQueue.global())
-                    .removeDuplicates()
-                    .sink { [weak self] _ in
-                        self?.findRecipesToTime()
-                    }
-                    .store(in: &cancellables)
-
+            .debounce(for: .seconds(0.5), scheduler: DispatchQueue.global())
+            .removeDuplicates()
+            .sink { [weak self] _ in
+                self?.findRecipesToTime()
+            }
+            .store(in: &cancellables)
+        
         loadAllData()
         findMyRecipes()
     }
@@ -102,7 +119,7 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     func findMyRecipes() {
         myRecipes = model.getMyRecipes()
     }
-
+    
     func findRecipes() {
         model.findRecipe(name: searchQuery) { [weak self] result in
             self?.foundRecipes = result
@@ -156,7 +173,7 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
             }
         }
     }
-
+    
     func loadAllData() {
         loadAllRecipes()
         loadRecents()
@@ -166,6 +183,10 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     func loadRecents() {
         recentRecipes = []
         let arrayOfRecentsID = UserDefaults.standard.array(forKey: "recentsID") as? [Int] ?? []
+        if arrayOfRecentsID.isEmpty {
+            isLoadingRecents = false
+            return
+        }
         for id in arrayOfRecentsID {
             model.findRecipe(id: id) { [weak self] result in
                 self?.recentRecipes.append(result)
@@ -183,7 +204,7 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     }
     
     func findRecipesByFilter() {
-        model.findRecipesByFilter(query: searchQuery, keyWords: keyWordsSearchArr, duration: Int(duration), calories: String(Int(calories)), contains: contains, notContains: notContains) { [weak self] result in
+        model.findRecipesByFilter(query: searchQuery, keyWords: keyWordsSearchArr, duration: duration, calories: calories, protein: protein, fats: fats, carb: carbohydrates, isMoreCal: isMoreCalories, isMoreProt: isMoreProtein, isMoreFats: isMoreFats, isMoreCarb: isMoreCarbohydrates, contains: contains, notContains: notContains) { [weak self] result in
             self?.foundRecipes = result
             DispatchQueue.main.async {
                 self?.isLoading = false
@@ -225,8 +246,8 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     func isFilterActive() -> Bool {
         if !keyWordsSearchArr.isEmpty { return true }
         if searchQuery != "" { return true }
-        if duration != 0 { return true }
-        if calories != 0 { return true }
+        if duration != "" { return true }
+        if calories != "" { return true }
         if !contains.isEmpty { return true }
         if !notContains.isEmpty { return true }
         return false
@@ -236,4 +257,105 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
         foundRecipesRecentsLocal = recentRecipes.filter({ $0.name.localizedStandardContains(searchQueryLocalRecents) })
     }
     
+    func isSaved(recipe: RecipePreviewDTO) -> Bool {
+        favoritesID = UserDefaults.standard.array(forKey: "favoritesID") as? [Int] ?? []
+        if (favoritesID.contains(recipe.id)) {
+            return true
+        } else {
+            return false
+        }
+    }
+    func saveIdToFavorites(recipe: RecipePreviewDTO) {
+        favoritesID = UserDefaults.standard.array(forKey: "favoritesID") as? [Int] ?? []
+        if (!favoritesID.contains(recipe.id)) {
+            favoritesID.append(recipe.id)
+            UserDefaults.standard.set(favoritesID, forKey: "favoritesID")
+        }
+    }
+    func deleteIdFromFavorites(recipe: RecipePreviewDTO) {
+        favoritesID = UserDefaults.standard.array(forKey: "favoritesID") as? [Int] ?? []
+        if (favoritesID.contains(recipe.id)) {
+            favoritesID.removeAll { $0 == recipe.id }
+            UserDefaults.standard.set(favoritesID, forKey: "favoritesID")
+        }
+    }
+    func saveToCoreDataFavorites(recipe: RecipePreviewDTO) {
+//        model.findRecipeForCoreData(id: recipe.id) { [weak self] result in
+//            guard let data = Data(base64Encoded: recipe.photo) else { return }
+//            let image = UIImage(data: data)
+//            var dishComposition: [DishComposition] = []
+//            for i in result.ingredients.indices {
+//                dishComposition.append(DishComposition(id: i,
+//                                                       product: result.ingredients[i],
+//                                                       quantity: ""))
+//            }
+//            var dishSteps: [DishStep] = []
+//            for i in result.steps.indices {
+//                guard let datastep = Data(base64Encoded: result.steps[i][1]) else { return }
+//                let imagestep = UIImage(data: datastep)
+//                dishSteps.append(DishStep(id: i,
+//                                          title: result.steps[i][0],
+//                                          description: result.steps[i][2],
+//                                          photo: imagestep))
+//            }
+//            self?.coreData.create(dish: Dish(id: result.id,
+//                                             title: result.name,
+//                                             description: result.description,
+//                                             photo: image,
+//                                             timeToPrepare: result.duration,
+//                                             nutritionValue: Nutrition(bzy: result.bzy),
+//                                             dishComposition: dishComposition,
+//                                             dishSteps: dishSteps)) {
+//                print("success")
+//                self?.showRecipesInDB()//////////////////////////////////////////////
+//            }
+//        }
+    }
+    func deleteFromCoreDataFavorites(recipe: RecipePreviewDTO) {
+//        coreData.delete(id: recipe.id) {[weak self] _ in
+//            print("sucksess")
+//            self?.showRecipesInDB()//////////////////////////////////////////////////
+//        }
+    }
+    func durationSet() {
+        duration = "\(hours * 60 + minutes)"
+    }
+    func getSizeOfElement(proxy: GeometryProxy) {
+        temp = proxy.size.width
+    }
+//    func showRecipesInDB() {
+//        print("----------------------------")
+//        print("[DEBUG] begin")
+//        RecipeDataManager.shared.fetch { dishes in
+//            print("[DEBUG] dishes:")
+//            for dish in dishes {
+//                print("---")
+//                print("id: \(dish.id)")
+//                print("title: \(dish.title)")
+//                print("description: \(dish.description)")
+//                print("timeToPrepare: \(dish.timeToPrepare)")
+//                print("photoRef: \(dish.photo == nil ? "NO" : "YES")")
+//                print("nutritionValueCal: \(dish.nutritionValue.calories)")
+//                print("nutritionValueProt: \(dish.nutritionValue.protein)")
+//                print("nutritionValueFats: \(dish.nutritionValue.fats)")
+//                print("nutritionValueCarb: \(dish.nutritionValue.carbohydrates)")
+//                print("---")
+//                for step in dish.dishSteps {
+//                    print("---")
+//                    print("step.id: \(step.id)")
+//                    print("step.title: \(step.title)")
+//                    print("step.description: \(step.description)")
+//                    print("step.photo: \(step.photo == nil ? "NO" : "YES")")
+//                }
+//                for composition in dish.dishComposition {
+//                    print("---")
+//                    print("composition.id: \(composition.id)")
+//                    print("composition.product: \(composition.product)")
+//                    print("composition.quantity: \(composition.quantity)")
+//                }
+//            }
+//        }
+//        print("[DEBUG] end")
+//        print("----------------------------")
+//    }
 }

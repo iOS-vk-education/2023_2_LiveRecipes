@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RecipeBigCardView: View {
+    @State var viewModel: RecipesViewModel
     @State var recipe: RecipePreviewDTO
     var loadRecipeFromCD = false
     
@@ -60,6 +61,13 @@ struct RecipeBigCardView: View {
                         .foregroundStyle(Color.orange)
                         .fontWeight(.medium)
                         .gesture(TapGesture().onEnded({ _ in
+                            if (recipe.isInFavorites ?? viewModel.isSaved(recipe: recipe)) {
+                                viewModel.deleteIdFromFavorites(recipe: recipe)
+                                viewModel.deleteFromCoreDataFavorites(recipe: recipe)
+                            } else {
+                                viewModel.saveIdToFavorites(recipe: recipe)
+                                viewModel.saveToCoreDataFavorites(recipe: recipe)
+                            }
                             recipe.changeStateOfFavorites()
                         }))
                         .scaledToFit()
@@ -68,5 +76,8 @@ struct RecipeBigCardView: View {
                 .padding(4)
             }
         })
+        .onAppear {
+            recipe.setFavorites()
+        }
     }
 }

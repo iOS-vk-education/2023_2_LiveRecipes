@@ -33,7 +33,9 @@ struct RecipesView: View {
                                 if !viewModel.foundRecipes.isEmpty {
                                     LazyVStack {
                                         ForEach (viewModel.foundRecipes) { recipe in
-                                            RecipeBigCardView(recipe: recipe)
+                                            Assembler.sharedAssembly
+                                                .resolver
+                                                .resolve(RecipeBigCardView.self, arguments: recipe, false)
                                         }
                                     }
                                 } else {
@@ -54,14 +56,13 @@ struct RecipesView: View {
                         viewModel.isLoading = true
                         viewModel.findRecipesByFilter()
                     }
-                            })
+                })
                 .contentMargins(.bottom, 12, for: .scrollContent)
                 .scrollIndicators(.hidden)
             }
             .onAppear {
                 UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert])
                 { (_, _) in
-                    
                 }
             }
             .onChange(of: viewModel.searchQuery, { _, _ in
@@ -192,8 +193,10 @@ struct RecipesView: View {
             } else {
                 ScrollView(.horizontal) {
                     LazyHStack(spacing: 12) {
-                        ForEach (viewModel.allRecipes, id: \.self) { recipie in
-                            RecipeCardView(recipe: recipie)
+                        ForEach (viewModel.allRecipes, id: \.self) { recipe in
+                            Assembler.sharedAssembly
+                                .resolver
+                                .resolve(RecipeCardView.self, arguments: recipe, false)
                         }
                     }
                 }
@@ -256,7 +259,9 @@ struct RecipesView: View {
                 ScrollView(.horizontal) {
                     LazyHStack(spacing: 12) {
                         ForEach (viewModel.recentRecipes, id: \.self) { recipe in
-                            RecipeCardView(recipe: recipe)
+                            Assembler.sharedAssembly
+                                .resolver
+                                .resolve(RecipeCardView.self, arguments: recipe, false)
                         }
                     }
                 }
@@ -291,7 +296,9 @@ struct RecipesView: View {
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 12) {
                     ForEach (viewModel.myRecipes, id: \.self) { recipe in
-                        RecipeCardView(recipe: recipe.recipePreviewDTO, loadRecipeFromCD: true)
+                        Assembler.sharedAssembly
+                            .resolver
+                            .resolve(RecipeCardView.self, arguments: recipe.recipePreviewDTO, true)
                     }
                 }
             }

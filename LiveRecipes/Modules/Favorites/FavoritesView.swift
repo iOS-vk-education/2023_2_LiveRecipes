@@ -18,14 +18,14 @@ struct FavoritesView: View {
     var body: some View {
         NavigationView {
             VStack {
-                    Picker(selection: $selectedSegment, label: Text("Select a segment")) {
-                        ForEach(0..<2) { index in
-                            Text(self.segments[index]).tag(index)
-                        }
+                Picker(selection: $selectedSegment, label: Text("Select a segment")) {
+                    ForEach(0..<2) { index in
+                        Text(self.segments[index]).tag(index)
                     }
-                    .pickerStyle(SegmentedPickerStyle())
-                    .padding()
-                    
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .padding()
+                
                 if selectedSegment == 0 {
                     Spacer()
                     recipesView()
@@ -43,13 +43,13 @@ struct FavoritesView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                        NavigationLink (destination: {
-                            Assembler.sharedAssembly
-                                .resolver
-                                .resolve(SettingsView.self)
-                        }, label: {Image(systemName: "gear")})
-                    }
+                    NavigationLink (destination: {
+                        Assembler.sharedAssembly
+                            .resolver
+                            .resolve(SettingsView.self)
+                    }, label: {Image(systemName: "gear")})
                 }
+            }
             .searchable(text: $searchText)
             
         }
@@ -62,7 +62,9 @@ struct FavoritesView: View {
                 ScrollView() {
                     LazyVStack(spacing: 12) {
                         ForEach(viewState.favoriteRecipes, id: \.self) { recipe in
-                            RecipeBigCardView(recipe: recipe.recipePreviewDTO, loadRecipeFromCD: true)
+                            Assembler.sharedAssembly
+                                .resolver
+                                .resolve(RecipeBigCardView.self, argument: recipe.recipePreviewDTO)
                         }
                     }
                 }
@@ -85,5 +87,5 @@ struct FavoritesView: View {
                 .padding(.bottom, 4)
         }
     }
+    
 }
-
