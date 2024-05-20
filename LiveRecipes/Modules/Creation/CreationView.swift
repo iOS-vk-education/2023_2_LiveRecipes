@@ -289,7 +289,7 @@ struct CreationView: View {
             } else {
                 ForEach(Array(viewState.dishSteps.enumerated()), id: \.element.id) { index, dishStep in
                     HStack {
-                        Text("Шаг \(index + 1)")
+                        Text("creation.label.step".localized + " " + String(index + 1))
                         Spacer()
                         Image(systemName: "chevron.right")
                     }

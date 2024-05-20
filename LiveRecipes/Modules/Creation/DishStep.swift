@@ -9,6 +9,7 @@ import UIKit
 
 class DishStep: Identifiable {
     var id: Int
+    var num: Int?
     var stepTime: Int
     var description: String
     var photo: UIImage?

@@ -171,6 +171,74 @@
         }
       }
     },
+    "bzy.filters" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuritional Value"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пищевая ценность"
+          }
+        }
+      }
+    },
+    "calories.filters" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calories"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Каллорий"
+          }
+        }
+      }
+    },
+    "carb.filters" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carbs"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Углеводов"
+          }
+        }
+      }
+    },
+    "clear.one.filter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Очистить"
+          }
+        }
+      }
+    },
     "cookingPrepare.days" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -392,6 +460,23 @@
         }
       }
     },
+    "creation.editedStep" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edited Step"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Редактирование"
+          }
+        }
+      }
+    },
     "creation.error.withoutComposition" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -545,7 +630,7 @@
         }
       }
     },
-    "creation.label.stepName" : {
+    "creation.label.step" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -557,7 +642,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "НАЗВАНИЕ ШАГА"
+            "value" : "ШАГ"
           }
         }
       }
@@ -789,6 +874,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Удалить"
+          }
+        }
+      }
+    },
+    "edit.time.filters" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изменить"
+          }
+        }
+      }
+    },
+    "fats.filters" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fats"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Жиров"
           }
         }
       }
@@ -1082,8 +1201,49 @@
         }
       }
     },
+    "h.filters" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "h. "
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " ч. "
+          }
+        }
+      }
+    },
     "Hours" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hours"
+          }
+        }
+      }
+    },
+    "hours.filter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hours"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Часы"
+          }
+        }
+      }
     },
     "Image" : {
       "extractionState" : "manual",
@@ -1101,15 +1261,6 @@
           }
         }
       }
-    },
-    "Key" : {
-      "extractionState" : "manual"
-    },
-    "Key 1" : {
-      "extractionState" : "manual"
-    },
-    "Key 2" : {
-      "extractionState" : "manual"
     },
     "keywords.error.message" : {
       "extractionState" : "manual",
@@ -1162,8 +1313,100 @@
         }
       }
     },
+    "less" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "less"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "меньше"
+          }
+        }
+      }
+    },
+    "lessthen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Less than "
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Меньше чем "
+          }
+        }
+      }
+    },
+    "min.filters" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " min."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " мин."
+          }
+        }
+      }
+    },
     "Minutes" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minutes"
+          }
+        }
+      }
+    },
+    "minutes.filter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minutes"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Минуты"
+          }
+        }
+      }
+    },
+    "more" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "more"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "больше"
+          }
+        }
+      }
     },
     "more.titleBlock.main" : {
       "extractionState" : "manual",
@@ -1229,6 +1472,23 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Тут пока ничего нет"
+          }
+        }
+      }
+    },
+    "num" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "number"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "число"
           }
         }
       }
@@ -1828,6 +2088,23 @@
         }
       }
     },
+    "proteins.filters" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proteins"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Белков"
+          }
+        }
+      }
+    },
     "recents.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2174,6 +2451,40 @@
     "Select a segment" : {
 
     },
+    "set.filter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "set"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Установить"
+          }
+        }
+      }
+    },
+    "set.time.filter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set time"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Установить время"
+          }
+        }
+      }
+    },
     "settings" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2344,6 +2655,23 @@
         }
       }
     },
+    "then" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "than"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "чем"
+          }
+        }
+      }
+    },
     "timer" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2394,12 +2722,6 @@
           }
         }
       }
-    },
-    "Белков" : {
-
-    },
-    "больше" : {
-
     },
     "Второе блюдо" : {
       "extractionState" : "manual",
@@ -2495,9 +2817,6 @@
         }
       }
     },
-    "Жиров" : {
-
-    },
     "Заготовка" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2532,32 +2851,7 @@
         }
       }
     },
-    "Изменить" : {
-
-    },
     "К рецептам" : {
-
-    },
-    "Каллорий" : {
-
-    },
-    "меньше" : {
-
-    },
-    "Меньше чем %lld минут" : {
-
-    },
-    "Меньше чем %lld ч. %lld мин." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Меньше чем %1$lld ч. %2$lld мин."
-          }
-        }
-      }
-    },
-    "Минуты" : {
 
     },
     "Напиток" : {
@@ -2577,9 +2871,6 @@
         }
       }
     },
-    "Очистить" : {
-
-    },
     "Первое блюдо" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2596,9 +2887,6 @@
           }
         }
       }
-    },
-    "Пищевая ценность" : {
-
     },
     "Салат" : {
       "extractionState" : "manual",
@@ -2635,24 +2923,6 @@
       }
     },
     "Шаг %lld" : {
-    
-    },
-    "Углеводов" : {
-
-    },
-    "Установить" : {
-
-    },
-    "Установить время" : {
-
-    },
-    "Часы" : {
-
-    },
-    "чем" : {
-
-    },
-    "число" : {
 
     }
   },
