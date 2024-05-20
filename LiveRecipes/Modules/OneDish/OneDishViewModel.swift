@@ -10,17 +10,24 @@ import Foundation
 final class OneDishViewModel: ObservableObject, OneDishViewModelProtocol {
     var model: OneDishModel
     var id: Int
+    var loadRecipeFromCD: Bool
     
     @Published var arrayOfRecentsID: [Int] = UserDefaults.standard.array(forKey: "recentsID") as? [Int] ?? []
-    @Published var foundRecipe = RecipeDTO(id: 0, name: "", bzy: BZY(calories: "0", protein: "0", fats: "0", carbohydrates: "0"), duration: 0, photo: "", description: "", ingredients: [], steps: [[]], tag: "")
+    @Published var foundRecipe = RecipeDTO(id: 0, name: "", bzy: BZY(calories: "0", protein: "0", fats: "0", carbohydrates: "0"), duration: 0, photo: "", description: "Это ваше блюдо", ingredients: [], steps: [[]], tag: "")
 
-    init(oneDishModel: OneDishModel, id: Int) {
+    init(oneDishModel: OneDishModel, id: Int, loadRecipeFromCD: Bool) {
         self.model = oneDishModel
         self.id = id
+        self.loadRecipeFromCD = loadRecipeFromCD
         
-        model.findRecipe(id: id, completion: { [weak self] result in
-            self?.foundRecipe = result
-        })
+        if loadRecipeFromCD {
+            self.foundRecipe = model.getRecipeFromCD(id: id).recipeDTO
+        }
+        else {
+            model.findRecipe(id: id, completion: { [weak self] result in
+                self?.foundRecipe = result
+            })
+        }
     }
     func findRecipe() {
         model.findRecipe(id: id) { [weak self] result in

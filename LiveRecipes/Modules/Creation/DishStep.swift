@@ -9,21 +9,21 @@ import UIKit
 
 class DishStep: Identifiable {
     var id: Int
-    var title: String
+    var stepTime: Int
     var description: String
     var photo: UIImage?
-    init(id: Int, title: String, description: String, photo: UIImage? = nil) {
+    init(id: Int, stepTime: Int, description: String, photo: UIImage? = nil) {
         self.id = id
-        self.title = title
+        self.stepTime = stepTime
         self.description = description
         self.photo = photo
     }
     
     init(entity: CreationRecipeStepEntity) {
         self.id = Int(entity.id)
-        self.title = entity.stepTittle
+        self.stepTime = Int(entity.stepTime)
         self.description = entity.stepDescription
-        if let ref = entity.photoRef {
+        if let ref = entity.stepPhotoRef {
             CreationPhotoFileManager.shared.getPhoto(ref: ref) { [weak self] data in
                 if let data = data {
                     self?.photo = UIImage(data: data)

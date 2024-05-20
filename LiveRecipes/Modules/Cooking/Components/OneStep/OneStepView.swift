@@ -47,13 +47,14 @@ struct OneStepView: View {
                             if model.steps[model.stepNumber - 1][2] != "0" {
                                 
                                 TimerView(totalTime: Int(model.steps[model.stepNumber - 1][2]) ?? 0, timeForProgress: Int(model.steps[model.stepNumber - 1][2]) ?? 0, step: "oneStep.step\(model.stepNumber)".localized, stepsCount: model.steps.count, dishName: model.dishName, timerSeted: true)
-                                    .onAppear {
-                                        model.isTimerOnView = true
-                                        model.objectWillChange.send()
-                                    }
+//                                    .onAppear {
+//                                        model.isTimerOnView = true
+//                                        model.objectWillChange.send()
+//                                    }
                                 
                             }
                             else {
+                                //let _ = (model.isTimerOnView = false)
                                 TimerView(totalTime: 1, timeForProgress: 1, step: "oneStep.step\(model.stepNumber)".localized, stepsCount: model .steps.count, dishName: model.dishName)
                                     .offset(y: model.isLanded ? 0 : -1000)
                                     .contextMenu(menuItems: {
@@ -69,9 +70,17 @@ struct OneStepView: View {
                             if model.stepNumber + 1 <= model.steps.count {
                                 Button(action: {
                                     withAnimation {
+                                        if model.steps[model.stepNumber][2] != "0" {
+                                            model.isTimerOnView = true
+                                        }
+                                        else {
+                                            model.isTimerOnView = false
+                                        }
                                         model.stepNumber = model.stepNumber + 1
-                                        model.objectWillChange.send()
+                                        
                                         model.updatePublished()
+                                        model.objectWillChange.send()
+                                        
                                     }
                                 }) {
                                         HStack {
@@ -188,6 +197,12 @@ struct OneStepView: View {
                         ToolbarItem(placement: .topBarLeading) {
                             Button(action: {
                                 withAnimation {
+                                    if model.steps[model.stepNumber - 2][2] != "0" {
+                                        model.isTimerOnView = true
+                                    }
+                                    else {
+                                        model.isTimerOnView = false
+                                    }
                                     model.updatePublished()
                                     model.stepNumber = model.stepNumber - 1
                                     model.objectWillChange.send()

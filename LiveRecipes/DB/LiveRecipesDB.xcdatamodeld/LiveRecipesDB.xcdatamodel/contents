@@ -9,31 +9,22 @@
     <entity name="CreationRecipeEntity" representedClassName=".CreationRecipeEntity" syncable="YES">
         <attribute name="dishDescription" optional="YES" attributeType="String"/>
         <attribute name="dishTitle" attributeType="String"/>
-        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="nutritionValueCal" attributeType="String" defaultValueString=""/>
         <attribute name="nutritionValueCarb" attributeType="String" defaultValueString=""/>
         <attribute name="nutritionValueFats" attributeType="String" defaultValueString=""/>
         <attribute name="nutritionValueProt" attributeType="String" defaultValueString=""/>
         <attribute name="photoRef" optional="YES" attributeType="String"/>
+        <attribute name="recipeMyId" attributeType="Integer 64" defaultValueString="-1" usesScalarValueType="YES"/>
+        <attribute name="recipeNetId" attributeType="Integer 64" defaultValueString="-1" usesScalarValueType="YES"/>
         <attribute name="timeToPrepare" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="composition" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CreationRecipeCompositionEntity" inverseName="recipe" inverseEntity="CreationRecipeCompositionEntity"/>
         <relationship name="step" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CreationRecipeStepEntity" inverseName="recipe" inverseEntity="CreationRecipeStepEntity"/>
     </entity>
     <entity name="CreationRecipeStepEntity" representedClassName=".CreationRecipeStepEntity" syncable="YES">
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="photoRef" optional="YES" attributeType="String"/>
         <attribute name="stepDescription" attributeType="String"/>
-        <attribute name="stepTittle" attributeType="String"/>
+        <attribute name="stepPhotoRef" optional="YES" attributeType="String"/>
+        <attribute name="stepTime" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CreationRecipeEntity" inverseName="step" inverseEntity="CreationRecipeEntity"/>
-    </entity>
-    <entity name="ListRecipeEntity" representedClassName=".ListRecipeEntity" syncable="YES">
-        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="title" attributeType="String" defaultValueString=""/>
-        <relationship name="listItem" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ListRecipeItemEntity" inverseName="listRecipe" inverseEntity="ListRecipeItemEntity"/>
-    </entity>
-    <entity name="ListRecipeItemEntity" representedClassName=".ListRecipeItemEntity" syncable="YES">
-        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="title" attributeType="String" defaultValueString=""/>
-        <relationship name="listRecipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ListRecipeEntity" inverseName="listItem" inverseEntity="ListRecipeEntity"/>
     </entity>
 </model>

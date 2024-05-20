@@ -54,48 +54,6 @@ extension CoreDataManager: CoreDataManagerDescription {
             try? context.save()
         }
     }
-    func createRecipe(dish: Dish, completion: @escaping() -> Void) {
-        container.performBackgroundTask { context in
-            guard let objectRecipeEntity = NSEntityDescription.insertNewObject(forEntityName: "CreationRecipeEntity", into: context) as? CreationRecipeEntity else {
-                return
-            }
-            let countDishes = CoreDataManager.shared.count(request:CreationRecipeEntity.fetchRequest())
-            let newDishId = Int64(countDishes + 1)
-            objectRecipeEntity.id = newDishId
-            objectRecipeEntity.dishDescription = dish.description
-            objectRecipeEntity.dishTitle = dish.title
-            objectRecipeEntity.nutritionValueCal = dish.nutritionValue.calories
-            objectRecipeEntity.nutritionValueProt = dish.nutritionValue.protein
-            objectRecipeEntity.nutritionValueFats = dish.nutritionValue.fats
-            objectRecipeEntity.nutritionValueCarb = dish.nutritionValue.carbohydrates
-            if let photo = dish.photo {
-                if let imageData = photo.jpegData(compressionQuality: 0.4) {
-                    CreationPhotoFileManager.shared.savePhoto(imageData: imageData) { ref in
-                        objectRecipeEntity.photoRef = ref
-                    }
-                }
-            } else {
-                objectRecipeEntity.photoRef = nil
-            }
-            objectRecipeEntity.timeToPrepare = Int64(dish.timeToPrepare)
-            for step in dish.dishSteps {
-                guard let objectRecipeStepEntity = NSEntityDescription.insertNewObject(forEntityName: "CreationRecipeStepEntity", into: context) as? CreationRecipeStepEntity else {
-                    return
-                }
-                objectRecipeStepEntity.recipe = objectRecipeEntity
-                objectRecipeStepEntity.id = Int64(step.id)
-                objectRecipeStepEntity.stepTittle = step.title
-                objectRecipeStepEntity.stepDescription = step.description
-                objectRecipeStepEntity.photoRef = ""
-            }
-            do {
-                try context.save()
-            } catch let error {
-                print(error.localizedDescription)
-            }
-            completion()
-        }
-    }
     
     // SELECT
     func fetch<T: NSManagedObject>(request: NSFetchRequest<T>) -> [T] {

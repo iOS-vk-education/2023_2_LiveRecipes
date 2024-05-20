@@ -10,10 +10,11 @@ import SwiftUI
 struct RecipeBigCardView: View {
     @State var viewModel: RecipesViewModel
     @State var recipe: RecipePreviewDTO
+    var loadRecipeFromCD = false
     
     var body: some View {
         NavigationLink(destination: {
-            OneDishView(viewState: OneDishViewModel(oneDishModel: OneDishModel(), id: recipe.id))
+            OneDishView(viewState: OneDishViewModel(oneDishModel: OneDishModel(), id: recipe.id, loadRecipeFromCD: loadRecipeFromCD))
         }, label: {
             ZStack(alignment: .topTrailing) {
                 VStack (spacing: 0) {

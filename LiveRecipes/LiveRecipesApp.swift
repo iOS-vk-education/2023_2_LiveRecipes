@@ -24,7 +24,6 @@ extension Assembler {
                 FavoritesAssembly(),
                 SettingsAssembly(),
                 CreationAssembly(),
-                ListAssembly(),
                 OneDishAssembly(),
                 TabSelectionManagerAssembly()
             ], container: Container.sharedContainer

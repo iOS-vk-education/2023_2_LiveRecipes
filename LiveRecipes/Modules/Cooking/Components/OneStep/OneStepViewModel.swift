@@ -10,7 +10,7 @@ import SwiftUI
 
 
 struct OneStepModel {
-  @State var isTimerOnView: Bool = false 
+  @State var isTimerOnView: Bool = false
   @State var isLanded: Bool = false
   @State var isDatePicker: Bool = false
   @State var blurIsActive: Bool = false
@@ -46,7 +46,7 @@ final class OneStepViewModel: ObservableObject, SettingsViewModelProtocol {
     }
     
     func updatePublished() {
-        self.isTimerOnView = false
+        //self.isTimerOnView = false
         self.isLanded = false
         self.isDatePicker = false
         self.blurIsActive = false

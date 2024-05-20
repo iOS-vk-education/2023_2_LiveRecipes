@@ -77,7 +77,7 @@ struct RecipeDTO: Codable, Hashable {
     
     func decomposeDuration() -> (Int, Int, Int) {
         let days = duration / 60 / 24
-        let hours = duration / 60
+        let hours = (duration - days * 24 * 60) / 60
         let minutes = duration % 60
         
         return (days, hours, minutes)

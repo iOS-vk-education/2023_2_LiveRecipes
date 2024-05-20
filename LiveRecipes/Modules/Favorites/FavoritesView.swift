@@ -61,10 +61,8 @@ struct FavoritesView: View {
             GeometryReader {proxy in
                 ScrollView() {
                     LazyVStack(spacing: 12) {
-                        ForEach(viewState.allRecipes, id: \.self) { recipe in
-                            Assembler.sharedAssembly
-                                .resolver
-                                .resolve(RecipeBigCardView.self, argument: recipe)
+                        ForEach(viewState.favoriteRecipes, id: \.self) { recipe in
+                            RecipeBigCardView(recipe: recipe.recipePreviewDTO, loadRecipeFromCD: true)
                         }
                     }
                 }
