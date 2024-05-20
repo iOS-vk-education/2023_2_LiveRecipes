@@ -18,7 +18,6 @@ class Dish: Identifiable, Hashable {
     }
     
     var id: Int?//если еще нет в базе данных, в процесе создания
-    var myId: Int = -1
     var netId: Int = -1
     var title: String
     var description: String
@@ -67,7 +66,7 @@ class Dish: Identifiable, Hashable {
         dishCompositionsEntities: [CreationRecipeCompositionEntity],
         dishStepsEntities: [CreationRecipeStepEntity]) 
     {
-        self.myId = Int(recipeEntity.recipeMyId)
+        self.id = Int(recipeEntity.recipeMyId)
         self.netId = Int(recipeEntity.recipeNetId)
         self.title = recipeEntity.dishTitle
         self.description = recipeEntity.dishDescription
