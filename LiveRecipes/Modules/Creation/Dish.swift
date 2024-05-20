@@ -46,7 +46,14 @@ class Dish: Identifiable, Hashable {
     var recipeDTO: RecipeDTO {
         let photoData = photo?.jpegData(compressionQuality: 0.4)
         let photoDataBase64 = photoData?.base64EncodedString() ?? ""
-        return RecipeDTO(id: id ?? 0, 
+        var arraySteps: [[String]] = []
+        for dishStep in dishSteps {
+            let photoDataStep = dishStep.photo?.jpegData(compressionQuality: 0.4)
+            let photoDataBase64Step = photoData?.base64EncodedString() ?? ""
+            arraySteps.append([dishStep.description, photoDataBase64Step, String(dishStep.stepTime)])
+        }
+        
+        return RecipeDTO(id: id ?? 0,
                          name: title,
                          bzy: BZY(
             calories: nutritionValue.calories,
@@ -57,7 +64,7 @@ class Dish: Identifiable, Hashable {
                          photo: photoDataBase64,
                          description: description,
                          ingredients: dishComposition.map({ return ($0.product + " " + $0.quantity) }),
-                         steps: [],
+                         steps: arraySteps,
                          tag: "")
     }
 
