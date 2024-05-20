@@ -296,7 +296,9 @@ struct RecipesView: View {
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 12) {
                     ForEach (viewModel.myRecipes, id: \.self) { recipe in
-                        RecipeCardView(recipe: recipe.recipePreviewDTO, loadRecipeFromCD: true)
+                        Assembler.sharedAssembly
+                            .resolver
+                            .resolve(RecipeCardView.self, argument: recipe.recipePreviewDTO)
                     }
                 }
             }
