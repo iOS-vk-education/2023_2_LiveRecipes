@@ -204,7 +204,7 @@ struct TimerView: View {
                 Spacer()
                 
                 Button(action: {
-                    addNotification(time: 5, title: "LiveRecipes")
+                    addNotification(time: Double(totalTime), title: "LiveRecipes")
                     isTimerRunning.toggle()
                     if activityStarted {
                        // updateActivity()
@@ -254,7 +254,7 @@ struct TimerView: View {
                                         isTimerRunning = false
                                         //updateActivity()
                                         stopActivity()
-                                        notify()
+                                        //notify()
                                     }
                                 }
                             }

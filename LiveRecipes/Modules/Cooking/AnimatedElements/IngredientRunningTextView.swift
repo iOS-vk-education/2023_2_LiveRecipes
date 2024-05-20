@@ -60,6 +60,15 @@ struct IngredientRunningTextView2: View {
         
     }
     
+//    func prepareText() -> String {
+//        var preparedText = ""
+//        if text.count > 35 {
+//            preparedText = text.prefix(40)
+//        }
+//        
+//        return text
+//    }
+    
     func getWidth(for text: String) -> CGFloat {
             let size = (text as NSString).size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18)])
             return size.width
@@ -68,8 +77,8 @@ struct IngredientRunningTextView2: View {
     var body: some View {
         VStack {
             Spacer()
-            Text(text)
-                .frame(width: getWidth(for: text) + 25, height: 50)
+            Text(text.prefix(35))
+                .frame(width: getWidth(for: String(text.prefix(35))) + 25, height: 50)
                 .background(.white)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .font(.system(size: 18, weight: .regular))
@@ -81,11 +90,11 @@ struct IngredientRunningTextView2: View {
             withAnimation(.bouncy(duration: duration)) {
                 if startX < 0 {
                     //computedFinishX = (340) / 2 - 8
-                    computedFinishX = (UIScreen.main.bounds.width - getWidth(for: text) - 25) / 2 - 8
+                    computedFinishX = (UIScreen.main.bounds.width - getWidth(for: String(text.prefix(35))) - 25) / 2 - 8
                     
                 }
                 else {
-                    computedFinishX = -((UIScreen.main.bounds.width - getWidth(for: text) - 25) / 2 - 8)
+                    computedFinishX = -((UIScreen.main.bounds.width - getWidth(for: String(text.prefix(35))) - 25) / 2 - 8)
                     //computedFinishX = -((340) / 2 - 8)
                 }
             }
