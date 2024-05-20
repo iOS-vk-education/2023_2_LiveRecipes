@@ -28,6 +28,7 @@ final class OneDishModel: ObservableObject, OneDishModelProtocol {
     func getRecipeFromCD(id: Int) -> Dish {
         var recipe = Dish(id: nil, title: "", description: "", timeToPrepare: 0, nutritionValue: Nutrition(bzy: BZY(calories: "", protein: "", fats: "", carbohydrates: "")), dishComposition: [], dishSteps: [])
         coreData.fetch { dishes in
+            print("dishes")
             for dish in dishes {
                 if dish.id == id {
                     recipe = dish
