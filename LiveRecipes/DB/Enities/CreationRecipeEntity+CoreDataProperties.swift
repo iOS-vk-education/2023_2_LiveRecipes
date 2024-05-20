@@ -2,7 +2,7 @@
 //  CreationRecipeEntity+CoreDataProperties.swift
 //  LiveRecipes
 //
-//  Created by  Alexander Fedoseev on 13.05.2024.
+//  Created by  Alexander Fedoseev on 19.05.2024.
 //
 //
 
@@ -16,9 +16,10 @@ extension CreationRecipeEntity {
         return NSFetchRequest<CreationRecipeEntity>(entityName: "CreationRecipeEntity")
     }
 
+    @NSManaged public var recipeMyId: Int64
+    @NSManaged public var recipeNetId: Int64
     @NSManaged public var dishDescription: String
     @NSManaged public var dishTitle: String
-    @NSManaged public var id: Int64
     @NSManaged public var nutritionValueCal: String
     @NSManaged public var nutritionValueCarb: String
     @NSManaged public var nutritionValueFats: String
