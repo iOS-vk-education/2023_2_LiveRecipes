@@ -321,6 +321,20 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
         }
     }
     func deleteFromCoreDataFavoritesFromFavoritesView(recipe: RecipePreviewDTO) {
+        favoritesID = UserDefaults.standard.array(forKey: "favoritesID") as? [Int] ?? []
+        coreData.fetch { dishes in
+            for dish in dishes {
+                if self.favoritesID.contains(dish.netId) {
+                    
+                    if let index = self.favoritesID.firstIndex(of: dish.netId) {
+                        self.favoritesID.remove(at: index)
+                        UserDefaults.standard.setValue(self.favoritesID, forKey: "favoritesID")
+                    }
+                    break
+                }
+            }
+        }
+        
         coreData.delete(recipeMyId: recipe.id) { [weak self] _ in
             print("sucksess")
             self?.showRecipesInDB()
