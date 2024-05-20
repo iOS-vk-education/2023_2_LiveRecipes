@@ -21,7 +21,9 @@ final class RecipesModel: ObservableObject, RecipesModelProtocol {
         var recipes: [Dish] = []
         RecipeDataManager.shared.fetch { dishes in
             for dish in dishes {
-                recipes.append(dish)
+                if dish.netId == -1 {
+                    recipes.append(dish)
+                }
             }
         }
         return recipes
