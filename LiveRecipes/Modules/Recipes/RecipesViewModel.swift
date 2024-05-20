@@ -312,10 +312,10 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
         }
     }
     func deleteFromCoreDataFavorites(recipe: RecipePreviewDTO) {
-//        coreData.delete(id: recipe.id) {[weak self] _ in
-//            print("sucksess")
-//            self?.showRecipesInDB()//////////////////////////////////////////////////
-//        }
+        coreData.delete(recipeNetId: recipe.id) {[weak self] _ in
+            print("sucksess")
+            self?.showRecipesInDB()//////////////////////////////////////////////////
+        }
     }
     func durationSet() {
         duration = "\(hours * 60 + minutes)"
@@ -331,6 +331,7 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
             for dish in dishes {
                 print("---")
                 print("id: \(dish.id)")
+                print("netId: \(dish.netId)")
                 print("title: \(dish.title)")
                 print("description: \(dish.description)")
                 print("timeToPrepare: \(dish.timeToPrepare)")

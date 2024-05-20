@@ -45,15 +45,14 @@ final class RecipeDataManager: RecipeDataManagerDescription {
             guard let objectRecipeEntity = NSEntityDescription.insertNewObject(forEntityName: "CreationRecipeEntity", into: context) as? CreationRecipeEntity else {
                 return
             }
+            let countDishes = CoreDataManager.shared.count(request:CreationRecipeEntity.fetchRequest())
+            let newDishId = Int64(countDishes + 1)
             if let netId = id {
-                objectRecipeEntity.recipeMyId = Int64(netId)
-                objectRecipeEntity.recipeNetId = -1
+                objectRecipeEntity.recipeNetId = Int64(netId)
             } else {
-                let countDishes = CoreDataManager.shared.count(request:CreationRecipeEntity.fetchRequest())
-                let newDishId = Int64(countDishes + 1)
-                objectRecipeEntity.recipeMyId = newDishId
                 objectRecipeEntity.recipeNetId = -1
             }
+            objectRecipeEntity.recipeMyId = newDishId
             objectRecipeEntity.dishDescription = dish.description
             objectRecipeEntity.dishTitle = dish.title
             objectRecipeEntity.nutritionValueCal = dish.nutritionValue.calories

@@ -29,6 +29,9 @@ struct FavoritesView: View {
                 if selectedSegment == 0 {
                     Spacer()
                     recipesView()
+                        .onAppear {
+                            viewState.loadData()
+                        }
                     Spacer()
                 }
                 else {
