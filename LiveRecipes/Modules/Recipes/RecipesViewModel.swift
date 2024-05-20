@@ -280,36 +280,36 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
         }
     }
     func saveToCoreDataFavorites(recipe: RecipePreviewDTO) {
-//        model.findRecipeForCoreData(id: recipe.id) { [weak self] result in
-//            guard let data = Data(base64Encoded: recipe.photo) else { return }
-//            let image = UIImage(data: data)
-//            var dishComposition: [DishComposition] = []
-//            for i in result.ingredients.indices {
-//                dishComposition.append(DishComposition(id: i,
-//                                                       product: result.ingredients[i],
-//                                                       quantity: ""))
-//            }
-//            var dishSteps: [DishStep] = []
-//            for i in result.steps.indices {
-//                guard let datastep = Data(base64Encoded: result.steps[i][1]) else { return }
-//                let imagestep = UIImage(data: datastep)
-//                dishSteps.append(DishStep(id: i,
-//                                          title: result.steps[i][0],
-//                                          description: result.steps[i][2],
-//                                          photo: imagestep))
-//            }
-//            self?.coreData.create(dish: Dish(id: result.id,
-//                                             title: result.name,
-//                                             description: result.description,
-//                                             photo: image,
-//                                             timeToPrepare: result.duration,
-//                                             nutritionValue: Nutrition(bzy: result.bzy),
-//                                             dishComposition: dishComposition,
-//                                             dishSteps: dishSteps)) {
-//                print("success")
-//                self?.showRecipesInDB()//////////////////////////////////////////////
-//            }
-//        }
+        model.findRecipeForCoreData(id: recipe.id) { [weak self] result in
+            guard let data = Data(base64Encoded: recipe.photo) else { return }
+            let image = UIImage(data: data)
+            var dishComposition: [DishComposition] = []
+            for i in result.ingredients.indices {
+                dishComposition.append(DishComposition(id: i,
+                                                       product: result.ingredients[i],
+                                                       quantity: ""))
+            }
+            var dishSteps: [DishStep] = []
+            for i in result.steps.indices {
+                guard let datastep = Data(base64Encoded: result.steps[i][1]) else { return }
+                let imagestep = UIImage(data: datastep)
+                dishSteps.append(DishStep(id: i,
+                                          stepTime: Int(result.steps[i][2]) ?? 0,
+                                          description: result.steps[i][0],
+                                          photo: imagestep))
+            }
+            self?.coreData.create(id: result.id,dish: Dish(id: result.id,
+                                             title: result.name,
+                                             description: result.description,
+                                             photo: image,
+                                             timeToPrepare: result.duration,
+                                             nutritionValue: Nutrition(bzy: result.bzy),
+                                             dishComposition: dishComposition,
+                                             dishSteps: dishSteps)) {
+                print("success")
+                self?.showRecipesInDB()//////////////////////////////////////////////
+            }
+        }
     }
     func deleteFromCoreDataFavorites(recipe: RecipePreviewDTO) {
 //        coreData.delete(id: recipe.id) {[weak self] _ in
@@ -323,39 +323,39 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     func getSizeOfElement(proxy: GeometryProxy) {
         temp = proxy.size.width
     }
-//    func showRecipesInDB() {
-//        print("----------------------------")
-//        print("[DEBUG] begin")
-//        RecipeDataManager.shared.fetch { dishes in
-//            print("[DEBUG] dishes:")
-//            for dish in dishes {
-//                print("---")
-//                print("id: \(dish.id)")
-//                print("title: \(dish.title)")
-//                print("description: \(dish.description)")
-//                print("timeToPrepare: \(dish.timeToPrepare)")
-//                print("photoRef: \(dish.photo == nil ? "NO" : "YES")")
-//                print("nutritionValueCal: \(dish.nutritionValue.calories)")
-//                print("nutritionValueProt: \(dish.nutritionValue.protein)")
-//                print("nutritionValueFats: \(dish.nutritionValue.fats)")
-//                print("nutritionValueCarb: \(dish.nutritionValue.carbohydrates)")
-//                print("---")
-//                for step in dish.dishSteps {
-//                    print("---")
-//                    print("step.id: \(step.id)")
-//                    print("step.title: \(step.title)")
-//                    print("step.description: \(step.description)")
-//                    print("step.photo: \(step.photo == nil ? "NO" : "YES")")
-//                }
-//                for composition in dish.dishComposition {
-//                    print("---")
-//                    print("composition.id: \(composition.id)")
-//                    print("composition.product: \(composition.product)")
-//                    print("composition.quantity: \(composition.quantity)")
-//                }
-//            }
-//        }
-//        print("[DEBUG] end")
-//        print("----------------------------")
-//    }
+    func showRecipesInDB() {
+        print("----------------------------")
+        print("[DEBUG] begin")
+        RecipeDataManager.shared.fetch { dishes in
+            print("[DEBUG] dishes:")
+            for dish in dishes {
+                print("---")
+                print("id: \(dish.id)")
+                print("title: \(dish.title)")
+                print("description: \(dish.description)")
+                print("timeToPrepare: \(dish.timeToPrepare)")
+                print("photoRef: \(dish.photo == nil ? "NO" : "YES")")
+                print("nutritionValueCal: \(dish.nutritionValue.calories)")
+                print("nutritionValueProt: \(dish.nutritionValue.protein)")
+                print("nutritionValueFats: \(dish.nutritionValue.fats)")
+                print("nutritionValueCarb: \(dish.nutritionValue.carbohydrates)")
+                print("---")
+                for step in dish.dishSteps {
+                    print("---")
+                    print("step.id: \(step.id)")
+                    print("step.title: \(step.stepTime)")
+                    print("step.description: \(step.description)")
+                    print("step.photo: \(step.photo == nil ? "NO" : "YES")")
+                }
+                for composition in dish.dishComposition {
+                    print("---")
+                    print("composition.id: \(composition.id)")
+                    print("composition.product: \(composition.product)")
+                    print("composition.quantity: \(composition.quantity)")
+                }
+            }
+        }
+        print("[DEBUG] end")
+        print("----------------------------")
+    }
 }

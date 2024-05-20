@@ -57,6 +57,11 @@ struct RecipesView: View {
                         viewModel.findRecipesByFilter()
                     }
                 })
+                .searchable(text: $viewModel.searchQuery, isPresented: $viewModel.searchIsActive)
+                .searchPresentationToolbarBehavior(.avoidHidingContent)
+                .onSubmit (of: .search) {
+                    viewModel.findRecipesByFilter()
+                }
                 .contentMargins(.bottom, 12, for: .scrollContent)
                 .scrollIndicators(.hidden)
             }
@@ -92,11 +97,6 @@ struct RecipesView: View {
             }
                 
         }.navigationBarBackButtonHidden(true)
-            .searchable(text: $viewModel.searchQuery, isPresented: $viewModel.searchIsActive)
-            .searchPresentationToolbarBehavior(.avoidHidingContent)
-            .onSubmit (of: .search) {
-                viewModel.findRecipesByFilter()
-            }
     }
     
     @ViewBuilder
