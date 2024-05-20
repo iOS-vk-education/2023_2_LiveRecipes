@@ -12,16 +12,18 @@ struct StartCookingButton: View {
     @EnvironmentObject private var tabSelectionManager: TabSelectionManager
     @EnvironmentObject private var stepViewModel: OneStepViewModel
     @State private var buttonOffset = CGSize(width: 0, height: 300)
+    @Environment(\.presentationMode) var presentationMode
     var transferData: RecipeDTO
     
     var body: some View {
         VStack {
             Spacer()
             Button(action: {
-        
+                //self.presentationMode.wrappedValue.dismiss()
             }) {
                 NavigationLink(destination:{
                     Assembler.sharedAssembly.resolver.resolve(RecipesView.self)
+                    
                 }) {
                     Text("cookingPrepare.Go".localized)
                         .font(.title2)

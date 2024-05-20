@@ -16,8 +16,9 @@ final class FavoritesViewModel: ObservableObject, FavoritesViewModelProtocol {
     
     init(favoritesModel: FavoritesModel) {
         self.model = favoritesModel
-        //loadData()
+        loadData()
     }
+    
     func loadData() -> Void {
         favoriteRecipes = model.loadFavorites()
     }

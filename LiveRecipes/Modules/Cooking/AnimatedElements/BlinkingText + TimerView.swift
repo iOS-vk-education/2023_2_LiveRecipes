@@ -62,13 +62,18 @@ struct TimerView: View {
         return (hours, minutes, seconds)
     }
     
-    func addNotification(time: Double, title: String, subtitle: String, body: String) {
+    func addNotification(time: Double, title: String) {
         let center = UNUserNotificationCenter.current()
         
         let addRequest = {
             let content = UNMutableNotificationContent()
             content.title = title
-            content.body = body
+            if let step = step {
+                content.body = step + "timer.step.completed".localized
+            }
+            else {
+                content.body = "timer.over".localized
+            }
             content.sound = UNNotificationSound.default
     
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time, repeats: false)
@@ -199,7 +204,7 @@ struct TimerView: View {
                 Spacer()
                 
                 Button(action: {
-                    addNotification(time: 5, title: "Title", subtitle: "Sub", body: "body")
+                    addNotification(time: 5, title: "LiveRecipes")
                     isTimerRunning.toggle()
                     if activityStarted {
                        // updateActivity()

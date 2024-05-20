@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import Swinject
 
 struct CreationView: View {
     @StateObject var viewState: CreationViewModel
@@ -27,7 +28,7 @@ struct CreationView: View {
     @State private var image: UIImage?
     @State private var isImagePickerOn: Bool = false
     @State private var delId: String = ""
-    
+    @Environment(\.presentationMode) var presentationMode
     var body: some View {
         List {
             Section(header: Text("creation.label.dishName".localized)) {
@@ -100,6 +101,7 @@ struct CreationView: View {
                         textButritionalValueFats: textButritionalValueFats,
                         textButritionalValueCarbohydrates: textButritionalValueCarbohydrates,
                         image: image)
+                    self.presentationMode.wrappedValue.dismiss()
                 }) {
                     Text("creation.button.save".localized)
                     .foregroundColor(.white)
@@ -313,4 +315,3 @@ struct CreationView: View {
         })
     }
 }
-

@@ -64,7 +64,7 @@ struct FavoritesView: View {
                         ForEach(viewState.favoriteRecipes, id: \.self) { recipe in
                             Assembler.sharedAssembly
                                 .resolver
-                                .resolve(RecipeBigCardView.self, argument: recipe.recipePreviewDTO)
+                                .resolve(RecipeBigCardView.self, arguments: recipe.recipePreviewDTO, true)
                         }
                     }
                 }
