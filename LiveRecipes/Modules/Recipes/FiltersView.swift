@@ -57,9 +57,9 @@ struct FiltersView: View {
         List {
             Section {
                 HStack {
-                    Text("Каллорий")
+                    Text("calories.filters".localized)
                     Spacer()
-                    Text(viewModel.isMoreCalories ? "больше" : "меньше")
+                    Text(viewModel.isMoreCalories ? "more".localized : "less".localized)
                         .padding(.vertical, 6)
                         .padding(.horizontal, 8)
                         .frame(width: 80)
@@ -70,8 +70,8 @@ struct FiltersView: View {
                         .gesture(TapGesture().onEnded({ _ in
                             viewModel.isMoreCalories.toggle()
                         }))
-                    Text("чем")
-                    TextField("число", text: $viewModel.calories)
+                    Text("then".localized)
+                    TextField("num".localized, text: $viewModel.calories)
                         .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
                         .keyboardType(.numberPad)
                         .background(RoundedRectangle(cornerRadius: 8).fill(.background))
@@ -81,9 +81,9 @@ struct FiltersView: View {
                 .listRowBackground(Color.clear)
                 .listRowSeparator(.hidden)
                 HStack {
-                    Text("Белков")
+                    Text("proteins.filters".localized)
                     Spacer()
-                    Text(viewModel.isMoreProtein ? "больше" : "меньше")
+                    Text(viewModel.isMoreProtein ? "more".localized : "less".localized)
                         .padding(.vertical, 6)
                         .padding(.horizontal, 8)
                         .frame(width: 80)
@@ -94,8 +94,8 @@ struct FiltersView: View {
                         .gesture(TapGesture().onEnded({ _ in
                             viewModel.isMoreProtein.toggle()
                         }))
-                    Text("чем")
-                    TextField("число", text: $viewModel.protein)
+                    Text("then".localized)
+                    TextField("num".localized, text: $viewModel.protein)
                         .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
                         .keyboardType(.numberPad)
                         .background(RoundedRectangle(cornerRadius: 8).fill(.background))
@@ -105,9 +105,9 @@ struct FiltersView: View {
                 .listRowBackground(Color.clear)
                 .listRowSeparator(.hidden)
                 HStack {
-                    Text("Жиров")
+                    Text("fats.filters".localized)
                     Spacer()
-                    Text(viewModel.isMoreFats ? "больше" : "меньше")
+                    Text(viewModel.isMoreFats ? "more".localized : "less".localized)
                         .padding(.vertical, 6)
                         .padding(.horizontal, 8)
                         .frame(width: 80)
@@ -118,8 +118,8 @@ struct FiltersView: View {
                         .gesture(TapGesture().onEnded({ _ in
                             viewModel.isMoreFats.toggle()
                         }))
-                    Text("чем")
-                    TextField("число", text: $viewModel.fats)
+                    Text("then".localized)
+                    TextField("num".localized, text: $viewModel.fats)
                         .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
                         .keyboardType(.numberPad)
                         .background(RoundedRectangle(cornerRadius: 8).fill(.background))
@@ -129,9 +129,9 @@ struct FiltersView: View {
                 .listRowBackground(Color.clear)
                 .listRowSeparator(.hidden)
                 HStack {
-                    Text("Углеводов")
+                    Text("carb.filters".localized)
                     Spacer()
-                    Text(viewModel.isMoreCarbohydrates ? "больше" : "меньше")
+                    Text(viewModel.isMoreCarbohydrates ? "more".localized : "less".localized)
                         .padding(.vertical, 6)
                         .padding(.horizontal, 8)
                         .frame(width: 80)
@@ -142,8 +142,8 @@ struct FiltersView: View {
                         .gesture(TapGesture().onEnded({ _ in
                             viewModel.isMoreCarbohydrates.toggle()
                         }))
-                    Text("чем")
-                    TextField("число", text: $viewModel.carbohydrates)
+                    Text("then".localized)
+                    TextField("num".localized, text: $viewModel.carbohydrates)
                         .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
                         .keyboardType(.numberPad)
                         .background(RoundedRectangle(cornerRadius: 8).fill(.background))
@@ -154,7 +154,7 @@ struct FiltersView: View {
                 .listRowSeparator(.hidden)
             } header: {
                 HStack {
-                    Text("Пищевая ценность")
+                    Text("bzy.filters".localized)
                     Spacer()
                     if (viewModel.calories != "" || viewModel.carbohydrates != "" || viewModel.fats != "" || viewModel.protein != "") {
                         Button {
@@ -163,7 +163,7 @@ struct FiltersView: View {
                             viewModel.fats = ""
                             viewModel.protein = ""
                         } label: {
-                                Text("Очистить")
+                            Text("clear.one.filter".localized)
                                     .textCase(.none)
                                     .font(.caption)
                         }
@@ -174,23 +174,23 @@ struct FiltersView: View {
                 if (viewModel.isTimeSetted) {
                     HStack {
                         if (viewModel.hours == 0) {
-                            Text("Меньше чем \(viewModel.minutes) минут")
+                            Text("lessthen".localized + "\(viewModel.minutes)" + "min.filters".localized)
                         } else {
-                            Text("Меньше чем \(viewModel.hours) ч. \(viewModel.minutes) мин.")
+                            Text("lessthen".localized + "\(viewModel.hours)" + "h.filters".localized + "\(viewModel.minutes)" + "min.filters".localized)
                         }
                         Spacer()
                         Button {
                             viewModel.isTimeSetted = false
                             viewModel.isTimeSetting = true
                         } label: {
-                            Text("Изменить")
+                            Text("edit.time.filters".localized)
                         }
                     }
                 } else {
                     if (viewModel.isTimeSetting) {
                         VStack(spacing: 0) {
                             HStack(spacing: 0) {
-                                Text("Часы")
+                                Text("hours.filter".localized)
                                 Picker("Hours", selection: $viewModel.hours) {
                                     ForEach(0 ..< 100) { hour in
                                         Text("\(hour)")
@@ -199,7 +199,7 @@ struct FiltersView: View {
                                 .pickerStyle(.wheel)
                                 .clipped()
                                 Spacer()
-                                Text("Минуты")
+                                Text("minutes.filter".localized)
                                 Picker("Minutes", selection: $viewModel.minutes) {
                                     ForEach(0 ..< 60) { minute in
                                         Text("\(minute)")
@@ -213,7 +213,7 @@ struct FiltersView: View {
                                 viewModel.isTimeSetting = false
                                 viewModel.durationSet()
                             } label: {
-                                Text("Установить")
+                                Text("set.filter".localized)
                             }
                         }
                         .listRowBackground(Color.clear)
@@ -221,7 +221,7 @@ struct FiltersView: View {
                         Button {
                             viewModel.isTimeSetting = true
                         } label: {
-                            Text("Установить время")
+                            Text("set.time.filter".localized)
                         }
                         .frame(width: UIScreen.main.bounds.width, alignment: .center)
                         .listRowBackground(Color.orange.opacity(0.1))
@@ -237,7 +237,7 @@ struct FiltersView: View {
                             viewModel.isTimeSetting = false
                             viewModel.duration = ""
                         } label: {
-                            Text("Очистить")
+                            Text("clear.one.filter".localized)
                                 .textCase(.none)
                                 .font(.caption)
                         }
@@ -290,7 +290,7 @@ struct FiltersView: View {
                             viewModel.containsTextField = ""
                             viewModel.contains = []
                         } label: {
-                            Text("Очистить")
+                            Text("clear.one.filter".localized)
                                 .textCase(.none)
                                 .font(.caption)
                         }
@@ -343,22 +343,13 @@ struct FiltersView: View {
                             viewModel.notContainsTextField = ""
                             viewModel.notContains = []
                         } label: {
-                            Text("Очистить")
+                            Text("clear.one.filter".localized)
                                 .textCase(.none)
                                 .font(.caption)
                         }
                     }
                 }
             }
-//            Section {
-//                DietCellView()
-//                DietCellView()
-//                DietCellView()
-//                DietCellView()
-//                DietCellView()
-//            } header: {
-//                Text("filters.find.diet".localized)
-//            }
         }
         .listSectionSpacing(8)
         .overlay(
