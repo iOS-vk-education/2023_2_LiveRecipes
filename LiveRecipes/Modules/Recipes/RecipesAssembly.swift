@@ -18,5 +18,29 @@ final class RecipesAssembly: Assembly {
         container.register(RecipesView.self) { _ in
             return RecipesView(viewModel: viewModel)
         }
+        container.register(RecentRecipesView.self) { _ in
+            return RecentRecipesView(viewModel: viewModel)
+        }
+        container.register(AllRecipesView.self) { _ in
+            return AllRecipesView(viewModel: viewModel)
+        }
+        container.register(MyRecipesView.self) { _ in
+            return MyRecipesView(viewModel: viewModel)
+        }
+        container.register(KeyWordsView.self) { _ in
+            return KeyWordsView(viewModel: viewModel)
+        }
+        container.register(FiltersView.self) { _ in
+            return FiltersView(viewModel: viewModel)
+        }
+        container.register(CookToTimeView.self) { _ in
+            return CookToTimeView(viewModel: viewModel)
+        }
+        container.register(RecipeCardView.self) { _, recipeArg1, recipeArg2, recipeArg3 in
+            return RecipeCardView(viewModel: viewModel, recipe: recipeArg1, loadRecipeFromCD: recipeArg2, isMy: recipeArg3)
+        }
+        container.register(RecipeBigCardView.self) { _, recipeArg1, recipeArg2, recipeArg3 in
+            return RecipeBigCardView(viewModel: viewModel, recipe: recipeArg1, loadRecipeFromCD: recipeArg2, isMy: recipeArg3)
+        }
     }
 }

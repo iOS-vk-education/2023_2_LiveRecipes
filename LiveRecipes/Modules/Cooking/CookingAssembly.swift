@@ -13,8 +13,8 @@ final class CookingAssembly: Assembly {
         let model = CookingModel()
         let viewModel = CookingViewModel(cookingModel: model)
 
-        container.register(CookingView.self) { _ in
-            return CookingView(viewState: viewModel)
+        container.register(CookingView.self) { _, arg in
+            return CookingView(tabSelected: arg, viewModel: viewModel)
         }
     }
 }

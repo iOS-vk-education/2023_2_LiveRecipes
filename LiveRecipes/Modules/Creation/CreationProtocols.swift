@@ -7,8 +7,15 @@
 
 import Foundation
 
-protocol CreationViewModelProtocol {}
+protocol CreationViewModelProtocol {
+    func addDishComposition(product: String, quantity: String)
+    func deleteDishComposition(index: Int)
+}
 
-protocol CreationModelProtocol {}
+protocol CreationModelProtocol {
+    func showRecipesInDB()
+    func createRecipy(dish: Dish, completion: @escaping() -> Void)
+    func isCreationPossible(dish: Dish) -> CreationError?
+}
 
 protocol CreationViewProtocol {}

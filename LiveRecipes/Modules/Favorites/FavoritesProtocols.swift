@@ -7,8 +7,13 @@
 
 import Foundation
 
-protocol FavoritesViewModelProtocol {}
+protocol FavoritesViewModelProtocol {
+    func deleteFromFavorites(id: Int) -> Void 
+    func loadData() -> Void 
+}
 
-protocol FavoritesModelProtocol {}
+protocol FavoritesModelProtocol {
+    func loadFavorites() -> [Dish]
+}
 
 protocol FavoritesViewProtocol {}

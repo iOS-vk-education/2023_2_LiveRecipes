@@ -22,7 +22,10 @@ extension Assembler {
                 RecipesAssembly(),
                 CookingAssembly(),
                 FavoritesAssembly(),
-                ListAssembly()
+                SettingsAssembly(),
+                CreationAssembly(),
+                OneDishAssembly(),
+                TabSelectionManagerAssembly()
             ], container: Container.sharedContainer
         )
     }()
@@ -33,6 +36,8 @@ class RootApp: App {
     @ObservedObject var appViewBuilder: ApplicationViewBuilder
 
     required init() {
+        RecipeDataManager.shared.prepareCoreDataIfNeeded {}
+        CoreDataManager.shared.prepareCoreDataIfNeeded {}
         self.appViewBuilder = ApplicationViewBuilder()
     }
 

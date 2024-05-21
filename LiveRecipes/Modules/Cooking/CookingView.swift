@@ -6,15 +6,27 @@
 //
 
 import SwiftUI
+import Swinject
 
 struct CookingView: View {
-    @StateObject var viewState: CookingViewModel
-
+    var tabSelected: Binding<Tabs>
+    @EnvironmentObject var model: OneStepViewModel
+    @StateObject var viewModel: CookingViewModel
+    
     var body: some View {
-        Text(Tabs.cooking.tabName)
+        if model.steps.count == 0 {
+            NoStepsView(tabSelected: tabSelected)
+
+
+        } else {
+            NavigationView {
+                OneStepView()
+            }
+        }
     }
 }
 
+
 #Preview {
-    ApplicationViewBuilder.stub.build(view: .cooking)
+    ApplicationViewBuilder.stub.build(view: .cooking, tabBinding: Binding.constant(Tabs.recipes))
 }
