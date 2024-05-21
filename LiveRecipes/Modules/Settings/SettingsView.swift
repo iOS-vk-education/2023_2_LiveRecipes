@@ -13,6 +13,7 @@ struct SettingsView: View {
     @StateObject var creationViewModel = CreationViewModel(creationModel: CreationModel())
     @State var isClearMyRecipes = false
     @State var isClearFavorites = false
+    @State var isClearRecents = false
 
     var body: some View {
         List {
@@ -57,11 +58,18 @@ struct SettingsView: View {
 //                        .tint(Color(uiColor: .label))
 //                }
                 Button(action: {
-                    viewState.clearRecents()
+                    isClearRecents = true
                 })
                 {
                     Text("settings.clearRecents".localized)
                         .tint(Color(uiColor: .label))
+                }.alert(isPresented: $isClearRecents) {
+                    Alert(title: Text("Очистить недавние?"), primaryButton: .default(Text("Да")){
+                        viewState.clearRecents()
+                        isClearFavorites = false
+                    }, secondaryButton: .default(Text("Отмена")) {
+                        isClearFavorites = false
+                    })
                 }
                 NavigationLink(destination: CreationView(viewState: creationViewModel), isActive: $isShowingCreationView, label: {
                     Text("settings.publishMyRecipe".localized)

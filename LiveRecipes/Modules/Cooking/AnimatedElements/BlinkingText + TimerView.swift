@@ -238,7 +238,7 @@ struct TimerView: View {
                     }
                     else {
                         Text(hours == 0 ? "\(minutes)m:\(seconds)s" : "\(hours)h:\(minutes)m:\(seconds)s")
-                            .foregroundColor(Color(uiColor: .label))
+                            .foregroundColor(Color(uiColor: .black))
                             .font(.system(size: 19, weight: .semibold))
                             .padding(.top, 2)
                         
