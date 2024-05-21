@@ -55,7 +55,7 @@ struct RecipeBigCardView: View {
                 .frame(width: UIScreen.main.bounds.width - 24, height: 230)
                 .background(Color(UIColor.secondarySystemBackground))
                 .clipShape(.rect(cornerRadius: 8))
-                .tint(.black)
+                .tint(Color(uiColor: .label))
                 if !isMy {
                     VStack {
                         Image(systemName: recipe.isInFavorites ?? false ? "star.fill" : "star")

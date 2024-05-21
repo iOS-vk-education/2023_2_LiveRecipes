@@ -202,28 +202,28 @@ struct CreationView: View {
         Section(header: Text("creation.label.nutritionalValue".localized)) {
             HStack {
                 Text("creation.nutritionalValue.calories".localized)
-                    .foregroundColor(Color(.black))
+                    .foregroundColor(Color(uiColor: .label))
                     .frame(width: 170, alignment: .leading)
                 TextField("", text: $textButritionalValueCalories)
                     .foregroundColor(Color.secondary)
             }
             HStack {
                 Text("creation.nutritionalValue.proteins".localized)
-                    .foregroundColor(Color(.black))
+                    .foregroundColor(Color(uiColor: .label))
                     .frame(width: 170, alignment: .leading)
                 TextField("", text: $textButritionalValueProteins)
                     .foregroundColor(Color.secondary)
             }
             HStack {
                 Text("creation.nutritionalValue.fats".localized)
-                    .foregroundColor(Color(.black))
+                    .foregroundColor(Color(uiColor: .label))
                     .frame(width: 170, alignment: .leading)
                 TextField("", text: $textButritionalValueFats)
                     .foregroundColor(Color.secondary)
             }
             HStack {
                 Text("creation.nutritionalValue.carbohydrates".localized)
-                    .foregroundColor(Color(.black))
+                    .foregroundColor(Color(uiColor: .label))
                     .frame(width: 170, alignment: .leading)
                 TextField("", text: $textButritionalValueCarbohydrates)
                     .foregroundColor(Color.secondary)
@@ -246,7 +246,7 @@ struct CreationView: View {
             ForEach(Array(viewState.dishComposition.enumerated()), id: \.element.id) { index, composition in
                 HStack {
                     TextField("creation.placeholder.product".localized, text: $viewState.dishComposition[index].product)
-                        .foregroundColor(Color(.black))
+                        .foregroundColor(Color(uiColor: .label))
                     TextField("creation.placeholder.quantity".localized, text: $viewState.dishComposition[index].quantity)
                         .foregroundColor(Color.secondary)
                 }

@@ -133,7 +133,7 @@ struct KeyWordsView: View {
                                     viewModel.keywordSearch(word: viewModel.keyWords[index])
                                 }, label: {
                                     Text(viewModel.keyWords[index].keyWord)
-                                        .tint(viewModel.keyWords[index].isChoosed ? .white : .black)
+                                        .tint(viewModel.keyWords[index].isChoosed ? .white : Color(uiColor: .label))
                                         .font(.caption)
                                         .padding(8)
                                         .background(Color(viewModel.keyWords[index].isChoosed ? UIColor.orange : UIColor.secondarySystemBackground))

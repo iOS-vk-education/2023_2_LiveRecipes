@@ -36,7 +36,7 @@ struct SettingsView: View {
                 })
                 {
                     Text("settings.clearMyRecipes".localized)
-                        .tint(.black)
+                        .tint(Color(uiColor: .label))
                 }
                 
                 Button(action: {
@@ -44,14 +44,14 @@ struct SettingsView: View {
                 })
                 {
                     Text("settings.clearFavourites".localized)
-                        .tint(.black)
+                        .tint(Color(uiColor: .label))
                 }
                 Button(action: {
                     viewState.clearRecents()
                 })
                 {
                     Text("settings.clearRecents".localized)
-                        .tint(.black)
+                        .tint(Color(uiColor: .label))
                 }
                 NavigationLink(destination: CreationView(viewState: creationViewModel), isActive: $isShowingCreationView, label: {
                     Text("settings.publishMyRecipe".localized)

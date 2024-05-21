@@ -232,13 +232,13 @@ struct TimerView: View {
                 else {
                     if totalTime == 1 {
                         Text("0m:0s")
-                            .foregroundColor(.black)
+                            .foregroundColor(Color(uiColor: .label))
                             .font(.system(size: 19, weight: .semibold))
                             .padding(.top, 2)
                     }
                     else {
                         Text(hours == 0 ? "\(minutes)m:\(seconds)s" : "\(hours)h:\(minutes)m:\(seconds)s")
-                            .foregroundColor(.black)
+                            .foregroundColor(Color(uiColor: .label))
                             .font(.system(size: 19, weight: .semibold))
                             .padding(.top, 2)
                         

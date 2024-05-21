@@ -32,7 +32,7 @@ struct IngredientRunningTextView: View {
                 .background(.white)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .font(.system(size: 18, weight: .regular))
-                .foregroundColor(.black)
+                .foregroundColor(Color(uiColor: .label))
                 .offset(textOffset)
             Spacer()
         }
@@ -82,7 +82,7 @@ struct IngredientRunningTextView2: View {
                 .background(.white)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .font(.system(size: 18, weight: .regular))
-                .foregroundColor(.black)
+                .foregroundColor(Color(uiColor: .label))
                 .offset(x: computedFinishX, y: 0)
             Spacer()
         }

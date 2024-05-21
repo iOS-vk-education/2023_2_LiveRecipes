@@ -123,7 +123,7 @@ struct RecipesView: View {
                             viewModel.sortKeyWordsByChoose()
                         }, label: {
                             Text(viewModel.keyWords[index].keyWord)
-                                .tint(viewModel.keyWords[index].isChoosed ? .white : .black)
+                                .tint(viewModel.keyWords[index].isChoosed ? .white : Color(uiColor: .label))
                                 .font(.caption)
                         })
                         .padding(8)
@@ -135,10 +135,10 @@ struct RecipesView: View {
                     }, label: {
                         HStack {
                             Text("recipes.keywords.more".localized)
-                                .tint(.black)
+                                .tint(Color(uiColor: .label))
                                 .font(.caption)
                             Image(systemName: "chevron.right")
-                                .tint(.black)
+                                .tint(Color(uiColor: .label))
                                 .font(.caption)
                                 .imageScale(.small)
                         }
@@ -163,7 +163,7 @@ struct RecipesView: View {
         HStack {
             Text(blockName)
                 .imageScale(.small)
-                .tint(.black)
+                .tint(Color(uiColor: .label))
                 .font(.title3)
                 .fontWeight(.light)
                 .padding(.leading, 20)
@@ -216,7 +216,7 @@ struct RecipesView: View {
         VStack {
             HStack {
                 Text("recipes.cooktotime.label".localized)
-                    .tint(.black)
+                    .tint(Color(uiColor: .label))
                     .font(.title3)
                     .fontWeight(.light)
                     .padding(.leading, 20)
@@ -230,7 +230,7 @@ struct RecipesView: View {
                     CardToTimeView(viewModel: viewModel, type: .dinner, proxy: proxy)
                     CardToTimeView(viewModel: viewModel, type: .snacks, proxy: proxy)
                 }
-                .tint(.black)
+                .tint(Color(uiColor: .label))
                 .padding(.horizontal, (proxy.size.width - 320 + 12)/5)
             }
             .frame(height: 96)

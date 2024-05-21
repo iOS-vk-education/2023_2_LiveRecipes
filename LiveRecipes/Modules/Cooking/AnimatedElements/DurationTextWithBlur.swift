@@ -15,7 +15,7 @@ struct DurationTextWithBlur: View {
         
         Text("cookingPrepare.timeNeeded".localized)
             .font(.title2)
-            .foregroundColor(.black)
+            .foregroundColor(Color(uiColor: .label))
             .blur(radius: blurRadius)
             .opacity(opacity)
             .multilineTextAlignment(.center)

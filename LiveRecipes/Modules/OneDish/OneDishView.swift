@@ -160,7 +160,7 @@ struct OneDishView: View {
                             ForEach(Array(viewState.foundRecipe.ingredients.enumerated()), id: \.offset) { index, ingredient in
                                 HStack {
                                     Image(systemName: "smallcircle.filled.circle")
-                                        .foregroundStyle(.black)
+                                        .foregroundStyle(Color(uiColor: .label))
                                     Text(ingredient)
                                     Spacer()
                                     
