@@ -293,7 +293,7 @@ struct RecipesView: View {
                     .font(.caption2)
                     .multilineTextAlignment(.center)
             }
-            .frame(width: 220, height: 100)
+            .frame(width: 220, height: 170)
             .background(Color(UIColor.secondarySystemBackground))
             .clipShape(.rect(cornerRadius: 8))
             .padding(.bottom, 12)
