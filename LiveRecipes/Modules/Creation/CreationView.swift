@@ -101,7 +101,9 @@ struct CreationView: View {
                         textButritionalValueFats: textButritionalValueFats,
                         textButritionalValueCarbohydrates: textButritionalValueCarbohydrates,
                         image: image)
-                    self.presentationMode.wrappedValue.dismiss()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
                 }) {
                     Text("creation.button.save".localized)
                     .foregroundColor(.white)
