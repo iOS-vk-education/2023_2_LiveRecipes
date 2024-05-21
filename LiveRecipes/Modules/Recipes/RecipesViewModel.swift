@@ -329,8 +329,7 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
         favoritesID = UserDefaults.standard.array(forKey: "favoritesID") as? [Int] ?? []
         coreData.fetch { dishes in
             for dish in dishes {
-                if self.favoritesID.contains(dish.netId) {
-                    
+                if recipe.id == dish.id {
                     if let index = self.favoritesID.firstIndex(of: dish.netId) {
                         self.favoritesID.remove(at: index)
                         UserDefaults.standard.setValue(self.favoritesID, forKey: "favoritesID")

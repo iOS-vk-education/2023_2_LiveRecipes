@@ -2886,7 +2886,20 @@
 
     },
     "Да" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Да"
+          }
+        }
+      }
     },
     "Дессерт" : {
       "extractionState" : "manual",
@@ -2960,13 +2973,39 @@
       }
     },
     "Отмена" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Отмена"
+          }
+        }
+      }
     },
     "Очистить избранное?" : {
 
     },
     "Очистить мои рецепты?" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear my recipes?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Очистить мои рецепты?"
+          }
+        }
+      }
     },
     "Первое блюдо" : {
       "extractionState" : "manual",

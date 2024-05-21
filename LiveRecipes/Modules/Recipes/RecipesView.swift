@@ -12,6 +12,7 @@ import UserNotifications
 
 struct RecipesView: View {
     @StateObject var viewModel: RecipesViewModel
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         NavigationView {

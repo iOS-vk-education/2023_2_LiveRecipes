@@ -26,6 +26,13 @@ struct RecipeBigCardView: View {
                             .frame(width: UIScreen.main.bounds.width - 24, height: 170)
                             .clipped()
                     }
+                    else {
+                        Image("mockDishImage")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: UIScreen.main.bounds.width - 24, height: 170)
+                            .clipped()
+                    }
                     VStack {
                         HStack {
                             Text(recipe.name)

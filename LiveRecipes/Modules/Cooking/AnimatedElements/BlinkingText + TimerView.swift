@@ -46,6 +46,7 @@ struct TimerView: View {
     
     @State var timeForProgress: Int
     @State var activityStarted: Bool = false
+    @State var identifier = ""
     
     var step: String?
     var stepsCount: Int?
@@ -62,8 +63,9 @@ struct TimerView: View {
         return (hours, minutes, seconds)
     }
     
-    func addNotification(time: Double, title: String) {
+    func addNotification(time: Double, title: String) -> String {
         let center = UNUserNotificationCenter.current()
+        let identifier = UUID().uuidString
         
         let addRequest = {
             let content = UNMutableNotificationContent()
@@ -78,24 +80,35 @@ struct TimerView: View {
     
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time, repeats: false)
     
-            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
             center.add(request)
             print("add")
+            
         }
+        addRequest()
+        return identifier
+        
+        
     
-        center.getNotificationSettings { settings in
-            if settings.authorizationStatus == .authorized {
-                addRequest()
-            } else {
-                center.requestAuthorization(options: [.alert, .badge, .sound]) { success, _ in
-                    if success {
-                        addRequest()
-                    } else {
-                        print("Authorization declined")
-                    }
-                }
-            }
-        }
+//        center.getNotificationSettings { settings in
+//            if settings.authorizationStatus == .authorized {
+//                addRequest()
+//            } else {
+//                center.requestAuthorization(options: [.alert, .badge, .sound]) { success, _ in
+//                    if success {
+//                        addRequest()
+//                    } else {
+//                        print("Authorization declined")
+//                    }
+//                }
+//            }
+//        }
+    }
+    
+    func removeNotification(identifier: String) {
+        let center = UNUserNotificationCenter.current()
+        center.removePendingNotificationRequests(withIdentifiers: [identifier])
+        print("remove")
     }
     
     func notify() -> Void {
@@ -114,6 +127,7 @@ struct TimerView: View {
     }
     
     func stopActivity() {
+        removeNotification(identifier: identifier)
         Task {
             await currentActivity?.end(nil, dismissalPolicy: .immediate)
             activityStarted = false
@@ -123,9 +137,7 @@ struct TimerView: View {
     func updateActivity() {
         Task {
             let state = TimerAttributes.TimeState(progress: progress, totalTime: totalTime, timeRemaining: timeForProgress, currentStep: step ?? "", stepsCount: stepsCount ?? 0, interval: nil)
-            //await currentActivity?.update(using: state)
             await currentActivity?.update(ActivityContent<TimerAttributes.TimeState>(state: state, staleDate: nil))
-            //await currentActivity?.update(using: state)
         }
     }
     
@@ -204,7 +216,7 @@ struct TimerView: View {
                 Spacer()
                 
                 Button(action: {
-                    addNotification(time: Double(totalTime), title: "LiveRecipes")
+                    identifier = addNotification(time: Double(totalTime), title: "LiveRecipes")
                     isTimerRunning.toggle()
                     if activityStarted {
                        // updateActivity()
