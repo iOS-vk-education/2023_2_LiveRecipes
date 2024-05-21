@@ -24,7 +24,7 @@ struct FiltersView: View {
                             Image(systemName: "xmark")
                                 .imageScale(.small)
                                 .fontWeight(.semibold)
-                                .foregroundStyle(Color(red: 0.2353, green: 0.2353, blue: 0.2627, opacity: 0.6))
+                                .foregroundStyle(Color(red: 0.2353, green: 0.2353, blue: 0.2627, opacity: 1))
                         }
                         .frame(width: 30, height: 30)
                         .background(Color(UIColor.secondarySystemBackground))
@@ -35,6 +35,9 @@ struct FiltersView: View {
                     Button {
                         viewModel.duration = ""
                         viewModel.calories = ""
+                        viewModel.protein = ""
+                        viewModel.fats = ""
+                        viewModel.carbohydrates = ""
                         viewModel.contains = []
                         viewModel.notContains = []
                         viewModel.findRecipesByFilter()
@@ -74,7 +77,7 @@ struct FiltersView: View {
                     TextField("num".localized, text: $viewModel.calories)
                         .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
                         .keyboardType(.numberPad)
-                        .background(RoundedRectangle(cornerRadius: 8).fill(.background))
+                        .background(RoundedRectangle(cornerRadius: 8).fill(.windowBackground))
                         .multilineTextAlignment(.center)
                         .frame(width: 90)
                 }
@@ -98,7 +101,7 @@ struct FiltersView: View {
                     TextField("num".localized, text: $viewModel.protein)
                         .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
                         .keyboardType(.numberPad)
-                        .background(RoundedRectangle(cornerRadius: 8).fill(.background))
+                        .background(RoundedRectangle(cornerRadius: 8).fill(.windowBackground))
                         .multilineTextAlignment(.center)
                         .frame(width: 90)
                 }
@@ -122,7 +125,7 @@ struct FiltersView: View {
                     TextField("num".localized, text: $viewModel.fats)
                         .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
                         .keyboardType(.numberPad)
-                        .background(RoundedRectangle(cornerRadius: 8).fill(.background))
+                        .background(RoundedRectangle(cornerRadius: 8).fill(.windowBackground))
                         .multilineTextAlignment(.center)
                         .frame(width: 90)
                 }
@@ -146,7 +149,7 @@ struct FiltersView: View {
                     TextField("num".localized, text: $viewModel.carbohydrates)
                         .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
                         .keyboardType(.numberPad)
-                        .background(RoundedRectangle(cornerRadius: 8).fill(.background))
+                        .background(RoundedRectangle(cornerRadius: 8).fill(.windowBackground))
                         .multilineTextAlignment(.center)
                         .frame(width: 90)
                 }

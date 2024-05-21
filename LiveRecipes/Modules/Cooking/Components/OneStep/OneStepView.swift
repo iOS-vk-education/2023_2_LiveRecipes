@@ -115,7 +115,7 @@ struct OneStepView: View {
                                     Spacer()
                                 }
                             }.buttonStyle(.borderedProminent)
-                                .tint(Color(uiColor: .label))
+                                .tint(Color(uiColor: .black))
                                 .padding(.bottom, 20)
                                 .frame(width: UIScreen.main.bounds.width - 20)
                                 .offset(y: model.isTimerOnView ? 10 : -100)

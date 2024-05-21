@@ -116,7 +116,7 @@ final class RecipesModel: ObservableObject, RecipesModelProtocol {
             return [
                 KeyWord(keyWord: "Суп"), KeyWord(keyWord: "Завтрак"), KeyWord(keyWord: "Салат"), KeyWord(keyWord: "Вкус"), KeyWord(keyWord: "Быстрое"), KeyWord(keyWord: "Дессерт"), KeyWord(keyWord: "Секрет"), KeyWord(keyWord: "Тесто"),
                 KeyWord(keyWord: "Форма"), KeyWord(keyWord: "Сахар"), KeyWord(keyWord: "Сладкое"), KeyWord(keyWord: "Традиционное"), KeyWord(keyWord: "Легкий"), KeyWord(keyWord: "Диета"), KeyWord(keyWord: "Пудинг"), KeyWord(keyWord: "Сироп"),
-                KeyWord(keyWord: "Фрукт")
+                KeyWord(keyWord: "Фрукт"), KeyWord(keyWord: "Мексиканское"), KeyWord(keyWord: "Фрукты"), KeyWord(keyWord: "Нежный"), KeyWord(keyWord: "Утотченный"), KeyWord(keyWord: "Сладкая"), KeyWord(keyWord: "Карамель"), KeyWord(keyWord: "Мучное"), KeyWord(keyWord: "Английское"), KeyWord(keyWord: "Второе блюдо"), KeyWord(keyWord: "Полезное"), KeyWord(keyWord: "Легкое"), KeyWord(keyWord: "Вечер"),KeyWord(keyWord: "Ужин"), KeyWord(keyWord: "Обед"), KeyWord(keyWord: "Драники"), KeyWord(keyWord: "Сырники"), KeyWord(keyWord: "Итальянское"), KeyWord(keyWord: "Огонь"), KeyWord(keyWord: "Отдых"), KeyWord(keyWord: "Простое"), KeyWord(keyWord: "Постное"), KeyWord(keyWord: "Постный"), KeyWord(keyWord: "Лист"), KeyWord(keyWord: "Духовка"),KeyWord(keyWord: "В духовке") , KeyWord(keyWord: "Крепкое"), KeyWord(keyWord: "Крепкий"), KeyWord(keyWord: "Мука"), KeyWord(keyWord: "Сода"), KeyWord(keyWord: "Без молока"), KeyWord(keyWord: "Алкоголь")
             ]
         }
     }

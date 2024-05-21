@@ -13,7 +13,7 @@ final class SettingsViewModel: ObservableObject, SettingsViewModelProtocol {
 
     let segments = ["light.theme".localized, "system.theme".localized, "dark.theme".localized]
     @Published var selectedSegment = 1
-    @Published var colorScheme: ColorScheme?
+//    @Published var colorScheme: ColorScheme?
     
     init(settingsModel: SettingsModelProtocol) {
         self.model = settingsModel
@@ -44,18 +44,5 @@ final class SettingsViewModel: ObservableObject, SettingsViewModelProtocol {
                 }
             }
         }
-    }
-    func changeTheme() {
-        switch selectedSegment {
-            case 0:
-                colorScheme = .light
-            case 1:
-                colorScheme = nil
-            case 2:
-                colorScheme = .dark
-            default:
-                break
-        }
-        print(segments[selectedSegment])
     }
 }

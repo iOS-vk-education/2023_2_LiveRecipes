@@ -13,25 +13,10 @@ struct SettingsView: View {
     @StateObject var creationViewModel = CreationViewModel(creationModel: CreationModel())
     @State var isClearMyRecipes = false
     @State var isClearFavorites = false
+    @State var isClearRecents = false
 
     var body: some View {
         List {
-            Section {
-                    Picker(selection: $viewState.selectedSegment, label: Text("Select a segment")) {
-                        ForEach(0..<viewState.segments.count) { index in
-                            Text(viewState.segments[index]).tag(index)
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                    .frame(width: 350)
-                    .listRowBackground(Color.clear)
-                    .onChange(of: viewState.selectedSegment) { _, _ in
-                        viewState.changeTheme()
-                    }
-                    .preferredColorScheme(viewState.colorScheme)
-            } header: {
-                Text("theme.settings".localized)
-            }
             Section(header: Text("settings.userSettings".localized)) {
                 Button(action: {
                     isClearMyRecipes = true
@@ -73,11 +58,18 @@ struct SettingsView: View {
 //                        .tint(Color(uiColor: .label))
 //                }
                 Button(action: {
-                    viewState.clearRecents()
+                    isClearRecents = true
                 })
                 {
                     Text("settings.clearRecents".localized)
                         .tint(Color(uiColor: .label))
+                }.alert(isPresented: $isClearRecents) {
+                    Alert(title: Text("Очистить недавние?"), primaryButton: .default(Text("Да")){
+                        viewState.clearRecents()
+                        isClearFavorites = false
+                    }, secondaryButton: .default(Text("Отмена")) {
+                        isClearFavorites = false
+                    })
                 }
                 NavigationLink(destination: CreationView(viewState: creationViewModel), isActive: $isShowingCreationView, label: {
                     Text("settings.publishMyRecipe".localized)

@@ -61,7 +61,8 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     
     //для сохраненных
     @Published var favoritesID: [Int] = []
-    
+    @Published var recentsID: [Int] = []
+ 
     //отслеживание загрузки
     @Published var isLoading: Bool = true
     @Published var isLoading1: Bool = true
@@ -183,19 +184,25 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
     }
     
     func loadRecents() {
-        recentRecipes = []
-        let arrayOfRecentsID = UserDefaults.standard.array(forKey: "recentsID") as? [Int] ?? []
-        if arrayOfRecentsID.isEmpty {
-            isLoadingRecents = false
-            return
-        }
-        for id in arrayOfRecentsID {
-            model.findRecipe(id: id) { [weak self] result in
-                self?.recentRecipes.append(result)
-                DispatchQueue.main.async {
-                    self?.isLoadingRecents = false
+        isLoadingRecents = true
+        let tempid = recentsID
+        recentsID = UserDefaults.standard.array(forKey: "recentsID") as? [Int] ?? []
+        if tempid != recentsID {
+            recentRecipes = []
+            if recentsID.isEmpty {
+                isLoadingRecents = false
+                return
+            }
+            for id in recentsID {
+                model.findRecipe(id: id) { [weak self] result in
+                    self?.recentRecipes.append(result)
+                    DispatchQueue.main.async {
+                        self?.isLoadingRecents = false
+                    }
                 }
             }
+        } else {
+            isLoadingRecents = false
         }
     }
     
@@ -314,14 +321,12 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
                                              nutritionValue: Nutrition(bzy: result.bzy),
                                              dishComposition: dishComposition,
                                              dishSteps: dishSteps)) {
-                print("success")
                 self?.showRecipesInDB()//////////////////////////////////////////////
             }
         }
     }
     func deleteFromCoreDataFavorites(recipe: RecipePreviewDTO) {
         coreData.delete(recipeNetId: recipe.id) {[weak self] _ in
-            print("sucksess")
             self?.showRecipesInDB()//////////////////////////////////////////////////
         }
     }
@@ -340,7 +345,6 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
         }
         
         coreData.delete(recipeMyId: recipe.id) { [weak self] _ in
-            print("sucksess")
             self?.showRecipesInDB()
         }
     }

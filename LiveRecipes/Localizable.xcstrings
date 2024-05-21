@@ -3007,6 +3007,9 @@
         }
       }
     },
+    "Очистить недавние?" : {
+
+    },
     "Первое блюдо" : {
       "extractionState" : "manual",
       "localizations" : {
