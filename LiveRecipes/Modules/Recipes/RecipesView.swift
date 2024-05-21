@@ -23,6 +23,10 @@ struct RecipesView: View {
                             allRecipesView()
                             cookToTimeView()
                             recentRecipesView()
+                                .onAppear {
+                                    viewModel.isLoadingRecents = true
+                                    viewModel.loadRecents()
+                                }
                             myRecipesView()
                         }
                         else {
