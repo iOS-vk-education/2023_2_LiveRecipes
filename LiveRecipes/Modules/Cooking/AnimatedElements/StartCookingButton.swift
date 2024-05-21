@@ -21,7 +21,7 @@ struct StartCookingButton: View {
             Spacer()
             
             Button(action: {
-                //self.presentationMode.wrappedValue.dismiss()
+                
             }) {
                 NavigationLink(destination:{
                     if openedFromFavorites {

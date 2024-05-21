@@ -11,6 +11,8 @@ struct SettingsView: View {
     @StateObject var viewState: SettingsViewModel
     @State private var isShowingCreationView = false
     @StateObject var creationViewModel = CreationViewModel(creationModel: CreationModel())
+    @State var isClearMyRecipes = false
+    @State var isClearFavorites = false
 
     var body: some View {
         List {
@@ -32,20 +34,44 @@ struct SettingsView: View {
             }
             Section(header: Text("settings.userSettings".localized)) {
                 Button(action: {
-                    viewState.clearMyRecipes()
+                    isClearMyRecipes = true
                 })
                 {
                     Text("settings.clearMyRecipes".localized)
                         .tint(Color(uiColor: .label))
+                }.alert(isPresented: $isClearMyRecipes) {
+                    Alert(title: Text("Очистить мои рецепты?"), primaryButton: .default(Text("Да")){
+                        viewState.clearMyRecipes()
+                        isClearMyRecipes = false
+                    }, secondaryButton: .default(Text("Отмена")) {
+                        isClearMyRecipes = false
+                    })
                 }
                 
                 Button(action: {
-                    viewState.clearFavorites()
+                    isClearFavorites = true
+                    //viewState.clearMyRecipes()
                 })
                 {
                     Text("settings.clearFavourites".localized)
                         .tint(Color(uiColor: .label))
+                }.alert(isPresented: $isClearFavorites) {
+                    Alert(title: Text("Очистить избранное?"), primaryButton: .default(Text("Да")){
+                        viewState.clearFavorites()
+                        isClearFavorites = false
+                    }, secondaryButton: .default(Text("Отмена")) {
+                        isClearFavorites = false
+                    })
                 }
+                    
+                
+//                Button(action: {
+//                    viewState.clearFavorites()
+//                })
+//                {
+//                    Text("settings.clearFavourites".localized)
+//                        .tint(Color(uiColor: .label))
+//                }
                 Button(action: {
                     viewState.clearRecents()
                 })

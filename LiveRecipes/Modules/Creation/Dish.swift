@@ -49,7 +49,7 @@ class Dish: Identifiable, Hashable {
         var arraySteps: [[String]] = []
         for dishStep in dishSteps {
             let photoDataStep = dishStep.photo?.jpegData(compressionQuality: 0.4)
-            let photoDataBase64Step = photoData?.base64EncodedString() ?? ""
+            let photoDataBase64Step = photoDataStep?.base64EncodedString() ?? ""
             arraySteps.append([dishStep.description, photoDataBase64Step, String(dishStep.stepTime)])
         }
         
