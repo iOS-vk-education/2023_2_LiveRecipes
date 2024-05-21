@@ -62,7 +62,7 @@ struct FiltersView: View {
                     Text(viewModel.isMoreCalories ? "more".localized : "less".localized)
                         .padding(.vertical, 6)
                         .padding(.horizontal, 8)
-                        .frame(width: 80)
+                        .frame(width: 85)
                         .foregroundStyle(.orange)
                         .background(.orange.opacity(0.1))
                         .clipShape(.rect(cornerRadius: 10))
@@ -86,7 +86,7 @@ struct FiltersView: View {
                     Text(viewModel.isMoreProtein ? "more".localized : "less".localized)
                         .padding(.vertical, 6)
                         .padding(.horizontal, 8)
-                        .frame(width: 80)
+                        .frame(width: 85)
                         .foregroundStyle(.orange)
                         .background(.orange.opacity(0.1))
                         .clipShape(.rect(cornerRadius: 10))
@@ -110,7 +110,7 @@ struct FiltersView: View {
                     Text(viewModel.isMoreFats ? "more".localized : "less".localized)
                         .padding(.vertical, 6)
                         .padding(.horizontal, 8)
-                        .frame(width: 80)
+                        .frame(width: 85)
                         .foregroundStyle(.orange)
                         .background(.orange.opacity(0.1))
                         .clipShape(.rect(cornerRadius: 10))
@@ -134,7 +134,7 @@ struct FiltersView: View {
                     Text(viewModel.isMoreCarbohydrates ? "more".localized : "less".localized)
                         .padding(.vertical, 6)
                         .padding(.horizontal, 8)
-                        .frame(width: 80)
+                        .frame(width: 85)
                         .foregroundStyle(.orange)
                         .background(.orange.opacity(0.1))
                         .clipShape(.rect(cornerRadius: 10))
@@ -164,8 +164,8 @@ struct FiltersView: View {
                             viewModel.protein = ""
                         } label: {
                             Text("clear.one.filter".localized)
-                                    .textCase(.none)
-                                    .font(.caption)
+                                .textCase(.none)
+                                .font(.caption)
                         }
                     }
                 }
@@ -270,12 +270,12 @@ struct FiltersView: View {
                                 Text(viewModel.contains[index])
                                     .foregroundStyle(.white)
                                     .font(.caption)
-                                .padding(8)
-                                .background(.orange)
-                                .clipShape(.capsule)
-                                .gesture(TapGesture().onEnded({
-                                    viewModel.removeFromContains(word: viewModel.contains[index])
-                                }))
+                                    .padding(8)
+                                    .background(.orange)
+                                    .clipShape(.capsule)
+                                    .gesture(TapGesture().onEnded({
+                                        viewModel.removeFromContains(word: viewModel.contains[index])
+                                    }))
                             }
                             Spacer()
                         }
@@ -323,12 +323,12 @@ struct FiltersView: View {
                                 Text(viewModel.notContains[index])
                                     .foregroundStyle(.white)
                                     .font(.caption)
-                                .padding(8)
-                                .background(.orange)
-                                .clipShape(.capsule)
-                                .gesture(TapGesture().onEnded({
-                                    viewModel.removeFromNotContains(word: viewModel.notContains[index])
-                                }))
+                                    .padding(8)
+                                    .background(.orange)
+                                    .clipShape(.capsule)
+                                    .gesture(TapGesture().onEnded({
+                                        viewModel.removeFromNotContains(word: viewModel.notContains[index])
+                                    }))
                             }
                             Spacer()
                         }
@@ -350,23 +350,25 @@ struct FiltersView: View {
                     }
                 }
             }
+            HStack {
+                Spacer()
+                Button  {
+                    viewModel.isLoading = true
+                    self.presentationMode.wrappedValue.dismiss()
+                    viewModel.findRecipesByFilter()
+                } label: {
+                    HStack {
+                        Text("filters.accept.button".localized)
+                    }
+                    .tint(.white)
+                    .fontWeight(.semibold)
+                }
+                .frame(width: 200, height: 50)
+                .background(.orange, in: .rect(cornerRadius: 14))
+                Spacer()
+            }
+            .listRowBackground(Color.clear)
         }
         .listSectionSpacing(8)
-        .overlay(
-            Button  {
-                viewModel.isLoading = true
-                self.presentationMode.wrappedValue.dismiss()
-                viewModel.findRecipesByFilter()
-            } label: {
-                HStack {
-                    Text("filters.accept.button".localized)
-                }
-                .tint(.white)
-                .fontWeight(.semibold)
-            }
-                .frame(width: 200, height: 50)
-                .background(.orange, in: .rect(cornerRadius: 14)),
-            alignment: .bottom
-        )
     }
 }
