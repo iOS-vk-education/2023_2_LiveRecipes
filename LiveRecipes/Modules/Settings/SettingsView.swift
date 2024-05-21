@@ -16,22 +16,6 @@ struct SettingsView: View {
 
     var body: some View {
         List {
-            Section {
-                    Picker(selection: $viewState.selectedSegment, label: Text("Select a segment")) {
-                        ForEach(0..<viewState.segments.count) { index in
-                            Text(viewState.segments[index]).tag(index)
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                    .frame(width: 350)
-                    .listRowBackground(Color.clear)
-                    .onChange(of: viewState.selectedSegment) { _, _ in
-                        viewState.changeTheme()
-                    }
-                    .preferredColorScheme(viewState.colorScheme)
-            } header: {
-                Text("theme.settings".localized)
-            }
             Section(header: Text("settings.userSettings".localized)) {
                 Button(action: {
                     isClearMyRecipes = true

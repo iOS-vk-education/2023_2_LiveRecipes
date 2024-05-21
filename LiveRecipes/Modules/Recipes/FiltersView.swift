@@ -24,7 +24,7 @@ struct FiltersView: View {
                             Image(systemName: "xmark")
                                 .imageScale(.small)
                                 .fontWeight(.semibold)
-                                .foregroundStyle(Color(red: 0.2353, green: 0.2353, blue: 0.2627, opacity: 0.6))
+                                .foregroundStyle(Color(red: 0.2353, green: 0.2353, blue: 0.2627, opacity: 1))
                         }
                         .frame(width: 30, height: 30)
                         .background(Color(UIColor.secondarySystemBackground))
