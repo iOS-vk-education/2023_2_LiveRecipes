@@ -314,14 +314,12 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
                                              nutritionValue: Nutrition(bzy: result.bzy),
                                              dishComposition: dishComposition,
                                              dishSteps: dishSteps)) {
-                print("success")
                 self?.showRecipesInDB()//////////////////////////////////////////////
             }
         }
     }
     func deleteFromCoreDataFavorites(recipe: RecipePreviewDTO) {
         coreData.delete(recipeNetId: recipe.id) {[weak self] _ in
-            print("sucksess")
             self?.showRecipesInDB()//////////////////////////////////////////////////
         }
     }
@@ -341,7 +339,6 @@ final class RecipesViewModel: ObservableObject, RecipesViewModelProtocol {
         }
         
         coreData.delete(recipeMyId: recipe.id) { [weak self] _ in
-            print("sucksess")
             self?.showRecipesInDB()
         }
     }
