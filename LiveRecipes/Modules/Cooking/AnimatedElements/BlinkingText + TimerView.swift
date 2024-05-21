@@ -85,24 +85,21 @@ struct TimerView: View {
             print("add")
             
         }
-        addRequest()
+ 
+        center.getNotificationSettings { settings in
+            if settings.authorizationStatus == .authorized {
+                addRequest()
+            } else {
+                center.requestAuthorization(options: [.alert, .badge, .sound]) { success, _ in
+                    if success {
+                        addRequest()
+                    } else {
+                        print("Authorization declined")
+                    }
+                }
+            }
+        }
         return identifier
-        
-        
-    
-//        center.getNotificationSettings { settings in
-//            if settings.authorizationStatus == .authorized {
-//                addRequest()
-//            } else {
-//                center.requestAuthorization(options: [.alert, .badge, .sound]) { success, _ in
-//                    if success {
-//                        addRequest()
-//                    } else {
-//                        print("Authorization declined")
-//                    }
-//                }
-//            }
-//        }
     }
     
     func removeNotification(identifier: String) {
